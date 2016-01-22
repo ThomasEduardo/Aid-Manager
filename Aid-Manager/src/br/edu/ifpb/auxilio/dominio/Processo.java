@@ -2,7 +2,7 @@ package br.edu.ifpb.auxilio.dominio;
 
 import java.util.*;
 
-public class Processo {
+public abstract class Processo {
 	private Date data;
 	private String obs;
 	private String numProcesso;
