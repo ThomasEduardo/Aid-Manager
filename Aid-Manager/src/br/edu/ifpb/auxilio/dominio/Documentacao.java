@@ -11,11 +11,27 @@ public class Documentacao {
 	private Discente discente;
 	
 	// CONSTRUTOR
+	public Documentacao(){
+		setIdDocumentacao(0);
+		setNomeDocumentacao("");
+		setStatus("");
+		setConteudo(null);
+		setObs("");
+		setDiscente(null);
+	}
 	
 	public Documentacao(int idDocumentacao, String nomeDocumentacao,
 			String status, File conteudo, String obs, Discente discente) {
-		super();
 		this.idDocumentacao = idDocumentacao;
+		this.nomeDocumentacao = nomeDocumentacao;
+		this.status = status;
+		this.conteudo = conteudo;
+		this.obs = obs;
+		this.discente = discente;
+	}
+	
+	public Documentacao(String nomeDocumentacao,
+			String status, File conteudo, String obs, Discente discente) {
 		this.nomeDocumentacao = nomeDocumentacao;
 		this.status = status;
 		this.conteudo = conteudo;

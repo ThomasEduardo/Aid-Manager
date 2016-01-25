@@ -8,6 +8,13 @@ public class PerfilSocioEconomico {
 	private String situacaoMoradia;
 	private String residenciaFamiliar;
 	private String situacaoTrabalho;
+	private double aluguel;
+	private double condominio;
+	private double luz;
+	private double agua;
+	private double telefone;
+	private double financiamentoCasaPropria;
+	
 	
 	public PerfilSocioEconomico(){
 		
@@ -92,14 +99,71 @@ public class PerfilSocioEconomico {
 	public void setSituacaoTrabalho(String situacaoTrabalho) {
 		this.situacaoTrabalho = situacaoTrabalho;
 	}
-	
+	public double getAluguel() {
+		return aluguel;
+	}
+
+	public void setAluguel(double aluguel) {
+		this.aluguel = aluguel;
+	}
+
+	public double getCondominio() {
+		return condominio;
+	}
+
+	public void setCondominio(double condominio) {
+		this.condominio = condominio;
+	}
+
+	public double getLuz() {
+		return luz;
+	}
+
+	public void setLuz(double luz) {
+		this.luz = luz;
+	}
+
+	public double getAgua() {
+		return agua;
+	}
+
+	public void setAgua(double agua) {
+		this.agua = agua;
+	}
+
+	public double getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(double telefone) {
+		this.telefone = telefone;
+	}
+
+	public double getFinanciamentoCasaPropria() {
+		return financiamentoCasaPropria;
+	}
+
+	public void setFinanciamentoCasaPropria(double financiamentoCasaPropria) {
+		this.financiamentoCasaPropria = financiamentoCasaPropria;
+	}
+
 	public boolean equals(PerfilSocioEconomico ps){
 		if(this.getMoradia() == ps.getMoradia()){
 			if(this.getResidenciaFamiliar() == ps.getResidenciaFamiliar()){
 				if(this.getSituacaoMoradia() == ps.getSituacaoMoradia()){
 					if(this.getSituacaoRendaFamiliar() == ps.getSituacaoRendaFamiliar()){
 						if(this.getSituacaoTrabalho() == ps.getSituacaoTrabalho()){
-								return true;
+							if(this.getAluguel() == ps.getAluguel()){
+								if(this.getCondominio() == ps.getCondominio()){
+									if(this.getLuz() == ps.getLuz()){
+										if(this.getAgua() == ps.getAgua()){
+											if(this.getTelefone() == ps.getTelefone()){
+													return true;
+											}
+										}
+									}
+								}
+							}	
 						}
 					}
 				}

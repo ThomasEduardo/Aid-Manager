@@ -3,17 +3,18 @@ package br.edu.ifpb.auxilio.dominio;
 import java.util.*;
 
 public abstract class Processo {
+	
+	private int idProcesso;
 	private Date data;
 	private String obs;
 	private String numProcesso;
 	private String assunto;
-	private Discente interessado;
+	private Pessoa interessado;
 	
 	// CONSTRUTOR
 	
 	public Processo(Date data, String obs, String numProcesso, String assunto,
-			Discente interessado) {
-		super();
+			Pessoa interessado) {
 		this.data = data;
 		this.obs = obs;
 		this.numProcesso = numProcesso;
@@ -21,10 +22,36 @@ public abstract class Processo {
 		this.interessado = interessado;
 	}
 	
+	public Processo(){
+		setIdProcesso(0);
+		setData(null);
+		setObs("");
+		setNumProcesso("");
+		setInteressado(null);
+		
+	}
+	
+	public Processo(int idProcesso,Date data, String obs, String numProcesso, String assunto,
+			Pessoa interessado) {
+		this.data = data;
+		this.obs = obs;
+		this.numProcesso = numProcesso;
+		this.assunto = assunto;
+		this.interessado = interessado;
+	}
 	//GETTERS E SETTERS
+	
 	
 	public Date getData() {
 		return data;
+	}
+
+	public int getIdProcesso() {
+		return idProcesso;
+	}
+
+	public void setIdProcesso(int idProcesso) {
+		this.idProcesso = idProcesso;
 	}
 
 	public void setData(Date data) {
@@ -55,11 +82,11 @@ public abstract class Processo {
 		this.assunto = assunto;
 	}
 
-	public Discente getInteressado() {
+	public Pessoa getInteressado() {
 		return interessado;
 	}
 
-	public void setInteressado(Discente interessado) {
+	public void setInteressado(Pessoa interessado) {
 		this.interessado = interessado;
 	}
 	
