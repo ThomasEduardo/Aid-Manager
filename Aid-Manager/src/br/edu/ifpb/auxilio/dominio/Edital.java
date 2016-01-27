@@ -19,17 +19,47 @@ public class Edital extends Processo {
 	
 	
 	
-public Edital() {
+	public Edital() {
 		super();
-		// TODO Auto-generated constructor stub
+		setIdEdital(0);
+		setIniInscricoes(null);
+		setFimInscricoes(null);
+		setIniEntregaForm(null);
+		setFimForm(null);
+		setAno(0);
+		setDescricao("");
+		setTitulo("");
+		setValorBolsaDiscente(0);
+		setVagasBolsistas(0);
+		setNumEdital("");
 	}
-	public Edital(Date data, String obs, String numProcesso, String assunto, Pessoa interessado) {
+	public Edital(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idEdital,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital) {
 		super(data, obs, numProcesso, assunto, interessado);
-		// TODO Auto-generated constructor stub
+		setIdEdital(idEdital);
+		setIniInscricoes(iniInscricoes);
+		setFimInscricoes(fimInscricoes);
+		setIniEntregaForm(iniEntregaForm);
+		setFimForm(fimForm);
+		setAno(ano);
+		setDescricao(descricao);
+		setTitulo(titulo);
+		setValorBolsaDiscente(valorBolsaDiscente);
+		setVagasBolsistas(vagasBolsistas);
+		setNumEdital(numEdital);
+		
 	}
-	public Edital(int idProcesso, Date data, String obs, String numProcesso, String assunto, Pessoa interessado) {
+	public Edital(int idProcesso, Date data, String obs, String numProcesso, String assunto, Pessoa interessado,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital) {
 		super(idProcesso, data, obs, numProcesso, assunto, interessado);
-		// TODO Auto-generated constructor stub
+		setIniInscricoes(iniInscricoes);
+		setFimInscricoes(fimInscricoes);
+		setIniEntregaForm(iniEntregaForm);
+		setFimForm(fimForm);
+		setAno(ano);
+		setDescricao(descricao);
+		setTitulo(titulo);
+		setValorBolsaDiscente(valorBolsaDiscente);
+		setVagasBolsistas(vagasBolsistas);
+		setNumEdital(numEdital);
 	}
 	//------------------------------------------------------
 	public int getIdEdital() {

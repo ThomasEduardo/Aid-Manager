@@ -88,5 +88,25 @@ public class Documentacao {
 	public void setDiscente(Discente discente) {
 		this.discente = discente;
 	}
+	
+	public boolean equals(Documentacao d){
+	  if(d instanceof Documentacao){
+		if(this.getIdDocumentacao() == d.getIdDocumentacao()){
+			if(this.getNomeDocumentacao() == d.getNomeDocumentacao()){
+				if(this.getStatus() == d.getStatus()){
+					if(this.getConteudo() == d.getConteudo()){
+						if(this.getObs() == d.getObs()){
+							if(this.getDiscente() == d.getDiscente()){
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+	 }
+	  return false;
+		
+	}
 
 }

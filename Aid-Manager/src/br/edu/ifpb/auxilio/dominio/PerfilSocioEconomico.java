@@ -24,10 +24,16 @@ public class PerfilSocioEconomico {
 		setSituacaoMoradia("");
 		setResidenciaFamiliar("");
 		setSituacaoTrabalho("");
+		setAluguel(0);
+		setCondominio(0);
+		setLuz(0);
+		setAgua(0);
+		setTelefone(0);
+		setFinanciamentoCasaPropria(0);
 		
 	}
 	
-	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho){
+	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria){
 		
 		
 		setIdPerfilSocio(idPs);
@@ -36,10 +42,16 @@ public class PerfilSocioEconomico {
 		setSituacaoMoradia(situacaoMoradia);
 		setResidenciaFamiliar(residenciaFamiliar);
 		setSituacaoTrabalho(situacaoTrabalho);
+		setAluguel(aluguel);
+		setCondominio(condominio);
+		setLuz(luz);
+		setAgua(agua);
+		setTelefone(telefone);
+		setFinanciamentoCasaPropria(financiamentoCasaPropria);
 		
 	}
 	
-	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho){
+	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria){
 	
 		
 		setSituacaoRendaFamiliar(srf);
@@ -47,6 +59,12 @@ public class PerfilSocioEconomico {
 		setSituacaoMoradia(situacaoMoradia);
 		setResidenciaFamiliar(residenciaFamiliar);
 		setSituacaoTrabalho(situacaoTrabalho);
+		setAluguel(aluguel);
+		setCondominio(condominio);
+		setLuz(luz);
+		setAgua(agua);
+		setTelefone(telefone);
+		setFinanciamentoCasaPropria(financiamentoCasaPropria);
 		
 	}
 

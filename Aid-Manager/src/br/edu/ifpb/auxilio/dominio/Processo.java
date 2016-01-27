@@ -11,7 +11,6 @@ public abstract class Processo {
 	private String assunto;
 	private Pessoa interessado;
 	
-	// CONSTRUTOR
 	
 	public Processo(Date data, String obs, String numProcesso, String assunto,
 			Pessoa interessado) {
@@ -90,4 +89,21 @@ public abstract class Processo {
 		this.interessado = interessado;
 	}
 	
+	public boolean equals(Processo p){
+	if(p instanceof Processo){
+		if(this.getData() == p.getData()){
+			if(this.getObs() == p.getObs()){
+				if(this.getNumProcesso() == p.getNumProcesso()){
+					if(this.getAssunto() == p.getAssunto()){
+						if(this.getInteressado() == p.getInteressado()){
+							return true;
+						}
+					}
+				}
+			}
+		}
+	}
+		return false;
+		
+	}
 }
