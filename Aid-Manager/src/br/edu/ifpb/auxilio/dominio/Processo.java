@@ -9,16 +9,18 @@ public abstract class Processo {
 	private String obs;
 	private String numProcesso;
 	private String assunto;
+	private String parecer;
 	private Pessoa interessado;
 	
 	
 	public Processo(Date data, String obs, String numProcesso, String assunto,
-			Pessoa interessado) {
+			Pessoa interessado,String parecer) {
 		this.data = data;
 		this.obs = obs;
 		this.numProcesso = numProcesso;
 		this.assunto = assunto;
 		this.interessado = interessado;
+		this.parecer = parecer;
 	}
 	
 	public Processo(){
@@ -27,16 +29,18 @@ public abstract class Processo {
 		setObs("");
 		setNumProcesso("");
 		setInteressado(null);
+		setParecer("");
 		
 	}
 	
 	public Processo(int idProcesso,Date data, String obs, String numProcesso, String assunto,
-			Pessoa interessado) {
+			Pessoa interessado,String parecer) {
 		this.data = data;
 		this.obs = obs;
 		this.numProcesso = numProcesso;
 		this.assunto = assunto;
 		this.interessado = interessado;
+		this.parecer = parecer;
 	}
 	//GETTERS E SETTERS
 	
@@ -88,7 +92,14 @@ public abstract class Processo {
 	public void setInteressado(Pessoa interessado) {
 		this.interessado = interessado;
 	}
-	
+	public String getParecer() {
+		return parecer;
+	}
+
+	public void setParecer(String parecer) {
+		this.parecer = parecer;
+	}
+
 	public boolean equals(Processo p){
 	if(p instanceof Processo){
 		if(this.getData() == p.getData()){
@@ -96,7 +107,9 @@ public abstract class Processo {
 				if(this.getNumProcesso() == p.getNumProcesso()){
 					if(this.getAssunto() == p.getAssunto()){
 						if(this.getInteressado() == p.getInteressado()){
-							return true;
+							if(this.getParecer() == p.getParecer()){
+									return true;
+							}
 						}
 					}
 				}
