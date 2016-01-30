@@ -1,6 +1,8 @@
 package br.edu.ifpb.auxilio.dominio;
 
-import java.security.Timestamp;
+import java.util.Date;
+
+
 
 	public abstract class Pessoa {
 	
@@ -8,7 +10,7 @@ import java.security.Timestamp;
 		private String nomePessoa;
 		private String rg;
 		private String matricula;
-		private Timestamp dataNasc;
+		private Date dataNasc;
 		private String sexo;
 		private String senha;
 		private String email;
@@ -26,7 +28,7 @@ import java.security.Timestamp;
 				setCpf("");
 			}
 	
-		public Pessoa(int idPessoa,String nomePessoa,String matricula,Timestamp dataNasc,String senha,String email,String cpf,String rg,String sexo){
+		public Pessoa(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo){
 			
 				setIdPessoa(idPessoa);
 				setNomePessoa(nomePessoa);
@@ -39,7 +41,7 @@ import java.security.Timestamp;
 				setCpf(cpf);
 			
 			}
-			public Pessoa(String nomePessoa,String matricula,Timestamp dataNasc,String senha,String email,String cpf,String rg,String sexo){
+			public Pessoa(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo){
 				
 				setNomePessoa(nomePessoa);
 				setRg(rg);
@@ -73,10 +75,10 @@ import java.security.Timestamp;
 			public void setMatricula(String matricula) {
 				this.matricula = matricula;
 			}
-			public Timestamp getDataNasc() {
+			public Date getDataNasc() {
 				return dataNasc;
 			}
-			public void setDataNasc(Timestamp dataNasc) {
+			public void setDataNasc(Date dataNasc) {
 				this.dataNasc = dataNasc;
 			}
 			public String getSenha() {

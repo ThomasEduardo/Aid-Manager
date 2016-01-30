@@ -1,6 +1,6 @@
 package br.edu.ifpb.auxilio.dominio;
 
-import java.security.Timestamp;
+import java.util.Date;
 
 public class AssistenteSocial extends Servidor {
 	private int id_assistenteSocial;
@@ -11,12 +11,10 @@ public class AssistenteSocial extends Servidor {
        setId_assistenteSocial(0);	
     }
 	
-	public AssistenteSocial(int id_assistenteSocial, int idPessoa,String nomePessoa,
-						String matricula,Timestamp dataNasc,String senha,String email,
-						String cpf,String rg,String sexo,int idServidor,String cargoServidor){
+	public AssistenteSocial(String nomePessoa,String matricula,Date dataNasc,String senha,String email,
+						String cpf,String rg,String sexo,String cargoServidor){
 	
-	super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,idServidor,cargoServidor );
-	setId_assistenteSocial(id_assistenteSocial);	
+	super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,cargoServidor);	
 	}
 //------------------------------GETTERS E SETTERS -------------------------------------------------//
 	public int getId_assistenteSocial() {

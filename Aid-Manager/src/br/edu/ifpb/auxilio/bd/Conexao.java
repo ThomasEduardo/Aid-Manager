@@ -7,22 +7,20 @@ import java.sql.SQLException;
 public class Conexao {
 
 	
-	public static String status = "";
 
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
 			// Carregando o driver JDBC para MySQL. Cada SGBD tem seu próprio driver
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/aid-manager", "root", "ifpbinfo");
 			
-			String url = "jdbc:mysql://localhost/banco?user=root&password=password";
-
-			conn = DriverManager.getConnection(url);
-			
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			
-			e.printStackTrace();
-		}
+		} catch (SQLException e) {
+	         throw new RuntimeException(e);
+	     }
+	     catch(ClassNotFoundException e){  
+	            throw new RuntimeException(e);  
+	        } 
 		
 		return conn;
 	}

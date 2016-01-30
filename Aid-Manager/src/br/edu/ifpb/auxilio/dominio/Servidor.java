@@ -1,6 +1,6 @@
 package br.edu.ifpb.auxilio.dominio;
 
-import java.security.Timestamp;
+import java.util.Date;
 
 public abstract class Servidor extends Pessoa{
 	
@@ -14,14 +14,14 @@ public abstract class Servidor extends Pessoa{
 		
 	}
 	
-	public Servidor(int idPessoa,String nomePessoa,String matricula,Timestamp dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor){
+	public Servidor(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor){
 		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setIdServidor(idServidor);
 		setCargoServidor(cargoServidor);
 	
 	}
 	
-	public Servidor(String nomePessoa,String matricula,Timestamp dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor){
+	public Servidor(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor){
 		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setCargoServidor(cargoServidor);
 		
