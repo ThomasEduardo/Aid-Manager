@@ -8,7 +8,7 @@ public class ComposicaoRendaFamiliar {
 	private int grauDeInstrucao;
 	private String profissao;
 	private double renda;
-	//private PerfilSocioEconomico ps;
+	private PerfilSocioEconomico ps;
 	
 	public ComposicaoRendaFamiliar(){
 		
@@ -80,12 +80,12 @@ public class ComposicaoRendaFamiliar {
 	public void setRenda(double renda) {
 		this.renda = renda;
 	}
-	/*public PerfilSocioEconomico getPs() {
+	public PerfilSocioEconomico getPs() {
 		return ps;
 	}
 	public void setPs(PerfilSocioEconomico ps) {
 		this.ps = ps;
-	}*/
+	}
 	
 	public boolean equals(ComposicaoRendaFamiliar crm){
 		if(this.getNome() == crm.getNome()){
@@ -93,7 +93,9 @@ public class ComposicaoRendaFamiliar {
 				if(this.getRenda() == crm.getRenda()){
 					if(this.getIdade() == crm.getIdade()){
 						if(this.getGrauDeInstrucao() == crm.getGrauDeInstrucao()){
+							if(this.getPs() == crm.getPs()){
 								return true;
+							}
 						}
 					}
 				}

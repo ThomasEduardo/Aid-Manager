@@ -4,7 +4,7 @@ public class ResidentesMoradia {
 	
 	private int idRm;
 	private String residentes;
-	//private PerfilSocioEconomico ps;
+	private PerfilSocioEconomico ps;
 	
 	public ResidentesMoradia(){
 		
@@ -38,13 +38,25 @@ public class ResidentesMoradia {
 	public void setResidentes(String residentes) {
 		this.residentes = residentes;
 	}
+	public PerfilSocioEconomico getPs() {
+		return ps;
+	}
+
+	public void setPs(PerfilSocioEconomico ps) {
+		this.ps = ps;
+	}
 	
 	public boolean equals(ResidentesMoradia rm){
-		if(this.getResidentes() == rm.getResidentes())
-			return true;
+		if(this.getResidentes() == rm.getResidentes()){
+			if(this.getPs() == rm.getPs()){
+					return true;
+			}
+		}
 		return false;
 		
 	}
+
+	
 	
 
 }

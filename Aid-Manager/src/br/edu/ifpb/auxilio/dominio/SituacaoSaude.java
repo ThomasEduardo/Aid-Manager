@@ -5,7 +5,7 @@ public class SituacaoSaude {
 	private int idSituacaoSaude;
 	private String membro;
 	private String doenca;
-	//private PerfilSocioEconomico ps;
+	private PerfilSocioEconomico ps;
 	
 	public SituacaoSaude(){
 		
@@ -51,16 +51,24 @@ public class SituacaoSaude {
 	public void setDoenca(String doenca) {
 		this.doenca = doenca;
 	}
-	
+	public PerfilSocioEconomico getPs() {
+		return ps;
+	}
+	public void setPs(PerfilSocioEconomico ps) {
+		this.ps = ps;
+	}
 	public boolean equals(SituacaoSaude s){
 		if(this.getDoenca() == s.getDoenca()){
 			if(this.getMembro() == s.getMembro()){
+				if(this.getPs() == s.getPs()){
 					return true;
+				}
 			}
 		}
 		return false;
 		
 	}
+	
 	
 	
 
