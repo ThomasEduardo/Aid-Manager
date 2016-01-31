@@ -11,16 +11,18 @@ public abstract class Processo {
 	private String assunto;
 	private String parecer;
 	private Pessoa interessado;
+	private Servidor servidor;
 	
 	
 	public Processo(Date data, String obs, String numProcesso, String assunto,
-			Pessoa interessado,String parecer) {
+			Pessoa interessado,String parecer,Servidor servidor) {
 		this.data = data;
 		this.obs = obs;
 		this.numProcesso = numProcesso;
 		this.assunto = assunto;
 		this.interessado = interessado;
 		this.parecer = parecer;
+		this.servidor = servidor;
 	}
 	
 	public Processo(){
@@ -30,17 +32,19 @@ public abstract class Processo {
 		setNumProcesso("");
 		setInteressado(null);
 		setParecer("");
+		setServidor(null);
 		
 	}
 	
 	public Processo(int idProcesso,Date data, String obs, String numProcesso, String assunto,
-			Pessoa interessado,String parecer) {
+			Pessoa interessado,String parecer,Servidor servidor) {
 		this.data = data;
 		this.obs = obs;
 		this.numProcesso = numProcesso;
 		this.assunto = assunto;
 		this.interessado = interessado;
 		this.parecer = parecer;
+		this.servidor = servidor;
 	}
 	//GETTERS E SETTERS
 	
@@ -99,6 +103,12 @@ public abstract class Processo {
 	public void setParecer(String parecer) {
 		this.parecer = parecer;
 	}
+	public Servidor getServidor() {
+		return servidor;
+	}
+	public void setServidor(Servidor servidor) {
+		this.servidor = servidor;
+	}
 
 	public boolean equals(Processo p){
 	if(p instanceof Processo){
@@ -108,7 +118,9 @@ public abstract class Processo {
 					if(this.getAssunto() == p.getAssunto()){
 						if(this.getInteressado() == p.getInteressado()){
 							if(this.getParecer() == p.getParecer()){
-									return true;
+								if(this.getServidor() == p.getServidor()){
+										return true;
+								}
 							}
 						}
 					}
@@ -119,4 +131,5 @@ public abstract class Processo {
 		return false;
 		
 	}
+
 }

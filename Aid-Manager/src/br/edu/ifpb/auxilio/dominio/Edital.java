@@ -3,6 +3,8 @@ package br.edu.ifpb.auxilio.dominio;
 import java.util.Date;
 
 public class Edital extends Processo {
+	
+	
 	private int idEdital;
 	private Date iniInscricoes;
 	private Date FimInscricoes;
@@ -33,8 +35,8 @@ public class Edital extends Processo {
 		setVagasBolsistas(0);
 		setNumEdital("");
 	}
-	public Edital(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idEdital,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer) {
-		super(data, obs, numProcesso, assunto, interessado,parecer);
+	public Edital(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idEdital,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
+		super(data, obs, numProcesso, assunto, interessado,parecer,servidor);
 		setIdEdital(idEdital);
 		setIniInscricoes(iniInscricoes);
 		setFimInscricoes(fimInscricoes);
@@ -48,8 +50,8 @@ public class Edital extends Processo {
 		setNumEdital(numEdital);
 		
 	}
-	public Edital(int idProcesso, Date data, String obs, String numProcesso, String assunto, Pessoa interessado,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer) {
-		super(idProcesso, data, obs, numProcesso, assunto, interessado,parecer);
+	public Edital(int idProcesso, Date data, String obs, String numProcesso, String assunto, Pessoa interessado,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
+		super(idProcesso, data, obs, numProcesso, assunto, interessado,parecer,servidor);
 		setIniInscricoes(iniInscricoes);
 		setFimInscricoes(fimInscricoes);
 		setIniEntregaForm(iniEntregaForm);
@@ -130,59 +132,34 @@ public class Edital extends Processo {
 	}
 //---------------------------------------------------------
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Edital other = (Edital) obj;
-		if (FimInscricoes == null) {
-			if (other.FimInscricoes != null)
-				return false;
-		} else if (!FimInscricoes.equals(other.FimInscricoes))
-			return false;
-		if (VagasBolsistas != other.VagasBolsistas)
-			return false;
-		if (Double.doubleToLongBits(ValorBolsaDiscente) != Double.doubleToLongBits(other.ValorBolsaDiscente))
-			return false;
-		if (ano != other.ano)
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (fimForm == null) {
-			if (other.fimForm != null)
-				return false;
-		} else if (!fimForm.equals(other.fimForm))
-			return false;
-		if (idEdital != other.idEdital)
-			return false;
-		if (iniEntregaForm == null) {
-			if (other.iniEntregaForm != null)
-				return false;
-		} else if (!iniEntregaForm.equals(other.iniEntregaForm))
-			return false;
-		if (iniInscricoes == null) {
-			if (other.iniInscricoes != null)
-				return false;
-		} else if (!iniInscricoes.equals(other.iniInscricoes))
-			return false;
-		if (numEdital == null) {
-			if (other.numEdital != null)
-				return false;
-		} else if (!numEdital.equals(other.numEdital))
-			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equals(other.titulo))
-			return false;
-		return true;
+	
+	public boolean equals(Edital e) {
+		if(e instanceof Edital){
+			if(super.equals(e)){
+				if(this.getIniInscricoes() == e.getIniInscricoes()){
+					if(this.getFimInscricoes() == e.getFimInscricoes()){
+						if(this.getIniEntregaForm() == e.getIniEntregaForm()){
+							if(this.getFimForm() == e.getFimForm()){
+								if(this.getAno() == e.getAno()){
+									if(this.getDescricao() == e.getDescricao()){
+										if(this.getTitulo() == e.getTitulo()){
+											if(this.getValorBolsaDiscente() == e.getValorBolsaDiscente()){
+												if(this.getVagasBolsistas() == e.getVagasBolsistas()){
+													if(this.getNumEdital() == e.getNumEdital()){
+															return true;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 	

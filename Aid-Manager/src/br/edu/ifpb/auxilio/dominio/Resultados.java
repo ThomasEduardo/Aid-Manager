@@ -12,13 +12,13 @@ import java.util.Date;
 			setTipoAuxilio("");
 			
 		}
-		public Resultados(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idResultados,String tipoAuxilio,String parecer) {
-			super(data, obs, numProcesso, assunto, interessado,parecer);
+		public Resultados(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idResultados,String tipoAuxilio,String parecer,Servidor servidor) {
+			super(data, obs, numProcesso, assunto, interessado,parecer,servidor);
 			setIdResultados(idResultados);
 			setTipoAuxilio(tipoAuxilio);
 		}
-		public Resultados(int idProcesso, Date data, String obs, String numProcesso, String assunto, Pessoa interessado,String tipoAuxilio,String parecer) {
-			super(idProcesso, data, obs, numProcesso, assunto, interessado,parecer);
+		public Resultados(int idProcesso, Date data, String obs, String numProcesso, String assunto, Pessoa interessado,String tipoAuxilio,String parecer,Servidor servidor) {
+			super(idProcesso, data, obs, numProcesso, assunto, interessado,parecer,servidor);
 			setTipoAuxilio(tipoAuxilio);
 		}
 	// ----------------------------------------------------------------------------------------------
