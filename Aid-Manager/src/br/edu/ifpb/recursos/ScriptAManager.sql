@@ -1,6 +1,6 @@
-  CREATE DATABASE biblioteca;
+  CREATE DATABASE aid-manager;
   
-  use biblioteca;
+  use aid-manager;
 
 	Create table  pessoa(
 		idPessoa int unsigned auto_increment primary key,
@@ -68,7 +68,7 @@
 
     );
 	
-	 Create table processo(
+	Create table processo(
      
         idProcesso int unsigned auto_increment primary key,
         dataRequisicao date,
@@ -80,7 +80,7 @@
         idServidor int unsigned,
         constraint fk_processo_interessado foreign key(idInteressado) references pessoa(idPessoa),
         constraint fk_processo_servidor foreign key(idServidor) references servidor(idServidor)
- );
+    );
  
 	 Create table edital(
 		
@@ -98,7 +98,7 @@
 		idProcesso int unsigned,
 		constraint fk_edital_processo foreign key(idProcesso) references processo(idProcesso) 
 		
-	);
+	 );
 	
 		Create table dadosBancarios(
 		
