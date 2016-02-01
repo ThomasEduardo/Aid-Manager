@@ -1,4 +1,4 @@
-package br.edu.ifpb.main;
+package br.edu.ifpb.auxilio.main;
 
 import br.edu.ifpb.auxilio.bd.PessoaDAO;
 import br.edu.ifpb.auxilio.bd.ServidorDAO;
