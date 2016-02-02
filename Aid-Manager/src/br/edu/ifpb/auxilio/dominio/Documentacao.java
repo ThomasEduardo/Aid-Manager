@@ -6,7 +6,6 @@ public class Documentacao {
 	private int idDocumentacao;
 	private String nomeDocumentacao;
 	private String status;
-	private File conteudo;
 	private String obs;
 	private Discente discente;
 	
@@ -15,7 +14,6 @@ public class Documentacao {
 		setIdDocumentacao(0);
 		setNomeDocumentacao("");
 		setStatus("");
-		setConteudo(null);
 		setObs("");
 		setDiscente(null);
 	}
@@ -25,7 +23,6 @@ public class Documentacao {
 		this.idDocumentacao = idDocumentacao;
 		this.nomeDocumentacao = nomeDocumentacao;
 		this.status = status;
-		this.conteudo = conteudo;
 		this.obs = obs;
 		this.discente = discente;
 	}
@@ -34,7 +31,6 @@ public class Documentacao {
 			String status, File conteudo, String obs, Discente discente) {
 		this.nomeDocumentacao = nomeDocumentacao;
 		this.status = status;
-		this.conteudo = conteudo;
 		this.obs = obs;
 		this.discente = discente;
 	}
@@ -65,14 +61,6 @@ public class Documentacao {
 		this.status = status;
 	}
 
-	public File getConteudo() {
-		return conteudo;
-	}
-
-	public void setConteudo(File conteudo) {
-		this.conteudo = conteudo;
-	}
-
 	public String getObs() {
 		return obs;
 	}
@@ -94,7 +82,6 @@ public class Documentacao {
 		if(this.getIdDocumentacao() == d.getIdDocumentacao()){
 			if(this.getNomeDocumentacao() == d.getNomeDocumentacao()){
 				if(this.getStatus() == d.getStatus()){
-					if(this.getConteudo() == d.getConteudo()){
 						if(this.getObs() == d.getObs()){
 							if(this.getDiscente() == d.getDiscente()){
 								return true;
@@ -104,7 +91,6 @@ public class Documentacao {
 				}
 			}
 		}
-	 }
 	  return false;
 		
 	}

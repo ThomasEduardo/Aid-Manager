@@ -102,10 +102,95 @@
 	
 		Create table dadosBancarios(
 		
-		idDadosBancarios int unsigned,
+		idDadosBancarios int unsigned auto_increment primary key,
 		banco varchar(255),
 		agencia varchar(255),
 		numAgencia varchar(255)
 		
 		);
+		
+	create table resultados ( 
+		idResultados int unsigned auto_increment primary key, 
+		tipoauxilio VARCHAR(30)
+	);
+
+
+		Create table PerfilSocioEconomico(
+		    
+		    
+		    idPerfilSocio int unsigned auto_increment primary key,
+			situacaoRendaFamiliar varchar(255),
+			moradia varchar(255),
+			situacaoMoradia varchar(255),
+			residenciaFamiliar varchar(255),
+			situacaoTrabalho varchar(255),
+			aluguel double,
+			condominio double,
+			luz double,
+			agua double,
+			telefone double,
+			financiamentoCasaPropria double
+		    
+		    );
+		
+		Create table situacaoSaude(
+		    
+		    idSituacaoSaude int unsigned auto_increment primary key,
+			membro varchar(50),
+			doenca varchar(50),
+			idPerfilSocioEconomico int unsigned,
+		    constraint fk_situacaoSaude_perfilSocio foreign key (idPerfilSocioEconomico) references perfilSocioEconomico(idPerfilSocio)
+		  );
+		Create table residentesMoradia(
+			    idRm int unsigned,
+				residentes varchar(255),
+				idPerfilSocio int unsigned,
+			    constraint fk_residentesMoradia_perfilSocio foreign key(idPerfilSocio) references perfilSocioEconomico(idPerfilSocio)
+			    
+		);
+	Create table composicaoRendaFamiliar( 
+			idCrf int unsigned auto_increment primary key, 
+			nome varchar(70), 
+			idade int unsigned, 
+			grauDeInstrucao int unsigned, 
+			profissao varchar(70), 
+			renda double,
+			idPerfilSocio int unsigned, 
+			constraint fk_composicaoRendaFamiliar_idPerfilSocio foreign key(idPerfilSocio) references perfilSocioEconomico(idPerfilSocio) 
+	);
 	
+	Create table Discente ( 
+	idDiscente int unsigned auto_increment primary key, 
+	escolaOrigem varchar(60), 
+	orgExpeditor varchar(60), 
+	numCartaoSus varchar(60), 
+	estadoCivil varchar(60), 
+	idade int, 
+	curso varchar(60),
+	periodoLetivo int,
+	turno varchar(60), 
+	endereco varchar(60),
+	cep varchar(60),
+	bairro varchar(60), 
+	cidade varchar(60),
+	numCasa int,
+	pontoRef varchar(50),
+	estado varchar(60),
+	motivoSolicitacao varchar(255), 
+	idAux int unsigned, 
+	idDb int unsigned , 
+	idperfilSocio int unsigned, 
+	constraint fk_discente_Auxilio foreign key(idAux) references auxilio(idAuxilio), 
+	constraint fk_discente_DadosBancarios foreign key(idDb) references dadosBancarios(idDadosBancarios),
+	constraint fk_discente_PerfilSocio foreign key(idperfilSocio) references perfilSocioEconomico(idPerfilSocio) 
+	);
+	Create table documentacao (
+	
+    idDocumentacao int unsigned auto_increment primary key,
+	nomeDocumentacao varchar(100),
+	status_Documento varchar(255),
+	obs varchar(255),
+	iddiscente int unsigned,
+    constraint fk_documentacao_discente foreign key(idDiscente) references discente(idDiscente)
+
+    );
