@@ -1,6 +1,6 @@
-  CREATE DATABASE aid-manager;
+  CREATE DATABASE aidmanager;
   
-  use aid-manager;
+  use aidmanager;
 
 	Create table  pessoa(
 		idPessoa int unsigned auto_increment primary key,
