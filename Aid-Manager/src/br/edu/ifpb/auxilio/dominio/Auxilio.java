@@ -11,6 +11,7 @@ public class Auxilio {
 	private Date validadeFinal;
 	private InstituicaoFinanciadora IF;
 	private TecnicoAdmin t;
+	private Processo p;
 	
 	public Auxilio(){
 		setIdAuxilio(0);
@@ -18,8 +19,9 @@ public class Auxilio {
 		setValorAuxilio(0);
 		setIF(null);
 		setT(null);
+		setP(null);
 	} 
-	public Auxilio(int idAuxilio,String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t){
+	public Auxilio(int idAuxilio,String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p){
 		setIdAuxilio(idAuxilio);
 		setTipoAuxilio(tipoAuxilio);
 		setValorAuxilio(valorAuxilio);
@@ -27,15 +29,17 @@ public class Auxilio {
 		setValidadeFinal(vF);
 		setIF(IF);
 		setT(t);
+		setP(p);
 	}
 	
-	public Auxilio(String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t){
+	public Auxilio(String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p){
 		setTipoAuxilio(tipoAuxilio);
 		setValorAuxilio(valorAuxilio);
 		setValidadeInicial(vI);
 		setValidadeFinal(vF);
 		setIF(IF);
 		setT(t);
+		setP(p);
 	}
 	
 	/*----------------- GETTERS E SETTERS ----------------*/
@@ -81,7 +85,12 @@ public class Auxilio {
 	public void setT(TecnicoAdmin t) {
 		this.t = t;
 	}
-	
+	public Processo getP() {
+		return p;
+	}
+	public void setP(Processo p) {
+		this.p = p;
+	}
 	public boolean equals(Auxilio aux){
 		if(aux instanceof Auxilio){
 			if(this.getTipoAuxilio() == aux.getTipoAuxilio()){
@@ -90,7 +99,9 @@ public class Auxilio {
 						if(this.getValorAuxilio() == aux.getValorAuxilio()){
 							if(this.getIF() == aux.getIF()){
 								if(this.getT() == aux.getT()){
+									if(this.getP() == aux.getP()){
 										return true;
+									}
 								}
 							}
 						}
@@ -101,6 +112,7 @@ public class Auxilio {
 		return false;
 		
 	}
+	
 	
 	
 	

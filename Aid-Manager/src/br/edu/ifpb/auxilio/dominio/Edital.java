@@ -35,8 +35,8 @@ public class Edital extends Processo {
 		setVagasBolsistas(0);
 		setNumEdital("");
 	}
-	public Edital(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idEdital,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
-		super(data, obs, numProcesso, assunto, interessado,parecer,servidor);
+	public Edital(int idProcesso,Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idEdital,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
+		super(idProcesso,data, obs, numProcesso, assunto, interessado,parecer,servidor);
 		setIdEdital(idEdital);
 		setIniInscricoes(iniInscricoes);
 		setFimInscricoes(fimInscricoes);
@@ -50,8 +50,8 @@ public class Edital extends Processo {
 		setNumEdital(numEdital);
 		
 	}
-	public Edital(int idProcesso, Date data, String obs, String numProcesso, String assunto, Pessoa interessado,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
-		super(idProcesso, data, obs, numProcesso, assunto, interessado,parecer,servidor);
+	public Edital(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
+		super(data, obs, numProcesso, assunto, interessado,parecer,servidor);
 		setIniInscricoes(iniInscricoes);
 		setFimInscricoes(fimInscricoes);
 		setIniEntregaForm(iniEntregaForm);

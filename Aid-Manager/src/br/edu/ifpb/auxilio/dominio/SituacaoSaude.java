@@ -12,19 +12,21 @@ public class SituacaoSaude {
 		setIdSituacaoSaude(0);
 		setMembro("");
 		setDoenca("");
+		setPs(null);
 		
 	}
-	public SituacaoSaude(int idSituacaoSaude,String membro,String doenca){
+	public SituacaoSaude(int idSituacaoSaude,String membro,String doenca,PerfilSocioEconomico ps){
 		
 		setIdSituacaoSaude(idSituacaoSaude);
 		setMembro(membro);
 		setDoenca(doenca);
-		
+		setPs(ps);
 	}
-	public SituacaoSaude(String membro,String doenca){
+	public SituacaoSaude(String membro,String doenca,PerfilSocioEconomico ps){
 	
 	setMembro(membro);
 	setDoenca(doenca);
+	setPs(ps);
 	
 	}
 	

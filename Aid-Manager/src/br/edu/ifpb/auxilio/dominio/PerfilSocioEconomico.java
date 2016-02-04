@@ -14,6 +14,7 @@ public class PerfilSocioEconomico {
 	private double agua;
 	private double telefone;
 	private double financiamentoCasaPropria;
+	private AssistenteSocial as;
 	
 	
 	public PerfilSocioEconomico(){
@@ -30,10 +31,11 @@ public class PerfilSocioEconomico {
 		setAgua(0);
 		setTelefone(0);
 		setFinanciamentoCasaPropria(0);
+		setAs(null);
 		
 	}
 	
-	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria){
+	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as){
 		
 		
 		setIdPerfilSocio(idPs);
@@ -48,10 +50,11 @@ public class PerfilSocioEconomico {
 		setAgua(agua);
 		setTelefone(telefone);
 		setFinanciamentoCasaPropria(financiamentoCasaPropria);
+		setAs(as);
 		
 	}
 	
-	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria){
+	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as){
 	
 		
 		setSituacaoRendaFamiliar(srf);
@@ -65,6 +68,7 @@ public class PerfilSocioEconomico {
 		setAgua(agua);
 		setTelefone(telefone);
 		setFinanciamentoCasaPropria(financiamentoCasaPropria);
+		setAs(as);
 		
 	}
 
@@ -164,6 +168,13 @@ public class PerfilSocioEconomico {
 	public void setFinanciamentoCasaPropria(double financiamentoCasaPropria) {
 		this.financiamentoCasaPropria = financiamentoCasaPropria;
 	}
+	public AssistenteSocial getAs() {
+		return as;
+	}
+
+	public void setAs(AssistenteSocial as) {
+		this.as = as;
+	}
 
 	public boolean equals(PerfilSocioEconomico ps){
 		if(this.getMoradia() == ps.getMoradia()){
@@ -176,7 +187,9 @@ public class PerfilSocioEconomico {
 									if(this.getLuz() == ps.getLuz()){
 										if(this.getAgua() == ps.getAgua()){
 											if(this.getTelefone() == ps.getTelefone()){
+												if	(this.getAs() == ps.getAs()){
 													return true;
+												}
 											}
 										}
 									}
@@ -189,6 +202,8 @@ public class PerfilSocioEconomico {
 		}
 		return false;
 	}
+
+	
 	
 	
 

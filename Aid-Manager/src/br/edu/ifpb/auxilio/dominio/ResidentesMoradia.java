@@ -10,17 +10,20 @@ public class ResidentesMoradia {
 		
 		setIdRm(0);
 		setResidentes("");
+		setPs(null);
 		
 	}
 	
-	public ResidentesMoradia(int idRm,String residentes){
+	public ResidentesMoradia(int idRm,String residentes,PerfilSocioEconomico ps){
 		setIdRm(idRm);
 		setResidentes(residentes);
+		setPs(ps);
 	}
 	
-	public ResidentesMoradia(String residentes){
+	public ResidentesMoradia(String residentes,PerfilSocioEconomico ps){
 		
 		setResidentes(residentes);
+		setPs(ps);
 		
 	}
 	

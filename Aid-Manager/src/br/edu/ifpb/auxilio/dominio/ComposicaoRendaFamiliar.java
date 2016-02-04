@@ -18,10 +18,12 @@ public class ComposicaoRendaFamiliar {
 		setGrauDeInstrucao(0);
 		setProfissao("");
 		setRenda(0);
+		setPs(null);
 		
 	}
 	
-	public ComposicaoRendaFamiliar(int idCrf,String nome,int idade,int grauInstrucao,String profissao,double renda){
+	public ComposicaoRendaFamiliar(int idCrf,String nome,int idade,int grauInstrucao,String profissao,double renda,PerfilSocioEconomico Ps){
+		
 		
 		setIdCrf(idCrf);
 		setNome(nome);
@@ -29,16 +31,18 @@ public class ComposicaoRendaFamiliar {
 		setGrauDeInstrucao(grauInstrucao);
 		setProfissao(profissao);
 		setRenda(renda);
+		setPs(Ps);
 		
 	}
 	
-	public ComposicaoRendaFamiliar(String nome,int idade,int grauInstrucao,String profissao,double renda){
+	public ComposicaoRendaFamiliar(String nome,int idade,int grauInstrucao,String profissao,double renda,PerfilSocioEconomico ps){
 		
 		setNome(nome);
 		setIdade(idade);
 		setGrauDeInstrucao(grauInstrucao);
 		setProfissao(profissao);
 		setRenda(renda);
+		setPs(ps);
 		
 	}
 	

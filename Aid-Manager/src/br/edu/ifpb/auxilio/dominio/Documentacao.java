@@ -1,6 +1,5 @@
 package br.edu.ifpb.auxilio.dominio;
 
-import java.io.File;
 
 public class Documentacao {
 	private int idDocumentacao;
@@ -19,7 +18,7 @@ public class Documentacao {
 	}
 	
 	public Documentacao(int idDocumentacao, String nomeDocumentacao,
-			String status, File conteudo, String obs, Discente discente) {
+			String status, String obs, Discente discente) {
 		this.idDocumentacao = idDocumentacao;
 		this.nomeDocumentacao = nomeDocumentacao;
 		this.status = status;
@@ -28,7 +27,7 @@ public class Documentacao {
 	}
 	
 	public Documentacao(String nomeDocumentacao,
-			String status, File conteudo, String obs, Discente discente) {
+			String status,String obs, Discente discente) {
 		this.nomeDocumentacao = nomeDocumentacao;
 		this.status = status;
 		this.obs = obs;

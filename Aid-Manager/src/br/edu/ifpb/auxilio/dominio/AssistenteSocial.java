@@ -12,9 +12,9 @@ public class AssistenteSocial extends Servidor {
     }
 	
 	public AssistenteSocial(String nomePessoa,String matricula,Date dataNasc,String senha,String email,
-						String cpf,String rg,String sexo,String cargoServidor,Telefone t){
+						String cpf,String rg,String sexo,String cargoServidor){
 	
-	super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,cargoServidor,t);	
+	super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,cargoServidor);	
 	}
 //------------------------------GETTERS E SETTERS -------------------------------------------------//
 	public int getId_assistenteSocial() {
