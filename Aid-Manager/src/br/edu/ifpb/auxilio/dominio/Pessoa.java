@@ -15,6 +15,7 @@ import java.util.Date;
 		private String senha;
 		private String email;
 		private String cpf;
+		private Telefone telefone;
 		
 		public Pessoa(){
 
@@ -26,9 +27,10 @@ import java.util.Date;
 				setSenha("");
 				setEmail("");
 				setCpf("");
+				setTelefone(null);
 			}
 	
-		public Pessoa(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo){
+		public Pessoa(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,Telefone telefone){
 			
 				setIdPessoa(idPessoa);
 				setNomePessoa(nomePessoa);
@@ -39,9 +41,10 @@ import java.util.Date;
 				setSenha(senha);
 				setEmail(email);
 				setCpf(cpf);
+				setTelefone(telefone);
 			
 			}
-			public Pessoa(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo){
+			public Pessoa(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,Telefone telefone){
 				
 				setNomePessoa(nomePessoa);
 				setRg(rg);
@@ -51,6 +54,8 @@ import java.util.Date;
 				setSenha(senha);
 				setEmail(email);
 				setCpf(cpf);
+				setTelefone(telefone);
+				
 			}
 	
 	
@@ -111,6 +116,13 @@ import java.util.Date;
 			public void setSexo(String sexo) {
 				this.sexo = sexo;
 			}
+			public Telefone getTelefone() {
+				return telefone;
+			}
+
+			public void setTelefone(Telefone telefone) {
+				this.telefone = telefone;
+			}
 			
 				public boolean equals(Pessoa P){
 					if(P instanceof Pessoa){
@@ -122,7 +134,9 @@ import java.util.Date;
 											if(this.getSenha() == P.getSenha()){
 												if(this.getRg() == P.getRg()){
 													if(this.getSexo() == P.getSexo()){
+														if(this.getTelefone() == P.getTelefone()){
 															return true;
+														}
 													}
 												}
 											}
@@ -134,5 +148,7 @@ import java.util.Date;
 					}
 					return false;
 				}
+
+
 		
 }

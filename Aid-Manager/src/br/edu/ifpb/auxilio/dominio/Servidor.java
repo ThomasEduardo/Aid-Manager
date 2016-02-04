@@ -14,15 +14,15 @@ public abstract class Servidor extends Pessoa{
 		
 	}
 	
-	public Servidor(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor){
-		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
+	public Servidor(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor,Telefone t){
+		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,t);
 		setIdServidor(idServidor);
 		setCargoServidor(cargoServidor);
 	
 	}
 	
-	public Servidor(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor){
-		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
+	public Servidor(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor,Telefone t){
+		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,t);
 		setCargoServidor(cargoServidor);
 		
 	}

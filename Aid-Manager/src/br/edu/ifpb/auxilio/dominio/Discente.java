@@ -22,10 +22,13 @@ public class Discente extends Pessoa {
 	private Auxilio aux;
 	private DadosBancarios db;
 	private PerfilSocioEconomico ps;
+	private Resultados resultados;
+	
 	
 	
 	public Discente(){
 		
+		super();
 		setIdDiscente(0);
 		setEscolaOrigem("");
 		setOrgExpeditor("");
@@ -45,9 +48,10 @@ public class Discente extends Pessoa {
 		setAux(null);
 		setDb(null);
 		setPs(null);
+		setResultados(null);
 		
 	}
-	public Discente(int idDiscente,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,Auxilio aux,DadosBancarios db,PerfilSocioEconomico ps,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef){
+	public Discente(int idDiscente,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,Auxilio aux,DadosBancarios db,PerfilSocioEconomico ps,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r){
 		
 		setIdDiscente(idDiscente);
 		setEscolaOrigem(escolaOrigem);
@@ -68,9 +72,10 @@ public class Discente extends Pessoa {
 		setAux(aux);
 		setDb(db);
 		setPs(ps);
+		setResultados(r);
 		
 	}
-	public Discente(String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,Auxilio aux,DadosBancarios db,PerfilSocioEconomico ps,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef){
+	public Discente(String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,Auxilio aux,DadosBancarios db,PerfilSocioEconomico ps,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r){
 		
 		setEscolaOrigem(escolaOrigem);
 		setOrgExpeditor(orgExpeditor);
@@ -90,6 +95,7 @@ public class Discente extends Pessoa {
 		setAux(aux);
 		setDb(db);
 		setPs(ps);
+		setResultados(r);
 		
 	}
 	
@@ -215,6 +221,13 @@ public class Discente extends Pessoa {
 	public void setMotivoSolicitacao(String motivoSolicitacao) {
 		this.motivoSolicitacao = motivoSolicitacao;
 	}
+	public Resultados getResultados() {
+		return resultados;
+	}
+	public void setResultados(Resultados resultados) {
+		this.resultados = resultados;
+	}
+	
 	public boolean equals(Discente d){
 		if (d instanceof Discente) {
 			if (super.equals(d)) {
@@ -235,7 +248,9 @@ public class Discente extends Pessoa {
 																		if (this.getNumCasa() == d.getNumCasa()) {
 																			if (this.getPontoRef() == d.getPontoRef()) {
 																				if (this.getEstado() == d.getEstado()) {
-																					return true;
+																					if(this.getResultados() == d.getResultados()){
+																							return true;
+																					}
 																				}
 																			}
 																		}

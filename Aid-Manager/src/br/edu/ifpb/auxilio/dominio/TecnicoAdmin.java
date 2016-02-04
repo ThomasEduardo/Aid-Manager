@@ -12,8 +12,8 @@ public class TecnicoAdmin extends Servidor {
 		
 	}
 	
-	public TecnicoAdmin(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor,int idTecnicoAdmin){
-		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,cargoServidor);
+	public TecnicoAdmin(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor,int idTecnicoAdmin,Telefone t){
+		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo,cargoServidor,t);
 		setIdTecnicoAdmin(idTecnicoAdmin);
 		
 	}
