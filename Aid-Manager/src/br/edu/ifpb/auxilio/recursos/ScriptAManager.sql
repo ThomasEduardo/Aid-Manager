@@ -1,6 +1,6 @@
-  		CREATE DATABASE aidmanager;
+  CREATE DATABASE aidmanager;
   
-  		use aidmanager;
+  use aidmanager;
 		Create table  pessoa(
 				idPessoa int unsigned auto_increment primary key,
 				nomePessoa varchar(255),
@@ -55,19 +55,7 @@
 				constraint fk_instituicaFinanciado_tecnicoAdmin foreign key(idTecnicoAdmin) references tecnicoAdmin(idTecnicoAdmin)
 				
 		);
-		Create table auxilio(
-    
-				idAuxilio int unsigned auto_increment primary key,
-				tipoAuxilio varchar(40),
-				valorAuxilio double,
-				validadeInicial date,
-				validadeFinal date,
-				idInstituicaoFinanciadora int unsigned,
-				idTecnicoAdmin int unsigned,
-				constraint fk_auxilio_IF foreign key(idInstituicaoFinanciadora) references instituicaoFinanciadora(idIF),
-				constraint fk_auxilio_TecnicoAdmin foreign key(idTecnicoAdmin) references tecnicoAdmin(idTecnicoAdmin)
 
-		);
 	
 		Create table processo(
      
@@ -82,6 +70,21 @@
 				constraint fk_processo_interessado foreign key(idInteressado) references pessoa(idPessoa),
 				constraint fk_processo_servidor foreign key(idServidor) references servidor(idServidor)
 				
+		);
+		Create table auxilio(
+    
+				idAuxilio int unsigned auto_increment primary key,
+				tipoAuxilio varchar(40),
+				valorAuxilio double,
+				validadeInicial date,
+				validadeFinal date,
+				idInstituicaoFinanciadora int unsigned,
+				idTecnicoAdmin int unsigned,
+    			idProcesso int unsigned,
+				constraint fk_auxilio_IF foreign key(idInstituicaoFinanciadora) references instituicaoFinanciadora(idIF),
+				constraint fk_auxilio_TecnicoAdmin foreign key(idTecnicoAdmin) references tecnicoAdmin(idTecnicoAdmin),
+    			constraint fk_auxilio_processo foreign key(idProcesso) references processo(idProcesso)
+
 		);
  
 		Create table edital(
@@ -131,7 +134,9 @@
 				luz double,
 				agua double,
 				telefone double,
-				financiamentoCasaPropria double
+				financiamentoCasaPropria double,
+                idAssistenteSocial int unsigned,
+                constraint fk_perfilsocioeconomico_Assistentesocial foreign key(idAssistenteSocial) references assistenteSocial(idAssistenteSocial)
 		    
 		);
 		
