@@ -21,9 +21,6 @@ public class Discente extends Pessoa {
 	private String pontoRef;
 	private String estado;
 	private String motivoSolicitacao;
-	private Auxilio aux;
-	private DadosBancarios db;
-	private PerfilSocioEconomico ps;
 	private Resultados resultados;
 	
 	
@@ -47,13 +44,10 @@ public class Discente extends Pessoa {
 		setNumCasa(0);
 		setPontoRef("");
 		setEstado("");
-		setAux(null);
-		setDb(null);
-		setPs(null);
 		setResultados(null);
 		
 	}
-	public Discente(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idDiscente,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,DadosBancarios db,PerfilSocioEconomico ps,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r,Auxilio aux){
+	public Discente(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idDiscente,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r,Auxilio aux){
 		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setIdDiscente(idDiscente);
 		setEscolaOrigem(escolaOrigem);
@@ -71,13 +65,10 @@ public class Discente extends Pessoa {
 		setNumCasa(numCasa);
 		setPontoRef(pontoRef);
 		setEstado(estado);
-		setAux(aux);
-		setDb(db);
-		setPs(ps);
 		setResultados(r);
 		
 	}
-	public Discente(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,DadosBancarios db,PerfilSocioEconomico ps,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r,Auxilio aux){
+	public Discente(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r){
 		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setEscolaOrigem(escolaOrigem);
 		setOrgExpeditor(orgExpeditor);
@@ -94,9 +85,6 @@ public class Discente extends Pessoa {
 		setNumCasa(numCasa);
 		setPontoRef(pontoRef);
 		setEstado(estado);
-		setAux(aux);
-		setDb(db);
-		setPs(ps);
 		setResultados(r);
 		
 	}
@@ -157,18 +145,6 @@ public class Discente extends Pessoa {
 	public void setTurno(String turno) {
 		this.turno = turno;
 	}
-	public DadosBancarios getDb() {
-		return db;
-	}
-	public void setDb(DadosBancarios db) {
-		this.db = db;
-	}
-	public PerfilSocioEconomico getPs() {
-		return ps;
-	}
-	public void setPs(PerfilSocioEconomico ps) {
-		this.ps = ps;
-	}
 	public String getEndereco() {
 		return endereco;
 	}
@@ -223,12 +199,6 @@ public class Discente extends Pessoa {
 	public void setResultados(Resultados resultados) {
 		this.resultados = resultados;
 	}
-	public Auxilio getAux() {
-		return aux;
-	}
-	public void setAux(Auxilio aux) {
-		this.aux = aux;
-	}
 	
 	public boolean equals(Discente d){
 		if (d instanceof Discente) {
@@ -241,8 +211,6 @@ public class Discente extends Pessoa {
 									if (this.getPeriodoLetivo() == d.getPeriodoLetivo()) {
 										if (this.getTurno() == d.getTurno()) {
 											if (this.getEndereco() == d.getEndereco()) {
-													if (this.getDb() == d.getDb()) {
-														if (this.getPs() == d.getPs()) {
 															if (this.getCep() == d.getCep()) {
 																if (this.getBairro() == d.getBairro()) {
 																	if (this.getCidade() == d.getCidade()) {
@@ -250,7 +218,6 @@ public class Discente extends Pessoa {
 																			if (this.getPontoRef() == d.getPontoRef()) {
 																				if (this.getEstado() == d.getEstado()) {
 																					if(this.getResultados() == d.getResultados()){
-																						if(this.getAux() == d.getAux()){
 																							return true;
 																						}
 																					}
@@ -270,9 +237,6 @@ public class Discente extends Pessoa {
 								}
 							}
 						}
-					}
-				}
-			}
 		
 		return false;
 	}

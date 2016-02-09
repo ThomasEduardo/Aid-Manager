@@ -15,7 +15,7 @@ public class PerfilSocioEconomico {
 	private double telefone;
 	private double financiamentoCasaPropria;
 	private AssistenteSocial as;
-	
+	private Discente Discente;
 	
 	public PerfilSocioEconomico(){
 		
@@ -32,10 +32,11 @@ public class PerfilSocioEconomico {
 		setTelefone(0);
 		setFinanciamentoCasaPropria(0);
 		setAs(null);
+		setDiscente(null);
 		
 	}
 	
-	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as){
+	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as,Discente d){
 		
 		
 		setIdPerfilSocio(idPs);
@@ -51,10 +52,11 @@ public class PerfilSocioEconomico {
 		setTelefone(telefone);
 		setFinanciamentoCasaPropria(financiamentoCasaPropria);
 		setAs(as);
+		setDiscente(d);
 		
 	}
 	
-	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as){
+	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as,Discente d){
 	
 		
 		setSituacaoRendaFamiliar(srf);
@@ -69,6 +71,7 @@ public class PerfilSocioEconomico {
 		setTelefone(telefone);
 		setFinanciamentoCasaPropria(financiamentoCasaPropria);
 		setAs(as);
+		setDiscente(d);
 		
 	}
 
@@ -175,6 +178,13 @@ public class PerfilSocioEconomico {
 	public void setAs(AssistenteSocial as) {
 		this.as = as;
 	}
+	public Discente getDiscente() {
+		return Discente;
+	}
+
+	public void setDiscente(Discente discente) {
+		Discente = discente;
+	}
 
 	public boolean equals(PerfilSocioEconomico ps){
 		if(this.getMoradia() == ps.getMoradia()){
@@ -188,7 +198,9 @@ public class PerfilSocioEconomico {
 										if(this.getAgua() == ps.getAgua()){
 											if(this.getTelefone() == ps.getTelefone()){
 												if	(this.getAs() == ps.getAs()){
-													return true;
+													if(this.getDiscente() == ps.getDiscente()){
+															return true;
+													}
 												}
 											}
 										}
@@ -202,6 +214,8 @@ public class PerfilSocioEconomico {
 		}
 		return false;
 	}
+
+
 
 	
 	

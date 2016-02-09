@@ -12,6 +12,7 @@ public class Auxilio {
 	private InstituicaoFinanciadora IF;
 	private TecnicoAdmin t;
 	private Processo p;
+	private Discente Discente;
 	
 	public Auxilio(){
 		setIdAuxilio(0);
@@ -20,8 +21,10 @@ public class Auxilio {
 		setIF(null);
 		setT(null);
 		setP(null);
+		setDiscente(null);
+		
 	} 
-	public Auxilio(int idAuxilio,String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p){
+	public Auxilio(int idAuxilio,String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p,Discente d){
 		setIdAuxilio(idAuxilio);
 		setTipoAuxilio(tipoAuxilio);
 		setValorAuxilio(valorAuxilio);
@@ -30,9 +33,10 @@ public class Auxilio {
 		setIF(IF);
 		setT(t);
 		setP(p);
+		setDiscente(d);
 	}
 	
-	public Auxilio(String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p){
+	public Auxilio(String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p,Discente d){
 		setTipoAuxilio(tipoAuxilio);
 		setValorAuxilio(valorAuxilio);
 		setValidadeInicial(vI);
@@ -40,6 +44,7 @@ public class Auxilio {
 		setIF(IF);
 		setT(t);
 		setP(p);
+		setDiscente(d);
 	}
 	
 	/*----------------- GETTERS E SETTERS ----------------*/
@@ -91,6 +96,13 @@ public class Auxilio {
 	public void setP(Processo p) {
 		this.p = p;
 	}
+	public Discente getDiscente() {
+		return Discente;
+	}
+	public void setDiscente(Discente discente) {
+		Discente = discente;
+	}
+
 	public boolean equals(Auxilio aux){
 		if(aux instanceof Auxilio){
 			if(this.getTipoAuxilio() == aux.getTipoAuxilio()){
@@ -100,7 +112,9 @@ public class Auxilio {
 							if(this.getIF() == aux.getIF()){
 								if(this.getT() == aux.getT()){
 									if(this.getP() == aux.getP()){
-										return true;
+										if(this.getDiscente() == aux.getDiscente()){
+												return true;
+										}
 									}
 								}
 							}
@@ -112,7 +126,7 @@ public class Auxilio {
 		return false;
 		
 	}
-
+	
 	
 	
 	

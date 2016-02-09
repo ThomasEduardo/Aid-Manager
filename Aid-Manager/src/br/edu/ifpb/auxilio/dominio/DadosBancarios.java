@@ -6,6 +6,8 @@ public class DadosBancarios {
 	private String banco;
 	private String agencia;
 	private String numAgencia;
+	private double saldo;
+	private Discente Discente;
 	
 	public DadosBancarios(){
 		
@@ -13,23 +15,29 @@ public class DadosBancarios {
 		setBanco("");
 		setAgencia("");
 		setNumAgencia("");
+		setSaldo(0);
+		setDiscente(null);
+		
 		
 	}
 	
-	public DadosBancarios(int idDB,String banco,String agencia,String numAgencia){
+	public DadosBancarios(int idDB,String banco,String agencia,String numAgencia,double saldo,Discente d){
 		
 		setIdDadosBancarios(idDB);
 		setBanco(banco);
 		setAgencia(agencia);
 		setNumAgencia(numAgencia);
-		
+		setSaldo(saldo);
+		setDiscente(d);
 	}
 	
-	public DadosBancarios(String banco,String agencia,String numAgencia){
+	public DadosBancarios(String banco,String agencia,String numAgencia,double saldo,Discente d){
 		
 		setBanco(banco);
 		setAgencia(agencia);
 		setNumAgencia(numAgencia);
+		setSaldo(saldo);
+		setDiscente(d);
 		
 	}
 	
@@ -58,16 +66,37 @@ public class DadosBancarios {
 	public void setNumAgencia(String numAgencia) {
 		this.numAgencia = numAgencia;
 	}
+	public double getSaldo() {
+		return saldo;
+	}
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	public Discente getDiscente() {
+		return Discente;
+	}
+
+	public void setDiscente(Discente discente) {
+		Discente = discente;
+	}
 	
 	public boolean equals(DadosBancarios db){
 		if(this.getNumAgencia() == db.getNumAgencia()){
 			if(this.getBanco() == db.getBanco()){
 				if(this.getAgencia() == db.getAgencia()){
-						return true;
+					if(this.getSaldo() == db.getSaldo()){
+						if(this.getDiscente() == db.getDiscente()){
+								return true;
+						}
+					}
 				}
 			}
 		}
 		return false;
 	}
+
+	
+
+	
 
 }
