@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
+
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 
 public class PessoaDAO {
@@ -15,8 +16,8 @@ public class PessoaDAO {
 	public PessoaDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
-			System.out.println("Conex„o estabelecida");
-		else System.out.println("Erro na conex„o com o BD");	
+			System.out.println("Conex√£o estabelecida");
+		else System.out.println("Erro na conex√£o com o BD");	
 	}
 	
 	
@@ -25,7 +26,7 @@ public class PessoaDAO {
 
 		String sql = "insert into pessoa (nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo)values (?,?,?,?,?,?,?,?)";
 		try {
-			// prepared statement para inserÁ„o
+			// prepared statement para inser√ß√£o
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			// seta os valores
@@ -46,6 +47,24 @@ public class PessoaDAO {
 			throw new RuntimeException(e);
 		}
 
+	}
+	
+	
+	public void remover (String matricula){
+		
+		String sql =  "delete from pessoa where matricula = ?";
+		
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, matricula);	
+			System.out.println("Deletado com sucesso!");
+					
+		}catch(Exception e){
+			System.out.println("Exception is :"+e);
+		}
+		
+		
+		
 	}
 	
 }
