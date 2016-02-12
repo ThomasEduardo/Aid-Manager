@@ -2,7 +2,9 @@ package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 
 
@@ -49,7 +51,33 @@ public class PessoaDAO {
 
 	}
 	
-	
+	public Pessoa getPessoa (String matricula){
+		
+		Pessoa pessoa = new Pessoa();
+		String sql = "select * from pessoa where matricula = ?";
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, matricula);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				pessoa.setIdPessoa(rs.getInt("idPessoa"));
+				pessoa.setNomePessoa(rs.getString("nomePessoa"));
+				pessoa.setRg(rs.getString("rg"));
+				pessoa.setMatricula(rs.getString("matricula"));
+				pessoa.setDataNasc(null);
+				pessoa.setSexo(rs.getString("sexo"));
+				pessoa.setSenha(rs.getString("senha"));
+				pessoa.setEmail(rs.getString("email"));
+				pessoa.setCpf(rs.getString("cpf"));
+			}
+			return pessoa;
+		}
+		catch (Exception e){
+			System.out.println("Exception is :"+e);
+		}
+		return null;
+				
+	}
 	public void remover (String matricula){
 		
 		String sql =  "delete from pessoa where matricula = ?";
@@ -62,9 +90,27 @@ public class PessoaDAO {
 		}catch(Exception e){
 			System.out.println("Exception is :"+e);
 		}
-		
-		
-		
+	}
+	
+	public void update (Pessoa p){
+		String sql = "update pessoa set nomePessoa = ? ,rg = ?,matricula= ?,dataNasc=?,sexo=?,senha=?,email=?,cpf=? WHERE ?";		
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, p.getNomePessoa());
+			stmt.setString(2, p.getRg());
+			stmt.setString(3, p.getMatricula());
+			stmt.setDate(4,(java.sql.Date) p.getDataNasc());
+			stmt.setString(5, p.getSexo());
+			stmt.setString(6, p.getSenha());
+			stmt.setString(7, p.getEmail());
+			stmt.setString(8, p.getCpf());
+			stmt.setString(9, p.getMatricula());//Sujeito a alterações,pode ser CPF ou Rg
+			stmt.execute();
+			System.out.println("Atualizado com sucesso!");
+					
+		}catch(Exception e){
+			System.out.println("Exception is :"+e);
+		}
 	}
 	
 }

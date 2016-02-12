@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 
-	public abstract class Pessoa {
+	public class Pessoa {
 	
 	    private int idPessoa;
 		private String nomePessoa;
