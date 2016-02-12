@@ -13,8 +13,8 @@ private Connection conn;
 	public ServidorDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
-			System.out.println("Conex„o estabelecida");
-		else System.out.println("Erro na conex„o com o BD");	
+			System.out.println("Conex√£o estabelecida");
+		else System.out.println("Erro na conex√£o com o BD");	
 	}
 	
 	
@@ -23,13 +23,13 @@ private Connection conn;
 
 		String sql = "insert into servidor (cargoServidor,idPessoa)values (?,?)";
 		try {
-			// prepared statement para inserÁ„o
+			// prepared statement para inser√ß√£o
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			// seta os valores
 			stmt.setString(1, servidor.getCargoServidor());
 			stmt.setInt(2, getIdPessoa(servidor.getMatricula()));
-			//Buscar informaÁıes sobre isso.
+			//Buscar informa√ß√µes sobre isso.
 
 			// executa
 			stmt.execute();
@@ -58,9 +58,32 @@ private Connection conn;
 		}
 		return 0;
 		}
-		
-		
-		}
 	
+	 public void remover (String matricula){
+		 
+		int idPessoa = 0;
+		String sql1 = "select idPessoa from pessoa where matricula = ?";
+		String sql2 =  "delete from servidor where idPessoa = ?";
+		
+		try{
+			PreparedStatement st = conn.prepareStatement(sql1);
+			st.setString(1, matricula);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				 idPessoa = rs.getInt("idPessoa");
+			}
+			st = conn.prepareStatement(sql2);
+			st.setInt(1, idPessoa);	
+			st.execute();
+			System.out.println("Deletado com sucesso!");
+					
+		}catch(Exception e){
+			System.out.println("Exception is :"+e);
+		}
+	 }
+		
+		
+		
+}
 
 
