@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 
-public class PessoaDAO {
+public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 
 	
 	private Connection conn;
@@ -24,7 +24,7 @@ public class PessoaDAO {
 	
 	
 	
-	public void Cadastrar(Pessoa pessoa) {
+	public void insert(Pessoa pessoa) {
 
 		String sql = "insert into pessoa (nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo)values (?,?,?,?,?,?,?,?)";
 		try {
@@ -51,7 +51,7 @@ public class PessoaDAO {
 
 	}
 	
-	public Pessoa getPessoa (String matricula){
+	public Pessoa getObject (String matricula){
 		
 		Pessoa pessoa = new Pessoa();
 		String sql = "select * from pessoa where matricula = ?";
@@ -64,7 +64,7 @@ public class PessoaDAO {
 				pessoa.setNomePessoa(rs.getString("nomePessoa"));
 				pessoa.setRg(rs.getString("rg"));
 				pessoa.setMatricula(rs.getString("matricula"));
-				pessoa.setDataNasc(null);
+				pessoa.setDataNasc(null); //Consertar
 				pessoa.setSexo(rs.getString("sexo"));
 				pessoa.setSenha(rs.getString("senha"));
 				pessoa.setEmail(rs.getString("email"));
@@ -78,7 +78,7 @@ public class PessoaDAO {
 		return null;
 				
 	}
-	public void remover (String matricula){
+	public void delete (String matricula){
 		
 		String sql =  "delete from pessoa where matricula = ?";
 		
@@ -92,7 +92,7 @@ public class PessoaDAO {
 		}
 	}
 	
-	public void update (Pessoa p){
+	public boolean update (Pessoa p){
 		String sql = "update pessoa set nomePessoa = ? ,rg = ?,matricula= ?,dataNasc=?,sexo=?,senha=?,email=?,cpf=? WHERE ?";		
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -104,13 +104,14 @@ public class PessoaDAO {
 			stmt.setString(6, p.getSenha());
 			stmt.setString(7, p.getEmail());
 			stmt.setString(8, p.getCpf());
-			stmt.setString(9, p.getMatricula());//Sujeito a alterações,pode ser CPF ou Rg
+			stmt.setInt(9, p.getIdPessoa());
 			stmt.execute();
-			System.out.println("Atualizado com sucesso!");
+			return true;
 					
 		}catch(Exception e){
 			System.out.println("Exception is :"+e);
 		}
+		return false;
 	}
 	
 }

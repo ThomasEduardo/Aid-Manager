@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.Servidor;
 
-public class ServidorDAO {
+public class ServidorDAO{
 	
 private Connection conn;
 	
@@ -18,8 +18,7 @@ private Connection conn;
 	}
 	
 	
-	
-	public void Cadastrar(Servidor servidor) {
+	public void insert(Servidor servidor) {
 
 		String sql = "insert into servidor (cargoServidor,idPessoa)values (?,?)";
 		try {
@@ -29,7 +28,6 @@ private Connection conn;
 			// seta os valores
 			stmt.setString(1, servidor.getCargoServidor());
 			stmt.setInt(2, getIdPessoa(servidor.getMatricula()));
-			//Buscar informações sobre isso.
 
 			// executa
 			stmt.execute();
@@ -59,7 +57,7 @@ private Connection conn;
 		return 0;
 		}
 	
-	 public void remover (String matricula){
+	 public void delete(String matricula){
 		 
 		int idPessoa = 0;
 		String sql1 = "select idPessoa from pessoa where matricula = ?";

@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.edu.ifpb.auxilio.dominio.AssistenteSocial;
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 
-public class AssistenteSocialDAO {
+public class AssistenteSocialDAO implements GenericIFDAO<String,AssistenteSocial>{
 	private Connection conn;
 
 	public AssistenteSocialDAO() {
@@ -17,8 +18,8 @@ public class AssistenteSocialDAO {
 		else
 			System.out.println("Erro na conexão com o BD");
 	}
-
-	public void Cadastrar(Pessoa pessoa) {
+    @Override
+	public void insert(AssistenteSocial as) {
 
 		String sql = "insert into assistentesocial (idServidor)values (?)";
 		try {
@@ -26,14 +27,8 @@ public class AssistenteSocialDAO {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			// seta os valores
-			stmt.setString(1, pessoa.getNomePessoa());
-			stmt.setString(2, pessoa.getMatricula());
-			stmt.setDate(3, (java.sql.Date) pessoa.getDataNasc());
-			stmt.setString(4, pessoa.getSenha());
-			stmt.setString(5, pessoa.getEmail());
-			stmt.setString(6, pessoa.getCpf());
-			stmt.setString(7, pessoa.getRg());
-			stmt.setString(8, pessoa.getSexo());
+			stmt.setInt(1,getIdServidor(as.getMatricula()));
+		
 
 			// executa
 			stmt.execute();
@@ -69,5 +64,10 @@ public class AssistenteSocialDAO {
 		}
 		return 0;
 	}
+	/*public AssistenteSocial getObject(String matricula){
+		
+	}*/
+	
+	
 
 }
