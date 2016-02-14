@@ -546,5 +546,45 @@ VALUES ('caixa', '1009','1338',1);
 INSERT INTO dadosbancarios (banco ,agencia ,numAgencia ,idDiscente  )
 VALUES ('caixa', '1009','1338',2);
 
+/*-------------------DELETS E DROPS --------------------- BY:RAYLA*/
+
+Delete from documentacao where (idDocumentacao >=1 and idDocumentacao <= 3);
+DELETE from ComposicaoRendaFamiliar where (idCrf >= 1 and idCrf <= 3);
+DELETE from ResidentesMoradia where (idRm >= 1 and idRm <= 4);
+DELETE from SituacaoSaude where (idSituacaoSaude and idSituacaoSaude <= 3);
+DELETE from PerfilSocioEconomico where (idPerfilSocio >= 1 and idPerfilSocio <= 3);
+DELETE from DadosBancarios where (idDadosBancarios >= 1 and idDadosBancarios <= 3);
+DELETE from Edital where (idEdital >= 1 and idEdital <= 3);
+DELETE from Auxilio where (idAuxilio>= 1 and idAuxilio <= 3);
+DELETE from Discente where (idDiscente>=1 and idDiscente <= 3);
+DELETE from Resultados where (idResultados >=1 and idResultados <= 3);
+DELETE from Processo where (idProcesso>=1 and idProcesso <= 3);
+DELETE from InstituicaoFinanciadora where (idIF>=1 and idIF <= 3);
+DELETE from TecnicoAdmin where (idTecnicoAdmin>=1 and idTecnicoAdmin <= 3);
+DELETE from AssistenteSocial where (idAssistenteSocial>=1 and idAssistenteSocial <= 3);
+DELETE from Servidor where (idServidor >=1 and idServidor <= 3);
+DELETE from Telefone where (idTelefone>=1 and idTelefone <= 3);
+DELETE from Pessoa where (idPessoa >=1 and idPessoa <= 3);
+
+
+
+DROP TABLE Documentacao;
+DROP TABLE ComposicaoRendaFamiliar;
+DROP TABLE ResidentesMoradia;
+DROP TABLE SituacaoSaude;
+DROP TABLE PerfilSocioEconomico;
+DROP TABLE DadosBancarios;
+DROP TABLE Edital;
+DROP TABLE Auxilio;
+DROP TABLE Discente;
+DROP TABLE Resultados;
+DROP TABLE Processo;
+DROP TABLE InstituicaoFinanciadora;
+DROP TABLE TecnicoAdmin;
+DROP TABLE AssistenteSocial;
+DROP TABLE Servidor;
+DROP TABLE Telefone;
+DROP TABLE Pessoa;
+
 
 		
