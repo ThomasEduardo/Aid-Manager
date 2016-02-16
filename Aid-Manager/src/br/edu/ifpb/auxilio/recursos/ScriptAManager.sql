@@ -601,6 +601,25 @@ INSERT INTO documentacao (nomeDocumentacao ,status_Documento ,idDiscente )
 VALUES ('RG, CPF, Registro', 'Ok',3);
 
 
+DELETE from Documentacao where idDocumentacao <=3;
+DELETE from ComposicaoRendaFamiliar where idCrf <= 3;
+DELETE from ResidentesMoradia where idRm <= 4;
+DELETE from SituacaoSaude where idSituacaoSaude <= 3;
+DELETE from PerfilSocioEconomico where idPerfilSocio <= 3;
+DELETE from DadosBancarios where idDadosBancarios <= 3;
+DELETE from Edital where idEdital <= 3;
+DELETE from Auxilio were idAuxilio <= 3;
+DELETE from Discente where idDiscente <= 3;
+DELETE from Resultados where idResultados <= 3;
+DELETE from Processo where idProcesso <= 3;
+DELETE from InstituicaoFinanciadora where idIF <= 3;
+DELETE from TecnicoAdmin where idTecnicoAdmin <= 3;
+DELETE from AssistenteSocial whereidAssistenteSocial <= 3;
+DELETE from Servidor where idServidor <= 3;
+DELETE from Telefone where idTelefone <= 3;
+DELETE from Pessoa where idPessoa <= 3;
+
+
 
 
 /*--------------- INSERTS ---------------------------*/
@@ -1205,26 +1224,6 @@ begin
     
 end $$
 delimiter ;
-
-
-
-DELETE from Documentacao where idDocumentacao <=3;
-DELETE from ComposicaoRendaFamiliar where idCrf <= 3;
-DELETE from ResidentesMoradia where idRm <= 4;
-DELETE from SituacaoSaude where idSituacaoSaude <= 3;
-DELETE from PerfilSocioEconomico where idPerfilSocio <= 3;
-DELETE from DadosBancarios where idDadosBancarios <= 3;
-DELETE from Edital where idEdital <= 3;
-DELETE from Auxilio were idAuxilio <= 3;
-DELETE from Discente where idDiscente <= 3;
-DELETE from Resultados where idResultados <= 3;
-DELETE from Processo where idProcesso <= 3;
-DELETE from InstituicaoFinanciadora where idIF <= 3;
-DELETE from TecnicoAdmin where idTecnicoAdmin <= 3;
-DELETE from AssistenteSocial whereidAssistenteSocial <= 3;
-DELETE from Servidor where idServidor <= 3;
-DELETE from Telefone where idTelefone <= 3;
-DELETE from Pessoa where idPessoa <= 3;
 
 
 DROP TABLE Documentacao;
