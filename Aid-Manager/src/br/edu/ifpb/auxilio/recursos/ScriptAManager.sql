@@ -1,3 +1,6 @@
+Create database aidManager;
+use aidManager;
+
 Create table  pessoa(
 	idPessoa int unsigned auto_increment primary key,
 	nomePessoa varchar(255),
