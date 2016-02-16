@@ -1133,6 +1133,7 @@ begin
 end $$
 delimiter ;
 
+delimiter $$
 Create trigger tr_updateEdital before update
 on edital
 for each row
