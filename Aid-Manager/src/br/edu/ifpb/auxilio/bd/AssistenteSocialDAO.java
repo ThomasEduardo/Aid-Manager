@@ -68,6 +68,14 @@ public class AssistenteSocialDAO implements GenericIFDAO<String,AssistenteSocial
 		
 	}*/
 	
+	 public void delete(String matricula){
+		 
+		 /*Delete From pessoa matricula = idPessoa,já que o trigger 
+		 ficará responsável por eliminar as camadas inferiores.*/
+		 
+		}
+			
+	
 	
 
 }

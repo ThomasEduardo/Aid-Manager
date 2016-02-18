@@ -22,17 +22,13 @@ private Connection conn;
 
 		String sql = "insert into servidor (cargoServidor,idPessoa)values (?,?)";
 		try {
-			// prepared statement para inserção
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			// seta os valores
 			stmt.setString(1, servidor.getCargoServidor());
 			stmt.setInt(2, getIdPessoa(servidor.getMatricula()));
-
-			// executa
+			
 			stmt.execute();
 			stmt.close();
-			System.out.println("Cadastrado com sucesso!");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -72,9 +68,7 @@ private Connection conn;
 			}
 			st = conn.prepareStatement(sql2);
 			st.setInt(1, idPessoa);	
-			st.execute();
-			System.out.println("Deletado com sucesso!");
-					
+			st.execute();	
 		}catch(Exception e){
 			System.out.println("Exception is :"+e);
 		}
