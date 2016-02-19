@@ -72,21 +72,13 @@ private Connection conn;
 	}
 	
 	 public void delete(String matricula){
-		 
-		int idPessoa = 0;
-		String sql1 = "select idPessoa from pessoa where matricula = ?";
-		String sql2 =  "delete from servidor where idPessoa = ?";
+		String sql =  "delete from servidor where idPessoa = ?";
 		
 		try{
-			PreparedStatement st = conn.prepareStatement(sql1);
-			st.setString(1, matricula);
-			ResultSet rs = st.executeQuery();
-			while (rs.next()) {
-				 idPessoa = rs.getInt("idPessoa");
-			}
-			st = conn.prepareStatement(sql2);
-			st.setInt(1, idPessoa);	
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setInt(1, getIdPessoa(matricula));	
 			st.execute();	
+			st.close();
 		}catch(Exception e){
 			System.out.println("Exception is :"+e);
 		}
