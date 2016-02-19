@@ -51,7 +51,25 @@ private Connection conn;
 		System.out.println("Exception is :"+e);
 		}
 		return 0;
+     }
+	
+    public int getIdServidor(String matricula) {
+
+		int idServidor = 0;
+		String sql = "select idServidor from servidor where idPessoa = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, getIdPessoa(matricula));
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				idServidor = rs.getInt("idServidor");
+			}
+			return idServidor;
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
 		}
+		return 0;
+	}
 	
 	 public void delete(String matricula){
 		 
