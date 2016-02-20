@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 
 
+
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 
 public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
@@ -51,6 +52,24 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 
 	}
 	
+	public int getIdPessoa(String matricula){
+		
+		int idPessoa = 0; 
+		String sql = "select idPessoa from pessoa where matricula = ?";
+		try{
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1,matricula);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			 idPessoa = rs.getInt("idPessoa");
+			}
+		return idPessoa;
+		}catch(Exception e){
+		System.out.println("Exception is :"+e);
+		}
+		return 0;
+     }
+	
 	public Pessoa getObject (String matricula){
 		
 		Pessoa pessoa = new Pessoa();
@@ -92,14 +111,14 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 		}
 	}
 	
-	public boolean update (Pessoa p){
-		String sql = "update pessoa set nomePessoa = ? ,rg = ?,matricula= ?,dataNasc=?,sexo=?,senha=?,email=?,cpf=? WHERE ?";		
-		try{
+	public boolean update(Pessoa p) {
+		String sql = "update pessoa set nomePessoa = ? ,rg = ?,matricula= ?,dataNasc=?,sexo=?,senha=?,email=?,cpf=? WHERE ?";
+		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, p.getNomePessoa());
 			stmt.setString(2, p.getRg());
 			stmt.setString(3, p.getMatricula());
-			stmt.setDate(4,(java.sql.Date) p.getDataNasc());
+			stmt.setDate(4, (java.sql.Date) p.getDataNasc());
 			stmt.setString(5, p.getSexo());
 			stmt.setString(6, p.getSenha());
 			stmt.setString(7, p.getEmail());
@@ -107,11 +126,11 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 			stmt.setInt(9, p.getIdPessoa());
 			stmt.execute();
 			return true;
-					
-		}catch(Exception e){
-			System.out.println("Exception is :"+e);
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
 		}
 		return false;
 	}
-	
+
 }

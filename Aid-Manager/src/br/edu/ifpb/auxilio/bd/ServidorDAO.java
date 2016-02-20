@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.Servidor;
 
-public class ServidorDAO{
+public class ServidorDAO extends PessoaDAO{
 	
-private Connection conn;
+	private Connection conn;
 	
 	public ServidorDAO(){
 		conn = Conexao.getConnection();
@@ -16,7 +16,6 @@ private Connection conn;
 			System.out.println("Conexão estabelecida");
 		else System.out.println("Erro na conexão com o BD");	
 	}
-	
 	
 	public void insert(Servidor servidor) {
 
@@ -35,31 +34,13 @@ private Connection conn;
 
 	}
 	
-	public int getIdPessoa(String matricula){
-		
-		int idPessoa = 0; 
-		String sql = "select idPessoa from pessoa where matricula = ?";
-		try{
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1,matricula);
-		ResultSet rs = stmt.executeQuery();
-		while (rs.next()) {
-			 idPessoa = rs.getInt("idPessoa");
-			}
-		return idPessoa;
-		}catch(Exception e){
-		System.out.println("Exception is :"+e);
-		}
-		return 0;
-     }
-	
     public int getIdServidor(String matricula) {
 
 		int idServidor = 0;
 		String sql = "select idServidor from servidor where idPessoa = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, getIdPessoa(matricula));
+			stmt.setInt(1, super.getIdPessoa(matricula));
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				idServidor = rs.getInt("idServidor");
@@ -76,7 +57,7 @@ private Connection conn;
 		
 		try{
 			PreparedStatement st = conn.prepareStatement(sql);
-			st.setInt(1, getIdPessoa(matricula));	
+			st.setInt(1, super.getIdPessoa(matricula));	
 			st.execute();	
 			st.close();
 		}catch(Exception e){
