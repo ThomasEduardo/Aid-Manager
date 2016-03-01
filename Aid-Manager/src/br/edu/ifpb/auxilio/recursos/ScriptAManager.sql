@@ -26,6 +26,7 @@ Create table servidor(
 	cargoServidor varchar(30),
 	idPessoa int unsigned not null,
 	constraint fk_servidor_pessoa foreign key(idPessoa) references pessoa(idPessoa)
+);
 
 Create table assistenteSocial(
 	idAssistenteSocial int unsigned auto_increment primary key,
