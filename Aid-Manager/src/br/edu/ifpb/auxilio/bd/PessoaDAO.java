@@ -112,7 +112,7 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 	}
 	
 	public boolean update(Pessoa p) {
-		String sql = "update pessoa set nomePessoa = ? ,rg = ?,matricula= ?,dataNasc=?,sexo=?,senha=?,email=?,cpf=? WHERE ?";
+		String sql = "update pessoa set nomePessoa = ? ,rg = ?,matricula= ?,dataNasc=?,sexo=?,senha=?,email=?,cpf=? WHERE idPessoa = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, p.getNomePessoa());
