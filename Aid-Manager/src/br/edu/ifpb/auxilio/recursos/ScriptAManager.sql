@@ -148,7 +148,7 @@ Create table PerfilSocioEconomico(
 	luz double,
 	agua double,
 	telefone double,
-	obs varchar(255)
+	obs varchar(255),
 	financiamentoCasaPropria double,
         idAssistenteSocial int unsigned not null,
         idDiscente int unsigned not null,
