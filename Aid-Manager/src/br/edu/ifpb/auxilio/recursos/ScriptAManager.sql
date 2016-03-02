@@ -131,6 +131,7 @@ Create table dadosBancarios(
 	agencia varchar(255),
 	numAgencia varchar(255),
         saldo double,
+        obs varchar(255),
         idDiscente int unsigned not null,
         constraint fk_dadosBancarios_Discente foreign key(idDiscente) references discente(idDiscente)
 );
@@ -147,6 +148,7 @@ Create table PerfilSocioEconomico(
 	luz double,
 	agua double,
 	telefone double,
+	obs varchar(255)
 	financiamentoCasaPropria double,
         idAssistenteSocial int unsigned not null,
         idDiscente int unsigned not null,
