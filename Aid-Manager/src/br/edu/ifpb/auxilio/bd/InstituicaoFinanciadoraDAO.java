@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.edu.ifpb.auxilio.dominio.Auxilio;
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 
 public class InstituicaoFinanciadoraDAO {
