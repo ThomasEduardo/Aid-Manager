@@ -15,7 +15,7 @@ public class PerfilSocioEconomico {
 	private double telefone;
 	private double financiamentoCasaPropria;
 	private AssistenteSocial as;
-	private Discente Discente;
+	private Discente discente;
 	
 	public PerfilSocioEconomico(){
 		
@@ -179,11 +179,11 @@ public class PerfilSocioEconomico {
 		this.as = as;
 	}
 	public Discente getDiscente() {
-		return Discente;
+		return discente;
 	}
 
 	public void setDiscente(Discente discente) {
-		Discente = discente;
+		discente = discente;
 	}
 
 	public boolean equals(PerfilSocioEconomico ps){
@@ -214,11 +214,4 @@ public class PerfilSocioEconomico {
 		}
 		return false;
 	}
-
-
-
-	
-	
-	
-
 }
