@@ -7,14 +7,14 @@ public class Edital extends Processo {
 	
 	private int idEdital;
 	private Date iniInscricoes;
-	private Date FimInscricoes;
+	private Date fimInscricoes;
 	private Date iniEntregaForm;
 	private int ano;
 	private Date fimForm;
 	private String descricao;
 	private String titulo;
-	private double ValorBolsaDiscente;
-	private int VagasBolsistas;
+	private double valorBolsaDiscente;
+	private int vagasBolsistas;
 	private String numEdital;
 	
 	
@@ -77,10 +77,10 @@ public class Edital extends Processo {
 		this.iniInscricoes = iniInscricoes;
 	}
 	public Date getFimInscricoes() {
-		return FimInscricoes;
+		return fimInscricoes;
 	}
 	public void setFimInscricoes(Date fimInscricoes) {
-		FimInscricoes = fimInscricoes;
+		this.fimInscricoes = fimInscricoes;
 	}
 	public Date getIniEntregaForm() {
 		return iniEntregaForm;
@@ -113,16 +113,16 @@ public class Edital extends Processo {
 		this.titulo = titulo;
 	}
 	public double getValorBolsaDiscente() {
-		return ValorBolsaDiscente;
+		return valorBolsaDiscente;
 	}
 	public void setValorBolsaDiscente(double valorBolsaDiscente) {
-		ValorBolsaDiscente = valorBolsaDiscente;
+		this.valorBolsaDiscente = valorBolsaDiscente;
 	}
 	public int getVagasBolsistas() {
-		return VagasBolsistas;
+		return vagasBolsistas;
 	}
 	public void setVagasBolsistas(int vagasBolsistas) {
-		VagasBolsistas = vagasBolsistas;
+		this.vagasBolsistas = vagasBolsistas;
 	}
 	public String getNumEdital() {
 		return numEdital;
