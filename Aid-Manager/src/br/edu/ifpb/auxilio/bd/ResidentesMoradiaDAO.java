@@ -20,7 +20,7 @@ public class ResidentesMoradiaDAO {
 	
 	public void insert(ResidentesMoradia resMoradia) {
 
-		String sql = "INSERT INTO auxilio"
+		String sql = "INSERT INTO residentesMoradia"
 				+ " `idRm`, "
 				+ " `residentes`, "
 				+ " `ps`"

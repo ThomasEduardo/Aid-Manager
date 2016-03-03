@@ -19,7 +19,7 @@ public class ProcessoDAO {
 	
 	public void insert(Processo processo) {
 
-		String sql = "INSERT INTO auxilio "
+		String sql = "INSERT INTO processo"
 				+ " `idProcesso`, "
 				+ " `data`, "
 				+ " `obs`, "
