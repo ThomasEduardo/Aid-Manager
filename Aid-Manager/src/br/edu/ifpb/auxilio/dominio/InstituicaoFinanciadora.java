@@ -6,7 +6,7 @@ public class InstituicaoFinanciadora {
 	private String nomeIF;
 	private String cnpj;
 	private double orcamentoAuxilio;
-	private TecnicoAdmin admin;
+	private Servidor servidor;
 	
 	public InstituicaoFinanciadora(){
 		
@@ -14,26 +14,25 @@ public class InstituicaoFinanciadora {
 		setNomeIF("");
 		setCnpj("");
 		setOrcamentoAuxilio(0);
-		setAdmin(null);
+		setServidor(null);
 		
 	}
 	
-	public InstituicaoFinanciadora(int idIF,String nomeIF,String cnpj,double orcamento,TecnicoAdmin tecnico){
-			
+	public InstituicaoFinanciadora(int idIF,String nomeIF,String cnpj,double orcamento,Servidor servidor){		
 		setIdIF(idIF);
 		setNomeIF(nomeIF);
 		setCnpj(cnpj);
 		setOrcamentoAuxilio(orcamento);
-		setAdmin(tecnico);
+		setServidor(servidor);
 		
 	}	
 	
-	public InstituicaoFinanciadora(String nomeIF,String cnpj,double orcamento,TecnicoAdmin tecnico){
+	public InstituicaoFinanciadora(String nomeIF,String cnpj,double orcamento,Servidor servidor){
 		
 		setNomeIF(nomeIF);
 		setCnpj(cnpj);
 		setOrcamentoAuxilio(orcamento);
-		setAdmin(tecnico);
+		setServidor(servidor);
 	}
 	
 	
@@ -63,11 +62,11 @@ public class InstituicaoFinanciadora {
 	public void setOrcamentoAuxilio(double orcamentoAuxilio) {
 		this.orcamentoAuxilio = orcamentoAuxilio;
 	}
-	public TecnicoAdmin getAdmin() {
-		return admin;
+	public Servidor getServidor() {
+		return servidor;
 	}
-	public void setAdmin(TecnicoAdmin admin) {
-		this.admin = admin;
+	public void setServidor(Servidor servidor) {
+		this.servidor = servidor;
 	}
 	
 	
@@ -76,7 +75,7 @@ public class InstituicaoFinanciadora {
 			if(this.getNomeIF() == If.getNomeIF()){
 				if(this.getCnpj() == If.getCnpj()){
 					if(this.getOrcamentoAuxilio() == If.getOrcamentoAuxilio()){
-						if(this.getAdmin() == If.getAdmin()){
+						if(this.getServidor() == If.getServidor()){
 								return true;
 						}
 					}
