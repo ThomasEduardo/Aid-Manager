@@ -123,7 +123,7 @@ public class DiscenteDAO{
 		
 	}
 	
-	public Discente getObject(String matricula) {
+	public Discente getObject(String matricula){
 		
 		try {
 			Discente discente = new Discente();

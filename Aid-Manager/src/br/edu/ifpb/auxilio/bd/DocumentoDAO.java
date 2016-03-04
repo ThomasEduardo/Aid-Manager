@@ -9,7 +9,7 @@ import br.edu.ifpb.auxilio.dominio.Documento;
 
 
 
-public class DocumentoDAO {
+public class DocumentoDAO{
 private Connection conn;
 	
 	public DocumentoDAO(){
