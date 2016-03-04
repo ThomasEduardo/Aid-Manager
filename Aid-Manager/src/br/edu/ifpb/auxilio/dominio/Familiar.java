@@ -9,9 +9,10 @@ public class Familiar {
 	private String profissao;
 	private double renda;
 	private String doenca;
+
 	private PerfilSocioEconomico ps;
 	
-	public ComposicaoRendaFamiliar(){
+	public Familiar(){
 		
 		setIdCrf(0);
 		setNome("");
@@ -19,11 +20,12 @@ public class Familiar {
 		setGrauDeInstrucao(0);
 		setProfissao("");
 		setRenda(0);
+		setDoenca("");
 		setPs(null);
 		
 	}
 	
-	public ComposicaoRendaFamiliar(int idCrf,String nome,int idade,int grauInstrucao,String profissao,double renda,PerfilSocioEconomico Ps){
+	public Familiar(int idCrf,String nome,int idade,int grauInstrucao,String profissao,double renda,String doenca,PerfilSocioEconomico Ps){
 		
 		
 		setIdCrf(idCrf);
@@ -32,17 +34,19 @@ public class Familiar {
 		setGrauDeInstrucao(grauInstrucao);
 		setProfissao(profissao);
 		setRenda(renda);
+		setDoenca(doenca);
 		setPs(Ps);
 		
 	}
 	
-	public ComposicaoRendaFamiliar(String nome,int idade,int grauInstrucao,String profissao,double renda,PerfilSocioEconomico ps){
+	public Familiar(String nome,int idade,int grauInstrucao,String profissao,double renda,String doenca,PerfilSocioEconomico ps){
 		
 		setNome(nome);
 		setIdade(idade);
 		setGrauDeInstrucao(grauInstrucao);
 		setProfissao(profissao);
 		setRenda(renda);
+		setDoenca(doenca);
 		setPs(ps);
 		
 	}
@@ -91,15 +95,24 @@ public class Familiar {
 	public void setPs(PerfilSocioEconomico ps) {
 		this.ps = ps;
 	}
+	public String getDoenca() {
+		return doenca;
+	}
+
+	public void setDoenca(String doenca) {
+		this.doenca = doenca;
+	}
 	
-	public boolean equals(ComposicaoRendaFamiliar crm){
+	public boolean equals(Familiar crm){
 		if(this.getNome() == crm.getNome()){
 			if(this.getProfissao() == crm.getProfissao()){
 				if(this.getRenda() == crm.getRenda()){
 					if(this.getIdade() == crm.getIdade()){
 						if(this.getGrauDeInstrucao() == crm.getGrauDeInstrucao()){
-							if(this.getPs() == crm.getPs()){
-								return true;
+							if(this.getDoenca() == crm.getDoenca()){
+								if(this.getPs() == crm.getPs()){
+									return true;
+								}
 							}
 						}
 					}
