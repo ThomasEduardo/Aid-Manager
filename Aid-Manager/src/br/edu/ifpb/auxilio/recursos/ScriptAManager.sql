@@ -24,29 +24,19 @@ Create table telefone(
 Create table servidor(
 	idServidor int unsigned auto_increment primary key,
 	cargoServidor varchar(30),
+	tipoServidor varchar(200),
 	idPessoa int unsigned not null,
 	constraint fk_servidor_pessoa foreign key(idPessoa) references pessoa(idPessoa)
 );
 
-Create table assistenteSocial(
-	idAssistenteSocial int unsigned auto_increment primary key,
-	idServidor int unsigned not null,
-	constraint fk_assistenteSocial_Servidor foreign key(idServidor) references servidor(idServidor)
-);
-
-Create table TecnicoAdmin(
-	idTecnicoAdmin int unsigned auto_increment primary key,
-	idServidor int unsigned not null,
-	constraint fk_tecnicoAdmin_Servidor foreign key(idServidor) references servidor(idServidor)
-);
 
 Create table instituicaoFinanciadora( 
 	idIF int unsigned auto_increment primary key,
 	nomeIF varchar(40), 
 	cnpj varchar(40), 
 	orcamentoAuxilio double, 
-	idTecnicoAdmin int unsigned not null, 
-	constraint fk_instituicaFinanciado_tecnicoAdmin foreign key(idTecnicoAdmin) references tecnicoAdmin(idTecnicoAdmin)
+	idServidor int unsigned not null, 
+	constraint fk_instituicaFinanciadora_servidor foreign key(idServidor) references servidor(idServidor)
 );
 
 Create table processo(
@@ -62,12 +52,6 @@ Create table processo(
 	constraint fk_processo_servidor foreign key(idServidor) references servidor(idServidor)
 );
 
-Create table resultados ( 
-	idResultados int unsigned auto_increment primary key, 
-	tipoauxilio VARCHAR(30),
-	idProcesso int unsigned not null,
-	constraint fk_resultados_processo foreign key(idProcesso) references processo(idProcesso)
-);
 
 Create table Discente ( 
 	idDiscente int unsigned auto_increment primary key, 
@@ -88,9 +72,7 @@ Create table Discente (
 	estado varchar(60),
 	motivoSolicitacao varchar(255),
 	idPessoa int unsigned not null,
-	idResultados int unsigned not null,
-	constraint fk_discente_pessoa foreign key (idPessoa) references pessoa(idPessoa),
-	constraint fk_discente_resultados foreign key (idResultados) references Resultados(idResultados)
+	constraint fk_discente_pessoa foreign key (idPessoa) references pessoa(idPessoa)
 );
 
 Create table auxilio(
@@ -100,13 +82,9 @@ Create table auxilio(
 	validadeInicial date,
 	validadeFinal date,
 	idInstituicaoFinanciadora int unsigned,
-	idTecnicoAdmin int unsigned,
 	idProcesso int unsigned not null,
-        idDiscente int unsigned not null,
 	constraint fk_auxilio_IF foreign key(idInstituicaoFinanciadora) references instituicaoFinanciadora(idIF),
-	constraint fk_auxilio_TecnicoAdmin foreign key(idTecnicoAdmin) references tecnicoAdmin(idTecnicoAdmin),
-	constraint fk_auxilio_processo foreign key(idProcesso) references processo(idProcesso),
-        constraint fk_auxilio_Discente foreign key(idDiscente) references discente(idDiscente)
+	constraint fk_auxilio_processo foreign key(idProcesso) references processo(idProcesso)
 );
 
 Create table edital(
@@ -130,10 +108,10 @@ Create table dadosBancarios(
 	banco varchar(255),
 	agencia varchar(255),
 	numAgencia varchar(255),
-        saldo double,
-        obs varchar(255),
-        idDiscente int unsigned not null,
-        constraint fk_dadosBancarios_Discente foreign key(idDiscente) references discente(idDiscente)
+    saldo double,
+    obs varchar(255),
+    idDiscente int unsigned not null,
+    constraint fk_dadosBancarios_Discente foreign key(idDiscente) references discente(idDiscente)
 );
 
 Create table PerfilSocioEconomico(
@@ -150,48 +128,36 @@ Create table PerfilSocioEconomico(
 	telefone double,
 	obs varchar(255),
 	financiamentoCasaPropria double,
-        idAssistenteSocial int unsigned not null,
-        idDiscente int unsigned not null,
-        constraint fk_perfilsocioeconomico_Assistentesocial foreign key(idAssistenteSocial) references assistenteSocial(idAssistenteSocial),
-        constraint fk_perfilsocioeconomico_Discente foreign key(idDiscente) references discente(idDiscente)
+    idServidor int unsigned not null,
+    idDiscente int unsigned not null,
+    constraint fk_perfilsocioeconomico_servidor foreign key(idServidor) references servidor(idServidor),
+    constraint fk_perfilsocioeconomico_Discente foreign key(idDiscente) references discente(idDiscente)
  );
 
-Create table situacaoSaude(
-	idSituacaoSaude int unsigned auto_increment primary key,
-	membro varchar(50),
-	doenca varchar(50),
-	idPerfilSocioEconomico int unsigned not null,
-	constraint fk_situacaoSaude_perfilSocio foreign key (idPerfilSocioEconomico) references perfilSocioEconomico(idPerfilSocio)
-);
 
-Create table residentesMoradia(
-	idRm int unsigned,
-	residentes varchar(255),
-	idPerfilSocio int unsigned not null,
-	constraint fk_residentesMoradia_perfilSocio foreign key(idPerfilSocio) references perfilSocioEconomico(idPerfilSocio)
-);
-
-Create table composicaoRendaFamiliar( 
+Create table Familiar( 
 	idCrf int unsigned auto_increment primary key, 
 	nome varchar(70), 
 	idade int unsigned, 
 	grauDeInstrucao int unsigned, 
 	profissao varchar(70), 
 	renda double,
+	doenca varchar(255),
 	idPerfilSocio int unsigned not null, 
 	constraint fk_composicaoRendaFamiliar_idPerfilSocio foreign key(idPerfilSocio) references perfilSocioEconomico(idPerfilSocio) 
 );
 		
-Create table documentacao (
+Create table documento (
 	idDocumentacao int unsigned auto_increment primary key,
-	nomeDocumentacao varchar(100),
-	status_Documento varchar(255),
+	nomeDocumento varchar(100),
+	status varchar(255),
 	obs varchar(255),
-	iddiscente int unsigned not null,
+	idDiscente int unsigned not null,
 	constraint fk_documentacao_discente foreign key(idDiscente) references discente(idDiscente)
 );
 
 Create table DiscentePre ( 
+
 	idDiscentePre int unsigned auto_increment primary key, 
 	escolaOrigem varchar(60), 
 	orgExpeditor varchar(60), 
@@ -210,9 +176,8 @@ Create table DiscentePre (
 	estado varchar(60),
 	motivoSolicitacao varchar(255),
 	idPessoa int unsigned not null,
-	idResultados int unsigned not null,
-	constraint fk_discentePre_pessoa foreign key (idPessoa) references pessoa(idPessoa),
-	constraint fk_discentePre_resultados foreign key (idResultados) references Resultados(idResultados)
+	constraint fk_discentePre_pessoa foreign key (idPessoa) references pessoa(idPessoa)
+
 );
 		
 /*----------------- Tabelas de backup -------------------------*/
