@@ -10,9 +10,7 @@ public class Auxilio {
 	private Date validadeInicial;
 	private Date validadeFinal;
 	private InstituicaoFinanciadora IF;
-	private TecnicoAdmin t;
 	private Processo p;
-	private Discente Discente;
 	
 	public Auxilio(){
 		setIdAuxilio(0);

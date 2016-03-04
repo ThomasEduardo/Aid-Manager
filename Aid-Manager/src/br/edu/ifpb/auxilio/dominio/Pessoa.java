@@ -1,5 +1,6 @@
 package br.edu.ifpb.auxilio.dominio;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -15,6 +16,7 @@ import java.util.Date;
 		private String senha;
 		private String email;
 		private String cpf;
+		private ArrayList<String> telefone;
 		
 		
 		public Pessoa(){

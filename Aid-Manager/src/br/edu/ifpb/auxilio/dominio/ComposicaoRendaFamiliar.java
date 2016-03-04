@@ -1,6 +1,6 @@
 package br.edu.ifpb.auxilio.dominio;
 
-public class ComposicaoRendaFamiliar {
+public class Familiar {
 	
 	private int idCrf;
 	private String nome;
@@ -8,6 +8,7 @@ public class ComposicaoRendaFamiliar {
 	private int grauDeInstrucao;
 	private String profissao;
 	private double renda;
+	private String doenca;
 	private PerfilSocioEconomico ps;
 	
 	public ComposicaoRendaFamiliar(){

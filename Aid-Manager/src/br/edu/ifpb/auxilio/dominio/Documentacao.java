@@ -1,7 +1,7 @@
 package br.edu.ifpb.auxilio.dominio;
 
 
-public class Documentacao {
+public class Documento {
 	private int idDocumentacao;
 	private String nomeDocumentacao;
 	private String status;

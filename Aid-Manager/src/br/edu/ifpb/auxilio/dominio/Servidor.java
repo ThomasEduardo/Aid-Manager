@@ -6,6 +6,7 @@ public abstract class Servidor extends Pessoa{
 	
 	private int idServidor;
 	private String cargoServidor;
+	private String tipoServidor;
 	
 	public Servidor(){
 		super();
