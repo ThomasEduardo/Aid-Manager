@@ -28,21 +28,19 @@ private Connection conn;
 				+ " `validadeInicial`, "
 				+ " `validadeFinal`,"
 				+ " `idInstituicaoFinanciadora`, "
-				+ " `idTecnicoAdmin`, "
-				+ " `idProcesso`, "
-				+ " `idDiscente`"
-				+ "VALUES(?,?,?,?,?,?,?,?)";
+				+ " `idProcesso`"
+				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, auxilio.getTipoAuxilio());
 			stmt.setDouble(2, auxilio.getValorAuxilio() );
-			//stmt.setDate  (3, auxilio.getValidadeInicial());
-			//stmt.setDate  (4, auxilio.getValidadeFinal());
+			//stmt.setDate(3, auxilio.getValidadeInicial());
+			//stmt.setDate(4, auxilio.getValidadeFinal());
 			stmt.setInt   (5, auxilio.getIF().getIdIF());
-			stmt.setInt   (6, auxilio.getT().getIdTecnicoAdmin());
-			stmt.setInt   (7, auxilio.getP().getIdProcesso());
-			stmt.setInt   (8, auxilio.getDiscente().getIdDiscente());
+         	stmt.setInt   (6, auxilio.getP().getIdProcesso());
+         	
+         	
 			stmt.execute();
 			stmt.close();
 			
@@ -60,7 +58,6 @@ private Connection conn;
 				+ " `validadeInicial`=?, "
 				+ " `validadeFinal`=?,"
 				+ " `idInstituicaoFinanciadora`=?, "
-				+ " `idTecnicoAdmin`=?, "
 				+ " `idProcesso`=?, "
 				+ " `idDiscente`=?"
 				+ "WHERE idAuxilio = ?";
@@ -71,10 +68,10 @@ private Connection conn;
 			//stmt.setDate(3, auxilio.getValidadeInicial());
 			//stmt.setDate(4, auxilio.getValidadeFinal());
 			stmt.setInt   (5, auxilio.getIF().getIdIF());
-			stmt.setInt   (6, auxilio.getT().getIdTecnicoAdmin());
-			stmt.setInt   (7, auxilio.getP().getIdProcesso());
-			stmt.setInt   (8, auxilio.getDiscente().getIdDiscente());
-			stmt.setInt   (9, auxilio.getIdAuxilio());
+			stmt.setInt   (6, auxilio.getP().getIdProcesso());
+			stmt.setInt   (7, auxilio.getIdAuxilio());
+			
+			
 			stmt.execute();
 			stmt.close();
 			return true;
@@ -87,8 +84,8 @@ private Connection conn;
 	
 	/*public Auxilio getObject(String matricula){
 		try{
-		AssistenteSocial as = new AssistenteSocial();
-		String sql = "select * from assistenteSocial where idServidor = ?";
+		Auxilio auxilio = new Auxilio();
+		String sql = "select * from auxilio where idServidor = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, super.getIdServidor(matricula));
 		ResultSet rs = stmt.executeQuery();
