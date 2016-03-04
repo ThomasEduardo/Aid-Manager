@@ -16,7 +16,7 @@ import java.util.Date;
 		private String senha;
 		private String email;
 		private String cpf;
-		private ArrayList<String> telefone;
+		private ArrayList<String> telefones;
 		
 		
 		public Pessoa(){
@@ -29,6 +29,7 @@ import java.util.Date;
 				setSenha("");
 				setEmail("");
 				setCpf("");
+				setTelefones(null);
 				
 			}
 	
@@ -118,6 +119,13 @@ import java.util.Date;
 			public void setSexo(String sexo) {
 				this.sexo = sexo;
 			}
+			public ArrayList<String> getTelefones() {
+				return telefones;
+			}
+
+			public void setTelefones(ArrayList<String> telefones) {
+				this.telefones = telefones;
+			}
 
 			
 				public boolean equals(Pessoa P){
@@ -142,6 +150,8 @@ import java.util.Date;
 					}
 					return false;
 				}
+
+				
 
 
 		

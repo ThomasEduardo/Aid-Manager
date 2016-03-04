@@ -12,20 +12,22 @@ public abstract class Servidor extends Pessoa{
 		super();
 		setIdServidor(0);
 		setCargoServidor("");
+		setTipoServidor("");
 		
 	}
 	
-	public Servidor(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor){
+	public Servidor(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor,String tipoServidor){
 		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setIdServidor(idServidor);
 		setCargoServidor(cargoServidor);
+		setTipoServidor(tipoServidor);
 	
 	}
 	
-	public Servidor(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor){
+	public Servidor(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor,String tipoServidor){
 		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setCargoServidor(cargoServidor);
-		
+		setTipoServidor(tipoServidor);
 	}
 	
 	/*----------------- GETTERS E SETTERS ----------------*/
@@ -41,7 +43,14 @@ public abstract class Servidor extends Pessoa{
 	public void setCargoServidor(String cargoServidor) {
 		this.cargoServidor = cargoServidor;
 	}
+	public String getTipoServidor() {
+		return tipoServidor;
+	}
 
+	public void setTipoServidor(String tipoServidor) {
+		this.tipoServidor = tipoServidor;
+	}
+	
 	public boolean equals(Servidor s){
 		if(s instanceof Servidor){
 			if(super.equals(s)){
@@ -53,6 +62,8 @@ public abstract class Servidor extends Pessoa{
 		return false;
 		
 	}
+
+	
 	
 	
 	
