@@ -2,9 +2,11 @@ package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.Documentacao;
+
 
 
 public class DocumentacaoDAO {
@@ -64,5 +66,51 @@ private Connection conn;
 			System.out.println("Exception is :" + e);
 		}
 		return false;
+	}
+	
+	
+	public int getIdDocumentacao(int idDiscente) {
+
+		int idDocumentacao = 0;
+		String sql = "select idDocumentacao from documentacao where idDiscente = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, idDiscente);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				idDocumentacao = rs.getInt("idDocumentacao");
+			}
+			return idDocumentacao;
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return 0;
+	}
+	
+	
+	public Documentacao getObject (int idDiscente){
+		
+		Documentacao documentacao = new Documentacao();
+		String sql = "select * from documentacao where idDiscente = ?";
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, idDiscente);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				
+				documentacao.setNomeDocumentacao(rs.getString("nomeDocumentacao"));
+				documentacao.setStatus(rs.getString("status_Documento"));
+				documentacao.setObs(rs.getString("obs"));
+				//d.getDiscente().getIdDiscente());
+				documentacao.setIdDocumentacao(rs.getInt("idDocumentacao"));
+				
+			}
+			return documentacao;
+		}
+		catch (Exception e){
+			System.out.println("Exception is :"+e);
+		}
+		return null;
+				
 	}
 }

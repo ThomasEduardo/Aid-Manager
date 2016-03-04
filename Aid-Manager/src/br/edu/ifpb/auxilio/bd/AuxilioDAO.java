@@ -1,6 +1,7 @@
 package br.edu.ifpb.auxilio.bd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.bd.Conexao;
@@ -36,8 +37,8 @@ private Connection conn;
 
 			stmt.setString(1, auxilio.getTipoAuxilio());
 			stmt.setDouble(2, auxilio.getValorAuxilio() );
-			stmt.setDate  (3, auxilio.getValidadeInicial());
-			stmt.setDate  (4, auxilio.getValidadeFinal());
+			//stmt.setDate  (3, auxilio.getValidadeInicial());
+			//stmt.setDate  (4, auxilio.getValidadeFinal());
 			stmt.setInt   (5, auxilio.getIF().getIdIF());
 			stmt.setInt   (6, auxilio.getT().getIdTecnicoAdmin());
 			stmt.setInt   (7, auxilio.getP().getIdProcesso());
@@ -51,5 +52,58 @@ private Connection conn;
 		}
 
 	}
+	
+	public boolean update(Auxilio auxilio) {
+		String sql = "update pessoa set "
+				+ " `tipoAuxilio`=?, "
+				+ " `valorAuxilio`=?, "
+				+ " `validadeInicial`=?, "
+				+ " `validadeFinal`=?,"
+				+ " `idInstituicaoFinanciadora`=?, "
+				+ " `idTecnicoAdmin`=?, "
+				+ " `idProcesso`=?, "
+				+ " `idDiscente`=?"
+				+ "WHERE idAuxilio = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, auxilio.getTipoAuxilio());
+			stmt.setDouble(2, auxilio.getValorAuxilio() );
+			//stmt.setDate(3, auxilio.getValidadeInicial());
+			//stmt.setDate(4, auxilio.getValidadeFinal());
+			stmt.setInt   (5, auxilio.getIF().getIdIF());
+			stmt.setInt   (6, auxilio.getT().getIdTecnicoAdmin());
+			stmt.setInt   (7, auxilio.getP().getIdProcesso());
+			stmt.setInt   (8, auxilio.getDiscente().getIdDiscente());
+			stmt.setInt   (9, auxilio.getIdAuxilio());
+			stmt.execute();
+			stmt.close();
+			return true;
 
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return false;
+	}
+	
+	/*public Auxilio getObject(String matricula){
+		try{
+		AssistenteSocial as = new AssistenteSocial();
+		String sql = "select * from assistenteSocial where idServidor = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, super.getIdServidor(matricula));
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()){
+           as.setId_assistenteSocial(rs.getInt("idAssistenteSocial"));			
+		}
+		stmt.close();
+		rs.close();
+		return as;
+        
+	}
+		catch (Exception e){
+			System.out.println("Exception is :"+e);
+		}
+		return null;
+		
+     }*/
 }

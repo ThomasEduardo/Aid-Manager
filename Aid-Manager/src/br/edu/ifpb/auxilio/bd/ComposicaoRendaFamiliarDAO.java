@@ -2,9 +2,11 @@ package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.ComposicaoRendaFamiliar;
+
 
 
 public class ComposicaoRendaFamiliarDAO {
@@ -74,4 +76,57 @@ public class ComposicaoRendaFamiliarDAO {
 		}
 		return false;
 	}
+	
+	public int getIdCrf(int idPerfilSocio) {
+		try {
+			int idCrf = 0;
+			String sql = "select idCrf from composicaoRendaFamiliar where idPerfilSocio = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, idPerfilSocio);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				idCrf = rs.getInt("idCrf");
+
+			}
+			stmt.close();
+			rs.close();
+			return idCrf;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+
+		return 0;
+
+	}
+
+	public ComposicaoRendaFamiliar getObject(int idPerfilSocio) {
+		try {
+			ComposicaoRendaFamiliar crf = new ComposicaoRendaFamiliar();
+			String sql = "select * from composicarRendaFamiliar where idPerfilSocio = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, idPerfilSocio);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+
+				crf.setNome(rs.getString("nome"));
+				crf.setIdade(rs.getInt("idade"));
+				crf.setGrauDeInstrucao(rs.getInt("grauDeInstrucao"));
+				crf.setProfissao(rs.getString("grauDeInstrucao"));
+				crf.setRenda(rs.getDouble("renda"));
+				// stmt.setInt (6, crf.getPs().getIdPerfilSocio());
+
+			}
+			stmt.close();
+			rs.close();
+			return crf;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return null;
+
+	}
+	
+	
 }

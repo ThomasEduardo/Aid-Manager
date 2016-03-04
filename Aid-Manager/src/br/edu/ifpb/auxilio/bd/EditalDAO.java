@@ -2,10 +2,12 @@ package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 import br.edu.ifpb.auxilio.dominio.Edital;
-import br.edu.ifpb.auxilio.dominio.Pessoa;
+
 
 public class EditalDAO {
 private Connection conn;
@@ -36,11 +38,11 @@ private Connection conn;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setDate(1, edital.getIniInscricoes() );
-			stmt.setDate(2, edital.getFimInscricoes());
-			stmt.setDate(3, edital.getIniEntregaForm());
+			//stmt.setDate(1, edital.getIniInscricoes() );
+			//stmt.setDate(2, edital.getFimInscricoes());
+			//stmt.setDate(3, edital.getIniEntregaForm());
 			stmt.setInt(4, edital.getAno());
-			stmt.setDate(5, edital.getFimForm());
+			//stmt.setDate(5, edital.getFimForm());
 			stmt.setString(6, edital.getDescricao());
 			stmt.setString(7, edital.getTitulo());
 			stmt.setDouble(8, edital.getValorBolsaDiscente());
@@ -73,11 +75,11 @@ private Connection conn;
 				+ "WHERE idEdital = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setDate(1, edital.getIniInscricoes() );
-			stmt.setDate(2, edital.getFimInscricoes());
-			stmt.setDate(3, edital.getIniEntregaForm());
+			//stmt.setDate(1, edital.getIniInscricoes() );
+			//stmt.setDate(2, edital.getFimInscricoes());
+			//stmt.setDate(3, edital.getIniEntregaForm());
 			stmt.setInt(4, edital.getAno());
-			stmt.setDate(5, edital.getFimForm());
+			//stmt.setDate(5, edital.getFimForm());
 			stmt.setString(6, edital.getDescricao());
 			stmt.setString(7, edital.getTitulo());
 			stmt.setDouble(8, edital.getValorBolsaDiscente());
@@ -93,5 +95,63 @@ private Connection conn;
 			System.out.println("Exception is :" + e);
 		}
 		return false;
+	}
+	
+	public Edital getObject(String numEdital){
+		try{
+		Edital edital = new Edital();
+		String sql = "select * from edital where numEdital = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, numEdital);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()){
+			
+			edital.setIniInscricoes(rs.getDate("iniInscricoes"));
+			edital.setFimInscricoes(rs.getDate("fimInscricoes"));
+			edital.setIniEntregaForm(rs.getDate("iniEntregaForm"));
+			edital.setAno(rs.getInt("ano"));
+			edital.setFimForm(rs.getDate("fimForm"));
+			edital.setDescricao(rs.getString("descricao"));
+			edital.setTitulo(rs.getString("titulo"));
+			edital.setValorBolsaDiscente(rs.getDouble("valorBolsaDiscente"));
+			edital.setVagasBolsistas(rs.getInt("vagasBolsistas"));
+			edital.setNumEdital(rs.getString("numEdital"));
+			//stmt.setInt(11, edital.getIdProcesso());	
+			
+		}
+		stmt.close();
+		rs.close();
+		return edital;
+        
+	}
+		catch (Exception e){
+			System.out.println("Exception is :"+e);
+		}
+		return null;
+		
+		
+	}
+	
+	public int getIdEdital(String numEdital) {
+		try {
+			int idEdital = 0;
+			String sql = "select idEdital from edital where numEdital = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, numEdital);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				idEdital = rs.getInt("idEdital");
+
+			}
+			stmt.close();
+			rs.close();
+			return idEdital;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		
+		return 0;
+
 	}
 }

@@ -7,10 +7,10 @@ import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.Discente;
 import br.edu.ifpb.auxilio.dominio.Pessoa;
-import br.edu.ifpb.auxilio.dominio.TecnicoAdmin;
 
 
-public class DiscenteDAO extends PessoaDAO {
+
+public class DiscenteDAO{
 	
 	private Connection conn;
 	
@@ -63,7 +63,7 @@ public class DiscenteDAO extends PessoaDAO {
 			stmt.setString(14, discente.getPontoRef());
 			stmt.setString(15, discente.getEstado());
 			stmt.setString(16, discente.getMotivoSolicitacao());
-			stmt.setInt   (17, getIdPessoa(discente.getMatricula()));
+			//stmt.setInt   (17, getIdPessoa(discente.getMatricula()));
 			//stmt.setInt   (18, discente.getResultados().getNumProcesso());
 			stmt.execute();
 			stmt.close();
@@ -132,7 +132,7 @@ public class DiscenteDAO extends PessoaDAO {
 	        
 			String sql = "select * from discente where idPessoa = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, super.getIdPessoa(matricula));
+			//stmt.setInt(1, super.getIdPessoa(matricula));
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				discente.setIdDiscente(rs.getInt("idDiscente"));
@@ -163,10 +163,26 @@ public class DiscenteDAO extends PessoaDAO {
 			System.out.println("Exception is :" + e);
 		}
 		return null;
+	
+	}
+	
+	public int getIdDiscente(int idPessoa) {
 
+		int idDiscente = 0;
 		
-		
-		
+		String sql = "select idDiscente from discente where idPessoa = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, idPessoa);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				idDiscente = rs.getInt("idPessoa");
+			}
+			return idDiscente;
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return 0;
 	}
 	
 	

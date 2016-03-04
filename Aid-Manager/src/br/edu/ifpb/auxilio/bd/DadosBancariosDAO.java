@@ -2,6 +2,7 @@ package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
@@ -47,6 +48,7 @@ private Connection conn;
 
 	}
 	
+	
 	public boolean update(DadosBancarios db) {
 		String sql = "update dadosBancarios set "
 				+ "banco = ? ,"
@@ -74,4 +76,55 @@ private Connection conn;
 		}
 		return false;
 	}
+	
+	
+	public int getIdDadosBancarios(String numAgencia) {
+
+		int idDb = 0;
+		String sql = "select idDadosBancarios from dadosBancarios where numAgencia = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, numAgencia);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				idDb = rs.getInt("idDb");
+			}
+			return idDb;
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return 0;
+	}
+	
+	
+	public DadosBancarios getObject(String numAgencia) {
+         
+		DadosBancarios db = new DadosBancarios();
+		String sql = "select * from dadosBancarios where numAgencia = ?";
+		
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, numAgencia);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				
+				db.setBanco(rs.getString("banco"));
+				db.setAgencia(rs.getString("agencia"));
+				db.setNumAgencia(rs.getString("numAgencia"));
+				db.setSaldo(rs.getDouble("saldo")); 
+				db.setObs(rs.getString("obs"));
+				//stmt.setInt(6, db.getDiscente().getIdDiscente());
+			}
+			return db;
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
 }

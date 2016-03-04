@@ -32,7 +32,7 @@ public class ProcessoDAO {
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setDate(1, processo.getDataRequisicao() );
+			//stmt.setDate(1, processo.getDataRequisicao() );
 			stmt.setString(2, processo.getObs());
 			stmt.setString(3, processo.getNumProcesso());
 			stmt.setString(4, processo.getAssunto());
@@ -62,7 +62,7 @@ public class ProcessoDAO {
 				+ "WHERE idProcesso = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setDate(1, processo.getDataRequisicao() );
+			//stmt.setDate(1, processo.getDataRequisicao() );
 			stmt.setString(2, processo.getObs());
 			stmt.setString(3, processo.getNumProcesso());
 			stmt.setString(4, processo.getAssunto());

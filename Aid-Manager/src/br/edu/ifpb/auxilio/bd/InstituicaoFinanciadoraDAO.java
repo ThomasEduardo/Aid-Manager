@@ -2,9 +2,11 @@ package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
+
 
 public class InstituicaoFinanciadoraDAO {
 	private Connection conn;
@@ -62,7 +64,33 @@ public class InstituicaoFinanciadoraDAO {
 		}
 		return false;
 	}
+	
+	
 	public void Delete(){
 		//Falta fazer
+	}
+	
+	public InstituicaoFinanciadora getObject (String cnpj){
+		
+		InstituicaoFinanciadora IF = new InstituicaoFinanciadora();
+		String sql = "select * from instituicaoBancaria where cnpj = ?";
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, cnpj);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				IF.setNomeIF(rs.getString("NomeIF"));
+				IF.setCnpj(rs.getString("CNPJ"));
+				IF.setOrcamentoAuxilio(rs.getDouble("orcamentoAuxilio"));
+				//stmt.setInt(4, IF.getAdmin().getIdTecnicoAdmin());
+				IF.setIdIF(rs.getInt("idIF"));
+			}
+			return IF;
+		}
+		catch (Exception e){
+			System.out.println("Exception is :"+e);
+		}
+		return null;
+				
 	}
 }
