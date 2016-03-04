@@ -5,15 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.edu.ifpb.auxilio.dominio.ComposicaoRendaFamiliar;
 import br.edu.ifpb.auxilio.dominio.Familiar;
 
 
 
-public class familiarDAO {
+public class FamiliarDAO {
 	private Connection conn;
 	
-	public familiarDAO(){
+	public FamiliarDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
 			System.out.println("Conexão estabelecida");
@@ -43,6 +42,8 @@ public class familiarDAO {
 			stmt.setDouble(5, familiar.getRenda());
 			stmt.setString(6, familiar.getDoenca());
 			stmt.setInt(7, familiar.getPs().getIdPerfilSocio());
+			
+			
 			stmt.execute();
 			stmt.close();
 
@@ -54,6 +55,8 @@ public class familiarDAO {
 	
 	
 	public boolean update(Familiar familiar) {
+		
+		
 		String sql = "update familiar set "
 				+ "nome = ? ,"
 				+ "idade = ?,"
@@ -64,15 +67,22 @@ public class familiarDAO {
 				+ "idPerfilSocio = ?,"
 				+ "WHERE idCrf = ?";
 		try {
+			
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, crf.getNome());
-			stmt.setInt   (2, crf.getIdade());
-			stmt.setInt   (3, crf.getGrauDeInstrucao());
-			stmt.setString(4, crf.getProfissao());
-			stmt.setDouble(5, crf.getRenda());
-			stmt.setInt   (6, crf.getPs().getIdPerfilSocio());
+			stmt.setString(1, familiar.getNome());
+			stmt.setInt   (2, familiar.getIdade());
+			stmt.setInt   (3, familiar.getGrauDeInstrucao());
+			stmt.setString(4, familiar.getProfissao());
+			stmt.setDouble(5, familiar.getRenda());
+			stmt.setString(6, familiar.getDoenca());
+			stmt.setInt   (7, familiar.getPs().getIdPerfilSocio());
+			
+			
 			stmt.execute();
 			stmt.close();
+			
+			
 			return true;
 
 		} catch (Exception e) {
@@ -81,20 +91,30 @@ public class familiarDAO {
 		return false;
 	}
 	
-	public int getIdCrf(int idPerfilSocio) {
+	public int getIdFamiliar(int idPerfilSocio) {
+		
 		try {
-			int idCrf = 0;
-			String sql = "select idCrf from composicaoRendaFamiliar where idPerfilSocio = ?";
+			
+			int idFamiliar = 0;
+			
+			String sql = "select idFamiliar from familiar where idPerfilSocio = ?";
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idPerfilSocio);
+			
+			
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				idCrf = rs.getInt("idCrf");
+				
+				idFamiliar = rs.getInt("idFamiliar");
 
 			}
+			
+			
 			stmt.close();
 			rs.close();
-			return idCrf;
+			
+			return idFamiliar;
 
 		} catch (Exception e) {
 			System.out.println("Exception is :" + e);
@@ -104,26 +124,33 @@ public class familiarDAO {
 
 	}
 
-	public ComposicaoRendaFamiliar getObject(int idPerfilSocio) {
+	public Familiar getObject(int idPerfilSocio) {
 		try {
-			ComposicaoRendaFamiliar crf = new ComposicaoRendaFamiliar();
-			String sql = "select * from composicarRendaFamiliar where idPerfilSocio = ?";
+			
+			Familiar familiar = new Familiar();
+			
+			String sql = "select * from familiar where idPerfilSocio = ?";
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idPerfilSocio);
+			
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 
-				crf.setNome(rs.getString("nome"));
-				crf.setIdade(rs.getInt("idade"));
-				crf.setGrauDeInstrucao(rs.getInt("grauDeInstrucao"));
-				crf.setProfissao(rs.getString("grauDeInstrucao"));
-				crf.setRenda(rs.getDouble("renda"));
+				familiar.setNome(rs.getString("nome"));
+				familiar.setIdade(rs.getInt("idade"));
+				familiar.setGrauDeInstrucao(rs.getInt("grauDeInstrucao"));
+				familiar.setProfissao(rs.getString("profissao"));
+				familiar.setRenda(rs.getDouble("renda"));
+				familiar.setDoenca(rs.getString("doenca"));
 				// stmt.setInt (6, crf.getPs().getIdPerfilSocio());
 
 			}
+			
 			stmt.close();
 			rs.close();
-			return crf;
+			
+			return familiar;
 
 		} catch (Exception e) {
 			System.out.println("Exception is :" + e);

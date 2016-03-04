@@ -136,7 +136,7 @@ Create table PerfilSocioEconomico(
 
 
 Create table Familiar( 
-	idCrf int unsigned auto_increment primary key, 
+	idFamiliar int unsigned auto_increment primary key, 
 	nome varchar(70), 
 	idade int unsigned, 
 	grauDeInstrucao int unsigned, 
@@ -156,29 +156,6 @@ Create table documento (
 	constraint fk_documentacao_discente foreign key(idDiscente) references discente(idDiscente)
 );
 
-Create table DiscentePre ( 
-
-	idDiscentePre int unsigned auto_increment primary key, 
-	escolaOrigem varchar(60), 
-	orgExpeditor varchar(60), 
-	numCartaoSus varchar(60), 
-	estadoCivil varchar(60), 
-	idade int, 
-	curso varchar(60),
-	periodoLetivo int,
-	turno varchar(60), 
-	endereco varchar(60),
-	cep varchar(60),
-	bairro varchar(60), 
-	cidade varchar(60),
-	numCasa int,
-	pontoRef varchar(50),
-	estado varchar(60),
-	motivoSolicitacao varchar(255),
-	idPessoa int unsigned not null,
-	constraint fk_discentePre_pessoa foreign key (idPessoa) references pessoa(idPessoa)
-
-);
 		
 /*----------------- Tabelas de backup -------------------------*/
 Create table  bkpPessoa(
