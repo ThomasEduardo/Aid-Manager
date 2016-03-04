@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.dominio.PerfilSocioEconomico;
 
-public class PerfilSocioEconomicoDAO{
+public class PerfilSocioEconomicoDAO {
 	private Connection conn;
 
 	public PerfilSocioEconomicoDAO() {
