@@ -33,7 +33,7 @@ public class InstituicaoFinanciadoraDAO {
 			stmt.setString(1, IF.getNomeIF());
 			stmt.setString(2, IF.getCnpj());
 			stmt.setDouble(3, IF.getOrcamentoAuxilio());
-			stmt.setInt(4, IF.getAdmin().getIdTecnicoAdmin());
+			stmt.setInt(4, IF.getServidor().getIdServidor());
 			stmt.execute();
 			stmt.close();
 
@@ -53,7 +53,7 @@ public class InstituicaoFinanciadoraDAO {
 			stmt.setString(1, IF.getNomeIF());
 			stmt.setString(2, IF.getCnpj());
 			stmt.setDouble(3, IF.getOrcamentoAuxilio());
-			stmt.setInt(4, IF.getAdmin().getIdTecnicoAdmin());
+			stmt.setInt(4, IF.getServidor().getIdServidor());
 			stmt.setInt(5, IF.getIdIF());
 			stmt.execute();
 			stmt.close();
@@ -82,7 +82,7 @@ public class InstituicaoFinanciadoraDAO {
 				IF.setNomeIF(rs.getString("NomeIF"));
 				IF.setCnpj(rs.getString("CNPJ"));
 				IF.setOrcamentoAuxilio(rs.getDouble("orcamentoAuxilio"));
-				//stmt.setInt(4, IF.getAdmin().getIdTecnicoAdmin());
+				//stmt.setInt(4, IF.getServidor().getIdServidor());
 				IF.setIdIF(rs.getInt("idIF"));
 			}
 			return IF;
