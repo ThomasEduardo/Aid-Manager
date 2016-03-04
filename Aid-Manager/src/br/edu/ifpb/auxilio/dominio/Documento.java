@@ -2,33 +2,33 @@ package br.edu.ifpb.auxilio.dominio;
 
 
 public class Documento {
-	private int idDocumentacao;
-	private String nomeDocumentacao;
+	private int idDocumento;
+	private String nomeDocumento;
 	private String status;
 	private String obs;
 	private Discente discente;
 	
 	// CONSTRUTOR
 	public Documento(){
-		setIdDocumentacao(0);
-		setNomeDocumentacao("");
+		setIdDocumento(0);
+		setNomeDocumento("");
 		setStatus("");
 		setObs("");
 		setDiscente(null);
 	}
 	
-	public Documento(int idDocumentacao, String nomeDocumentacao,
+	public Documento(int idDocumento, String nomeDocumento,
 			String status, String obs, Discente discente) {
-		this.idDocumentacao = idDocumentacao;
-		this.nomeDocumentacao = nomeDocumentacao;
+		this.idDocumento = idDocumento;
+		this.nomeDocumento = nomeDocumento;
 		this.status = status;
 		this.obs = obs;
 		this.discente = discente;
 	}
 	
-	public Documento(String nomeDocumentacao,
+	public Documento(String nomeDocumento,
 			String status,String obs, Discente discente) {
-		this.nomeDocumentacao = nomeDocumentacao;
+		this.nomeDocumento = nomeDocumento;
 		this.status = status;
 		this.obs = obs;
 		this.discente = discente;
@@ -36,20 +36,20 @@ public class Documento {
 	
 	// GETTERS E SETTERS
 
-	public int getIdDocumentacao() {
-		return idDocumentacao;
+	public int getIdDocumento() {
+		return idDocumento;
 	}
 
-	public void setIdDocumentacao(int idDocumentacao) {
-		this.idDocumento = idDocumentacao;
+	public void setIdDocumento(int idDocumento) {
+		this.idDocumento = idDocumento;
 	}
 
-	public String getNomeDocumentacao() {
+	public String getNomeDocumento() {
 		return nomeDocumento;
 	}
 
-	public void setNomeDocumento(String nomeDocumentacao) {
-		this.nomeDocumento = nomeDocumentacao;
+	public void setNomeDocumento(String nomeDocumento) {
+		this.nomeDocumento = nomeDocumento;
 	}
 
 	public String getStatus() {
@@ -78,8 +78,8 @@ public class Documento {
 	
 	public boolean equals(Documento d){
 	  if(d instanceof Documento){
-		if(this.getIdDocumentacao() == d.getIdDocumento()){
-			if(this.getNomeDocumentacao() == d.getNomeDocumento()){
+		if(this.getIdDocumento() == d.getIdDocumento()){
+			if(this.getNomeDocumento() == d.getNomeDocumento()){
 				if(this.getStatus() == d.getStatus()){
 						if(this.getObs() == d.getObs()){
 							if(this.getDiscente() == d.getDiscente()){
