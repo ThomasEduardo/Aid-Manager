@@ -52,7 +52,7 @@ public class PerfilSocioEconomicoDAO {
 			stmt.setDouble(10, PSE.getTelefone());
 			stmt.setString(11, PSE.getObs());
 			stmt.setDouble(12,PSE.getFinanciamentoCasaPropria());
-			stmt.setInt(13, PSE.getAs().getId_assistenteSocial());
+			stmt.setInt(13, PSE.getServidor().getIdServidor());
 			stmt.setInt(14, PSE.getDiscente().getIdDiscente());
 			
 			stmt.execute();
@@ -95,7 +95,7 @@ public class PerfilSocioEconomicoDAO {
 			stmt.setDouble(10, PSE.getTelefone());
 			stmt.setString(11, PSE.getObs());
 			stmt.setDouble(12,PSE.getFinanciamentoCasaPropria());
-			stmt.setInt(13, PSE.getAs().getId_assistenteSocial());
+			stmt.setInt(13, PSE.getServidor().getIdServidor());
 			stmt.setInt(14, PSE.getDiscente().getIdDiscente());
 			stmt.setInt(15, PSE.getIdPerfilSocio());
 			stmt.execute();
