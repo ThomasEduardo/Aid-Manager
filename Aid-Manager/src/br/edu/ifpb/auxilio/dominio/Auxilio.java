@@ -17,32 +17,26 @@ public class Auxilio {
 		setTipoAuxilio("");
 		setValorAuxilio(0);
 		setIF(null);
-		setT(null);
 		setP(null);
-		setDiscente(null);
 		
 	} 
-	public Auxilio(int idAuxilio,String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p,Discente d){
+	public Auxilio(int idAuxilio,String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,Processo p){
 		setIdAuxilio(idAuxilio);
 		setTipoAuxilio(tipoAuxilio);
 		setValorAuxilio(valorAuxilio);
 		setValidadeInicial(vI);
 		setValidadeFinal(vF);
 		setIF(IF);
-		setT(t);
 		setP(p);
-		setDiscente(d);
 	}
 	
-	public Auxilio(String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,TecnicoAdmin t,Processo p,Discente d){
+	public Auxilio(String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,Processo p){
 		setTipoAuxilio(tipoAuxilio);
 		setValorAuxilio(valorAuxilio);
 		setValidadeInicial(vI);
 		setValidadeFinal(vF);
 		setIF(IF);
-		setT(t);
 		setP(p);
-		setDiscente(d);
 	}
 	
 	/*----------------- GETTERS E SETTERS ----------------*/
@@ -82,23 +76,11 @@ public class Auxilio {
 	public void setIF(InstituicaoFinanciadora iF) {
 		IF = iF;
 	}
-	public TecnicoAdmin getT() {
-		return t;
-	}
-	public void setT(TecnicoAdmin t) {
-		this.t = t;
-	}
 	public Processo getP() {
 		return p;
 	}
 	public void setP(Processo p) {
 		this.p = p;
-	}
-	public Discente getDiscente() {
-		return Discente;
-	}
-	public void setDiscente(Discente discente) {
-		Discente = discente;
 	}
 
 	public boolean equals(Auxilio aux){
@@ -108,9 +90,7 @@ public class Auxilio {
 					if(this.getValidadeInicial() == aux.getValidadeInicial()){
 						if(this.getValorAuxilio() == aux.getValorAuxilio()){
 							if(this.getIF() == aux.getIF()){
-								if(this.getT() == aux.getT()){
 									if(this.getP() == aux.getP()){
-										if(this.getDiscente() == aux.getDiscente()){
 												return true;
 										}
 									}
@@ -119,8 +99,6 @@ public class Auxilio {
 						}
 					}
 				}
-			}
-		}
 		return false;
 		
 	}

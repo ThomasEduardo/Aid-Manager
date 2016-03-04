@@ -21,7 +21,6 @@ public class Discente extends Pessoa {
 	private String pontoRef;
 	private String estado;
 	private String motivoSolicitacao;
-	private Resultados resultados;
 	
 	
 	
@@ -44,10 +43,10 @@ public class Discente extends Pessoa {
 		setNumCasa(0);
 		setPontoRef("");
 		setEstado("");
-		setResultados(null);
+
 		
 	}
-	public Discente(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idDiscente,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r,Auxilio aux){
+	public Discente(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idDiscente,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Auxilio aux){
 		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setIdDiscente(idDiscente);
 		setEscolaOrigem(escolaOrigem);
@@ -65,10 +64,9 @@ public class Discente extends Pessoa {
 		setNumCasa(numCasa);
 		setPontoRef(pontoRef);
 		setEstado(estado);
-		setResultados(r);
 		
 	}
-	public Discente(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Resultados r){
+	public Discente(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String numCartaoSus,String estadoCivil,int Idade,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef){
 		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setEscolaOrigem(escolaOrigem);
 		setOrgExpeditor(orgExpeditor);
@@ -85,7 +83,6 @@ public class Discente extends Pessoa {
 		setNumCasa(numCasa);
 		setPontoRef(pontoRef);
 		setEstado(estado);
-		setResultados(r);
 		
 	}
 	
@@ -193,12 +190,6 @@ public class Discente extends Pessoa {
 	public void setMotivoSolicitacao(String motivoSolicitacao) {
 		this.motivoSolicitacao = motivoSolicitacao;
 	}
-	public Resultados getResultados() {
-		return resultados;
-	}
-	public void setResultados(Resultados resultados) {
-		this.resultados = resultados;
-	}
 	
 	public boolean equals(Discente d){
 		if (d instanceof Discente) {
@@ -217,9 +208,8 @@ public class Discente extends Pessoa {
 																		if (this.getNumCasa() == d.getNumCasa()) {
 																			if (this.getPontoRef() == d.getPontoRef()) {
 																				if (this.getEstado() == d.getEstado()) {
-																					if(this.getResultados() == d.getResultados()){
 																							return true;
-																						}
+
 																					}
 																				}
 																			}

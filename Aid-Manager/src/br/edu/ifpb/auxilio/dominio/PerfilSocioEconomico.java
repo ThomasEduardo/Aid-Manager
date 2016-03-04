@@ -15,7 +15,7 @@ public class PerfilSocioEconomico {
 	private double telefone;
 	private double financiamentoCasaPropria;
 	private String obs;
-	private AssistenteSocial as;
+	private Servidor servidor;
 	private Discente discente;
 	
 	public PerfilSocioEconomico(){
@@ -32,7 +32,7 @@ public class PerfilSocioEconomico {
 		setAgua(0);
 		setTelefone(0);
 		setFinanciamentoCasaPropria(0);
-		setAs(null);
+		setServidor(null);
 		setDiscente(null);
 		setObs("");
 		
@@ -53,12 +53,12 @@ public class PerfilSocioEconomico {
 		setAgua(agua);
 		setTelefone(telefone);
 		setFinanciamentoCasaPropria(financiamentoCasaPropria);
-		setAs(as);
+		setServidor(as);
 		setDiscente(d);
 		
 	}
 	
-	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as,Discente d){
+	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,Servidor servidor,Discente d){
 	
 		
 		setSituacaoRendaFamiliar(srf);
