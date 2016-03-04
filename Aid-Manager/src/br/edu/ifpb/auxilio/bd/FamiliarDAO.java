@@ -5,14 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.edu.ifpb.auxilio.dominio.ComposicaoRendaFamiliar;
+import br.edu.ifpb.auxilio.dominio.Familiar;
 
 
 
-public class ComposicaoRendaFamiliarDAO {
+public class FamiliarDAO {
 	private Connection conn;
 	
-	public ComposicaoRendaFamiliarDAO(){
+	public FamiliarDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
 			System.out.println("Conexão estabelecida");
@@ -20,7 +20,7 @@ public class ComposicaoRendaFamiliarDAO {
 	}
 	
 	
-	public void insert(ComposicaoRendaFamiliar CRF) {
+	public void insert(Familiar f) {
 
 		String sql = "INSERT INTO composicaoRendaFamiliar "
 				+ " `nome`, "
@@ -34,12 +34,12 @@ public class ComposicaoRendaFamiliarDAO {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			
-			stmt.setString(1, CRF.getNome() );
-			stmt.setInt(2, CRF.getIdade());
-			stmt.setInt(3, CRF.getGrauDeInstrucao());
-			stmt.setString(4, CRF.getProfissao());
-			stmt.setDouble(5, CRF.getRenda());
-			stmt.setInt(6, CRF.getPs().getIdPerfilSocio());
+			stmt.setString(1, f.getNome() );
+			stmt.setInt(2, f.getIdade());
+			stmt.setInt(3, f.getGrauDeInstrucao());
+			stmt.setString(4, f.getProfissao());
+			stmt.setDouble(5, f.getRenda());
+			stmt.setInt(6, f.getPs().getIdPerfilSocio());
 			stmt.execute();
 			stmt.close();
 
@@ -50,7 +50,7 @@ public class ComposicaoRendaFamiliarDAO {
 	}
 	
 	
-	public boolean update(ComposicaoRendaFamiliar crf) {
+	public boolean update(Familiar f) {
 		String sql = "update composicaoRendaFamiliar set "
 				+ "nome = ? ,"
 				+ "idade = ?,"
@@ -61,12 +61,12 @@ public class ComposicaoRendaFamiliarDAO {
 				+ "WHERE idCrf = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, crf.getNome());
-			stmt.setInt   (2, crf.getIdade());
-			stmt.setInt   (3, crf.getGrauDeInstrucao());
-			stmt.setString(4, crf.getProfissao());
-			stmt.setDouble(5, crf.getRenda());
-			stmt.setInt   (6, crf.getPs().getIdPerfilSocio());
+			stmt.setString(1, f.getNome());
+			stmt.setInt   (2, f.getIdade());
+			stmt.setInt   (3, f.getGrauDeInstrucao());
+			stmt.setString(4, f.getProfissao());
+			stmt.setDouble(5, f.getRenda());
+			stmt.setInt   (6, f.getPs().getIdPerfilSocio());
 			stmt.execute();
 			stmt.close();
 			return true;
@@ -100,9 +100,9 @@ public class ComposicaoRendaFamiliarDAO {
 
 	}
 
-	public ComposicaoRendaFamiliar getObject(int idPerfilSocio) {
+	public Familiar getObject(int idPerfilSocio) {
 		try {
-			ComposicaoRendaFamiliar crf = new ComposicaoRendaFamiliar();
+			Familiar crf = new Familiar();
 			String sql = "select * from composicarRendaFamiliar where idPerfilSocio = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idPerfilSocio);

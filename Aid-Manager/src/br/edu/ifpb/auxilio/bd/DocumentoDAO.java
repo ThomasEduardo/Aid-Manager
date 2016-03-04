@@ -5,14 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.edu.ifpb.auxilio.dominio.Documentacao;
+import br.edu.ifpb.auxilio.dominio.Documento;
 
 
 
-public class DocumentacaoDAO {
+public class DocumentoDAO {
 private Connection conn;
 	
-	public DocumentacaoDAO(){
+	public DocumentoDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
 			System.out.println("Conexão estabelecida");
@@ -20,7 +20,7 @@ private Connection conn;
 	}
 	
 	
-	public void insert(Documentacao documentacao) {
+	public void insert(Documento documento) {
 
 		String sql = "INSERT INTO documentacao"
 				+ " `nomeDocumentacao`, "
@@ -31,10 +31,10 @@ private Connection conn;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setString(1, documentacao.getNomeDocumentacao() );
-			stmt.setString(2, documentacao.getStatus());
-			stmt.setString(3, documentacao.getObs());
-			stmt.setInt(4, documentacao.getDiscente().getIdDiscente());
+			stmt.setString(1, documento.getNomeDocumento() );
+			stmt.setString(2, documento.getStatus());
+			stmt.setString(3, documento.getObs());
+			stmt.setInt(4, documento.getDiscente().getIdDiscente());
 			stmt.execute();
 			stmt.close();
 			
@@ -44,7 +44,7 @@ private Connection conn;
 
 	}
 	
-	public boolean update(Documentacao d) {
+	public boolean update(Documento d) {
 		String sql = "update pessoa set "
 				+ "nomeDocumentacao = ?,"
 				+ "status_Documento=?,"
@@ -53,11 +53,11 @@ private Connection conn;
 				+ "where idDocumentacao=?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, d.getNomeDocumentacao());
+			stmt.setString(1, d.getNomeDocumento());
 			stmt.setString(2, d.getStatus());
 			stmt.setString(3, d.getObs());
 			stmt.setInt   (4, d.getDiscente().getIdDiscente());
-			stmt.setInt(5, d.getIdDocumentacao());
+			stmt.setInt(5, d.getIdDocumento());
 			stmt.execute();
 			stmt.close();
 			return true;
@@ -88,9 +88,9 @@ private Connection conn;
 	}
 	
 	
-	public Documentacao getObject (int idDiscente){
+	public Documento getObject (int idDiscente){
 		
-		Documentacao documentacao = new Documentacao();
+		Documento documentacao = new Documento();
 		String sql = "select * from documentacao where idDiscente = ?";
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -98,11 +98,11 @@ private Connection conn;
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				
-				documentacao.setNomeDocumentacao(rs.getString("nomeDocumentacao"));
+				documentacao.setNomeDocumento(rs.getString("nomeDocumentacao"));
 				documentacao.setStatus(rs.getString("status_Documento"));
 				documentacao.setObs(rs.getString("obs"));
 				//d.getDiscente().getIdDiscente());
-				documentacao.setIdDocumentacao(rs.getInt("idDocumentacao"));
+				documentacao.setIdDocumento(rs.getInt("idDocumentacao"));
 				
 			}
 			return documentacao;

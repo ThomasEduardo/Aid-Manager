@@ -112,8 +112,7 @@ public class DiscenteDAO{
 			stmt.setString(15, discente.getEstado());
 			stmt.setString(15, discente.getMotivoSolicitacao());
 			stmt.setInt(16, discente.getIdPessoa());
-			stmt.setInt(17, discente.getResultados().getIdResultados());
-			stmt.setInt(18, discente.getIdDiscente());
+			stmt.setInt(17, discente.getIdDiscente());
 			stmt.execute();
 			return true;
 
