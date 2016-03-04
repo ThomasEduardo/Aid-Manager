@@ -21,16 +21,16 @@ public class ResidentesMoradiaDAO {
 	public void insert(ResidentesMoradia resMoradia) {
 
 		String sql = "INSERT INTO residentesMoradia"
-				+ " `idRm`, "
 				+ " `residentes`, "
-				+ " `ps`"
-				+ "VALUES(?,?,?)";
+				+ " `idPerfilSocio`"
+				+ "VALUES(?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setInt(1, resMoradia.getIdRm());
-			stmt.setString(2, resMoradia.getResidentes());
-			stmt.setInt(3, resMoradia.getPs().getIdPerfilSocio());
+
+			stmt.setString(1, resMoradia.getResidentes());
+			stmt.setInt(2, resMoradia.getPs().getIdPerfilSocio());
+			
 			stmt.execute();
 			stmt.close();
 
@@ -39,4 +39,27 @@ public class ResidentesMoradiaDAO {
 		}
 
 	}
+
+
+	public boolean update(ResidentesMoradia rm) {
+		String sql = "update residentesMoradia set"
+				+ " `residentes` =?, "
+				+ " `idPerfilSocio`=?"
+				+ "  WHERE idResidentesMoradia = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, rm.getResidentes());
+			stmt.setInt(2, rm.getPs().getIdPerfilSocio());
+			stmt.setInt(3, rm.getIdRm());
+			stmt.execute();
+			stmt.close();
+			return true;
+	
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return false;
+	}
+	
+
 }

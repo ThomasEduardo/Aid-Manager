@@ -27,7 +27,16 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 	
 	public void insert(Pessoa pessoa) {
 
-		String sql = "insert into pessoa (nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo)values (?,?,?,?,?,?,?,?)";
+		String sql = "insert into pessoa ("
+				+ "nomePessoa,"
+				+ "matricula,"
+				+ "dataNasc,"
+				+ "senha,"
+				+ "email,"
+				+ "cpf,"
+				+ "rg,"
+				+ "sexo)"
+				+ "values (?,?,?,?,?,?,?,?)";
 		try {
 			// prepared statement para inserção
 			PreparedStatement stmt = conn.prepareStatement(sql);

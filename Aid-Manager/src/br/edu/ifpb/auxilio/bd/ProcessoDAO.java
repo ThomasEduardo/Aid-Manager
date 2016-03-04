@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.dominio.Processo;
 
 public class ProcessoDAO {
@@ -19,27 +20,26 @@ public class ProcessoDAO {
 	
 	public void insert(Processo processo) {
 
-		String sql = "INSERT INTO processo"
-				+ " `idProcesso`, "
-				+ " `data`, "
+		String sql = "INSERT INTO processo("
+				+ " `dataRequisicao`, "
 				+ " `obs`, "
 				+ " `numProcesso`,"
 				+ " `assunto`, "
 				+ " `parecer`, "
-				+ " `interessado`, "
-				+ " `servidor`"
-				+ "VALUES(?,?,?,?,?,?,?,?)";
+				+ " `idInteressado`, "
+				+ " `idServidor`)"
+				+ "VALUES(?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setInt(1, processo.getIdProcesso());
-			stmt.setDate(2, processo.getData() );
-			stmt.setString(3, processo.getObs());
-			stmt.setString(4, processo.getNumProcesso());
-			stmt.setString(5, processo.getAssunto());
-			stmt.setString(6, processo.getParecer());
-			stmt.setInt(7, processo.getInteressado().getIdPessoa());
-			stmt.setInt(8, processo.getServidor().getIdServidor());
+			stmt.setDate(1, processo.getDataRequisicao() );
+			stmt.setString(2, processo.getObs());
+			stmt.setString(3, processo.getNumProcesso());
+			stmt.setString(4, processo.getAssunto());
+			stmt.setString(5, processo.getParecer());
+			stmt.setInt(6, processo.getInteressado().getIdPessoa());
+			stmt.setInt(7, processo.getServidor().getIdServidor());
+			
 			stmt.execute();
 			stmt.close();
 			
@@ -48,5 +48,35 @@ public class ProcessoDAO {
 			throw new RuntimeException(e);
 		}
 
+	}
+	
+	public boolean update(Processo processo) {
+		String sql = "update processo set"
+				+ " `dataRequisicao` = ?, "
+				+ " `obs`=?, "
+				+ " `numProcesso`=?,"
+				+ " `assunto`=?, "
+				+ " `parecer`=?, "
+				+ " `idInteressado`=?, "
+				+ " `idServidor`=?,"
+				+ "WHERE idProcesso = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setDate(1, processo.getDataRequisicao() );
+			stmt.setString(2, processo.getObs());
+			stmt.setString(3, processo.getNumProcesso());
+			stmt.setString(4, processo.getAssunto());
+			stmt.setString(5, processo.getParecer());
+			stmt.setInt(6, processo.getInteressado().getIdPessoa());
+			stmt.setInt(7, processo.getServidor().getIdServidor());
+			stmt.setInt(8, processo.getIdProcesso());
+			stmt.execute();
+			stmt.close();
+			return true;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return false;
 	}
 }

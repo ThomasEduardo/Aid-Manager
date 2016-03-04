@@ -5,7 +5,7 @@ import java.util.*;
 public abstract class Processo {
 	
 	private int idProcesso;
-	private Date data;
+	private Date dataRequisicao;
 	private String obs;
 	private String numProcesso;
 	private String assunto;
@@ -14,9 +14,9 @@ public abstract class Processo {
 	private Servidor servidor;
 	
 	
-	public Processo(Date data, String obs, String numProcesso, String assunto,
+	public Processo(Date dataRequisicao, String obs, String numProcesso, String assunto,
 			Pessoa interessado,String parecer,Servidor servidor) {
-		this.data = data;
+		this.dataRequisicao = dataRequisicao;
 		this.obs = obs;
 		this.numProcesso = numProcesso;
 		this.assunto = assunto;
@@ -27,7 +27,7 @@ public abstract class Processo {
 	
 	public Processo(){
 		setIdProcesso(0);
-		setData(null);
+		setDataRequisicao(null);
 		setObs("");
 		setNumProcesso("");
 		setInteressado(null);
@@ -36,9 +36,9 @@ public abstract class Processo {
 		
 	}
 	
-	public Processo(int idProcesso,Date data, String obs, String numProcesso, String assunto,
+	public Processo(int idProcesso,Date dataRequisicao, String obs, String numProcesso, String assunto,
 			Pessoa interessado,String parecer,Servidor servidor) {
-		this.data = data;
+		this.dataRequisicao = dataRequisicao;
 		this.obs = obs;
 		this.numProcesso = numProcesso;
 		this.assunto = assunto;
@@ -49,8 +49,8 @@ public abstract class Processo {
 	//GETTERS E SETTERS
 	
 	
-	public Date getData() {
-		return data;
+	public Date getDataRequisicao() {
+		return dataRequisicao;
 	}
 
 	public int getIdProcesso() {
@@ -61,8 +61,8 @@ public abstract class Processo {
 		this.idProcesso = idProcesso;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDataRequisicao(Date dataRequisicao) {
+		this.dataRequisicao = dataRequisicao;
 	}
 
 	public String getObs() {
@@ -112,7 +112,7 @@ public abstract class Processo {
 
 	public boolean equals(Processo p){
 	if(p instanceof Processo){
-		if(this.getData() == p.getData()){
+		if(this.getDataRequisicao() == p.getDataRequisicao()){
 			if(this.getObs() == p.getObs()){
 				if(this.getNumProcesso() == p.getNumProcesso()){
 					if(this.getAssunto() == p.getAssunto()){

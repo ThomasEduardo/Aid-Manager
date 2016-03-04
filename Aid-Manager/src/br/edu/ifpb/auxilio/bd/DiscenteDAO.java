@@ -24,10 +24,25 @@ public class DiscenteDAO extends PessoaDAO {
 	
 	public void insert(Discente discente) {
 
-		String sql = "INSERT INTO discente(escolaOrigem,orgExpeditor,"
-				+ "numCartaoSus,estadoCivil,idade, curso,periodoLetivo,turno,"
-				+ "endereco,cep,bairro,cidade,"
-				+ "numCasa,pontoRef,estado, motivoSolicitacao,idPessoa,idResultados) "
+		String sql = "INSERT INTO discente("
+				+ "escolaOrigem,"
+				+ "orgExpeditor,"
+				+ "numCartaoSus,"
+				+ "estadoCivil,"
+				+ "idade,"
+				+ "curso,"
+				+ "periodoLetivo,"
+				+ "turno,"
+				+ "endereco,"
+				+ "cep,"
+				+ "bairro,"
+				+ "cidade,"
+				+ "numCasa,"
+				+ "pontoRef,"
+				+ "estado, "
+				+ "motivoSolicitacao,"
+				+ "idPessoa,"
+				+ "idResultados) "
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);

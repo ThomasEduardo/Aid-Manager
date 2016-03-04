@@ -14,6 +14,7 @@ public class PerfilSocioEconomico {
 	private double agua;
 	private double telefone;
 	private double financiamentoCasaPropria;
+	private String obs;
 	private AssistenteSocial as;
 	private Discente discente;
 	
@@ -33,6 +34,7 @@ public class PerfilSocioEconomico {
 		setFinanciamentoCasaPropria(0);
 		setAs(null);
 		setDiscente(null);
+		setObs("");
 		
 	}
 	
@@ -183,7 +185,7 @@ public class PerfilSocioEconomico {
 	}
 
 	public void setDiscente(Discente discente) {
-		discente = discente;
+		this.discente = discente;
 	}
 
 	public boolean equals(PerfilSocioEconomico ps){
@@ -213,5 +215,13 @@ public class PerfilSocioEconomico {
 			}
 		}
 		return false;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
 }

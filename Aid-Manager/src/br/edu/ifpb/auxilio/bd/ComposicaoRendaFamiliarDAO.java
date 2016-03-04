@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.ComposicaoRendaFamiliar;
 
+
 public class ComposicaoRendaFamiliarDAO {
 	private Connection conn;
 	
@@ -20,24 +21,23 @@ public class ComposicaoRendaFamiliarDAO {
 	public void insert(ComposicaoRendaFamiliar CRF) {
 
 		String sql = "INSERT INTO composicaoRendaFamiliar "
-				+ " `idCrf`, "
 				+ " `nome`, "
 				+ " `idade`, "
 				+ " `grauDeInstrucao`, "
 				+ " `profissao`,"
 				+ " `renda`, "
-				+ " `ps`"
-				+ "VALUES(?,?,?,?,?,?,?)";
+				+ " `idPerfilSocio`"
+				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setInt(1, CRF.getIdCrf());
-			stmt.setString(2, CRF.getNome() );
-			stmt.setInt(3, CRF.getIdade());
-			stmt.setInt(4, CRF.getGrauDeInstrucao());
-			stmt.setString(5, CRF.getProfissao());
-			stmt.setDouble(6, CRF.getRenda());
-			stmt.setInt(7, CRF.getPs().getIdPerfilSocio());
+			
+			stmt.setString(1, CRF.getNome() );
+			stmt.setInt(2, CRF.getIdade());
+			stmt.setInt(3, CRF.getGrauDeInstrucao());
+			stmt.setString(4, CRF.getProfissao());
+			stmt.setDouble(5, CRF.getRenda());
+			stmt.setInt(6, CRF.getPs().getIdPerfilSocio());
 			stmt.execute();
 			stmt.close();
 
@@ -45,5 +45,33 @@ public class ComposicaoRendaFamiliarDAO {
 			throw new RuntimeException(e);
 		}
 
+	}
+	
+	
+	public boolean update(ComposicaoRendaFamiliar crf) {
+		String sql = "update composicaoRendaFamiliar set "
+				+ "nome = ? ,"
+				+ "idade = ?,"
+				+ "grauDeInstrucao = ?,"
+				+ "profissao = ?,"
+				+ "renda = ?,"
+				+ "idPerfilSocio = ?,"
+				+ "WHERE idCrf = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, crf.getNome());
+			stmt.setInt   (2, crf.getIdade());
+			stmt.setInt   (3, crf.getGrauDeInstrucao());
+			stmt.setString(4, crf.getProfissao());
+			stmt.setDouble(5, crf.getRenda());
+			stmt.setInt   (6, crf.getPs().getIdPerfilSocio());
+			stmt.execute();
+			stmt.close();
+			return true;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return false;
 	}
 }

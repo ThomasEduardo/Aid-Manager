@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.Documentacao;
 
+
 public class DocumentacaoDAO {
 private Connection conn;
 	
@@ -20,20 +21,18 @@ private Connection conn;
 	public void insert(Documentacao documentacao) {
 
 		String sql = "INSERT INTO documentacao"
-				+ " `idDocumentacao`, "
 				+ " `nomeDocumentacao`, "
-				+ " `status`, "
+				+ " `status_Documento`, "
 				+ " `obs`,"
-				+ " `discente`"
-				+ "VALUES(?,?,?,?,?)";
+				+ " `idDiscente`"
+				+ "VALUES(?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setInt(1, documentacao.getIdDocumentacao());
-			stmt.setString(2, documentacao.getNomeDocumentacao() );
-			stmt.setString(3, documentacao.getStatus());
-			stmt.setString(4, documentacao.getObs());
-			stmt.setInt(5, documentacao.getDiscente().getIdDiscente());
+			stmt.setString(1, documentacao.getNomeDocumentacao() );
+			stmt.setString(2, documentacao.getStatus());
+			stmt.setString(3, documentacao.getObs());
+			stmt.setInt(4, documentacao.getDiscente().getIdDiscente());
 			stmt.execute();
 			stmt.close();
 			
@@ -41,5 +40,29 @@ private Connection conn;
 			throw new RuntimeException(e);
 		}
 
+	}
+	
+	public boolean update(Documentacao d) {
+		String sql = "update pessoa set "
+				+ "nomeDocumentacao = ?,"
+				+ "status_Documento=?,"
+				+ "obs=?,"
+				+ "idDiscente=?"
+				+ "where idDocumentacao=?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, d.getNomeDocumentacao());
+			stmt.setString(2, d.getStatus());
+			stmt.setString(3, d.getObs());
+			stmt.setInt   (4, d.getDiscente().getIdDiscente());
+			stmt.setInt(5, d.getIdDocumentacao());
+			stmt.execute();
+			stmt.close();
+			return true;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return false;
 	}
 }

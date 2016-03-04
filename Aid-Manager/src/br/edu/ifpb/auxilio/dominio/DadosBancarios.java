@@ -7,6 +7,7 @@ public class DadosBancarios {
 	private String agencia;
 	private String numAgencia;
 	private double saldo;
+	private String obs;
 	private Discente Discente;
 	
 	public DadosBancarios(){
@@ -17,6 +18,7 @@ public class DadosBancarios {
 		setNumAgencia("");
 		setSaldo(0);
 		setDiscente(null);
+		setObs("");
 		
 		
 	}
@@ -93,6 +95,14 @@ public class DadosBancarios {
 			}
 		}
 		return false;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
 
 	

@@ -19,7 +19,10 @@ public class ServidorDAO extends PessoaDAO{
 	
 	public void insert(Servidor servidor) {
 
-		String sql = "insert into servidor (cargoServidor,idPessoa)values (?,?)";
+		String sql = "insert into servidor ("
+				+ "cargoServidor,"
+				+ "idPessoa)"
+				+ "values (?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 

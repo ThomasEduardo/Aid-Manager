@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
 
+
 public class DadosBancariosDAO {
 private Connection conn;
 	
@@ -20,21 +21,22 @@ private Connection conn;
 	public void insert(DadosBancarios dadosBancarios) {
 
 		String sql = "INSERT INTO dadosBancarios "
-				+ " `idDadosBancarios`, "
 				+ " `banco`, "
 				+ " `agencia`, "
 				+ " `numAgencia`,"
 				+ " `saldo`, "
-				+ " `discente`"
+				+ " `obs`"
+				+ " `idDiscente`"
 				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setInt(1, dadosBancarios.getIdDadosBancarios());
-			stmt.setString(2, dadosBancarios.getBanco() );
-			stmt.setString(3, dadosBancarios.getAgencia());
-			stmt.setString(4, dadosBancarios.getNumAgencia());
-			stmt.setDouble(5, dadosBancarios.getSaldo());
+
+			stmt.setString(1, dadosBancarios.getBanco() );
+			stmt.setString(2, dadosBancarios.getAgencia());
+			stmt.setString(3, dadosBancarios.getNumAgencia());
+			stmt.setDouble(4, dadosBancarios.getSaldo());
+			stmt.setString(5, dadosBancarios.getObs());
 			stmt.setInt(6, dadosBancarios.getDiscente().getIdDiscente());
 			stmt.execute();
 			stmt.close();
@@ -43,5 +45,33 @@ private Connection conn;
 			throw new RuntimeException(e);
 		}
 
+	}
+	
+	public boolean update(DadosBancarios db) {
+		String sql = "update dadosBancarios set "
+				+ "banco = ? ,"
+				+ "agencia = ?,"
+				+ "numAgencia= ?,"
+				+ "saldo=?,"
+				+ "obs=?,"
+				+ "idDiscente=?,"
+				+ " WHERE idDadosBancarios = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, db.getBanco());
+			stmt.setString(2, db.getAgencia());
+			stmt.setString(3, db.getNumAgencia());
+			stmt.setDouble(4, db.getSaldo()); 
+			stmt.setString(5, db.getObs());
+			stmt.setInt(6, db.getDiscente().getIdDiscente());
+
+			stmt.execute();
+			stmt.close();
+			return true;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return false;
 	}
 }

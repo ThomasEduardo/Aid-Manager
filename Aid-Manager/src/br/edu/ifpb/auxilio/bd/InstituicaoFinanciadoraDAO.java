@@ -20,26 +20,47 @@ public class InstituicaoFinanciadoraDAO {
 	public void insert(InstituicaoFinanciadora IF) {
 
 		String sql = "INSERT INTO instituicaoFinanciadora " +
-					 " `idIF`, " +
 					 " `nomeIF`, " +
 					 " `cnpj`, " +
 					 " `orcamentoAuxilio`," +
 					 " `idTecnicoAdmin`" + 
-					 "VALUES(?,?,?,?,?)";
+					 "VALUES(?,?,?,?)";
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setInt(1, IF.getIdIF());
-			stmt.setString(2, IF.getNomeIF());
-			stmt.setString(3, IF.getCnpj());
-			stmt.setDouble(4, IF.getOrcamentoAuxilio());
-			stmt.setInt(5, IF.getAdmin().getIdTecnicoAdmin());
+			stmt.setString(1, IF.getNomeIF());
+			stmt.setString(2, IF.getCnpj());
+			stmt.setDouble(3, IF.getOrcamentoAuxilio());
+			stmt.setInt(4, IF.getAdmin().getIdTecnicoAdmin());
 			stmt.execute();
 			stmt.close();
 
 		}catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	public boolean update(InstituicaoFinanciadora IF) {
+		String sql = "update instituicaoFinanciadora set"
+				+ " `nomeIF` = ?, " 
+				+ " `cnpj` =?, " 
+				+ " `orcamentoAuxilio`=?," 
+				+ " `idTecnicoAdmin`=?" 
+				+ "WHERE idEdital = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, IF.getNomeIF());
+			stmt.setString(2, IF.getCnpj());
+			stmt.setDouble(3, IF.getOrcamentoAuxilio());
+			stmt.setInt(4, IF.getAdmin().getIdTecnicoAdmin());
+			stmt.setInt(5, IF.getIdIF());
+			stmt.execute();
+			stmt.close();
+			return true;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return false;
 	}
 	public void Delete(){
 		//Falta fazer
