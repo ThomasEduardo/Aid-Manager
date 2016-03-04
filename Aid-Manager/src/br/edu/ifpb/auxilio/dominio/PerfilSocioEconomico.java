@@ -38,7 +38,7 @@ public class PerfilSocioEconomico {
 		
 	}
 	
-	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,AssistenteSocial as,Discente d){
+	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,Servidor servidor,Discente d){
 		
 		
 		setIdPerfilSocio(idPs);
@@ -53,7 +53,7 @@ public class PerfilSocioEconomico {
 		setAgua(agua);
 		setTelefone(telefone);
 		setFinanciamentoCasaPropria(financiamentoCasaPropria);
-		setServidor(as);
+		setServidor(servidor);
 		setDiscente(d);
 		
 	}
@@ -72,7 +72,7 @@ public class PerfilSocioEconomico {
 		setAgua(agua);
 		setTelefone(telefone);
 		setFinanciamentoCasaPropria(financiamentoCasaPropria);
-		setAs(as);
+		setServidor(servidor);
 		setDiscente(d);
 		
 	}
@@ -173,12 +173,12 @@ public class PerfilSocioEconomico {
 	public void setFinanciamentoCasaPropria(double financiamentoCasaPropria) {
 		this.financiamentoCasaPropria = financiamentoCasaPropria;
 	}
-	public AssistenteSocial getAs() {
-		return as;
+	public Servidor getServidor() {
+		return servidor;
 	}
 
-	public void setAs(AssistenteSocial as) {
-		this.as = as;
+	public void setServidor(Servidor servidor) {
+		this.servidor = servidor;
 	}
 	public Discente getDiscente() {
 		return discente;
@@ -186,6 +186,13 @@ public class PerfilSocioEconomico {
 
 	public void setDiscente(Discente discente) {
 		this.discente = discente;
+	}
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
 
 	public boolean equals(PerfilSocioEconomico ps){
@@ -199,7 +206,7 @@ public class PerfilSocioEconomico {
 									if(this.getLuz() == ps.getLuz()){
 										if(this.getAgua() == ps.getAgua()){
 											if(this.getTelefone() == ps.getTelefone()){
-												if	(this.getAs() == ps.getAs()){
+												if	(this.getServidor() == ps.getServidor()){
 													if(this.getDiscente() == ps.getDiscente()){
 															return true;
 													}
@@ -217,11 +224,5 @@ public class PerfilSocioEconomico {
 		return false;
 	}
 
-	public String getObs() {
-		return obs;
-	}
 
-	public void setObs(String obs) {
-		this.obs = obs;
-	}
 }
