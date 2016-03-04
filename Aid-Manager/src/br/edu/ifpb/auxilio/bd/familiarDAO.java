@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.ComposicaoRendaFamiliar;
+import br.edu.ifpb.auxilio.dominio.Familiar;
 
 
 
-public class ComposicaoRendaFamiliarDAO {
+public class familiarDAO {
 	private Connection conn;
 	
-	public ComposicaoRendaFamiliarDAO(){
+	public familiarDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
 			System.out.println("Conexão estabelecida");
@@ -20,7 +21,7 @@ public class ComposicaoRendaFamiliarDAO {
 	}
 	
 	
-	public void insert(ComposicaoRendaFamiliar CRF) {
+	public void insert(Familiar familiar) {
 
 		String sql = "INSERT INTO composicaoRendaFamiliar "
 				+ " `nome`, "
@@ -28,18 +29,20 @@ public class ComposicaoRendaFamiliarDAO {
 				+ " `grauDeInstrucao`, "
 				+ " `profissao`,"
 				+ " `renda`, "
+				+ " `doenca`, "
 				+ " `idPerfilSocio`"
 				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			
-			stmt.setString(1, CRF.getNome() );
-			stmt.setInt(2, CRF.getIdade());
-			stmt.setInt(3, CRF.getGrauDeInstrucao());
-			stmt.setString(4, CRF.getProfissao());
-			stmt.setDouble(5, CRF.getRenda());
-			stmt.setInt(6, CRF.getPs().getIdPerfilSocio());
+			stmt.setString(1, familiar.getNome() );
+			stmt.setInt(2, familiar.getIdade());
+			stmt.setInt(3, familiar.getGrauDeInstrucao());
+			stmt.setString(4, familiar.getProfissao());
+			stmt.setDouble(5, familiar.getRenda());
+			stmt.setString(6, familiar.getDoenca());
+			stmt.setInt(7, familiar.getPs().getIdPerfilSocio());
 			stmt.execute();
 			stmt.close();
 
@@ -50,13 +53,14 @@ public class ComposicaoRendaFamiliarDAO {
 	}
 	
 	
-	public boolean update(ComposicaoRendaFamiliar crf) {
-		String sql = "update composicaoRendaFamiliar set "
+	public boolean update(Familiar familiar) {
+		String sql = "update familiar set "
 				+ "nome = ? ,"
 				+ "idade = ?,"
 				+ "grauDeInstrucao = ?,"
 				+ "profissao = ?,"
 				+ "renda = ?,"
+				+ "doenca = ?,"
 				+ "idPerfilSocio = ?,"
 				+ "WHERE idCrf = ?";
 		try {
