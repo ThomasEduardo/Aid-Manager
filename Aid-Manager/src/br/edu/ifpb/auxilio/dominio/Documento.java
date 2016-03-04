@@ -9,7 +9,7 @@ public class Documento {
 	private Discente discente;
 	
 	// CONSTRUTOR
-	public Documentacao(){
+	public Documento(){
 		setIdDocumentacao(0);
 		setNomeDocumentacao("");
 		setStatus("");
@@ -17,7 +17,7 @@ public class Documento {
 		setDiscente(null);
 	}
 	
-	public Documentacao(int idDocumentacao, String nomeDocumentacao,
+	public Documento(int idDocumentacao, String nomeDocumentacao,
 			String status, String obs, Discente discente) {
 		this.idDocumentacao = idDocumentacao;
 		this.nomeDocumentacao = nomeDocumentacao;
@@ -26,7 +26,7 @@ public class Documento {
 		this.discente = discente;
 	}
 	
-	public Documentacao(String nomeDocumentacao,
+	public Documento(String nomeDocumentacao,
 			String status,String obs, Discente discente) {
 		this.nomeDocumentacao = nomeDocumentacao;
 		this.status = status;
@@ -41,15 +41,15 @@ public class Documento {
 	}
 
 	public void setIdDocumentacao(int idDocumentacao) {
-		this.idDocumentacao = idDocumentacao;
+		this.idDocumento = idDocumentacao;
 	}
 
 	public String getNomeDocumentacao() {
-		return nomeDocumentacao;
+		return nomeDocumento;
 	}
 
-	public void setNomeDocumentacao(String nomeDocumentacao) {
-		this.nomeDocumentacao = nomeDocumentacao;
+	public void setNomeDocumento(String nomeDocumentacao) {
+		this.nomeDocumento = nomeDocumentacao;
 	}
 
 	public String getStatus() {
@@ -76,10 +76,10 @@ public class Documento {
 		this.discente = discente;
 	}
 	
-	public boolean equals(Documentacao d){
-	  if(d instanceof Documentacao){
-		if(this.getIdDocumentacao() == d.getIdDocumentacao()){
-			if(this.getNomeDocumentacao() == d.getNomeDocumentacao()){
+	public boolean equals(Documento d){
+	  if(d instanceof Documento){
+		if(this.getIdDocumentacao() == d.getIdDocumento()){
+			if(this.getNomeDocumentacao() == d.getNomeDocumento()){
 				if(this.getStatus() == d.getStatus()){
 						if(this.getObs() == d.getObs()){
 							if(this.getDiscente() == d.getDiscente()){

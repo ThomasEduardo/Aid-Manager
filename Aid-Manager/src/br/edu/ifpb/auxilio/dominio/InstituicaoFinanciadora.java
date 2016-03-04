@@ -6,7 +6,7 @@ public class InstituicaoFinanciadora {
 	private String nomeIF;
 	private String cnpj;
 	private double orcamentoAuxilio;
-	private Servidor servidor;
+	private Servidor servidor; 
 	
 	public InstituicaoFinanciadora(){
 		
