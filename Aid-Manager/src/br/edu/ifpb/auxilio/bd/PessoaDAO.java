@@ -28,9 +28,9 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 	public void insert(Pessoa pessoa) {
 
 		String sql = "insert into pessoa ("
-				+ "nomePessoa,"
+				+ "nome_pessoa,"
 				+ "matricula,"
-				+ "dataNasc,"
+				+ "data_nasc,"
 				+ "senha,"
 				+ "email,"
 				+ "cpf,"
@@ -64,7 +64,7 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 	public int getIdPessoa(String matricula){
 		
 		int idPessoa = 0; 
-		String sql = "select idPessoa from pessoa where matricula = ?";
+		String sql = "select id_pessoa from pessoa where matricula = ?";
 		try{
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1,matricula);
@@ -88,8 +88,8 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 			stmt.setString(1, matricula);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				pessoa.setIdPessoa(rs.getInt("idPessoa"));
-				pessoa.setNomePessoa(rs.getString("nomePessoa"));
+				pessoa.setIdPessoa(rs.getInt("id_pessoa"));
+				pessoa.setNomePessoa(rs.getString("nome_pessoa"));
 				pessoa.setRg(rs.getString("rg"));
 				pessoa.setMatricula(rs.getString("matricula"));
 				pessoa.setDataNasc(null); //Consertar
@@ -121,7 +121,16 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 	}
 	
 	public boolean update(Pessoa p) {
-		String sql = "update pessoa set nomePessoa = ? ,rg = ?,matricula= ?,dataNasc=?,sexo=?,senha=?,email=?,cpf=? WHERE idPessoa = ?";
+		String sql = "update pessoa set "
+				+ "nome_pessoa = ? ,"
+				+ "rg = ?,"
+				+ "matricula= ?,"
+				+ "data_nasc=?,"
+				+ "sexo=?,"
+				+ "senha=?,"
+				+ "email=?,"
+				+ "cpf=? "
+				+ "WHERE id_pessoa = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, p.getNomePessoa());

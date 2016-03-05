@@ -21,13 +21,13 @@ public class ProcessoDAO {
 	public void insert(Processo processo) {
 
 		String sql = "INSERT INTO processo("
-				+ " `dataRequisicao`, "
+				+ " `data_requisicao`, "
 				+ " `obs`, "
-				+ " `numProcesso`,"
+				+ " `num_processo`,"
 				+ " `assunto`, "
 				+ " `parecer`, "
-				+ " `idInteressado`, "
-				+ " `idServidor`)"
+				+ " `interessado_id`, "
+				+ " `servidor_id`)"
 				+ "VALUES(?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -52,14 +52,14 @@ public class ProcessoDAO {
 	
 	public boolean update(Processo processo) {
 		String sql = "update processo set"
-				+ " `dataRequisicao` = ?, "
+				+ " `data_requisicao` = ?, "
 				+ " `obs`=?, "
-				+ " `numProcesso`=?,"
+				+ " `num_processo`=?,"
 				+ " `assunto`=?, "
 				+ " `parecer`=?, "
-				+ " `idInteressado`=?, "
-				+ " `idServidor`=?,"
-				+ "WHERE idProcesso = ?";
+				+ " `interessado_id`=?, "
+				+ " `servidor_id`=?,"
+				+ "WHERE id_processo = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			//stmt.setDate(1, processo.getDataRequisicao() );

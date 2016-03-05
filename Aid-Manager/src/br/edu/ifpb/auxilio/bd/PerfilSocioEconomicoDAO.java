@@ -21,20 +21,20 @@ public class PerfilSocioEconomicoDAO {
 	public void insert(PerfilSocioEconomico PSE) {
 
 		String sql = "INSERT INTO perfilSocioEconomico" +
-					 " `situcaoRendaFamiliar`, " +
+					 " `situcao_renda_familiar`, " +
 					 " `moradia`, " +
-					 " `situacaoMoradia`," +
-					 " `residenciaFamiliar`, " +
-					 " `situacaoTrabalho`, " +
-					 " `aluguel`, " +
-					 " `condominio`, " + 
-					 " `luz`, " +
-					 " `agua`, " + 
-					 " `telefone`, " +
+					 " `tipo_moradia`," +
+					 " `tipo_residencia_familiar`, " +
+					 " `tipo_trabalho`, " +
+					 " `gastos_aluguel`, " +
+					 " `gastos_condominio`, " + 
+					 " `gastos_luz`, " +
+					 " `gastos_agua`, " + 
+					 " `gastos_telefone`, " +
 					 " `obs`, " +
-					 " `financiamentoCasaPropria`, "	+
-					 " `idassistenteSocial`, " +
-					 " `idDiscente`" +
+					 " `gastos_financiamento_casa_propria`, "	+
+					 " `servidor_id`, " +
+					 " `discente_id`" +
 					 "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -65,21 +65,21 @@ public class PerfilSocioEconomicoDAO {
 	}
 	public boolean update(PerfilSocioEconomico PSE) {
 		String sql = "update perfilSocioEconomico set" 
-				     + "`situcaoRendaFamiliar`=?, " 
+				     + "`situcao_renda_familiar`=?, " 
 					 + " `moradia`=?, " 
-				     + " `situacaoMoradia`=?," 
-					 + " `residenciaFamiliar`=?, " 
-				     + " `situacaoTrabalho`=?, " 
-					 + " `aluguel`=?, " 
-				     + " `condominio`=?, " 
-					 + " `luz`=?, " 
-				     + " `agua`=?, " 
-					 + " `telefone`=?, " 
+				     + " `tipo_moradia`=?," 
+					 + " `tipo_residencia_familiar`=?, " 
+				     + " `tipo_Trabalho`=?, " 
+					 + " `gastos_aluguel`=?, " 
+				     + " `gastos_condominio`=?, " 
+					 + " `gastos_luz`=?, " 
+				     + " `gastos_agua`=?, " 
+					 + " `gastos_telefone`=?, " 
 				     + " `obs`=?, " 
-					 + " `financiamentoCasaPropria`=?, "	
-				     + " `idassistenteSocial`=?, " 
-					 + " `idDiscente`=?" 
-				     + "  WHERE idPerfilSocio = ?";
+					 + " `gastos_financiamento_casa_propria`=?, "	
+				     + " `servidor_id`=?, " 
+					 + " `discente_id`=?" 
+				     + "  WHERE perfil_socio_id = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			

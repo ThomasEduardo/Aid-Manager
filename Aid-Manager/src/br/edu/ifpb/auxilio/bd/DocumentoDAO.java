@@ -22,11 +22,11 @@ private Connection conn;
 	
 	public void insert(Documento documento) {
 
-		String sql = "INSERT INTO documentacao"
-				+ " `nomeDocumentacao`, "
-				+ " `status_Documento`, "
+		String sql = "INSERT INTO documento"
+				+ " `nome_documento`, "
+				+ " `status_documento`, "
 				+ " `obs`,"
-				+ " `idDiscente`"
+				+ " `discente_id`"
 				+ "VALUES(?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -35,6 +35,8 @@ private Connection conn;
 			stmt.setString(2, documento.getStatus());
 			stmt.setString(3, documento.getObs());
 			stmt.setInt(4, documento.getDiscente().getIdDiscente());
+			
+			
 			stmt.execute();
 			stmt.close();
 			
@@ -45,12 +47,12 @@ private Connection conn;
 	}
 	
 	public boolean update(Documento d) {
-		String sql = "update pessoa set "
-				+ "nomeDocumentacao = ?,"
+		String sql = "update documento set "
+				+ "nome_documento = ?,"
 				+ "status_Documento=?,"
 				+ "obs=?,"
-				+ "idDiscente=?"
-				+ "where idDocumentacao=?";
+				+ "discente_id=?"
+				+ "where id_documento=?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, d.getNomeDocumento());
@@ -58,6 +60,8 @@ private Connection conn;
 			stmt.setString(3, d.getObs());
 			stmt.setInt   (4, d.getDiscente().getIdDiscente());
 			stmt.setInt(5, d.getIdDocumento());
+			
+			
 			stmt.execute();
 			stmt.close();
 			return true;
@@ -69,18 +73,18 @@ private Connection conn;
 	}
 	
 	
-	public int getIdDocumentacao(int idDiscente) {
+	public int getIdDocumento(int idDiscente) {
 
-		int idDocumentacao = 0;
-		String sql = "select idDocumentacao from documentacao where idDiscente = ?";
+		int idDocumento = 0;
+		String sql = "select id_documento from documento where discente_id = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idDiscente);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				idDocumentacao = rs.getInt("idDocumentacao");
+				idDocumento = rs.getInt("id_documento");
 			}
-			return idDocumentacao;
+			return idDocumento;
 		} catch (Exception e) {
 			System.out.println("Exception is :" + e);
 		}
@@ -90,22 +94,22 @@ private Connection conn;
 	
 	public Documento getObject (int idDiscente){
 		
-		Documento documentacao = new Documento();
-		String sql = "select * from documentacao where idDiscente = ?";
+		Documento documento = new Documento();
+		String sql = "select * from documento where discente_id = ?";
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idDiscente);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				
-				documentacao.setNomeDocumento(rs.getString("nomeDocumentacao"));
-				documentacao.setStatus(rs.getString("status_Documento"));
-				documentacao.setObs(rs.getString("obs"));
+				documento.setNomeDocumento(rs.getString("nome_documento"));
+				documento.setStatus(rs.getString("status_documento"));
+				documento.setObs(rs.getString("obs"));
 				//d.getDiscente().getIdDiscente());
-				documentacao.setIdDocumento(rs.getInt("idDocumentacao"));
+				documento.setIdDocumento(rs.getInt("id_documento"));
 				
 			}
-			return documentacao;
+			return documento;
 		}
 		catch (Exception e){
 			System.out.println("Exception is :"+e);

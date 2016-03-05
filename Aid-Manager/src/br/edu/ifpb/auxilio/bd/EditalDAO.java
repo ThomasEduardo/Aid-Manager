@@ -23,17 +23,17 @@ private Connection conn;
 	public void insert(Edital edital) {
 
 		String sql = "INSERT INTO `edital`("
-				+ "`iniInscricoes`, "
-				+ "`fimInscricoes`,"
-				+ "`iniEntregaForm`,"
+				+ "`ini_inscricoes`, "
+				+ "`fim_inscricoes`,"
+				+ "`ini_entrega_form`,"
 				+ "`ano`, "
-				+ "`fimForm`, "
+				+ "`fim_form`, "
 				+ "`descricao`, "
 				+ "`titulo`, "
-				+ "`valorBolsaDiscente`, "
-				+ "`vagasBolsistas`, "
-				+ "`numEdital`, "
-				+ "`idProcesso`)"
+				+ "`valor_bolsa_discente`, "
+				+ "`vagas_bolsistas`, "
+				+ "`num_edital`, "
+				+ "`processo_id`)"
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -60,19 +60,19 @@ private Connection conn;
 	}
 	
 	public boolean update(Edital edital) {
-		String sql = "update pessoa set "
-				+ "`iniInscricoes` =?, "
-				+ "`fimInscricoes`=?,"
-				+ "`iniEntregaForm`=?,"
+		String sql = "update edital set "
+				+ "`ini_inscricoes` =?, "
+				+ "`fim_inscricoes`=?,"
+				+ "`ini_entrega_form`=?,"
 				+ "`ano`=?, "
-				+ "`fimForm`=?, "
+				+ "`fim_form`=?, "
 				+ "`descricao`=?, "
 				+ "`titulo`=?, "
-				+ "`valorBolsaDiscente`=?, "
-				+ "`vagasBolsistas`=?, "
-				+ "`numEdital`=?, "
-				+ "`idProcesso=?`"
-				+ "WHERE idEdital = ?";
+				+ "`valor_bolsa_discente`=?, "
+				+ "`vagas_bolsistas`=?, "
+				+ "`num_edital`=?, "
+				+ "`processo_id=?`"
+				+ "WHERE id_edital = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			//stmt.setDate(1, edital.getIniInscricoes() );
@@ -100,22 +100,22 @@ private Connection conn;
 	public Edital getObject(String numEdital){
 		try{
 		Edital edital = new Edital();
-		String sql = "select * from edital where numEdital = ?";
+		String sql = "select * from edital where num_edital = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, numEdital);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()){
 			
-			edital.setIniInscricoes(rs.getDate("iniInscricoes"));
-			edital.setFimInscricoes(rs.getDate("fimInscricoes"));
-			edital.setIniEntregaForm(rs.getDate("iniEntregaForm"));
+			edital.setIniInscricoes(rs.getDate("ini_inscricoes"));
+			edital.setFimInscricoes(rs.getDate("fim_inscricoes"));
+			edital.setIniEntregaForm(rs.getDate("ini_entrega_form"));
 			edital.setAno(rs.getInt("ano"));
-			edital.setFimForm(rs.getDate("fimForm"));
+			edital.setFimForm(rs.getDate("fim_form"));
 			edital.setDescricao(rs.getString("descricao"));
 			edital.setTitulo(rs.getString("titulo"));
-			edital.setValorBolsaDiscente(rs.getDouble("valorBolsaDiscente"));
-			edital.setVagasBolsistas(rs.getInt("vagasBolsistas"));
-			edital.setNumEdital(rs.getString("numEdital"));
+			edital.setValorBolsaDiscente(rs.getDouble("valor_bolsa_discente"));
+			edital.setVagasBolsistas(rs.getInt("vagas_bolsistas"));
+			edital.setNumEdital(rs.getString("num_edital"));
 			//stmt.setInt(11, edital.getIdProcesso());	
 			
 		}
@@ -135,12 +135,12 @@ private Connection conn;
 	public int getIdEdital(String numEdital) {
 		try {
 			int idEdital = 0;
-			String sql = "select idEdital from edital where numEdital = ?";
+			String sql = "select id_edital from edital where num_edital = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, numEdital);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				idEdital = rs.getInt("idEdital");
+				idEdital = rs.getInt("id_edital");
 
 			}
 			stmt.close();

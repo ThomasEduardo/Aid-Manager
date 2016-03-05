@@ -22,14 +22,14 @@ public class FamiliarDAO {
 	
 	public void insert(Familiar familiar) {
 
-		String sql = "INSERT INTO composicaoRendaFamiliar "
-				+ " `nome`, "
-				+ " `idade`, "
-				+ " `grauDeInstrucao`, "
+		String sql = "INSERT INTO familiar "
+				+ " `nome_familiar`, "
+				+ " `idade_familiar`, "
+				+ " `grau_de_instrucao`, "
 				+ " `profissao`,"
 				+ " `renda`, "
 				+ " `doenca`, "
-				+ " `idPerfilSocio`"
+				+ " `perfil_socio_id`"
 				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -58,14 +58,14 @@ public class FamiliarDAO {
 		
 		
 		String sql = "update familiar set "
-				+ "nome = ? ,"
-				+ "idade = ?,"
-				+ "grauDeInstrucao = ?,"
+				+ "nome_familiar = ? ,"
+				+ "idade_familiar = ?,"
+				+ "grau_de_instrucao = ?,"
 				+ "profissao = ?,"
 				+ "renda = ?,"
 				+ "doenca = ?,"
-				+ "idPerfilSocio = ?,"
-				+ "WHERE idCrf = ?";
+				+ "perfil_socio_id = ?,"
+				+ "WHERE id_familiar = ?";
 		try {
 			
 			
@@ -97,7 +97,7 @@ public class FamiliarDAO {
 			
 			int idFamiliar = 0;
 			
-			String sql = "select idFamiliar from familiar where idPerfilSocio = ?";
+			String sql = "select id_familiar from familiar where perfil_socio_id = ?";
 			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idPerfilSocio);
@@ -129,7 +129,7 @@ public class FamiliarDAO {
 			
 			Familiar familiar = new Familiar();
 			
-			String sql = "select * from familiar where idPerfilSocio = ?";
+			String sql = "select * from familiar where perfil_socio_id = ?";
 			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idPerfilSocio);
@@ -137,9 +137,9 @@ public class FamiliarDAO {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 
-				familiar.setNome(rs.getString("nome"));
-				familiar.setIdade(rs.getInt("idade"));
-				familiar.setGrauDeInstrucao(rs.getInt("grauDeInstrucao"));
+				familiar.setNome(rs.getString("nome_familiar"));
+				familiar.setIdade(rs.getInt("idade_familiar"));
+				familiar.setGrauDeInstrucao(rs.getInt("grau_de_instrucao"));
 				familiar.setProfissao(rs.getString("profissao"));
 				familiar.setRenda(rs.getDouble("renda"));
 				familiar.setDoenca(rs.getString("doenca"));

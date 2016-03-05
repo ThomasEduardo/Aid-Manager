@@ -1,7 +1,6 @@
 package br.edu.ifpb.auxilio.bd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.bd.Conexao;
@@ -23,12 +22,12 @@ private Connection conn;
 	public void insert(Auxilio auxilio) {
 
 		String sql = "INSERT INTO auxilio "
-				+ " `tipoAuxilio`, "
-				+ " `valorAuxilio`, "
-				+ " `validadeInicial`, "
-				+ " `validadeFinal`,"
-				+ " `idInstituicaoFinanciadora`, "
-				+ " `idProcesso`"
+				+ " `tipo_Auxilio`, "
+				+ " `valor_Auxilio`, "
+				+ " `validade_Inicial`, "
+				+ " `validade_Final`,"
+				+ " `instituicaoFinanciadora_id`, "
+				+ " `processo_id`"
 				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -53,14 +52,13 @@ private Connection conn;
 	
 	public boolean update(Auxilio auxilio) {
 		String sql = "update pessoa set "
-				+ " `tipoAuxilio`=?, "
-				+ " `valorAuxilio`=?, "
-				+ " `validadeInicial`=?, "
-				+ " `validadeFinal`=?,"
-				+ " `idInstituicaoFinanciadora`=?, "
-				+ " `idProcesso`=?, "
-				+ " `idDiscente`=?"
-				+ "WHERE idAuxilio = ?";
+				+ " `tipo_auxilio`=?, "
+				+ " `valor_auxilio`=?, "
+				+ " `validade_inicial`=?, "
+				+ " `validade_final`=?,"
+				+ " `instituicaoFinanciadora_id`=?, "
+				+ " `processo_id`=?, "
+				+ "WHERE id_auxilio = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, auxilio.getTipoAuxilio());

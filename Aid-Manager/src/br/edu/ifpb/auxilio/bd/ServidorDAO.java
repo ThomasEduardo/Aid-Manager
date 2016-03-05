@@ -20,14 +20,17 @@ public class ServidorDAO extends PessoaDAO{
 	public void insert(Servidor servidor) {
 
 		String sql = "insert into servidor ("
-				+ "cargoServidor,"
-				+ "idPessoa)"
-				+ "values (?,?)";
+				+ "cargo_servidor,"
+				+ "tipo_pessoa,"
+				+ "pessoa_id)"
+				+ "values (?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, servidor.getCargoServidor());
-			stmt.setInt(2, getIdPessoa(servidor.getMatricula()));
+			stmt.setString(2, servidor.getTipoServidor());
+			stmt.setInt(3, getIdPessoa(servidor.getMatricula()));
+			
 			
 			stmt.execute();
 			stmt.close();
@@ -40,7 +43,7 @@ public class ServidorDAO extends PessoaDAO{
     public int getIdServidor(String matricula) {
 
 		int idServidor = 0;
-		String sql = "select idServidor from servidor where idPessoa = ?";
+		String sql = "select id_servidor from servidor where pessoa_id = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, super.getIdPessoa(matricula));
@@ -56,7 +59,7 @@ public class ServidorDAO extends PessoaDAO{
 	}
 	
 	 public void delete(String matricula){
-		String sql =  "delete from servidor where idPessoa = ?";
+		String sql =  "delete from servidor where pessoa_id = ?";
 		
 		try{
 			PreparedStatement st = conn.prepareStatement(sql);

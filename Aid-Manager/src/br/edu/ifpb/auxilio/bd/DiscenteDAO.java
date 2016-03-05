@@ -25,24 +25,22 @@ public class DiscenteDAO{
 	public void insert(Discente discente) {
 
 		String sql = "INSERT INTO discente("
-				+ "escolaOrigem,"
-				+ "orgExpeditor,"
-				+ "numCartaoSus,"
-				+ "estadoCivil,"
-				+ "idade,"
+				+ "escola_origem,"
+				+ "org_Expeditor,"
+				+ "num_cartao_sus,"
+				+ "estado_civil,"
 				+ "curso,"
-				+ "periodoLetivo,"
+				+ "periodo_letivo,"
 				+ "turno,"
 				+ "endereco,"
 				+ "cep,"
 				+ "bairro,"
 				+ "cidade,"
-				+ "numCasa,"
-				+ "pontoRef,"
+				+ "num_casa,"
+				+ "ponto_ref,"
 				+ "estado, "
-				+ "motivoSolicitacao,"
-				+ "idPessoa,"
-				+ "idResultados) "
+				+ "motivo_solicitacao,"
+				+ "pessoa_id) "
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -51,20 +49,19 @@ public class DiscenteDAO{
 			stmt.setString(2, discente.getOrgExpeditor() );
 			stmt.setString(3, discente.getNumCartaoSus());
 			stmt.setString(4, discente.getEstadoCivil());
-			stmt.setInt   (5, discente.getIdade());
-			stmt.setString(6, discente.getCurso());
-			stmt.setInt   (7, discente.getPeriodoLetivo());
-			stmt.setString(8, discente.getTurno());
-			stmt.setString(9, discente.getEndereco());
-			stmt.setString(10, discente.getCep());
-			stmt.setString(11, discente.getBairro());
-			stmt.setString(12, discente.getCidade());
-			stmt.setInt   (13, discente.getNumCasa());
-			stmt.setString(14, discente.getPontoRef());
-			stmt.setString(15, discente.getEstado());
-			stmt.setString(16, discente.getMotivoSolicitacao());
-			//stmt.setInt   (17, getIdPessoa(discente.getMatricula()));
-			//stmt.setInt   (18, discente.getResultados().getNumProcesso());
+			stmt.setString(5, discente.getCurso());
+			stmt.setInt   (6, discente.getPeriodoLetivo());
+			stmt.setString(7, discente.getTurno());
+			stmt.setString(8, discente.getEndereco());
+			stmt.setString(9, discente.getCep());
+			stmt.setString(10, discente.getBairro());
+			stmt.setString(11, discente.getCidade());
+			stmt.setInt   (12, discente.getNumCasa());
+			stmt.setString(13, discente.getPontoRef());
+			stmt.setString(14, discente.getEstado());
+			stmt.setString(15, discente.getMotivoSolicitacao());
+			//stmt.setInt   (16, getIdPessoa(discente.getMatricula()));
+			
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -74,46 +71,47 @@ public class DiscenteDAO{
 	}
 	
 	public boolean update(Discente discente){
-		String sql = "update pessoa set escolaOrigem = ? ,"
-				       + "orgExpeditor = ?,"
-				       + "numCartaoSus  = ?,"
-				       + "estadoCivil =?,"
-				       + "idade = ?,"
+		String sql = "update pessoa set "
+			           + "escola_origem = ? ,"
+				       + "org_expeditor = ?,"
+				       + "num_cartao_sus  = ?,"
+				       + "estado_civil =?,"
 				       + "curso  = ?,"
-				       + "periodoLetivo = ?,"
-				       + "turno = ? "
-				       + "endereco = ?"
-				       + "cep = ? "
-				       + "bairro = ?"
-				       + "cidade = ?"
-				       + "numCasa = ?"
-				       + "pontoRef = ?"
-				       + "estado = ?"
-				       + "motivoSolicitacao = ?"
-				       + "idPessoa = ?"
-				       + "idResultados = ?"
-				       + "WHERE idDiscente = ?";
+				       + "periodo_letivo = ?,"
+				       + "turno = ?,"
+				       + "endereco = ?,"
+				       + "cep = ?,"
+				       + "bairro = ?,"
+				       + "cidade = ?,"
+				       + "num_casa = ?,"
+				       + "ponto_ref = ?,"
+				       + "estado = ?,"
+				       + "motivo_solicitacao = ?,"
+				       + "pessoa_id = ?"
+				       + "WHERE id_discente = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, discente.getEscolaOrigem());
 			stmt.setString(2, discente.getOrgExpeditor());
 			stmt.setString(3, discente.getNumCartaoSus());
 			stmt.setString(4, discente.getEstadoCivil());
-			stmt.setInt(5, discente.getIdade());
-			stmt.setString(6, discente.getCurso());
-			stmt.setInt(7, discente.getPeriodoLetivo());
-			stmt.setString(8, discente.getTurno());
-			stmt.setString(9, discente.getEndereco());
-			stmt.setString(10, discente.getCep());
-			stmt.setString(11, discente.getBairro());
-			stmt.setString(12, discente.getCidade());
-			stmt.setInt(13, discente.getNumCasa());
-			stmt.setString(14, discente.getPontoRef());
-			stmt.setString(15, discente.getEstado());
+			stmt.setString(5, discente.getCurso());
+			stmt.setInt(6, discente.getPeriodoLetivo());
+			stmt.setString(7, discente.getTurno());
+			stmt.setString(8, discente.getEndereco());
+			stmt.setString(9, discente.getCep());
+			stmt.setString(10, discente.getBairro());
+			stmt.setString(11, discente.getCidade());
+			stmt.setInt(12, discente.getNumCasa());
+			stmt.setString(13, discente.getPontoRef());
+			stmt.setString(14, discente.getEstado());
 			stmt.setString(15, discente.getMotivoSolicitacao());
 			stmt.setInt(16, discente.getIdPessoa());
 			stmt.setInt(17, discente.getIdDiscente());
+			
+			
 			stmt.execute();
+			stmt.close();
 			return true;
 
 		} catch (Exception e) {
@@ -129,29 +127,28 @@ public class DiscenteDAO{
 			Discente discente = new Discente();
 	        Pessoa pessoa = new Pessoa();
 	        
-			String sql = "select * from discente where idPessoa = ?";
+			String sql = "select * from discente where pessoa_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			//stmt.setInt(1, super.getIdPessoa(matricula));
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				discente.setIdDiscente(rs.getInt("idDiscente"));
-				discente.setEscolaOrigem(rs.getString("escolaOrigem"));
-				discente.setOrgExpeditor(rs.getString("orgExpeditor"));
-				discente.setNumCartaoSus(("numCartaoSus"));
-				discente.setEstadoCivil(("estadoCivil"));
-				discente.setIdade(rs.getInt("idade"));
+				discente.setIdDiscente(rs.getInt("id_discente"));
+				discente.setEscolaOrigem(rs.getString("escola_origem"));
+				discente.setOrgExpeditor(rs.getString("org_expeditor"));
+				discente.setNumCartaoSus(("num_cartao_sus"));
+				discente.setEstadoCivil(("estado_civil"));
 				discente.setCurso(rs.getString("curso"));
-				discente.setPeriodoLetivo(rs.getInt("periodoLetivo"));
+				discente.setPeriodoLetivo(rs.getInt("periodo_letivo"));
 				discente.setTurno(rs.getString("Turno"));
 				discente.setEndereco(rs.getString("endereco"));
 				discente.setCep(rs.getString("cep"));
 				discente.setBairro(rs.getString("bairro"));
 				discente.setCidade(rs.getString("cidade"));
-				discente.setNumCasa(rs.getInt("numCasa"));
-				discente.setPontoRef(rs.getString("pontoRef"));
+				discente.setNumCasa(rs.getInt("num_casa"));
+				discente.setPontoRef(rs.getString("ponto_ref"));
 				discente.setEstado(rs.getString("estado"));
-				discente.setMotivoSolicitacao(rs.getString("motivoSolicitacao"));
-				//Falta pessoa e resultados
+				discente.setMotivoSolicitacao(rs.getString("motivo_solicitacao"));
+				//Falta pessoa 
 			}
 			stmt.close();
 			rs.close();
@@ -169,13 +166,13 @@ public class DiscenteDAO{
 
 		int idDiscente = 0;
 		
-		String sql = "select idDiscente from discente where idPessoa = ?";
+		String sql = "select id_discente from discente where pessoa_id = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idPessoa);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				idDiscente = rs.getInt("idPessoa");
+				idDiscente = rs.getInt("pessoa_id");
 			}
 			return idDiscente;
 		} catch (Exception e) {

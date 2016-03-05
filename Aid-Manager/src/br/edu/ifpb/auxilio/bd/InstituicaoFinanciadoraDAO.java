@@ -22,10 +22,10 @@ public class InstituicaoFinanciadoraDAO {
 	public void insert(InstituicaoFinanciadora IF) {
 
 		String sql = "INSERT INTO instituicaoFinanciadora " +
-					 " `nomeIF`, " +
+					 " `nome_if`, " +
 					 " `cnpj`, " +
-					 " `orcamentoAuxilio`," +
-					 " `idTecnicoAdmin`" + 
+					 " `orcamento_auxilio`," +
+					 " `servidor_id`" + 
 					 "VALUES(?,?,?,?)";
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -43,11 +43,11 @@ public class InstituicaoFinanciadoraDAO {
 	}
 	public boolean update(InstituicaoFinanciadora IF) {
 		String sql = "update instituicaoFinanciadora set"
-				+ " `nomeIF` = ?, " 
+				+ " `nome_if` = ?, " 
 				+ " `cnpj` =?, " 
-				+ " `orcamentoAuxilio`=?," 
-				+ " `idTecnicoAdmin`=?" 
-				+ "WHERE idEdital = ?";
+				+ " `orcamento_auxilio`=?," 
+				+ " `servidor_id`=?" 
+				+ "WHERE id_edital = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, IF.getNomeIF());
@@ -79,11 +79,11 @@ public class InstituicaoFinanciadoraDAO {
 			stmt.setString(1, cnpj);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				IF.setNomeIF(rs.getString("NomeIF"));
+				IF.setNomeIF(rs.getString("Nome_if"));
 				IF.setCnpj(rs.getString("CNPJ"));
-				IF.setOrcamentoAuxilio(rs.getDouble("orcamentoAuxilio"));
+				IF.setOrcamentoAuxilio(rs.getDouble("orcamento_auxilio"));
 				//stmt.setInt(4, IF.getServidor().getIdServidor());
-				IF.setIdIF(rs.getInt("idIF"));
+				IF.setIdIF(rs.getInt("id_if"));
 			}
 			return IF;
 		}

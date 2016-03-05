@@ -24,10 +24,10 @@ private Connection conn;
 		String sql = "INSERT INTO dadosBancarios "
 				+ " `banco`, "
 				+ " `agencia`, "
-				+ " `numAgencia`,"
+				+ " `num_agencia`,"
 				+ " `saldo`, "
 				+ " `obs`"
-				+ " `idDiscente`"
+				+ " `discente_id`"
 				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -53,11 +53,11 @@ private Connection conn;
 		String sql = "update dadosBancarios set "
 				+ "banco = ? ,"
 				+ "agencia = ?,"
-				+ "numAgencia= ?,"
+				+ "num_agencia= ?,"
 				+ "saldo=?,"
 				+ "obs=?,"
-				+ "idDiscente=?,"
-				+ " WHERE idDadosBancarios = ?";
+				+ "discente_id=?,"
+				+ " WHERE id_dados_bancarios = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, db.getBanco());
@@ -81,13 +81,13 @@ private Connection conn;
 	public int getIdDadosBancarios(String numAgencia) {
 
 		int idDb = 0;
-		String sql = "select idDadosBancarios from dadosBancarios where numAgencia = ?";
+		String sql = "select id_dados_bancarios from dadosBancarios where num_agencia = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, numAgencia);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				idDb = rs.getInt("idDb");
+				idDb = rs.getInt("id_dados_bancarios");
 			}
 			return idDb;
 		} catch (Exception e) {
@@ -100,7 +100,7 @@ private Connection conn;
 	public DadosBancarios getObject(String numAgencia) {
          
 		DadosBancarios db = new DadosBancarios();
-		String sql = "select * from dadosBancarios where numAgencia = ?";
+		String sql = "select * from dadosBancarios where num_agencia = ?";
 		
 		
 		try {
@@ -111,7 +111,7 @@ private Connection conn;
 				
 				db.setBanco(rs.getString("banco"));
 				db.setAgencia(rs.getString("agencia"));
-				db.setNumAgencia(rs.getString("numAgencia"));
+				db.setNumAgencia(rs.getString("num_agencia"));
 				db.setSaldo(rs.getDouble("saldo")); 
 				db.setObs(rs.getString("obs"));
 				//stmt.setInt(6, db.getDiscente().getIdDiscente());
