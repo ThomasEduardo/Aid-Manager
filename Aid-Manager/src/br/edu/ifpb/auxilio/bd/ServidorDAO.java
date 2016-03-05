@@ -49,7 +49,7 @@ public class ServidorDAO extends PessoaDAO{
 			stmt.setInt(1, super.getIdPessoa(matricula));
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				idServidor = rs.getInt("idServidor");
+				idServidor = rs.getInt("id_servidor");
 			}
 			return idServidor;
 		} catch (Exception e) {
