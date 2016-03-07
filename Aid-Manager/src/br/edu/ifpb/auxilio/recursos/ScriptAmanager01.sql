@@ -168,6 +168,17 @@ Create table documento (
 	discente_id int unsigned not null,
 	constraint fk_documento_discente foreign key(discente_id) references discente(id_discente)
 );
+
+Create table chat(
+    id_chat int unsigned auto_increment primary key,
+    remetente_id int unsigned,
+    destinatario_id int unsigned,
+    mensagem text,
+    dt_registro timestamp DEFAULT CURRENT_TIMESTAMP,
+    constraint fk_chat_remetente foreign key (remetente_id) references pessoa(id_pessoa),
+    constraint fk_chat_destinatario foreign key (destinatario_id) references pessoa(id_pessoa)
+);
+
 /*-------------------------------------------- INSERTS ------------------------------------------------------------------*/
 INSERT INTO pessoa (nome_pessoa,rg,matricula,data_nasc,sexo,senha,email,cpf)
 VALUES ('Fanny Vieira Medeiros', 4179958, 121,'2000-08-10','feminino','123','fannyvieira@gmail.com','701.199.264-23');
@@ -287,3 +298,8 @@ VALUES ('RG, CPF, Registro', 'Ok',2);
 INSERT INTO documento (nome_documento,status_documento ,discente_id )
 VALUES ('RG, CPF, Registro', 'Ok',3);
 		
+
+INSERT INTO `chat`(`remetente_id`, `destinatario_id`, `mensagem`)
+VALUES (1,2,'Oi linda você é linda linda')
+INSERT INTO `chat`(`remetente_id`, `destinatario_id`, `mensagem`)
+VALUES (2,1,'Eu sei,sua linda <3');
