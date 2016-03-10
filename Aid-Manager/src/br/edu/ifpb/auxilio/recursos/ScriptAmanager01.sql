@@ -210,33 +210,33 @@ VALUES (3,'SubCoordenador','Tecnico admin');
 
 
 INSERT INTO instituicaoFinanciadora (nome_if,cnpj,orcamento_auxilio,servidor_id)
-VALUES ('Instituto Federal de Educação e Tecnologia','156985465782',199999,1);
+VALUES ('Instituto Federal de EducaÃ§Ã£o e Tecnologia','156985465782',199999,1);
 
 INSERT INTO instituicaoFinanciadora (nome_if,cnpj,orcamento_auxilio,servidor_id)
-VALUES ('Instituto Federal de Educação e Tecnologia','156985465782',199999,2);
+VALUES ('Instituto Federal de EducaÃ§Ã£o e Tecnologia','156985465782',199999,2);
 
 INSERT INTO instituicaoFinanciadora (nome_if,cnpj,orcamento_auxilio,servidor_id)
-VALUES ('Instituto Federal de Educação e Tecnologia','156985465782',199999,3);
+VALUES ('Instituto Federal de EducaÃ§Ã£o e Tecnologia','156985465782',199999,3);
 
 
 INSERT INTO processo (data_requisicao,num_processo,assunto,interessado_id,servidor_id)
-VALUES (20/06/2015,'1569','Solicitação de Auxilio Alimentação',1,1);
+VALUES (20/06/2015,'1569','SolicitaÃ§Ã£o de Auxilio AlimentaÃ§Ã£o',1,1);
 
 INSERT INTO processo (data_requisicao,num_processo,assunto,interessado_id,servidor_id)
-VALUES (20/06/2015,'1569','Solicitação de Auxilio Alimentação',2,2);
+VALUES (20/06/2015,'1569','SolicitaÃ§Ã£o de Auxilio AlimentaÃ§Ã£o',2,2);
 
 INSERT INTO processo (data_requisicao,num_processo,assunto,interessado_id,servidor_id)
-VALUES (20/06/2015,'1569','Solicitação de Auxilio Alimentação',3,3);
+VALUES (20/06/2015,'1569','SolicitaÃ§Ã£o de Auxilio AlimentaÃ§Ã£o',3,3);
 
 
 INSERT INTO Discente (escola_origem,num_cartao_sus,estado_civil,curso,periodo_letivo,turno,endereco,cep,bairro,cidade,num_casa,ponto_ref,estado,motivo_solicitacao,pessoa_id)
-VALUES ('Dom Manoel Palmeira da Rocha','1256945','Solteiro','Informatica',3,'Integral','Rua:Josefa Trindade','58119-000','Centro','Lagoa de roça',48,'Escola virgem das graças','PB','Estava precisando',1);
+VALUES ('Dom Manoel Palmeira da Rocha','1256945','Solteiro','Informatica',3,'Integral','Rua:Josefa Trindade','58119-000','Centro','Lagoa de roÃ§a',48,'Escola virgem das graÃ§as','PB','Estava precisando',1);
 
 INSERT INTO Discente (escola_origem,num_cartao_sus,estado_civil,curso,periodo_letivo,turno,endereco,cep,bairro,cidade,num_casa,ponto_ref,estado,motivo_solicitacao,pessoa_id)
-VALUES ('Dom Manoel Palmeira da Rocha','1256945','Casado','Informatica',3,'Integral','Rua:Aberlino ferreira','123456-000','Centro','Esperança',24,'Catedral','PB','Estava precisando',2);
+VALUES ('Dom Manoel Palmeira da Rocha','1256945','Casado','Informatica',3,'Integral','Rua:Aberlino ferreira','123456-000','Centro','EsperanÃ§a',24,'Catedral','PB','Estava precisando',2);
 
 INSERT INTO Discente (escola_origem,num_cartao_sus,estado_civil,curso,periodo_letivo,turno,endereco,cep,bairro,cidade,num_casa,ponto_ref,estado,motivo_solicitacao,pessoa_id)
-VALUES ('Dom Manoel Palmeira da Rocha','1256945','Casado','Informatica','Integral',3,'Rua:Aderlado MAICATU','122346-111','Centro','Esperança',25,'Catedral','PB','Estava precisando',3);
+VALUES ('Dom Manoel Palmeira da Rocha','1256945','Casado','Informatica','Integral',3,'Rua:Aderlado MAICATU','122346-111','Centro','EsperanÃ§a',25,'Catedral','PB','Estava precisando',3);
 
 
 
@@ -258,7 +258,7 @@ VALUES (14/02/2015,21/02/2015,2015, 'Edital de  auxilios',80,'2000-08-10','2000-
 
 
 INSERT INTO edital (ini_inscricoes,fim_inscricoes ,ano ,titulo ,vagas_bolsistas,ini_entrega_form,fim_form,descricao,valor_bolsa_discente,num_edital,processo_id)
-VALUES (14/02/2015,21/02/2015,2015, 'Edital de  auxilios', 80,'1999-04-10','2000-05-10','é',80,'111.123.111', 3);
+VALUES (14/02/2015,21/02/2015,2015, 'Edital de  auxilios', 80,'1999-04-10','2000-05-10','Ã©',80,'111.123.111', 3);
 
 INSERT INTO dadosbancarios (banco ,agencia ,num_agencia ,discente_id)
 VALUES ('caixa', '1009','1338',1);
@@ -273,11 +273,11 @@ VALUES ('caixa', '1009','1338',3);
 
 INSERT INTO perfilsocioeconomico (gastos_luz ,gastos_agua,gastos_telefone,servidor_id,discente_id,situacao_renda_Familiar,moradia,tipo_residencia_familiar,tipo_trabalho, gastos_aluguel,gastos_condominio, 
 gastos_financiamento_casa_propria,tipo_moradia)
-VALUES (58.45,25.85,52.50,2,2,'Dependente','Sozinho','Própria quitada','Trabalho com vínculo empregatício',0,0,0,'Casa Propia');
+VALUES (58.45,25.85,52.50,2,2,'Dependente','Sozinho','PrÃ³pria quitada','Trabalho com vÃ­nculo empregatÃ­cio',0,0,0,'Casa Propia');
 
 INSERT INTO perfilsocioeconomico (gastos_luz ,gastos_agua,gastos_telefone,servidor_id,discente_id,situacao_renda_Familiar,moradia,tipo_residencia_familiar,tipo_trabalho, gastos_aluguel,gastos_condominio, 
 gastos_financiamento_casa_propria,tipo_moradia)
-VALUES (58.45,25.85,52.50,3,3,'Dependente','Sozinho','Arrimo da família','Trabalho com vínculo empregatício',0,0,0,'Casa Propia');
+VALUES (58.45,25.85,52.50,3,3,'Dependente','Sozinho','Arrimo da famÃ­lia','Trabalho com vÃ­nculo empregatÃ­cio',0,0,0,'Casa Propia');
 
 
  
@@ -300,6 +300,6 @@ VALUES ('RG, CPF, Registro', 'Ok',3);
 		
 
 INSERT INTO `chat`(`remetente_id`, `destinatario_id`, `mensagem`)
-VALUES (1,2,'Oi linda você é linda linda')
+VALUES (1,2,'Oi linda vocÃª Ã© linda linda');
 INSERT INTO `chat`(`remetente_id`, `destinatario_id`, `mensagem`)
 VALUES (2,1,'Eu sei,sua linda <3');
