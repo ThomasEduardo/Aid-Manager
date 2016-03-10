@@ -2,6 +2,7 @@ package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
@@ -79,4 +80,30 @@ public class ProcessoDAO {
 		}
 		return false;
 	}
+	
+	public int getNumProcesso(String matricula){
+		int numProcesso = 0;
+		String sql = "Select num_processo "
+				+ "from processo"
+				+ "inner join pessoa"
+				+ "on pessoa.id_pessoa = processo.interessado_id"
+				+ "and pessoa.matricula = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, matricula);
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				numProcesso = rs.getInt("num_processo");
+			}
+	        rs.close();
+			stmt.execute();
+			stmt.close();
+			return numProcesso;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return 0;
+	}
+	
 }

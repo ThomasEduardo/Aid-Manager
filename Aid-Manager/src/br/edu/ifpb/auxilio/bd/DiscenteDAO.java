@@ -121,15 +121,15 @@ public class DiscenteDAO{
 		
 	}
 	
-	public Discente getObject(String matricula){
+	public Discente getObject(int idDiscente){
 		
 		try {
+			PessoaDAO p = new PessoaDAO();
 			Discente discente = new Discente();
-	        Pessoa pessoa = new Pessoa();
 	        
-			String sql = "select * from discente where pessoa_id = ?";
+			String sql = "select * from discente where id_discente = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			//stmt.setInt(1, super.getIdPessoa(matricula));
+			stmt.setInt(1, idDiscente);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				discente.setIdDiscente(rs.getInt("id_discente"));
@@ -148,7 +148,7 @@ public class DiscenteDAO{
 				discente.setPontoRef(rs.getString("ponto_ref"));
 				discente.setEstado(rs.getString("estado"));
 				discente.setMotivoSolicitacao(rs.getString("motivo_solicitacao"));
-				//Falta pessoa 
+				//discente.super(p.getObject(rs.getInt("pessoa_id")));
 			}
 			stmt.close();
 			rs.close();

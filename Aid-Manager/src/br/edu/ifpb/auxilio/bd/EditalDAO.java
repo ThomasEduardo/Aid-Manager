@@ -97,12 +97,12 @@ private Connection conn;
 		return false;
 	}
 	
-	public Edital getObject(String numEdital){
+	public Edital getObject(int idEdital){
 		try{
 		Edital edital = new Edital();
-		String sql = "select * from edital where num_edital = ?";
+		String sql = "select * from edital where id_edital = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, numEdital);
+		stmt.setInt(1, idEdital);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()){
 			

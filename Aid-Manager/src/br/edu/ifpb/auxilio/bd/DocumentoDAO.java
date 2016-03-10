@@ -92,20 +92,22 @@ private Connection conn;
 	}
 	
 	
-	public Documento getObject (int idDiscente){
+	public Documento getObject (int idDocumento){
 		
-		Documento documento = new Documento();
-		String sql = "select * from documento where discente_id = ?";
+		DiscenteDAO d = new DiscenteDAO();
+	    Documento documento = new Documento();
+	    
+		String sql = "select * from documento where id_documento = ?";
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idDiscente);
+			stmt.setInt(1, idDocumento);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				
 				documento.setNomeDocumento(rs.getString("nome_documento"));
 				documento.setStatus(rs.getString("status_documento"));
 				documento.setObs(rs.getString("obs"));
-				//d.getDiscente().getIdDiscente());
+				documento.setDiscente(d.getObject(rs.getInt("discente_id")));
 				documento.setIdDocumento(rs.getInt("id_documento"));
 				
 			}

@@ -79,13 +79,13 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 		return 0;
      }
 	
-	public Pessoa getObject (String matricula){
+	public Pessoa getObject (int idPessoa){
 		
 		Pessoa pessoa = new Pessoa();
-		String sql = "select * from pessoa where matricula = ?";
+		String sql = "select * from pessoa where id_pessoa = ?";
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, matricula);
+			stmt.setInt(1, idPessoa);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				pessoa.setIdPessoa(rs.getInt("id_pessoa"));

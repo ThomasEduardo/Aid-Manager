@@ -70,13 +70,13 @@ public class InstituicaoFinanciadoraDAO {
 		//Falta fazer
 	}
 	
-	public InstituicaoFinanciadora getObject (String cnpj){
+	public InstituicaoFinanciadora getObject (int idIf){
 		
 		InstituicaoFinanciadora IF = new InstituicaoFinanciadora();
-		String sql = "select * from instituicaoBancaria where cnpj = ?";
+		String sql = "select * from instituicaoBancaria where idIf = ?";
 		try{
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, cnpj);
+			stmt.setInt(1, idIf);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				IF.setNomeIF(rs.getString("Nome_if"));
@@ -92,5 +92,27 @@ public class InstituicaoFinanciadoraDAO {
 		}
 		return null;
 				
+	}
+	public int getIdIF(String cnpj){
+		int idIf = 0;
+		String sql = "Select id_if "
+				+ "from instituicaoFinanciadora "
+				+ "where cnpj = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, cnpj);
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				idIf = rs.getInt("id_if");
+			}
+	        rs.close();
+			stmt.execute();
+			stmt.close();
+			return idIf;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return 0;
 	}
 }

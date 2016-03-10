@@ -97,24 +97,27 @@ private Connection conn;
 	}
 	
 	
-	public DadosBancarios getObject(String numAgencia) {
+	public DadosBancarios getObject(int idDb) {
          
+		
+		DiscenteDAO d = new DiscenteDAO();
 		DadosBancarios db = new DadosBancarios();
-		String sql = "select * from dadosBancarios where num_agencia = ?";
+		String sql = "select * from dadosBancarios where id_dados_bancarios = ?";
 		
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, numAgencia);
+			stmt.setInt(1, idDb);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				
+				db.setIdDadosBancarios(rs.getInt("id_dados_bancarios"));
 				db.setBanco(rs.getString("banco"));
 				db.setAgencia(rs.getString("agencia"));
 				db.setNumAgencia(rs.getString("num_agencia"));
 				db.setSaldo(rs.getDouble("saldo")); 
 				db.setObs(rs.getString("obs"));
-				//stmt.setInt(6, db.getDiscente().getIdDiscente());
+				db.setDiscente(d.getObject(rs.getInt("discente_id")));
 			}
 			return db;
 		} catch (Exception e) {

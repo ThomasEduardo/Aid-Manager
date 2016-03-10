@@ -1,13 +1,14 @@
 package br.edu.ifpb.auxilio.bd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.edu.ifpb.auxilio.bd.Conexao;
 import br.edu.ifpb.auxilio.dominio.Auxilio;
 
 
-public class AuxilioDAO {
+public class AuxilioDAO implements GenericIFDAO<String,Auxilio>{
 	
 private Connection conn;
 	
@@ -80,19 +81,29 @@ private Connection conn;
 		return false;
 	}
 	
-	/*public Auxilio getObject(String matricula){
+	public Auxilio getObject(int idAuxilio){
 		try{
+		
+		PessoaDAO p = new PessoaDAO();	
 		Auxilio auxilio = new Auxilio();
-		String sql = "select * from auxilio where idServidor = ?";
+		String sql = "select * from auxilio "
+				     + "where id_auxilio = ?";
+		
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, super.getIdServidor(matricula));
+		stmt.setInt(1, idAuxilio);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()){
-           as.setId_assistenteSocial(rs.getInt("idAssistenteSocial"));			
+           auxilio.setIdAuxilio(rs.getInt("id_auxilio"));
+           auxilio.setTipoAuxilio(rs.getString("tipo_auxilio"));	
+           auxilio.setValorAuxilio(rs.getDouble("valor_auxilio"));	
+           auxilio.setValidadeInicial(rs.getDate("validade_inicial"));	
+           auxilio.setValidadeFinal(rs.getDate("validade_final"));	
+          //auxilio.setInstituicaoFinanciadora(rs.getInt("id_auxilio"));	
+          //Processo
 		}
 		stmt.close();
 		rs.close();
-		return as;
+		return auxilio;
         
 	}
 		catch (Exception e){
@@ -100,5 +111,30 @@ private Connection conn;
 		}
 		return null;
 		
-     }*/
+     }
+	
+	public int getIdAuxilio(String numProcesso){
+		int idAuxilio = 0;
+		String sql = "Select id_auxilio "
+				+ "from auxilio "
+				+ "inner join processo"
+				+ "on processo.id_processo = auxilio.processo_id"
+				+ "and processo.num_processo = ?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, numProcesso);
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				idAuxilio = rs.getInt("id_auxilio");
+			}
+	        rs.close();
+			stmt.execute();
+			stmt.close();
+			return idAuxilio;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return 0;
+	}
 }
