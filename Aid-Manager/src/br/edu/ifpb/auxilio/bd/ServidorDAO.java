@@ -3,10 +3,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import br.edu.ifpb.auxilio.dominio.Familiar;
+import br.edu.ifpb.auxilio.dominio.Processo;
 import br.edu.ifpb.auxilio.dominio.Servidor;
 
-public class ServidorDAO extends PessoaDAO{
+public class ServidorDAO{
 	
 	private Connection conn;
 	
@@ -29,7 +33,7 @@ public class ServidorDAO extends PessoaDAO{
 
 			stmt.setString(1, servidor.getCargoServidor());
 			stmt.setString(2, servidor.getTipoServidor());
-			stmt.setInt(3, getIdPessoa(servidor.getMatricula()));
+			stmt.setInt(3, servidor.getIdPessoa());
 			
 			
 			stmt.execute();
@@ -40,35 +44,78 @@ public class ServidorDAO extends PessoaDAO{
 
 	}
 	
-    public int getIdServidor(String matricula) {
 
-		int idServidor = 0;
-		String sql = "select id_servidor from servidor where pessoa_id = ?";
+	
+	public Servidor getById(int idServidor) {
 		try {
+			
+			Servidor servidor = new Servidor();
+			
+			String sql = "select * from servidor where id_servidor = ?";
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, super.getIdPessoa(matricula));
+			stmt.setInt(1, idServidor);
+			
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				idServidor = rs.getInt("id_servidor");
-			}
-			return idServidor;
+			
+			List<Servidor> servidores = convertToList(rs);
+			
+			if (!servidores.isEmpty()) {
+				
+				servidor = servidores.get(0);
+				
+			} 
+			
+			stmt.close();
+			rs.close();
+			
+			return servidor;
+
 		} catch (Exception e) {
 			System.out.println("Exception is :" + e);
 		}
-		return 0;
+		
+		return null;
+
 	}
 	
+	
+	public List<Servidor> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<Servidor> servidores = new ArrayList<Servidor>();
+
+		try {
+
+			while (rs.next()) {
+
+				Servidor servidor = new Servidor();
+				
+				servidor.setIdServidor(rs.getInt("id_servidor"));
+				servidor.setCargoServidor(rs.getString("cargo_servidor"));
+				servidor.setTipoServidor(rs.getString("tipo_servidor"));
+				
+				/*Pessoa
+				
+				PessoaDAO p = new PessoaDAO();
+	            setPs(p.getById(rs.getInt("perfil_socio_id")));*/
+				
+				
+				
+
+				servidores.add(servidor);
+			}
+
+		} catch (SQLException sqle) {
+			
+	}
+
+		return servidores;
+	}
+    
+    
 	 public void delete(String matricula){
-		String sql =  "delete from servidor where pessoa_id = ?";
-		
-		try{
-			PreparedStatement st = conn.prepareStatement(sql);
-			st.setInt(1, super.getIdPessoa(matricula));	
-			st.execute();	
-			st.close();
-		}catch(Exception e){
-			System.out.println("Exception is :"+e);
-		}
+
 	 }
 		
 		

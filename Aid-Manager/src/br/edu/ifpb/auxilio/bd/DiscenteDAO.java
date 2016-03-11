@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import br.edu.ifpb.auxilio.dominio.Discente;
-import br.edu.ifpb.auxilio.dominio.Pessoa;
+
 
 
 
@@ -121,17 +124,47 @@ public class DiscenteDAO{
 		
 	}
 	
-	public Discente getObject(int idDiscente){
+	public Discente getById(int idDiscente){
 		
 		try {
-			PessoaDAO p = new PessoaDAO();
 			Discente discente = new Discente();
 	        
 			String sql = "select * from discente where id_discente = ?";
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idDiscente);
+			
 			ResultSet rs = stmt.executeQuery();
+			
+			List<Discente> discentes = convertToList(rs);
+			
+			if (!discentes.isEmpty()) {
+				discente = discentes.get(0);
+			}
+			
+			stmt.close();
+			rs.close();
+
+			return discente;
+
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return null;
+	
+	}
+	
+	public List<Discente> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<Discente> Discentes = new ArrayList<Discente>();
+
+		try {
+
 			while (rs.next()) {
+
+				Discente discente = new Discente();
+				
 				discente.setIdDiscente(rs.getInt("id_discente"));
 				discente.setEscolaOrigem(rs.getString("escola_origem"));
 				discente.setOrgExpeditor(rs.getString("org_expeditor"));
@@ -149,36 +182,20 @@ public class DiscenteDAO{
 				discente.setEstado(rs.getString("estado"));
 				discente.setMotivoSolicitacao(rs.getString("motivo_solicitacao"));
 				//discente.super(p.getObject(rs.getInt("pessoa_id")));
+				
+				// Pessoa
+				
+				
+				
+
+				Discentes.add(discente);
 			}
-			stmt.close();
-			rs.close();
 
-			return discente;
-
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
+		} catch (SQLException sqle) {
+			
 		}
-		return null;
-	
-	}
-	
-	public int getIdDiscente(int idPessoa) {
 
-		int idDiscente = 0;
-		
-		String sql = "select id_discente from discente where pessoa_id = ?";
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idPessoa);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				idDiscente = rs.getInt("pessoa_id");
-			}
-			return idDiscente;
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
-		}
-		return 0;
+		return Discentes;
 	}
 	
 	

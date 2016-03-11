@@ -2,7 +2,7 @@ package br.edu.ifpb.auxilio.dominio;
 
 import java.util.Date;
 
-public abstract class Servidor extends Pessoa{
+public class Servidor extends Pessoa{
 	
 	private int idServidor;
 	private String cargoServidor;

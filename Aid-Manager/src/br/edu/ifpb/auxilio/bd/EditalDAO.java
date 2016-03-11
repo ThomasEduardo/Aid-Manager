@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.ifpb.auxilio.dominio.DadosBancarios;
 import br.edu.ifpb.auxilio.dominio.Edital;
 
 
@@ -60,6 +64,7 @@ private Connection conn;
 	}
 	
 	public boolean update(Edital edital) {
+		
 		String sql = "update edital set "
 				+ "`ini_inscricoes` =?, "
 				+ "`fim_inscricoes`=?,"
@@ -97,30 +102,31 @@ private Connection conn;
 		return false;
 	}
 	
-	public Edital getObject(int idEdital){
+	
+	public Edital getById(int idEdital){
 		try{
 		Edital edital = new Edital();
+		
 		String sql = "select * from edital where id_edital = ?";
+		
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, idEdital);
+		
 		ResultSet rs = stmt.executeQuery();
-		while (rs.next()){
+		
+		List<Edital> editais = convertToList(rs);
+		
+		if (!editais.isEmpty()) {
 			
-			edital.setIniInscricoes(rs.getDate("ini_inscricoes"));
-			edital.setFimInscricoes(rs.getDate("fim_inscricoes"));
-			edital.setIniEntregaForm(rs.getDate("ini_entrega_form"));
-			edital.setAno(rs.getInt("ano"));
-			edital.setFimForm(rs.getDate("fim_form"));
-			edital.setDescricao(rs.getString("descricao"));
-			edital.setTitulo(rs.getString("titulo"));
-			edital.setValorBolsaDiscente(rs.getDouble("valor_bolsa_discente"));
-			edital.setVagasBolsistas(rs.getInt("vagas_bolsistas"));
-			edital.setNumEdital(rs.getString("num_edital"));
-			//stmt.setInt(11, edital.getIdProcesso());	
+			edital = editais.get(0);
 			
-		}
+		} 
+		
+		
 		stmt.close();
 		rs.close();
+		
+		
 		return edital;
         
 	}
@@ -132,26 +138,43 @@ private Connection conn;
 		
 	}
 	
-	public int getIdEdital(String numEdital) {
+	public List<Edital> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<Edital> editais = new ArrayList<Edital>();
+
 		try {
-			int idEdital = 0;
-			String sql = "select id_edital from edital where num_edital = ?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, numEdital);
-			ResultSet rs = stmt.executeQuery();
+
 			while (rs.next()) {
-				idEdital = rs.getInt("id_edital");
 
+				Edital edital = new  Edital();
+				
+				edital.setIniInscricoes(rs.getDate("ini_inscricoes"));
+				edital.setFimInscricoes(rs.getDate("fim_inscricoes"));
+				edital.setIniEntregaForm(rs.getDate("ini_entrega_form"));
+				edital.setAno(rs.getInt("ano"));
+				edital.setFimForm(rs.getDate("fim_form"));
+				edital.setDescricao(rs.getString("descricao"));
+				edital.setTitulo(rs.getString("titulo"));
+				edital.setValorBolsaDiscente(rs.getDouble("valor_bolsa_discente"));
+				edital.setVagasBolsistas(rs.getInt("vagas_bolsistas"));
+				edital.setNumEdital(rs.getString("num_edital"));
+				
+				/* Processo
+				
+				ProcessoDAO p = new ProcessoDAO();
+				edital.setProcesso(p.getById(rs.getInt("processo_id")));*/
+				
+
+				editais.add(edital);
 			}
-			stmt.close();
-			rs.close();
-			return idEdital;
 
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
+		} catch (SQLException sqle) {
+			
 		}
-		
-		return 0;
 
+		return editais;
 	}
+	
+
 }

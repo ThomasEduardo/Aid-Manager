@@ -2,7 +2,7 @@ package br.edu.ifpb.auxilio.dominio;
 
 import java.util.*;
 
-public abstract class Processo {
+public class Processo {
 	
 	private int idProcesso;
 	private Date dataRequisicao;

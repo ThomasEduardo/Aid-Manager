@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
+;
 
 
 public class DadosBancariosDAO {
@@ -78,29 +82,12 @@ private Connection conn;
 	}
 	
 	
-	public int getIdDadosBancarios(String numAgencia) {
-
-		int idDb = 0;
-		String sql = "select id_dados_bancarios from dadosBancarios where num_agencia = ?";
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, numAgencia);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				idDb = rs.getInt("id_dados_bancarios");
-			}
-			return idDb;
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
-		}
-		return 0;
-	}
 	
 	
-	public DadosBancarios getObject(int idDb) {
+	public DadosBancarios getById(int idDb) {
          
 		
-		DiscenteDAO d = new DiscenteDAO();
+
 		DadosBancarios db = new DadosBancarios();
 		String sql = "select * from dadosBancarios where id_dados_bancarios = ?";
 		
@@ -109,7 +96,32 @@ private Connection conn;
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idDb);
 			ResultSet rs = stmt.executeQuery();
+		
+			List<DadosBancarios> dbs = convertToList(rs);
+			
+			if (!dbs.isEmpty()) {
+				db = dbs.get(0);
+			}
+			
+			
+			return db;
+			
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
+		return null;
+	}
+	
+	public List<DadosBancarios> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<DadosBancarios> DadosBancarios = new ArrayList<DadosBancarios>();
+
+		try {
+
 			while (rs.next()) {
+
+				DadosBancarios db = new DadosBancarios ();
 				
 				db.setIdDadosBancarios(rs.getInt("id_dados_bancarios"));
 				db.setBanco(rs.getString("banco"));
@@ -117,13 +129,21 @@ private Connection conn;
 				db.setNumAgencia(rs.getString("num_agencia"));
 				db.setSaldo(rs.getDouble("saldo")); 
 				db.setObs(rs.getString("obs"));
-				db.setDiscente(d.getObject(rs.getInt("discente_id")));
+				
+				// Discente
+				
+				DiscenteDAO d = new DiscenteDAO();
+				db.setDiscente(d.getById(rs.getInt("discente_id")));
+				
+
+				DadosBancarios.add(db);
 			}
-			return db;
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
+
+		} catch (SQLException sqle) {
+			
 		}
-		return null;
+
+		return DadosBancarios;
 	}
 	
 	

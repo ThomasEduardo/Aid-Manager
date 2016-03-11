@@ -9,9 +9,13 @@ import java.sql.SQLException;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 
-public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
+public class PessoaDAO {
 
 	
 	private Connection conn;
@@ -60,49 +64,38 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 		}
 
 	}
+
 	
-	public int getIdPessoa(String matricula){
-		
-		int idPessoa = 0; 
-		String sql = "select id_pessoa from pessoa where matricula = ?";
-		try{
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1,matricula);
-		ResultSet rs = stmt.executeQuery();
-		while (rs.next()) {
-			 idPessoa = rs.getInt("idPessoa");
-			}
-		return idPessoa;
-		}catch(Exception e){
-		System.out.println("Exception is :"+e);
-		}
-		return 0;
-     }
-	
-	public Pessoa getObject (int idPessoa){
+	public Pessoa getById (int idPessoa){
 		
 		Pessoa pessoa = new Pessoa();
+		
 		String sql = "select * from pessoa where id_pessoa = ?";
+		
 		try{
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idPessoa);
+
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				pessoa.setIdPessoa(rs.getInt("id_pessoa"));
-				pessoa.setNomePessoa(rs.getString("nome_pessoa"));
-				pessoa.setRg(rs.getString("rg"));
-				pessoa.setMatricula(rs.getString("matricula"));
-				pessoa.setDataNasc(null); //Consertar
-				pessoa.setSexo(rs.getString("sexo"));
-				pessoa.setSenha(rs.getString("senha"));
-				pessoa.setEmail(rs.getString("email"));
-				pessoa.setCpf(rs.getString("cpf"));
-			}
+			
+			List<Pessoa> pessoas = convertToList(rs);
+			
+			if (!pessoas.isEmpty()) {
+				
+				pessoa = pessoas.get(0);
+				
+			} 
+
+			
 			return pessoa;
 		}
 		catch (Exception e){
+			
 			System.out.println("Exception is :"+e);
+			
 		}
+		
 		return null;
 				
 	}
@@ -149,6 +142,42 @@ public class PessoaDAO implements GenericIFDAO<String,Pessoa> {
 			System.out.println("Exception is :" + e);
 		}
 		return false;
+	}
+	
+	
+	
+	public List<Pessoa> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+
+		try {
+
+			while (rs.next()) {
+
+				Pessoa pessoa = new Pessoa();
+				
+				pessoa.setIdPessoa(rs.getInt("id_pessoa"));
+				pessoa.setNomePessoa(rs.getString("nome_pessoa"));
+				pessoa.setRg(rs.getString("rg"));
+				pessoa.setMatricula(rs.getString("matricula"));
+				pessoa.setDataNasc(rs.getDate("data_nasc")); 
+				pessoa.setSexo(rs.getString("sexo"));
+				pessoa.setSenha(rs.getString("senha"));
+				pessoa.setEmail(rs.getString("email"));
+				pessoa.setCpf(rs.getString("cpf"));
+				
+				
+				
+
+				pessoas.add(pessoa);
+			}
+
+		} catch (SQLException sqle) {
+			
+		}
+
+		return pessoas;
 	}
 
 }

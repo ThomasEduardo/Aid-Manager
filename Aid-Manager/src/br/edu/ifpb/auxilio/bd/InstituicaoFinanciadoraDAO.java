@@ -4,19 +4,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 
 
 public class InstituicaoFinanciadoraDAO {
+	
 	private Connection conn;
 
 	public InstituicaoFinanciadoraDAO() {
+		
 		conn = Conexao.getConnection();
+		
 		if (conn != null)
 			System.out.println("Conexão estabelecida");
 		else
 			System.out.println("Erro na conexão com o BD");
+		
 	}
 
 	public void insert(InstituicaoFinanciadora IF) {
@@ -34,35 +40,53 @@ public class InstituicaoFinanciadoraDAO {
 			stmt.setString(2, IF.getCnpj());
 			stmt.setDouble(3, IF.getOrcamentoAuxilio());
 			stmt.setInt(4, IF.getServidor().getIdServidor());
+			
+			
 			stmt.execute();
 			stmt.close();
 
 		}catch (SQLException e) {
+			
 			throw new RuntimeException(e);
+			
 		}
 	}
 	public boolean update(InstituicaoFinanciadora IF) {
+		
+		
 		String sql = "update instituicaoFinanciadora set"
 				+ " `nome_if` = ?, " 
 				+ " `cnpj` =?, " 
 				+ " `orcamento_auxilio`=?," 
 				+ " `servidor_id`=?" 
 				+ "WHERE id_edital = ?";
+		
+		
 		try {
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			
 			stmt.setString(1, IF.getNomeIF());
 			stmt.setString(2, IF.getCnpj());
 			stmt.setDouble(3, IF.getOrcamentoAuxilio());
 			stmt.setInt(4, IF.getServidor().getIdServidor());
 			stmt.setInt(5, IF.getIdIF());
+			
+			
 			stmt.execute();
 			stmt.close();
+			
+			
 			return true;
 
 		} catch (Exception e) {
+			
 			System.out.println("Exception is :" + e);
+			
 		}
+		
 		return false;
+		
 	}
 	
 	
@@ -70,21 +94,24 @@ public class InstituicaoFinanciadoraDAO {
 		//Falta fazer
 	}
 	
-	public InstituicaoFinanciadora getObject (int idIf){
+	public InstituicaoFinanciadora getById (int idIf){
 		
-		InstituicaoFinanciadora IF = new InstituicaoFinanciadora();
-		String sql = "select * from instituicaoBancaria where idIf = ?";
+		InstituicaoFinanciadora IF = null;
+		String sql = "select * from instituicaoFinanciadora where id_If = ?";
+		
+		
 		try{
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idIf);
+			
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				IF.setNomeIF(rs.getString("Nome_if"));
-				IF.setCnpj(rs.getString("CNPJ"));
-				IF.setOrcamentoAuxilio(rs.getDouble("orcamento_auxilio"));
-				//stmt.setInt(4, IF.getServidor().getIdServidor());
-				IF.setIdIF(rs.getInt("id_if"));
+			
+			List<InstituicaoFinanciadora> InstituicaoFinanciadoras  = convertToList(rs);
+			if (!InstituicaoFinanciadoras.isEmpty()) {
+				IF = InstituicaoFinanciadoras.get(0);
 			}
+			
 			return IF;
 		}
 		catch (Exception e){
@@ -93,26 +120,35 @@ public class InstituicaoFinanciadoraDAO {
 		return null;
 				
 	}
-	public int getIdIF(String cnpj){
-		int idIf = 0;
-		String sql = "Select id_if "
-				+ "from instituicaoFinanciadora "
-				+ "where cnpj = ?";
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, cnpj);
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
-				idIf = rs.getInt("id_if");
-			}
-	        rs.close();
-			stmt.execute();
-			stmt.close();
-			return idIf;
+	
+	
+	public List<InstituicaoFinanciadora> convertToList(ResultSet rs)
+			throws SQLException {
 
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
+		List<InstituicaoFinanciadora> Ifs = new ArrayList<InstituicaoFinanciadora>();
+
+		try {
+
+			while (rs.next()) {
+
+				InstituicaoFinanciadora IF = new InstituicaoFinanciadora();
+				
+				IF.setNomeIF(rs.getString("Nome_if"));
+				IF.setCnpj(rs.getString("CNPJ"));
+				IF.setOrcamentoAuxilio(rs.getDouble("orcamento_auxilio"));
+				IF.setIdIF(rs.getInt("id_if"));
+				
+				// Servidor
+				ServidorDAO servidor = new ServidorDAO();
+				IF.setServidor(servidor.getById(rs.getInt("servidor_id")));
+				
+				Ifs.add(IF);
+			}
+
+		} catch (SQLException sqle) {
+			
 		}
-		return 0;
+
+		return Ifs;
 	}
 }

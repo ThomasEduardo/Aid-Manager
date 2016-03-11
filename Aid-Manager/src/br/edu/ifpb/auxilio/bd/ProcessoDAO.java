@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.dominio.Processo;
 
 public class ProcessoDAO {
@@ -81,29 +82,78 @@ public class ProcessoDAO {
 		return false;
 	}
 	
-	public int getNumProcesso(String matricula){
-		int numProcesso = 0;
-		String sql = "Select num_processo "
-				+ "from processo"
-				+ "inner join pessoa"
-				+ "on pessoa.id_pessoa = processo.interessado_id"
-				+ "and pessoa.matricula = ?";
+	public Processo getById(int idProcesso) {
 		try {
+			
+			Processo processo = new Processo();
+			
+			String sql = "select * from processo where id_processo = ?"; //consertar
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, matricula);
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
-				numProcesso = rs.getInt("num_processo");
-			}
-	        rs.close();
-			stmt.execute();
+			stmt.setInt(1, idProcesso);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			List<Processo> processos = convertToList(rs);
+			
+			if (!processos.isEmpty()) {
+				
+				processo = processos.get(0);
+				
+			} 
+			
 			stmt.close();
-			return numProcesso;
+			rs.close();
+			
+			return processo;
 
-		} catch (Exception e) {
+		} catch (Exception e) { 
+			
 			System.out.println("Exception is :" + e);
+			
 		}
-		return 0;
+		
+		return null;
+
+	}
+	
+	public List<Processo> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<Processo> processos = new ArrayList<Processo>();
+
+		try {
+
+			while (rs.next()) {
+
+				Processo processo = new Processo();
+				
+				processo.setIdProcesso(rs.getInt("id_processo"));
+				processo.setDataRequisicao(null); //consertar
+				processo.setObs(rs.getString("obs"));
+				processo.setNumProcesso(rs.getString("num_processo"));
+				processo.setAssunto(rs.getString("assunto"));
+				processo.setParecer(rs.getString("parecer"));
+				
+				// Interessado
+				
+				PessoaDAO p = new PessoaDAO();
+				processo.setInteressado(p.getById(rs.getInt("interessado_id")));
+				
+				//Servidor
+				
+				ServidorDAO s = new ServidorDAO();
+				processo.setServidor(s.getById(rs.getInt("servidor_id")));
+				
+
+				processos.add(processo);
+			}
+
+		} catch (SQLException sqle) {
+			throw new RuntimeException(sqle);
+		}
+
+		return processos;
 	}
 	
 }

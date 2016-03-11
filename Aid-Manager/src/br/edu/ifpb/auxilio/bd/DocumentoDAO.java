@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.ifpb.auxilio.dominio.Documento;
 
@@ -47,6 +49,7 @@ private Connection conn;
 	}
 	
 	public boolean update(Documento d) {
+		
 		String sql = "update documento set "
 				+ "nome_documento = ?,"
 				+ "status_Documento=?,"
@@ -70,31 +73,16 @@ private Connection conn;
 			System.out.println("Exception is :" + e);
 		}
 		return false;
-	}
-	
-	
-	public int getIdDocumento(int idDiscente) {
-
-		int idDocumento = 0;
-		String sql = "select id_documento from documento where discente_id = ?";
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idDiscente);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				idDocumento = rs.getInt("id_documento");
-			}
-			return idDocumento;
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
-		}
-		return 0;
-	}
-	
-	
-	public Documento getObject (int idDocumento){
 		
-		DiscenteDAO d = new DiscenteDAO();
+		
+	}
+	
+	
+	
+	
+	public Documento getById (int idDocumento){
+		
+
 	    Documento documento = new Documento();
 	    
 		String sql = "select * from documento where id_documento = ?";
@@ -102,15 +90,14 @@ private Connection conn;
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idDocumento);
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				
-				documento.setNomeDocumento(rs.getString("nome_documento"));
-				documento.setStatus(rs.getString("status_documento"));
-				documento.setObs(rs.getString("obs"));
-				documento.setDiscente(d.getObject(rs.getInt("discente_id")));
-				documento.setIdDocumento(rs.getInt("id_documento"));
-				
+			
+			List<Documento> documentos = convertToList(rs);
+			
+			if (!documentos.isEmpty()) {
+				documento = documentos.get(0);
 			}
+			
+			
 			return documento;
 		}
 		catch (Exception e){
@@ -119,4 +106,39 @@ private Connection conn;
 		return null;
 				
 	}
+	
+	public List<Documento> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<Documento> documentos = new ArrayList<Documento>();
+
+		try {
+
+			while (rs.next()) {
+
+				Documento documento = new Documento();
+				
+				documento.setNomeDocumento(rs.getString("nome_documento"));
+				documento.setStatus(rs.getString("status_documento"));
+				documento.setObs(rs.getString("obs"));
+				documento.setIdDocumento(rs.getInt("id_documento"));
+				
+				
+				// Discente
+				
+				DiscenteDAO d = new DiscenteDAO();
+				documento.setDiscente(d.getById(rs.getInt("discente_id")));
+				
+
+				documentos.add(documento);
+			}
+
+		} catch (SQLException sqle) {
+			
+		}
+
+		return documentos;
+	}
+	
+	
 }

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import br.edu.ifpb.auxilio.dominio.Familiar;
 
@@ -91,61 +94,27 @@ public class FamiliarDAO {
 		return false;
 	}
 	
-	public int getIdFamiliar(int idPerfilSocio) {
-		
-		try {
-			
-			int idFamiliar = 0;
-			
-			String sql = "select id_familiar from familiar where perfil_socio_id = ?";
-			
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idPerfilSocio);
-			
-			
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				
-				idFamiliar = rs.getInt("idFamiliar");
 
-			}
-			
-			
-			stmt.close();
-			rs.close();
-			
-			return idFamiliar;
 
-		} catch (Exception e) {
-			System.out.println("Exception is :" + e);
-		}
-
-		return 0;
-
-	}
-
-	public Familiar getObject(int idPerfilSocio) {
+	public Familiar getById(int idFamiliar) {
 		try {
 			
 			Familiar familiar = new Familiar();
 			
-			String sql = "select * from familiar where perfil_socio_id = ?";
+			String sql = "select * from familiar where id_familiar = ?";
 			
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idPerfilSocio);
+			stmt.setInt(1, idFamiliar);
 			
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-
-				familiar.setNome(rs.getString("nome_familiar"));
-				familiar.setIdade(rs.getInt("idade_familiar"));
-				familiar.setGrauDeInstrucao(rs.getInt("grau_de_instrucao"));
-				familiar.setProfissao(rs.getString("profissao"));
-				familiar.setRenda(rs.getDouble("renda"));
-				familiar.setDoenca(rs.getString("doenca"));
-				// stmt.setInt (6, crf.getPs().getIdPerfilSocio());
-
-			}
+			
+			List<Familiar> familiares = convertToList(rs);
+			
+			if (!familiares.isEmpty()) {
+				
+				familiar = familiares.get(0);
+				
+			} 
 			
 			stmt.close();
 			rs.close();
@@ -159,5 +128,39 @@ public class FamiliarDAO {
 
 	}
 	
+	
+	public List<Familiar> convertToList(ResultSet rs)
+			throws SQLException {
+
+		List<Familiar> familiares = new ArrayList<Familiar>();
+
+		try {
+
+			while (rs.next()) {
+
+				Familiar familiar = new  Familiar();
+				
+				familiar.setNome(rs.getString("nome_familiar"));
+				familiar.setIdade(rs.getInt("idade_familiar"));
+				familiar.setGrauDeInstrucao(rs.getInt("grau_de_instrucao"));
+				familiar.setProfissao(rs.getString("profissao"));
+				familiar.setRenda(rs.getDouble("renda"));
+				familiar.setDoenca(rs.getString("doenca"));
+				
+				// PerfilSocioEconomico
+				
+				PerfilSocioEconomicoDAO p = new PerfilSocioEconomicoDAO();
+				familiar.setPs(p.getById(rs.getInt("perfil_socio_id")));
+				
+
+				familiares.add(familiar);
+			}
+
+		} catch (SQLException sqle) {
+			
+		}
+
+		return familiares;
+	}
 	
 }
