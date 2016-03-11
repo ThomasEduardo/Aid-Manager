@@ -96,8 +96,8 @@ public class InstituicaoFinanciadoraDAO {
 	
 	public InstituicaoFinanciadora getById (int idIf){
 		
-		InstituicaoFinanciadora IF = null;
-		String sql = "select * from instituicaoFinanciadora where id_If = ?";
+		InstituicaoFinanciadora IF = new InstituicaoFinanciadora();
+		String sql = "select * from instituicaoFinanciadora where id_if = ?";
 		
 		
 		try{
@@ -146,7 +146,7 @@ public class InstituicaoFinanciadoraDAO {
 			}
 
 		} catch (SQLException sqle) {
-			
+			System.out.println("Exception is :"+sqle);
 		}
 
 		return Ifs;

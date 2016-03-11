@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.edu.ifpb.auxilio.bd.Conexao;
 import br.edu.ifpb.auxilio.dominio.Auxilio;
+import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 
 
 public class AuxilioDAO{
@@ -59,12 +60,12 @@ private Connection conn;
 	public boolean update(Auxilio auxilio) { 
 		
 		String sql = "update pessoa set "
-				+ " `tipo_auxilio`=?, "
-				+ " `valor_auxilio`=?, "
-				+ " `validade_inicial`=?, "
-				+ " `validade_final`=?,"
-				+ " `instituicaoFinanciadora_id`=?, "
-				+ " `processo_id`=? "
+				+ " tipo_auxilio=?, "
+				+ " valor_auxilio=?, "
+				+ " validade_inicial=?, "
+				+ " validade_final=?,"
+				+ " instituicaoFinanciadora_id=?, "
+				+ " processo_id=? "
 				+ "WHERE id_auxilio = ?";
 		try {
 			
@@ -73,9 +74,10 @@ private Connection conn;
 			
 			stmt.setString(1, auxilio.getTipoAuxilio());
 			stmt.setDouble(2, auxilio.getValorAuxilio() );
-			//stmt.setDate(3, auxilio.getValidadeInicial());
-			//stmt.setDate(4, auxilio.getValidadeFinal());
-			stmt.setInt   (5, auxilio.getIF().getIdIF());
+			stmt.setDate(3, null);
+			stmt.setDate(4, null);
+			InstituicaoFinanciadora IF = auxilio.getIF();
+			stmt.setInt   (5, IF.getIdIF());
 			stmt.setInt   (6, auxilio.getP().getIdProcesso());
 			stmt.setInt   (7, auxilio.getIdAuxilio());
 			
@@ -86,7 +88,8 @@ private Connection conn;
 
 		} catch (Exception e) {
 			
-			System.out.println("Exception is :" + e);
+			//System.out.println(e.printStackTrace());
+			e.printStackTrace();
 			
 		}
 		
@@ -97,14 +100,16 @@ private Connection conn;
 	
 	
 	public Auxilio getById(int idAuxilio) {
+		PreparedStatement stmt = null;
+		String sql = "select * from auxilio where id_auxilio = ?";
 		
 		try {
 
 			Auxilio auxilio = new Auxilio();
-			String sql = "select * from auxilio "
-						+ "where id_auxilio = ?";
+			
 
-			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			
 			stmt.setInt(1, idAuxilio);
 			
 			ResultSet rs = stmt.executeQuery();
