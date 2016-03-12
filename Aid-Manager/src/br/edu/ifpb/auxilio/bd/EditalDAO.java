@@ -14,6 +14,7 @@ import br.edu.ifpb.auxilio.dominio.Edital;
 
 
 public class EditalDAO {
+	//Metodos estão com problema devido a relação
 private Connection conn;
 	
 	public EditalDAO(){
@@ -42,11 +43,11 @@ private Connection conn;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			//stmt.setDate(1, edital.getIniInscricoes() );
-			//stmt.setDate(2, edital.getFimInscricoes());
-			//stmt.setDate(3, edital.getIniEntregaForm());
+			stmt.setDate(1, null );
+			stmt.setDate(2, null);
+			stmt.setDate(3, null);
 			stmt.setInt(4, edital.getAno());
-			//stmt.setDate(5, edital.getFimForm());
+			stmt.setDate(5, null);
 			stmt.setString(6, edital.getDescricao());
 			stmt.setString(7, edital.getTitulo());
 			stmt.setDouble(8, edital.getValorBolsaDiscente());
@@ -76,15 +77,15 @@ private Connection conn;
 				+ "`valor_bolsa_discente`=?, "
 				+ "`vagas_bolsistas`=?, "
 				+ "`num_edital`=?, "
-				+ "`processo_id=?`"
+				+ "`processo_id=?` "
 				+ "WHERE id_edital = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			//stmt.setDate(1, edital.getIniInscricoes() );
-			//stmt.setDate(2, edital.getFimInscricoes());
-			//stmt.setDate(3, edital.getIniEntregaForm());
+			stmt.setDate(1, null);
+			stmt.setDate(2, null);
+			stmt.setDate(3, null);
 			stmt.setInt(4, edital.getAno());
-			//stmt.setDate(5, edital.getFimForm());
+			stmt.setDate(5, null);
 			stmt.setString(6, edital.getDescricao());
 			stmt.setString(7, edital.getTitulo());
 			stmt.setDouble(8, edital.getValorBolsaDiscente());

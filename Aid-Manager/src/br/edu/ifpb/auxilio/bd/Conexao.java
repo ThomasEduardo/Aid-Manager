@@ -13,7 +13,7 @@ public class Conexao {
 		try {
 			// Carregando o driver JDBC para MySQL. Cada SGBD tem seu próprio driver
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/aidManager", "root", "ifpb");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/aidmanager", "root", "ifpbinfo");
 			
 		} catch (SQLException e) {
 	         throw new RuntimeException(e);

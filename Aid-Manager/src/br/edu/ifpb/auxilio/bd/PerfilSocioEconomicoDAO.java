@@ -23,8 +23,8 @@ public class PerfilSocioEconomicoDAO {
 
 	public void insert(PerfilSocioEconomico PSE) {
 
-		String sql = "INSERT INTO perfilSocioEconomico" +
-					 " `situcao_renda_familiar`, " +
+		String sql = "INSERT INTO perfilSocioEconomico(" +
+					 " `situacao_renda_familiar`, " +
 					 " `moradia`, " +
 					 " `tipo_moradia`," +
 					 " `tipo_residencia_familiar`, " +
@@ -37,8 +37,8 @@ public class PerfilSocioEconomicoDAO {
 					 " `obs`, " +
 					 " `gastos_financiamento_casa_propria`, "	+
 					 " `servidor_id`, " +
-					 " `discente_id`" +
-					 "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					 " `discente_id`)" +
+					 "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 					
@@ -68,7 +68,7 @@ public class PerfilSocioEconomicoDAO {
 	}
 	public boolean update(PerfilSocioEconomico PSE) {
 		String sql = "update perfilSocioEconomico set" 
-				     + "`situcao_renda_familiar`=?, " 
+				     + "`situacao_renda_familiar`=?, " 
 					 + " `moradia`=?, " 
 				     + " `tipo_moradia`=?," 
 					 + " `tipo_residencia_familiar`=?, " 
@@ -81,8 +81,8 @@ public class PerfilSocioEconomicoDAO {
 				     + " `obs`=?, " 
 					 + " `gastos_financiamento_casa_propria`=?, "	
 				     + " `servidor_id`=?, " 
-					 + " `discente_id`=?" 
-				     + "  WHERE perfil_socio_id = ?";
+					 + " `discente_id`=? " 
+				     + "  WHERE id_perfil_socio = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			

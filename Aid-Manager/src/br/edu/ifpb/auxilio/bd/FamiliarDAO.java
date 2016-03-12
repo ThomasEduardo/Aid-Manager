@@ -25,15 +25,15 @@ public class FamiliarDAO {
 	
 	public void insert(Familiar familiar) {
 
-		String sql = "INSERT INTO familiar "
+		String sql = "INSERT INTO familiar("
 				+ " `nome_familiar`, "
 				+ " `idade_familiar`, "
 				+ " `grau_de_instrucao`, "
 				+ " `profissao`,"
 				+ " `renda`, "
 				+ " `doenca`, "
-				+ " `perfil_socio_id`"
-				+ "VALUES(?,?,?,?,?,?)";
+				+ " `perfil_socio_id`)"
+				+ "VALUES(?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -67,7 +67,7 @@ public class FamiliarDAO {
 				+ "profissao = ?,"
 				+ "renda = ?,"
 				+ "doenca = ?,"
-				+ "perfil_socio_id = ?,"
+				+ "perfil_socio_id = ? "
 				+ "WHERE id_familiar = ?";
 		try {
 			
@@ -80,6 +80,7 @@ public class FamiliarDAO {
 			stmt.setDouble(5, familiar.getRenda());
 			stmt.setString(6, familiar.getDoenca());
 			stmt.setInt   (7, familiar.getPs().getIdPerfilSocio());
+			stmt.setInt   (8, familiar.getIdCrf());
 			
 			
 			stmt.execute();
@@ -140,6 +141,7 @@ public class FamiliarDAO {
 
 				Familiar familiar = new  Familiar();
 				
+				familiar.setIdCrf(rs.getInt("id_familiar"));
 				familiar.setNome(rs.getString("nome_familiar"));
 				familiar.setIdade(rs.getInt("idade_familiar"));
 				familiar.setGrauDeInstrucao(rs.getInt("grau_de_instrucao"));

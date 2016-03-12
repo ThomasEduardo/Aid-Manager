@@ -24,11 +24,11 @@ private Connection conn;
 	
 	public void insert(Documento documento) {
 
-		String sql = "INSERT INTO documento"
+		String sql = "INSERT INTO documento("
 				+ " `nome_documento`, "
 				+ " `status_documento`, "
 				+ " `obs`,"
-				+ " `discente_id`"
+				+ " `discente_id`)"
 				+ "VALUES(?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -52,17 +52,17 @@ private Connection conn;
 		
 		String sql = "update documento set "
 				+ "nome_documento = ?,"
-				+ "status_Documento=?,"
-				+ "obs=?,"
-				+ "discente_id=?"
-				+ "where id_documento=?";
+				+ "status_documento = ?,"
+				+ "obs = ?,"
+				+ "discente_id = ? "
+				+ "WHERE id_documento=? ";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, d.getNomeDocumento());
 			stmt.setString(2, d.getStatus());
 			stmt.setString(3, d.getObs());
 			stmt.setInt   (4, d.getDiscente().getIdDiscente());
-			stmt.setInt(5, d.getIdDocumento());
+			stmt.setInt   (5, d.getIdDocumento());
 			
 			
 			stmt.execute();
@@ -97,13 +97,11 @@ private Connection conn;
 				documento = documentos.get(0);
 			}
 			
-			
-			return documento;
 		}
 		catch (Exception e){
 			System.out.println("Exception is :"+e);
 		}
-		return null;
+		return documento;
 				
 	}
 	
@@ -134,7 +132,8 @@ private Connection conn;
 			}
 
 		} catch (SQLException sqle) {
-			
+		
+			System.out.println("Exception is :"+sqle);
 		}
 
 		return documentos;

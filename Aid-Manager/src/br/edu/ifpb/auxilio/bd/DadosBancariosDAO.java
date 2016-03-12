@@ -25,13 +25,13 @@ private Connection conn;
 	
 	public void insert(DadosBancarios dadosBancarios) {
 
-		String sql = "INSERT INTO dadosBancarios "
+		String sql = "INSERT INTO dadosBancarios( "
 				+ " `banco`, "
 				+ " `agencia`, "
 				+ " `num_agencia`,"
 				+ " `saldo`, "
-				+ " `obs`"
-				+ " `discente_id`"
+				+ " `obs`,"
+				+ " `discente_id`)"
 				+ "VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -60,7 +60,7 @@ private Connection conn;
 				+ "num_agencia= ?,"
 				+ "saldo=?,"
 				+ "obs=?,"
-				+ "discente_id=?,"
+				+ "discente_id=?"
 				+ " WHERE id_dados_bancarios = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -70,6 +70,7 @@ private Connection conn;
 			stmt.setDouble(4, db.getSaldo()); 
 			stmt.setString(5, db.getObs());
 			stmt.setInt(6, db.getDiscente().getIdDiscente());
+			stmt.setInt(7, db.getIdDadosBancarios());
 
 			stmt.execute();
 			stmt.close();

@@ -59,7 +59,7 @@ private Connection conn;
 	
 	public boolean update(Auxilio auxilio) { 
 		
-		String sql = "update pessoa set "
+		String sql = "update auxilio set "
 				+ " tipo_auxilio=?, "
 				+ " valor_auxilio=?, "
 				+ " validade_inicial=?, "
@@ -76,8 +76,7 @@ private Connection conn;
 			stmt.setDouble(2, auxilio.getValorAuxilio() );
 			stmt.setDate(3, null);
 			stmt.setDate(4, null);
-			InstituicaoFinanciadora IF = auxilio.getIF();
-			stmt.setInt   (5, IF.getIdIF());
+			stmt.setInt   (5, auxilio.getIF().getIdIF());
 			stmt.setInt   (6, auxilio.getP().getIdProcesso());
 			stmt.setInt   (7, auxilio.getIdAuxilio());
 			
@@ -150,20 +149,23 @@ private Connection conn;
 				auxilio.setIdAuxilio(rs.getInt("id_auxilio"));
 				auxilio.setTipoAuxilio(rs.getString("tipo_auxilio"));
 				auxilio.setValorAuxilio(rs.getDouble("valor_auxilio"));
-				auxilio.setValidadeInicial(rs.getDate("validade_inicial"));
-				auxilio.setValidadeFinal(rs.getDate("validade_final"));
+				//auxilio.setValidadeInicial((java.util.Date)rs.getDate("validade_inicial"));
+				//auxilio.setValidadeFinal((java.util.Date)rs.getDate("validade_final"));
 				
 				// Instituicao Financiadora 
 				
 				InstituicaoFinanciadoraDAO IF = new InstituicaoFinanciadoraDAO();
 				auxilio.setIF(IF.getById(rs.getInt("instituicaoFinanciadora_id")));
+				//Processo
 				
+				ProcessoDAO p = new ProcessoDAO();
+				auxilio.setP(p.getById(rs.getInt("processo_id")));
 
 				auxilios.add(auxilio);
 			}
 
 		} catch (SQLException sqle) {
-			
+			System.out.println("Exception is :" + sqle);
 		}
 
 		return auxilios;

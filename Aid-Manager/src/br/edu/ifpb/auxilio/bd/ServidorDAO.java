@@ -11,7 +11,7 @@ import br.edu.ifpb.auxilio.dominio.Processo;
 import br.edu.ifpb.auxilio.dominio.Servidor;
 
 public class ServidorDAO{
-	
+	//Precisa testar
 	private Connection conn;
 	
 	public ServidorDAO(){

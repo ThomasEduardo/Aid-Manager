@@ -112,12 +112,11 @@ public class InstituicaoFinanciadoraDAO {
 				IF = InstituicaoFinanciadoras.get(0);
 			}
 			
-			return IF;
 		}
 		catch (Exception e){
 			System.out.println("Exception is :"+e);
 		}
-		return null;
+		return IF;
 				
 	}
 	
@@ -133,8 +132,8 @@ public class InstituicaoFinanciadoraDAO {
 
 				InstituicaoFinanciadora IF = new InstituicaoFinanciadora();
 				
-				IF.setNomeIF(rs.getString("Nome_if"));
-				IF.setCnpj(rs.getString("CNPJ"));
+				IF.setNomeIF(rs.getString("nome_if"));
+				IF.setCnpj(rs.getString("cnpj"));
 				IF.setOrcamentoAuxilio(rs.getDouble("orcamento_auxilio"));
 				IF.setIdIF(rs.getInt("id_if"));
 				
