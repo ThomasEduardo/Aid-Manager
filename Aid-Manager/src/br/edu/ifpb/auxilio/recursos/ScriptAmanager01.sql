@@ -303,3 +303,32 @@ INSERT INTO `chat`(`remetente_id`, `destinatario_id`, `mensagem`)
 VALUES (1,2,'Oi linda você é linda linda');
 INSERT INTO `chat`(`remetente_id`, `destinatario_id`, `mensagem`)
 VALUES (2,1,'Eu sei,sua linda <3');
+/*-------------------------------Triggers------------------------------*/
+delimiter $$
+Create trigger tr_updateSaldo before update 
+on dadosBancarios
+for each row
+begin
+
+	Select instituicaoFinanciadora_id  @id from auxilio 
+    where id_discente = old.discente_id;
+	update instituicaoFinanciadora 
+    set orcamento_auxilio = orcamento_auxilio - new.saldo 
+    where id_if = @id;
+
+end $$
+DELIMITER ;
+
+
+delimiter $$
+Create trigger tr_updateEdital before update
+on edital
+for each row
+begin
+	if(new.ano < 0 or new.valorBolsaDiscente <0 or datediff(new.fimInscricoes,new.iniInscricoes) < 0 or datediff(new.fimForm,new.iniEntregaForm) < 0 or new.vagasBolsistas < 0 )then
+    set new.idEdital = null;
+    end if;
+
+end $$
+delimiter ;
+
