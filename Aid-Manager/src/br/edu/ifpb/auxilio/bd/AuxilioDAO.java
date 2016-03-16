@@ -10,6 +10,7 @@ import java.util.List;
 import br.edu.ifpb.auxilio.bd.Conexao;
 import br.edu.ifpb.auxilio.dominio.Auxilio;
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
+import br.edu.ifpb.auxilio.dominio.Pessoa;
 
 
 public class AuxilioDAO{
@@ -170,6 +171,80 @@ private Connection conn;
 
 		return auxilios;
 	}
+	
+	public List<Auxilio> getAll() throws SQLException {
+		
+		List<Auxilio> auxilios = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+
+			String sql = String
+					.format("%s",
+							"SELECT `id_auxilio`, "
+									+ "`tipo_auxilio`, "
+									+ "`valor_auxilio`, "
+									+ "`validade_Inicial`, "
+									+ "`validade_final`, "
+									+ "`instituicaoFinanciadora_id`, "
+									+ "`processo_id` "
+						    + " FROM `auxilio`");
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+			
+			auxilios = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			
+			sqle.printStackTrace();
+			
+		}
+		return auxilios;
+		
+	}
+	
+	/*public List<Auxilio> getAllByPessoa(Pessoa pessoa) throws SQLException {
+		
+		List<Auxilio> auxilios = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+
+			String sql = String
+					.format("%s",
+							"SELECT `id_auxilio`, "
+									+ "`tipo_auxilio`, "
+									+ "`valor_auxilio`, "
+									+ "`validade_Inicial`, "
+									+ "`validade_final`, "
+									+ "`instituicaoFinanciadora_id`, "
+									+ "`processo_id` "
+									+ " FROM `auxilio`"
+									+ " WHERE %?%");
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			
+			stmt.setInt(1, pessoa);
+
+			rs = stmt.executeQuery(sql);
+			
+			auxilios = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			
+			sqle.printStackTrace();
+			
+		}
+		return auxilios;
+		
+	}*/
+	
 	
 
 }

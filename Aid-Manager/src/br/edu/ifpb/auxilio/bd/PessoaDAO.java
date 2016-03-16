@@ -179,5 +179,37 @@ public class PessoaDAO {
 
 		return pessoas;
 	}
+	//Verificar se a matricula já existe
+	public boolean isMatriculaCadastrada(String matricula) throws SQLException {
+		
+		boolean isMatriculaCadastrada = false;
+
+		PreparedStatement stmt = null;
+		
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String
+					.format("%s '%s'",
+							"SELECT count(pessoa.id_pessoa) AS quant_pessoas "
+								+ " FROM pessoa pessoa"
+								+ " WHERE pessoa.matricula =",
+							matricula);
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+			
+			int rowCount = rs.last() ? rs.getInt("quant_pessoas") : 0; 
+			
+			isMatriculaCadastrada = (rowCount != 0);
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} 
+		
+		return isMatriculaCadastrada;
+	}
 
 }
