@@ -18,8 +18,8 @@ private Connection conn;
 	public DadosBancariosDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
-			System.out.println("Conex„o estabelecida");
-		else System.out.println("Erro na conex„o com o BD");	
+			System.out.println("Conex√£o estabelecida");
+		else System.out.println("Erro na conex√£o com o BD");	
 	}
 	
 	
@@ -147,7 +147,69 @@ private Connection conn;
 		return DadosBancarios;
 	}
 	
+	public List<DadosBancarios> find(DadosBancarios db) throws SQLException {
+		List<DadosBancarios> dbs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							" SELECT  db.id_dados_bancarios,"
+									+ "db.banco,"
+									+ "db.num_agencia,"
+									+ "db.saldo,"
+									+ "pessoa.nome_pessoa"
+									+ "INNER JOIN discente"
+									+ "ON db.discente_id = discente.id_discente"
+									+ "INNER JOIN pessoa"
+									+ "ON pessoa.id_pessoa = discente.pessoa_id"	
+						    + " WHERE pessoa.matricula LIKE",
+							db.getDiscente().getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			dbs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return dbs;
+	}
 	
+	public List<DadosBancarios> getAll() throws SQLException {
+		List<DadosBancarios> dbs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						"SELECT db.id_dados_bancarios,"
+									+ "db.banco,"
+									+ "db.num_agencia,"
+									+ "db.saldo, "
+							                + "db.discente_id`");
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			dbs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return dbs;
+	}
+		
 	
 	
 	
