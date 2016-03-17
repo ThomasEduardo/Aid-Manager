@@ -9,7 +9,7 @@ import java.util.List;
 import br.edu.ifpb.auxilio.dominio.Familiar;
 import br.edu.ifpb.auxilio.dominio.Processo;
 import br.edu.ifpb.auxilio.dominio.Servidor;
-
+// Atualizar atributos
 public class ServidorDAO{
 	//Precisa testar
 	private Connection conn;
