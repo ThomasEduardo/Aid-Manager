@@ -23,8 +23,8 @@ public class PessoaDAO {
 	public PessoaDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
-			System.out.println("Conexão estabelecida");
-		else System.out.println("Erro na conexão com o BD");	
+			System.out.println("ConexÃ£o estabelecida");
+		else System.out.println("Erro na conexÃ£o com o BD");	
 	}
 	
 	
@@ -42,13 +42,13 @@ public class PessoaDAO {
 				+ "sexo)"
 				+ "values (?,?,?,?,?,?,?,?)";
 		try {
-			// prepared statement para inserção
+			// prepared statement para inserÃ§Ã£o
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			// seta os valores
 			stmt.setString(1, pessoa.getNomePessoa());
 			stmt.setString(2, pessoa.getMatricula());
-			stmt.setDate(3, (java.sql.Date) pessoa.getDataNasc());
+			stmt.setDate  (3, new java.sql.Date(pessoa.getDataNasc().getTime()));
 			stmt.setString(4, pessoa.getSenha());
 			stmt.setString(5, pessoa.getEmail());
 			stmt.setString(6, pessoa.getCpf());
@@ -129,7 +129,7 @@ public class PessoaDAO {
 			stmt.setString(1, p.getNomePessoa());
 			stmt.setString(2, p.getRg());
 			stmt.setString(3, p.getMatricula());
-			stmt.setDate(4, (java.sql.Date) p.getDataNasc());
+			stmt.setDate  (4,  new java.sql.Date(pessoa.getDataNasc().getTime()));
 			stmt.setString(5, p.getSexo());
 			stmt.setString(6, p.getSenha());
 			stmt.setString(7, p.getEmail());
@@ -179,7 +179,7 @@ public class PessoaDAO {
 
 		return pessoas;
 	}
-	//Verificar se a matricula j� existe
+	//Verificar se a matricula já existe
 	public boolean isMatriculaCadastrada(String matricula) throws SQLException {
 		
 		boolean isMatriculaCadastrada = false;
