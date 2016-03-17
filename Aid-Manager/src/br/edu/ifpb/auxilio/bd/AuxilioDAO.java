@@ -20,8 +20,8 @@ private Connection conn;
 	public AuxilioDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
-			System.out.println("Conex„o estabelecida");
-		else System.out.println("Erro na conex„o com o BD");	
+			System.out.println("Conex√£o estabelecida");
+		else System.out.println("Erro na conex√£o com o BD");	
 	}
 	
 	
@@ -40,16 +40,16 @@ private Connection conn;
 
 			stmt.setString(1, auxilio.getTipoAuxilio());
 			stmt.setDouble(2, auxilio.getValorAuxilio() );
-			stmt.setDate  (3, null);
-			stmt.setDate  (4, null);
+			stmt.setDate  (3, new java.sql.Date(auxilio.getValidadeInicial().getTime()));
+			stmt.setDate  (4, new java.sql.Date(auxilio.getValidadeFinal().getTime()));
 			stmt.setInt   (5, auxilio.getIF().getIdIF());
-         	stmt.setInt   (6, auxilio.getP().getIdProcesso());
+         		stmt.setInt   (6, auxilio.getP().getIdProcesso());
          	
          	
 			stmt.execute();
 			stmt.close();
 			
-			//Ajeitar datas
+		
 		} catch (SQLException e) { 
 			
 			throw new RuntimeException(e);
@@ -75,8 +75,8 @@ private Connection conn;
 			
 			stmt.setString(1, auxilio.getTipoAuxilio());
 			stmt.setDouble(2, auxilio.getValorAuxilio() );
-			stmt.setDate(3, null);
-			stmt.setDate(4, null);
+			stmt.setDate  (3, new java.sql.Date(auxilio.getValidadeInicial().getTime()));
+			stmt.setDate  (4, new java.sql.Date(auxilio.getValidadeFinal().getTime()));
 			stmt.setInt   (5, auxilio.getIF().getIdIF());
 			stmt.setInt   (6, auxilio.getP().getIdProcesso());
 			stmt.setInt   (7, auxilio.getIdAuxilio());
@@ -88,7 +88,7 @@ private Connection conn;
 
 		} catch (Exception e) {
 			
-			//System.out.println(e.printStackTrace());
+			
 			e.printStackTrace();
 			
 		}
@@ -244,6 +244,51 @@ private Connection conn;
 		return auxilios;
 		
 	}*/
+	
+	public List<Auxilio> find(Auxilio auxilio) throws SQLException {
+		List<Auxilio> auxilios = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String
+					.format("%s '%%%s%%'",
+							"SELECT auxilio.`id_auxilio`, "
+							+ " auxilio.`tipo_auxilio`, "
+							+ " auxilio.`valor_auxilio`, "
+							+ " auxilio.`validade_Inicial`, "
+							+ " auxilio.`validade_final`, "
+							+ " IF.`nome_if`, "
+							+ " processo.`num_processo`"
+							+ " INNER JOIN processo"
+							+ " on processo.id_processo = auxilio.processo_id"
+							+ " INNER JOIN instituicaoFinanciadora IF"
+							+ " on IF.id_if = auxilio.instituicaoFinanciadora_id" 
+						        + " WHERE IF.cnpj LIKE",
+							auxilio.getIF().getCnpj());
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			auxilios = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return auxilios;
+	}
+	
+	
+
+		
+	
+		
+}
 	
 	
 
