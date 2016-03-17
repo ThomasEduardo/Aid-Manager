@@ -14,14 +14,14 @@ import br.edu.ifpb.auxilio.dominio.Edital;
 
 
 public class EditalDAO {
-	//Metodos est„o com problema devido a relaÁ„o
+	//Metodos est√£o com problema devido a rela√ß√£o
 private Connection conn;
 	
 	public EditalDAO(){
 		conn = Conexao.getConnection();
 		if(conn != null)
-			System.out.println("Conex„o estabelecida");
-		else System.out.println("Erro na conex„o com o BD");	
+			System.out.println("Conex√£o estabelecida");
+		else System.out.println("Erro na conex√£o com o BD");	
 	}
 	
 	
@@ -43,11 +43,11 @@ private Connection conn;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setDate(1, null );
-			stmt.setDate(2, null);
-			stmt.setDate(3, null);
-			stmt.setInt(4, edital.getAno());
-			stmt.setDate(5, null);
+			stmt.setDate(1, new java.sql.Date(edital.getIniInscricoes().getTime() );
+			stmt.setDate(2, new java.sql.Date(edital.getFimInscricoes().getTime()));
+			stmt.setDate(3, new java.sql.Date(edital.getIniEntregaForm().getTime()));
+			stmt.setInt (4, edital.getAno());
+			stmt.setDate(5, new java.sql.Date(edital.getFimForm().getTime()));
 			stmt.setString(6, edital.getDescricao());
 			stmt.setString(7, edital.getTitulo());
 			stmt.setDouble(8, edital.getValorBolsaDiscente());
@@ -81,11 +81,11 @@ private Connection conn;
 				+ "WHERE id_edital = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setDate(1, null);
-			stmt.setDate(2, null);
-			stmt.setDate(3, null);
+			stmt.setDate(1, new java.sql.Date(edital.getIniInscricoes().getTime() );
+			stmt.setDate(2, new java.sql.Date(edital.getFimInscricoes().getTime());
+			stmt.setDate(3, new java.sql.Date(edital.getIniEntregaForm().getTime()));
 			stmt.setInt(4, edital.getAno());
-			stmt.setDate(5, null);
+			stmt.setDate(5, new java.sql.Date(edital.getFimForm().getTime()));
 			stmt.setString(6, edital.getDescricao());
 			stmt.setString(7, edital.getTitulo());
 			stmt.setDouble(8, edital.getValorBolsaDiscente());
