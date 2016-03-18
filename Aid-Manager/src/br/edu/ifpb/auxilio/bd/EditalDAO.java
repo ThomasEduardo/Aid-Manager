@@ -43,7 +43,7 @@ private Connection conn;
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setDate(1, new java.sql.Date(edital.getIniInscricoes().getTime() );
+			stmt.setDate(1, new java.sql.Date(edital.getIniInscricoes().getTime()));
 			stmt.setDate(2, new java.sql.Date(edital.getFimInscricoes().getTime()));
 			stmt.setDate(3, new java.sql.Date(edital.getIniEntregaForm().getTime()));
 			stmt.setInt (4, edital.getAno());
@@ -81,8 +81,8 @@ private Connection conn;
 				+ "WHERE id_edital = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setDate(1, new java.sql.Date(edital.getIniInscricoes().getTime() );
-			stmt.setDate(2, new java.sql.Date(edital.getFimInscricoes().getTime());
+			stmt.setDate(1, new java.sql.Date(edital.getIniInscricoes().getTime()));
+			stmt.setDate(2, new java.sql.Date(edital.getFimInscricoes().getTime()));
 			stmt.setDate(3, new java.sql.Date(edital.getIniEntregaForm().getTime()));
 			stmt.setInt(4, edital.getAno());
 			stmt.setDate(5, new java.sql.Date(edital.getFimForm().getTime()));
@@ -171,7 +171,7 @@ private Connection conn;
 			}
 
 		} catch (SQLException sqle) {
-			
+			System.out.println("Exception is :"+sqle);
 		}
 
 		return editais;

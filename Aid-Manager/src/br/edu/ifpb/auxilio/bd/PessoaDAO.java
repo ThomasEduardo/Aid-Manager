@@ -129,7 +129,7 @@ public class PessoaDAO {
 			stmt.setString(1, p.getNomePessoa());
 			stmt.setString(2, p.getRg());
 			stmt.setString(3, p.getMatricula());
-			stmt.setDate  (4,  new java.sql.Date(pessoa.getDataNasc().getTime()));
+			stmt.setDate  (4,  new java.sql.Date(p.getDataNasc().getTime()));
 			stmt.setString(5, p.getSexo());
 			stmt.setString(6, p.getSenha());
 			stmt.setString(7, p.getEmail());
