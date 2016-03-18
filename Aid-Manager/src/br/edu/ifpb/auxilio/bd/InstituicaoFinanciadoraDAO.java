@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ifpb.auxilio.dominio.Familiar;
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 
 
@@ -149,5 +150,63 @@ public class InstituicaoFinanciadoraDAO {
 		}
 
 		return Ifs;
+	}
+	
+	
+	
+	public List<InstituicaoFinanciadora> find(InstituicaoFinanciadora instf) throws SQLException {
+		List<InstituicaoFinanciadora> instfs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							" SELECT   `nome_if`, " 
+									  + " `cnpj`, " 
+									  + " `orcamento_auxilio`" 
+						    + " WHERE cnpj LIKE",
+							instf.getCnpj());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			instfs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return instfs;
+	}
+	
+	public List<InstituicaoFinanciadora> getAll() throws SQLException {
+		List<InstituicaoFinanciadora> instfs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						 "  SELECT       `nome_if`, " 
+									  + " `cnpj`, " 
+									  + " `orcamento_auxilio`"
+									  + " `servidor_id`"); 
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			instfs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return instfs;
 	}
 }

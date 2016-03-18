@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.dominio.PerfilSocioEconomico;
 
 public class PerfilSocioEconomicoDAO {
@@ -193,5 +195,76 @@ public class PerfilSocioEconomicoDAO {
 		}
 
 		return ps;
+	}
+	
+	
+	public List<PerfilSocioEconomico> find(PerfilSocioEconomico pse) throws SQLException {
+		List<PerfilSocioEconomico> pses = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							"SELECT  `situacao_renda_familiar`, " 
+									+ " ps.`moradia`, " 
+									+ " ps.`tipo_moradia`," 
+									+ " ps.`tipo_residencia_familiar`, " 
+									+ " ps.`tipo_Trabalho`, " 
+									+ " ps.`gastos_aluguel`, " 
+									+ " ps.`gastos_condominio`, " 
+									+ " ps.`gastos_luz`, " 
+									+ " ps.`gastos_agua`, " 
+									+ " ps.`gastos_telefone`, " 
+									+ " ps.`obs`, " 
+									+ " ps.`gastos_financiamento_casa_propria`"
+									+ " FROM perfilSocioEconomico ps"
+									+ " INNER JOIN discente"
+									+ " ON discente.id_discente =  ps.discente_id"
+									+ " INNER JOIN pessoa"
+									+ " ON pessoa.id_pessoa =  discente.pessoa_id"	
+						    + " WHERE pessoa.matricula LIKE",
+							pse.getDiscente().getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			pses = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return pses;
+	}
+	
+	public List<PerfilSocioEconomico> getAll() throws SQLException {
+		List<PerfilSocioEconomico> instfs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						 "  SELECT       `nome_if`, " 
+									  + " `cnpj`, " 
+									  + " `orcamento_auxilio`"
+									  + " `servidor_id`"); 
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			instfs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return instfs;
 	}
 }

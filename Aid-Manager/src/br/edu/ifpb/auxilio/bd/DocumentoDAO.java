@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ifpb.auxilio.dominio.DadosBancarios;
 import br.edu.ifpb.auxilio.dominio.Documento;
 
 
@@ -139,5 +140,66 @@ private Connection conn;
 		return documentos;
 	}
 	
+	
+	public List<Documento> getAll() throws SQLException {
+		List<Documento> documentos = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						"SELECT  nome_documento,"
+							   + "status_documento,"
+							   + "obs "
+							   + "discente_id  ");
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			documentos = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return documentos;
+	}
+	
+	
+	public List<Documento> find(Documento documento) throws SQLException {
+		List<Documento> documentos = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							   " SELECT  nome_documento,"
+									   + "status_documento,"
+									   + "obs "
+									   + "INNER JOIN discente"
+									   + "ON db.discente_id = discente.id_discente"
+									   + "INNER JOIN pessoa"
+									   + "ON pessoa.id_pessoa = discente.pessoa_id"	
+						    + " WHERE pessoa.matricula LIKE",
+							documento.getDiscente().getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			documentos = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return documentos;
+	}
 	
 }

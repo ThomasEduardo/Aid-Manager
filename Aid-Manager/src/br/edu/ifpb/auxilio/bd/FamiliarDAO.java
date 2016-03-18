@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+import br.edu.ifpb.auxilio.dominio.Edital;
 import br.edu.ifpb.auxilio.dominio.Familiar;
 
 
@@ -165,4 +167,72 @@ public class FamiliarDAO {
 		return familiares;
 	}
 	
+	
+	public List<Familiar> find(Familiar familiar) throws SQLException {
+		List<Familiar> familiares = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							" SELECT  familiar.nome_familiar,"
+									+ "familiar.idade_familiar,"
+									+ "familiar.grau_de_instrucao,"
+									+ "familiar.profissao ,"
+									+ "familiar.renda,"
+									+ "familiar.doenca"
+									+ "FROM familiar"
+									+ "INNER JOIN perfilSocioEconomico ps"
+									+ "ON ps.id_perfil_socio = familiar.perfil_socio_id"
+									+ "INNER JOIN discente"
+									+ "ON discente.id_discente = ps.discente_id"
+									+ "INNER JOIN pessoa"
+									+ "ON pessoa.id_pessoa = discente.pessoa_id"
+						    + " WHERE pessoa.matricula LIKE",
+							familiar.getPs().getDiscente().getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			familiares = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return familiares;
+	}
+	
+	public List<Familiar> getAll() throws SQLException {
+		List<Familiar> familiares = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						"SELECT   familiar.nome_familiar,"
+									+ "familiar.idade_familiar,"
+									+ "familiar.grau_de_instrucao,"
+									+ "familiar.profissao ,"
+									+ "familiar.renda,"
+									+ "familiar.doenca"); 
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			familiares = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return familiares;
+	}
 }

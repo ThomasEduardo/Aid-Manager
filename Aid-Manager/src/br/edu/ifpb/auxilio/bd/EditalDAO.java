@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
+import br.edu.ifpb.auxilio.dominio.Documento;
 import br.edu.ifpb.auxilio.dominio.Edital;
 
 
@@ -173,6 +174,78 @@ private Connection conn;
 		} catch (SQLException sqle) {
 			System.out.println("Exception is :"+sqle);
 		}
+
+		return editais;
+	}
+	
+	
+	public List<Edital> find(Edital edital) throws SQLException {
+		List<Edital> editais = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							" SELECT  `ini_inscricoes`, "
+									+ "`fim_inscricoes`,"
+									+ "`ini_entrega_form`,"
+									+ "`ano`, "
+									+ "`fim_form`, "
+									+ "`descricao`, "
+									+ "`titulo`, "
+									+ "`valor_bolsa_discente`, "
+									+ "`vagas_bolsistas`, "
+									+ "`num_edital` "
+									+ "INNER JOIN processo"
+									+ "ON processo.processo_id = processo.id_processo"
+						    + " WHERE processo.num_processo LIKE",
+							edital.getNumEdital());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			editais = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return editais;
+	}
+	
+	public List<Edital> getAll() throws SQLException {
+		List<Edital> editais = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						"SELECT       `ini_inscricoes`, "
+									+ "`fim_inscricoes`,"
+									+ "`ini_entrega_form`,"
+									+ "`ano`, "
+									+ "`fim_form`, "
+									+ "`descricao`, "
+									+ "`titulo`, "
+									+ "`valor_bolsa_discente`, "
+									+ "`vagas_bolsistas`, "
+									+ "`num_edital`"); //Seta os atributos de processo
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			editais = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
 
 		return editais;
 	}
