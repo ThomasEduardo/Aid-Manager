@@ -151,11 +151,11 @@ private Connection conn;
 
 				Edital edital = new  Edital();
 				
-				edital.setIniInscricoes(rs.getDate("ini_inscricoes"));
-				edital.setFimInscricoes(rs.getDate("fim_inscricoes"));
-				edital.setIniEntregaForm(rs.getDate("ini_entrega_form"));
+				edital.setIniInscricoes( new java.sql.Date(edital.getIniInscricoes().getTime()));
+				edital.setFimInscricoes(new java.sql.Date(edital.getFimInscricoes().getTime()));
+				edital.setIniEntregaForm(new java.sql.Date(edital.getIniEntregaForm().getTime()));
 				edital.setAno(rs.getInt("ano"));
-				edital.setFimForm(rs.getDate("fim_form"));
+				edital.setFimForm(new java.sql.Date(edital.getFimForm().getTime()));
 				edital.setDescricao(rs.getString("descricao"));
 				edital.setTitulo(rs.getString("titulo"));
 				edital.setValorBolsaDiscente(rs.getDouble("valor_bolsa_discente"));
@@ -188,16 +188,17 @@ private Connection conn;
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							" SELECT  `ini_inscricoes`, "
-									+ "`fim_inscricoes`,"
-									+ "`ini_entrega_form`,"
-									+ "`ano`, "
-									+ "`fim_form`, "
-									+ "`descricao`, "
-									+ "`titulo`, "
-									+ "`valor_bolsa_discente`, "
-									+ "`vagas_bolsistas`, "
-									+ "`num_edital` "
+							" SELECT  edital.`ini_inscricoes`, "
+									+ "edital.`fim_inscricoes`,"
+									+ "edital.`ini_entrega_form`,"
+									+ "edital.`ano`, "
+									+ "edital.`fim_form`, "
+									+ "edital.`descricao`, "
+									+ "edital.`titulo`, "
+									+ "edital.`valor_bolsa_discente`, "
+									+ "edital.`vagas_bolsistas`, "
+									+ "edital.`num_edital` "
+									+ " FROM edital"
 									+ "INNER JOIN processo"
 									+ "ON processo.processo_id = processo.id_processo"
 						    + " WHERE processo.num_processo LIKE",
@@ -235,7 +236,8 @@ private Connection conn;
 									+ "`titulo`, "
 									+ "`valor_bolsa_discente`, "
 									+ "`vagas_bolsistas`, "
-									+ "`num_edital`"); //Seta os atributos de processo
+									+ "`num_edital`"
+						+ "FROM edital"); //Setar os atributos de processo
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 

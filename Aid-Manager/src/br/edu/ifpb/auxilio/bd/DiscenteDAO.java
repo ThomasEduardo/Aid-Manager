@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 import br.edu.ifpb.auxilio.dominio.Discente;
+import br.edu.ifpb.auxilio.dominio.Pessoa;
 
 
 
@@ -181,10 +183,21 @@ public class DiscenteDAO{
 				discente.setPontoRef(rs.getString("ponto_ref"));
 				discente.setEstado(rs.getString("estado"));
 				discente.setMotivoSolicitacao(rs.getString("motivo_solicitacao"));
-				//discente.super(p.getObject(rs.getInt("pessoa_id")));
 				
 				// Pessoa
-				
+				PessoaDAO p = new PessoaDAO(); 
+				Pessoa pessoa = p.getById(rs.getInt("pessoa_id"));
+				discente.setIdPessoa(pessoa.getIdPessoa());
+				discente.setNomePessoa(pessoa.getNomePessoa());
+				discente.setCpf(pessoa.getCpf());
+				discente.setEmail(pessoa.getEmail());
+				discente.setDataNasc(pessoa.getDataNasc());
+				discente.setMatricula(pessoa.getMatricula());
+				discente.setRg(pessoa.getRg());
+				discente.setSexo(pessoa.getSexo());
+				discente.setSenha(pessoa.getSenha());
+
+
 				
 				
 

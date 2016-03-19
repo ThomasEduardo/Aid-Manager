@@ -32,13 +32,13 @@ public class Instituicao {
 	
 public static void main(String[] args) throws SQLException {
 	
-	List<DadosBancarios> auxs = null;
+	List<Familiar> auxs = null;
 
-	DadosBancariosDAO a = new DadosBancariosDAO();
-	DiscenteDAO discente = new DiscenteDAO();
-	DadosBancarios db = new DadosBancarios();
-	db.setDiscente(discente.getById(1));
-	auxs = a.find(db);
+	FamiliarDAO e = new FamiliarDAO();
+	//DiscenteDAO discente = new DiscenteDAO();
+   //	Documento db = new Documento();
+	//db.setDiscente(discente.getById(1));
+	auxs = e.getAll();
 	
 	System.out.println(auxs.size());	
 	

@@ -216,12 +216,14 @@ public class FamiliarDAO {
 		try {
 
 			String sql = String.format("%s",
-						"SELECT   familiar.nome_familiar,"
-									+ "familiar.idade_familiar,"
-									+ "familiar.grau_de_instrucao,"
-									+ "familiar.profissao ,"
-									+ "familiar.renda,"
-									+ "familiar.doenca"); 
+						"SELECT      id_familiar,"
+						            + "nome_familiar,"
+									+ "idade_familiar,"
+									+ "grau_de_instrucao,"
+									+ "profissao ,"
+									+ "renda,"
+									+ "doenca "
+									+ "FROM familiar"); 
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 

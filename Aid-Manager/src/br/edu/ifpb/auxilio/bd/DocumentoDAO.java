@@ -150,10 +150,12 @@ private Connection conn;
 		try {
 
 			String sql = String.format("%s",
-						"SELECT  nome_documento,"
+						"SELECT  id_documento,"
+						       + "nome_documento,"
 							   + "status_documento,"
-							   + "obs "
-							   + "discente_id  ");
+							   + "obs,"
+							   + "discente_id  "
+							   + "FROM documento");
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -178,13 +180,16 @@ private Connection conn;
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							   " SELECT  nome_documento,"
-									   + "status_documento,"
-									   + "obs "
-									   + "INNER JOIN discente"
-									   + "ON db.discente_id = discente.id_discente"
-									   + "INNER JOIN pessoa"
-									   + "ON pessoa.id_pessoa = discente.pessoa_id"	
+							   " SELECT documento.id_documento, "
+									   + "documento.nome_documento,"
+									   + "documento.status_documento,"
+									   + "documento.obs, "
+									   + "documento.discente_id "
+									   + "FROM documento "
+									   + "INNER JOIN discente "
+									   + "ON documento.discente_id = discente.id_discente "
+									   + "INNER JOIN pessoa "
+									   + "ON pessoa.id_pessoa = discente.pessoa_id "	
 						    + " WHERE pessoa.matricula LIKE",
 							documento.getDiscente().getMatricula());
  
