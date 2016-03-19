@@ -150,8 +150,8 @@ private Connection conn;
 				auxilio.setIdAuxilio(rs.getInt("id_auxilio"));
 				auxilio.setTipoAuxilio(rs.getString("tipo_auxilio"));
 				auxilio.setValorAuxilio(rs.getDouble("valor_auxilio"));
-				//auxilio.setValidadeInicial((java.util.Date)rs.getDate("validade_inicial"));
-				//auxilio.setValidadeFinal((java.util.Date)rs.getDate("validade_final"));
+				//auxilio.setValidadeInicial(new java.util.Date(rs.getDate("validade_inicial").getTime()));
+				//auxilio.setValidadeFinal(new java.util.Date(rs.getDate("validade_final").getTime()));
 				
 				// Instituicao Financiadora 
 				
@@ -260,13 +260,14 @@ private Connection conn;
 							+ " auxilio.`valor_auxilio`, "
 							+ " auxilio.`validade_Inicial`, "
 							+ " auxilio.`validade_final`, "
-							+ " IF.`nome_if`, "
-							+ " processo.`num_processo`"
+							+ " auxilio.instituicaoFinanciadora_id,"
+							+ " auxilio.processo_id"
+							+ " FROM auxilio"
 							+ " INNER JOIN processo"
 							+ " on processo.id_processo = auxilio.processo_id"
-							+ " INNER JOIN instituicaoFinanciadora IF"
-							+ " on IF.id_if = auxilio.instituicaoFinanciadora_id" 
-						        + " WHERE IF.cnpj LIKE",
+							+ " INNER JOIN instituicaoFinanciadora instf"
+							+ " on instf.id_if = auxilio.instituicaoFinanciadora_id" 
+						        + " WHERE instf.cnpj LIKE",
 							auxilio.getIF().getCnpj());
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);

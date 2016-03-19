@@ -1,6 +1,8 @@
 package br.edu.ifpb.auxilio.main;
 
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import br.edu.ifpb.auxilio.bd.AuxilioDAO;
 import br.edu.ifpb.auxilio.bd.DadosBancariosDAO;
@@ -28,18 +30,17 @@ import br.edu.ifpb.auxilio.dominio.Servidor;
 
 public class Instituicao {
 	
-public static void main(String[] args) {
+public static void main(String[] args) throws SQLException {
 	
-	
+	List<DadosBancarios> auxs = null;
 
-	ProcessoDAO dD = new ProcessoDAO();
-	ServidorDAO s = new ServidorDAO();
-	PessoaDAO pessoa = new PessoaDAO();
-	Processo p  = new Processo(null, " ",
-			"12345", "texxtar",
-			pessoa.getById(1),"Em trânmite",s.getById(3));
-	dD.insert(p);
+	DadosBancariosDAO a = new DadosBancariosDAO();
+	DiscenteDAO discente = new DiscenteDAO();
+	DadosBancarios db = new DadosBancarios();
+	db.setDiscente(discente.getById(1));
+	auxs = a.find(db);
 	
+	System.out.println(auxs.size());	
 	
 	}
 }

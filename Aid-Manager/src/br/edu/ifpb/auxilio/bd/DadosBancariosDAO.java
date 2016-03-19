@@ -158,13 +158,16 @@ private Connection conn;
 			String sql = String.format("%s '%%%s%%'",
 							" SELECT  db.id_dados_bancarios,"
 									+ "db.banco,"
+									+ "db.agencia,"
+									+ "db.obs,"
 									+ "db.num_agencia,"
 									+ "db.saldo,"
 									+ "pessoa.nome_pessoa"
-									+ "INNER JOIN discente"
-									+ "ON db.discente_id = discente.id_discente"
-									+ "INNER JOIN pessoa"
-									+ "ON pessoa.id_pessoa = discente.pessoa_id"	
+									+ " FROM dadosbancarios db"
+									+ " INNER JOIN discente"
+									+ " ON db.discente_id = discente.id_discente"
+									+ " INNER JOIN pessoa"
+									+ " ON pessoa.id_pessoa = discente.pessoa_id"	
 						    + " WHERE pessoa.matricula LIKE",
 							db.getDiscente().getMatricula());
  
@@ -191,11 +194,14 @@ private Connection conn;
 		try {
 
 			String sql = String.format("%s",
-						"SELECT db.id_dados_bancarios,"
-									+ "db.banco,"
-									+ "db.num_agencia,"
-									+ "db.saldo, "
-							                + "db.discente_id`");
+						"SELECT       id_dados_bancarios,"
+									+ "banco,"
+									+ "agencia,"
+									+ "num_agencia,"
+									+ "saldo, "
+									+ "obs,"
+							        + "discente_id"
+					     + " FROM dadosbancarios");
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -211,6 +217,6 @@ private Connection conn;
 	}
 		
 	
-	
+	//Ajeitar referência de discente
 	
 }
