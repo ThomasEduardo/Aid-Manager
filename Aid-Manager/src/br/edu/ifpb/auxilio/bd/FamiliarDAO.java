@@ -10,6 +10,7 @@ import java.util.List;
 
 
 
+
 import br.edu.ifpb.auxilio.dominio.Discente;
 import br.edu.ifpb.auxilio.dominio.Edital;
 import br.edu.ifpb.auxilio.dominio.Familiar;
@@ -179,12 +180,14 @@ public class FamiliarDAO {
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							" SELECT  familiar.nome_familiar,"
+							" SELECT familiar.id_familiar, "
+									+ "familiar.nome_familiar,"
 									+ "familiar.idade_familiar,"
 									+ "familiar.grau_de_instrucao,"
 									+ "familiar.profissao ,"
 									+ "familiar.renda,"
-									+ "familiar.doenca"
+									+ "familiar.doenca,"
+									+ "familiar.perfil_socio_id"
 									+ "FROM familiar"
 									+ "INNER JOIN perfilSocioEconomico ps"
 									+ "ON ps.id_perfil_socio = familiar.perfil_socio_id"
@@ -240,37 +243,142 @@ public class FamiliarDAO {
 		return familiares;
 	}
 	
-	/*
-	public boolean calculoRendaFamiliarDiscentes(){
+	public int qtdeFamiliares(Discente discente) throws SQLException{
+		
+		int qtdeFamiliares = 0;
 		
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 
-			String sql = String.format("%s","SELECT COUNT(familiar.id_familiar),"
-											+ " SUM(familiar.renda)"
-											+ " INTO @qtd_moradores,"
-											+ " @renda_total"
-											+ " FROM familiar "
-											+ "	INNER JOIN perfilSocioEconomico ps"
-											+ " ON ps.id_perfil_socio = familiar.perfil_socio_id"
-											+ " INNER JOIN discente "
-											+ " ON discente.id_discente = ps.discente_id"
-											+ " INNER JOIN pessoa"
-											+ " ON pessoa.id_pessoa = discente.pessoa_id"
-											+ " WHERE pessoa.matricula = ? and ((@renda_total/@qtd_moradores) <= 1320)");
+			String sql = String
+					.format("%s '%%%s%%'",
+							"SELECT   COUNT(familiar.id_familiar) "
+							        + "FROM familiar"
+							        + "INNER JOIN perfilSocioEconomico ps"
+							        + "ON ps.id_perfil_socio = familiar.perfil_socio_id"
+							        + "INNER JOIN discente"
+							        + "ON discente.id_discente = ps.discente_id"
+							        + "INNER JOIN pessoa"
+							        + "ON pessoa.id_pessoa = discente.pessoa_id "
+						        + " WHERE pesssoa.matricula LIKE",
+							discente.getMatricula());
+
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 
-			stmt.setString(1,discente.getMatricula());
+			rs = stmt.executeQuery(sql);
 			
-			stmt.execute();
+
+				while (rs.next()) {
+					
+					qtdeFamiliares = rs.getInt("count(familiar.id_familiar)");
+				}
+
 			stmt.close();
-			
-			return true;
+			rs.close();
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
 		
-		}Ver depois*/
+		return qtdeFamiliares;
 
 		
+	}
+	
+     public double somaRenda(Discente discente) throws SQLException{
+		
+		int somaRenda = 0;
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String
+					.format("%s '%%%s%%'",
+							"SELECT   SUM(familiar.renda) "
+							        + "FROM familiar"
+							        + "INNER JOIN perfilSocioEconomico ps"
+							        + "ON ps.id_perfil_socio = familiar.perfil_socio_id"
+							        + "INNER JOIN discente"
+							        + "ON discente.id_discente = ps.discente_id"
+							        + "INNER JOIN pessoa"
+							        + "ON pessoa.id_pessoa = discente.pessoa_id "
+						        + " WHERE pesssoa.matricula LIKE",
+							discente.getMatricula());
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+			
+
+				while (rs.next()) {
+					
+					somaRenda = rs.getInt("SUM(familiar.renda)");
+				}
+
+			stmt.close();
+			rs.close();
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+		
+		return somaRenda;
+
+		
+	}
+     //Ajustar depois
+     public double calculoRendaFamiliar(Discente discente) throws SQLException{
+ 		
+    	 
+ 		
+ 		PreparedStatement stmt = null;
+ 		ResultSet rs = null;
+
+ 		try {
+
+ 			String sql = String
+ 					.format("%s '%%%s%%'",
+ 							"SELECT    pessoa.nome_pessoa, "
+ 									+ "pessoa.matricula"
+ 									+ "FROM pessoa"
+ 									+ "INNER JOIN discente "
+ 									+ "ON discente.pessoa_id = pessoa.id_pessoa"
+ 							    + "WHERE (?/?) <= 1320"
+ 						        + " AND pesssoa.matricula LIKE",
+ 							discente.getMatricula());
+
+ 			stmt = (PreparedStatement) conn.prepareStatement(sql);
+ 			
+ 			
+ 			rs = stmt.executeQuery(sql);
+ 			  
+
+ 				while (rs.next()) {
+ 					
+ 					discente.setMatricula(rs.getString("pessoa.matricula"));
+ 					stmt.setDouble(1, somaRenda(discente));
+ 		 			stmt.setInt   (2, qtdeFamiliares(discente));
+ 		 			
+ 				
+ 				}
+
+ 			stmt.close();
+ 			rs.close();
+ 		} catch (SQLException sqle) {
+ 			throw new SQLException(sqle);
+ 					
+ 		} 
+ 		
+ 		return somaRenda;
+
+ 		
+ 	} 
+	
+	
+
 		
 	}

@@ -267,9 +267,11 @@ private Connection conn;
 							+ " INNER JOIN processo"
 							+ " on processo.id_processo = auxilio.processo_id"
 							+ " INNER JOIN instituicaoFinanciadora instf"
-							+ " on instf.id_if = auxilio.instituicaoFinanciadora_id" 
-						        + " WHERE instf.cnpj LIKE",
-							auxilio.getIF().getCnpj());
+							+ " on instf.id_if = auxilio.instituicaoFinanciadora_id"
+							+ " INNER JOIN pessoa"
+							+ " ON pessoa.id_pessoa = processo.interessado_id" 
+						        + " WHERE pessoa.matricula LIKE",
+							auxilio.getP().getInteressado().getMatricula());
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -329,6 +331,44 @@ private Connection conn;
 		
 	}
 		
+	public List<Auxilio> getAllByPessoa(Auxilio auxilio) throws SQLException {
+		List<Auxilio> auxilios = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String
+					.format("%s '%%%s%%'",
+							"SELECT auxilio.`id_auxilio`, "
+							+ " auxilio.`tipo_auxilio`, "
+							+ " auxilio.`valor_auxilio`, "
+							+ " auxilio.`validade_Inicial`, "
+							+ " auxilio.`validade_final`, "
+							+ " auxilio.instituicaoFinanciadora_id,"
+							+ " auxilio.processo_id"
+							+ " FROM auxilio"
+							+ " INNER JOIN processo"
+							+ " on processo.id_processo = auxilio.processo_id"
+							+ " INNER JOIN instituicaoFinanciadora instf"
+							+ " on instf.id_if = auxilio.instituicaoFinanciadora_id" 
+						        + " WHERE instf.cnpj LIKE",
+							auxilio.getIF().getCnpj());
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			auxilios = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return auxilios;
+	}
 	
 		
 }

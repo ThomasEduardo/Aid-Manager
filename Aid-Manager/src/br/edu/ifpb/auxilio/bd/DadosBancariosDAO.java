@@ -218,8 +218,10 @@ private Connection conn;
 		return dbs;
 	}
 		
-	public List<DadosBancarios> gastoMensal(DadosBancarios db) throws SQLException {
-		List<DadosBancarios> dbs = null;
+	//Pegar os atributos de dadosBancarios pelo find
+	public double gastoMensal(DadosBancarios db) throws SQLException {
+		
+		double gastoMensal = 0;
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -227,17 +229,8 @@ private Connection conn;
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							"SELECT db.agencia, "
-							+ "db.num_agencia, "
-							+ "pessoa.nome_pessoa, "
-							+ "EXTRACT(MONTH FROM CURDATE()) *( ? *80) "
-							+ "FROM dadosBancarios db "
-							+ "INNER JOIN discente "
-							+ "ON discente.id_discente = db.discente_id "
-							+ "INNER JOIN pessoa "
-							+ "ON discente.pessoa_id = pessoa.id_pessoa "	
-						    + "WHERE pessoa.matricula LIKE",
-							db.getDiscente().getMatricula());
+							"SELECT EXTRACT(MONTH FROM CURDATE()) *( ? *80) as gasto_mensal");
+
  
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 			
@@ -245,23 +238,23 @@ private Connection conn;
 			
 			stmt.setInt(1, aux.qtdeAuxilios(db.getDiscente()));
 			
+			rs = stmt.executeQuery(sql);
+			
 			while (rs.next()) {
+				gastoMensal = rs.getDouble("gasto_mensal");
 				
-				qtdeAuxilios = rs.getInt("count(aux.id_auxilio)");
 			}
 
 		    stmt.close();
 		    rs.close();
 			
-			rs = stmt.executeQuery(sql);
-
-			dbs = convertToList(rs);
+			
 
 		} catch (SQLException sqle) {
 			throw new SQLException(sqle);
 					
 		} 
 
-		return dbs;
+		return gastoMensal;
 	}
 }
