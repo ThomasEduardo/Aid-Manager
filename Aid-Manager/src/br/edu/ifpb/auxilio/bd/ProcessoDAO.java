@@ -214,11 +214,62 @@ public class ProcessoDAO {
 			rs = stmt.executeQuery(sql);
 
 			processos = convertToList(rs);
+			
+			stmt.close();
+			rs.close();
 
 		} catch (SQLException sqle) {
 			throw new SQLException(sqle);
 		} 
 
 		return processos;
+	}
+	
+	
+	public List<Processo> consultarProcesso(Pessoa pessoa) throws SQLException {
+		
+		List<Processo> processos = null;
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+
+			String sql = String
+					.format("%s",
+							"SELECT  processo.id_processo,"
+							+ "processo.data_requisicao,"
+							+ "processo.obs,"
+							+ "processo.num_processo,"
+							+ "processo.assunto,"
+							+ "processo.parecer,"
+							+ "pessoa.nome_pessoa,"
+							+ "pessoa.matricula "
+							+ "FROM processo"
+							+ "INNER JOIN pessoa "
+							+ "ON processo.interessado_id = pessoa.id_pessoa"
+							+ "INNER JOIN servidor"
+							+ "ON processo.servidor_id = servidor.id_servidor"
+							+ "WHERE pessoa.matricula = ?" );
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			
+			stmt.setString(1, pessoa.getMatricula());
+
+			rs = stmt.executeQuery(sql);
+			
+			processos = convertToList(rs);
+			
+			
+			stmt.close();
+			rs.close();
+
+		} catch (SQLException sqle) {
+			
+			sqle.printStackTrace();
+			
+		}
+		return processos;
+		
 	}
 }

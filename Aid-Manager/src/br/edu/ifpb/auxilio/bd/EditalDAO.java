@@ -12,6 +12,7 @@ import java.util.List;
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
 import br.edu.ifpb.auxilio.dominio.Documento;
 import br.edu.ifpb.auxilio.dominio.Edital;
+import br.edu.ifpb.auxilio.dominio.Processo;
 
 
 public class EditalDAO {
@@ -162,10 +163,20 @@ private Connection conn;
 				edital.setVagasBolsistas(rs.getInt("vagas_bolsistas"));
 				edital.setNumEdital(rs.getString("num_edital"));
 				
-				/* Processo
+				//Processo
+				ProcessoDAO processo = new ProcessoDAO();
+				Processo p = processo.getById(rs.getInt("processo_id"));
 				
-				ProcessoDAO p = new ProcessoDAO();
-				edital.setProcesso(p.getById(rs.getInt("processo_id")));*/
+				
+				edital.setIdProcesso(p.getIdProcesso());
+				edital.setDataRequisicao(p.getDataRequisicao());
+				edital.setObs(p.getObs());
+				edital.setNumProcesso(p.getNumProcesso());
+				edital.setAssunto(p.getAssunto());
+				edital.setParecer(p.getParecer());
+				edital.setInteressado(p.getInteressado());
+				edital.setServidor(p.getServidor());
+				
 				
 
 				editais.add(edital);
@@ -251,6 +262,7 @@ private Connection conn;
 
 		return editais;
 	}
+	
 	
 
 }

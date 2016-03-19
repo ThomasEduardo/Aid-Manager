@@ -96,10 +96,20 @@ public class ServidorDAO{
 				servidor.setCargoServidor(rs.getString("cargo_servidor"));
 				servidor.setTipoServidor(rs.getString("tipo_servidor"));
 				
-				/*Pessoa
+				//Pessoa
 				
 				PessoaDAO p = new PessoaDAO();
-	            setPs(p.getById(rs.getInt("perfil_socio_id")));*/
+				Pessoa pessoa = p.getById(rs.getInt("pessoa_id"));
+	            
+				servidor.setIdPessoa(pessoa.getIdPessoa());
+				servidor.setNomePessoa(pessoa.getNomePessoa());
+				servidor.setCpf(pessoa.getCpf());
+				servidor.setEmail(pessoa.getEmail());
+				servidor.setDataNasc(pessoa.getDataNasc());
+				servidor.setMatricula(pessoa.getMatricula());
+				servidor.setRg(pessoa.getRg());
+				servidor.setSexo(pessoa.getSexo());
+				servidor.setSenha(pessoa.getSenha());
 				
 				
 				

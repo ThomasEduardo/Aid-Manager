@@ -171,7 +171,7 @@ private Connection conn;
 	}
 	
 	
-	public List<Documento> find(Documento documento) throws SQLException {
+	public List<Documento> find(Documento documento) throws SQLException { //Visualizar documentacao
 		List<Documento> documentos = null;
 
 		PreparedStatement stmt = null;

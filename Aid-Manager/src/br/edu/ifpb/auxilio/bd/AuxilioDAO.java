@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.edu.ifpb.auxilio.bd.Conexao;
 import br.edu.ifpb.auxilio.dominio.Auxilio;
+import br.edu.ifpb.auxilio.dominio.Discente;
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 
@@ -150,8 +151,8 @@ private Connection conn;
 				auxilio.setIdAuxilio(rs.getInt("id_auxilio"));
 				auxilio.setTipoAuxilio(rs.getString("tipo_auxilio"));
 				auxilio.setValorAuxilio(rs.getDouble("valor_auxilio"));
-				//auxilio.setValidadeInicial(new java.util.Date(rs.getDate("validade_inicial").getTime()));
-				//auxilio.setValidadeFinal(new java.util.Date(rs.getDate("validade_final").getTime()));
+				auxilio.setValidadeInicial(new java.util.Date(rs.getDate("validade_inicial").getTime()));
+				auxilio.setValidadeFinal(new java.util.Date(rs.getDate("validade_final").getTime()));
 				
 				// Instituicao Financiadora 
 				
@@ -285,7 +286,48 @@ private Connection conn;
 	}
 	
 	
+	public int qtdeAuxilios(Discente discente) throws SQLException{
+		
+        int qtdeAuxilios = 0;
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 
+		try {
+
+			String sql = String
+					.format("%s '%%%s%%'",
+							"SELECT   count(aux.id_auxilio) "
+							        + "FROM auxilio aux"
+							        + "INNER JOIN processo"
+							        + "ON (aux.processo_id = processo.id_processo)"
+							        + "and(processo.parecer = 'Aprovado')"
+							        + "INNER JOIN pessoa"
+							        + "ON pessoa.id_pessoa = processo.interessado_id "
+						        + " WHERE pesssoa.matricula LIKE",
+							discente.getMatricula());
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+			
+
+				while (rs.next()) {
+					
+					qtdeAuxilios = rs.getInt("count(aux.id_auxilio)");
+				}
+
+			stmt.close();
+			rs.close();
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return qtdeAuxilios;
+		
+	}
 		
 	
 		

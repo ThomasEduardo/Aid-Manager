@@ -9,8 +9,13 @@ import java.util.List;
 
 
 
+
+
+
+import br.edu.ifpb.auxilio.dominio.Auxilio;
 import br.edu.ifpb.auxilio.dominio.Discente;
 import br.edu.ifpb.auxilio.dominio.Pessoa;
+import br.edu.ifpb.auxilio.dominio.Processo;
 
 
 
@@ -65,7 +70,7 @@ public class DiscenteDAO{
 			stmt.setString(13, discente.getPontoRef());
 			stmt.setString(14, discente.getEstado());
 			stmt.setString(15, discente.getMotivoSolicitacao());
-			//stmt.setInt   (16, getIdPessoa(discente.getMatricula()));
+			stmt.setInt   (16, discente.getIdPessoa());
 			
 			stmt.execute();
 			stmt.close();
@@ -187,6 +192,8 @@ public class DiscenteDAO{
 				// Pessoa
 				PessoaDAO p = new PessoaDAO(); 
 				Pessoa pessoa = p.getById(rs.getInt("pessoa_id"));
+				
+				
 				discente.setIdPessoa(pessoa.getIdPessoa());
 				discente.setNomePessoa(pessoa.getNomePessoa());
 				discente.setCpf(pessoa.getCpf());
@@ -211,8 +218,104 @@ public class DiscenteDAO{
 		return Discentes;
 	}
 	
+	public List<Discente> find(Discente discente) throws SQLException { //Usado para visualizar dados pessoais também
+		List<Discente> discentes = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String
+					.format("%s '%%%s%%'",
+							"SELECT  discente.id_discente,"
+									+ " discente.escola_origem, "
+									+ "discente.org_expeditor, "
+									+ "discente.num_cartao_sus, "
+									+ "discente.estado_civil,"
+									+ "discente.curso , "
+									+ "discente.periodo_letivo, "
+									+ "discente.turno,"
+									+ "discente.endereco, "
+									+ "discente.cep,"
+									+ "discente.bairro ,"
+									+ "discente.cidade ,"
+									+ "discente.num_casa ,"
+									+ "discente.ponto_ref ,"
+									+ "discente.estado ,"
+									+ "discente.motivo_solicitacao ,"
+									+ "discente.pessoa_id "
+									+ "FROM discente "
+									+ "INNER JOIN pessoa "
+									+ "ON pessoa.id_pessoa = discente.pessoa_id "
+						        + " WHERE pessoa.matricula LIKE",
+							discente.getMatricula());
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			discentes = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return discentes;
+	}
 	
 	
+	public List<Discente> getAll() throws SQLException {
+		
+		List<Discente> discentes = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+
+			String sql = String
+					.format("%s",
+							"SELECT     id_discente, "
+									+ " escola_origem, "
+									+ "org_expeditor, "
+									+ "num_cartao_sus, "
+									+ "estado_civil,"
+									+ "curso , "
+									+ "periodo_letivo, "
+									+ "turno,"
+									+ "endereco, "
+									+ "cep,"
+									+ "bairro ,"
+									+ "cidade ,"
+									+ "num_casa ,"
+									+ "ponto_ref ,"
+									+ "estado ,"
+									+ "motivo_solicitacao ,"
+									+ "pessoa_id "
+						    + " FROM `discente`");
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+			
+			discentes = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			
+			sqle.printStackTrace();
+			
+		}
+		return discentes;
+		
+	}
+ 
+    	
+    
+    
+    
+    
 	
 	
 

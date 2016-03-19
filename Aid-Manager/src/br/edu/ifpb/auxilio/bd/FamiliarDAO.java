@@ -9,6 +9,8 @@ import java.util.List;
 
 
 
+
+import br.edu.ifpb.auxilio.dominio.Discente;
 import br.edu.ifpb.auxilio.dominio.Edital;
 import br.edu.ifpb.auxilio.dominio.Familiar;
 
@@ -237,4 +239,38 @@ public class FamiliarDAO {
 
 		return familiares;
 	}
-}
+	
+	/*
+	public boolean calculoRendaFamiliarDiscentes(){
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+
+			String sql = String.format("%s","SELECT COUNT(familiar.id_familiar),"
+											+ " SUM(familiar.renda)"
+											+ " INTO @qtd_moradores,"
+											+ " @renda_total"
+											+ " FROM familiar "
+											+ "	INNER JOIN perfilSocioEconomico ps"
+											+ " ON ps.id_perfil_socio = familiar.perfil_socio_id"
+											+ " INNER JOIN discente "
+											+ " ON discente.id_discente = ps.discente_id"
+											+ " INNER JOIN pessoa"
+											+ " ON pessoa.id_pessoa = discente.pessoa_id"
+											+ " WHERE pessoa.matricula = ? and ((@renda_total/@qtd_moradores) <= 1320)");
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			stmt.setString(1,discente.getMatricula());
+			
+			stmt.execute();
+			stmt.close();
+			
+			return true;
+		
+		}Ver depois*/
+
+		
+		
+	}

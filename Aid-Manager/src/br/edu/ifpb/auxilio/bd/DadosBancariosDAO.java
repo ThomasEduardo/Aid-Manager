@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
+import br.edu.ifpb.auxilio.dominio.Discente;
 ;
 
 
@@ -216,7 +218,50 @@ private Connection conn;
 		return dbs;
 	}
 		
-	
-	//Ajeitar referência de discente
-	
+	public List<DadosBancarios> gastoMensal(DadosBancarios db) throws SQLException {
+		List<DadosBancarios> dbs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							"SELECT db.agencia, "
+							+ "db.num_agencia, "
+							+ "pessoa.nome_pessoa, "
+							+ "EXTRACT(MONTH FROM CURDATE()) *( ? *80) "
+							+ "FROM dadosBancarios db "
+							+ "INNER JOIN discente "
+							+ "ON discente.id_discente = db.discente_id "
+							+ "INNER JOIN pessoa "
+							+ "ON discente.pessoa_id = pessoa.id_pessoa "	
+						    + "WHERE pessoa.matricula LIKE",
+							db.getDiscente().getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			
+			AuxilioDAO aux = new AuxilioDAO();
+			
+			stmt.setInt(1, aux.qtdeAuxilios(db.getDiscente()));
+			
+			while (rs.next()) {
+				
+				qtdeAuxilios = rs.getInt("count(aux.id_auxilio)");
+			}
+
+		    stmt.close();
+		    rs.close();
+			
+			rs = stmt.executeQuery(sql);
+
+			dbs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return dbs;
+	}
 }
