@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="762.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="20.0" layoutY="249.0" text="Cadastre-se no Aid-Manager" textFill="WHITE">
+         <font>
+            <Font name="Colonna MT" size="32.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="65.0" fitWidth="53.0" layoutX="78.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/12721890_925400440911510_2079910427_n.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="53.0" layoutX="207.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/12498469_925400277578193_880773075_n.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="53.0" layoutX="142.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/12516335_925400187578202_204309218_n.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="53.0" layoutX="273.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/12476414_925400530911501_1808451881_n.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="410.0" prefHeight="576.0" prefWidth="352.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="34.0" layoutY="26.0" prefHeight="20.0" prefWidth="120.0" text="Nome Completo:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="289.0" text="Rg: " textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="392.0" text="SUAP:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="492.0" text="Email:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="35.0" layoutY="184.0" text="Data de Nascimento:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="34.0" layoutY="237.0" text="Sexo:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="31.0" layoutY="341.0" text="CPF:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="35.0" layoutY="79.0" text="Criar Senha:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="27.0" layoutY="442.0" text="Cargo:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <TextField layoutX="46.0" layoutY="46.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: Maria da Silva Ferreira" />
+            <TextField layoutX="40.0" layoutY="309.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: 11.111.111-1" />
+            <TextField layoutX="40.0" layoutY="409.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: 20141999" />
+            <TextField layoutX="40.0" layoutY="509.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: maria@gmail.com" />
+            <TextField layoutX="40.0" layoutY="358.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: 111.111.111-11" />
+            <TextField layoutX="40.0" layoutY="459.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: Assistente Social" />
+            <DatePicker layoutX="43.0" layoutY="204.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: 01/05/1992" />
+            <TextField layoutX="46.0" layoutY="99.0" prefHeight="25.0" prefWidth="274.0" promptText="******" />
+            <Label layoutX="35.0" layoutY="131.0" text="Confirme Sua Senha" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField layoutX="45.0" layoutY="151.0" prefHeight="25.0" prefWidth="274.0" promptText="******" />
+            <Button layoutX="232.0" layoutY="540.0" mnemonicParsing="false" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="14.0" />
+               </font>
+            </Button>
+            <MenuButton layoutX="43.0" layoutY="254.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Feminino" />
+                <MenuItem mnemonicParsing="false" text="Masculino" />
+              </items>
+            </MenuButton>
+            <Button layoutX="160.0" layoutY="540.0" mnemonicParsing="false" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
