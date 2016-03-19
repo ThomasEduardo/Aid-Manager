@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpb.auxilio.dominio.Familiar;
+import br.edu.ifpb.auxilio.dominio.Pessoa;
 import br.edu.ifpb.auxilio.dominio.Processo;
 import br.edu.ifpb.auxilio.dominio.Servidor;
 // Atualizar atributos
@@ -117,6 +118,63 @@ public class ServidorDAO{
 	 public void delete(String matricula){
 
 	 }
+	 
+	public List<Servidor> find(Servidor servidor) throws SQLException {
+			List<Servidor> servidores = null;
+
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+
+			try {
+
+				String sql = String.format("%s '%%%s%%'",
+								"SELECT  cargo_servidor,"
+										+ "tipo_pessoa"
+										+ "FROM servidor"
+										+ "INNER JOIN pessoa"
+										+ "ON pessoa.id_pessoa = servidor.pessoa_id"
+							    + " WHERE pessoa.matricula LIKE",
+								servidor.getMatricula());
+	 
+				stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+				rs = stmt.executeQuery(sql);
+
+				servidores = convertToList(rs);
+
+			} catch (SQLException sqle) {
+				throw new SQLException(sqle);
+						
+			} 
+
+			return servidores;
+		}
+		
+		public List<Servidor> getAll() throws SQLException {
+			List<Servidor> servidores = null;
+
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+
+			try {
+
+				String sql = String.format("%s",
+							 "  SELECT    cargo_servidor,"
+										+ "tipo_pessoa "
+								+ "FROM servidor"); 
+
+				stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+				rs = stmt.executeQuery(sql);
+
+				servidores = convertToList(rs);
+
+			} catch (SQLException sqle) {
+				throw new SQLException(sqle);
+			} 
+
+			return servidores;
+		}
 		
 		
 		

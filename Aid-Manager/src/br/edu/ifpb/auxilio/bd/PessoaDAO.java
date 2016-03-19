@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+import br.edu.ifpb.auxilio.dominio.PerfilSocioEconomico;
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 
 public class PessoaDAO {
@@ -210,6 +212,71 @@ public class PessoaDAO {
 		} 
 		
 		return isMatriculaCadastrada;
+	}
+	
+	public List<Pessoa> find(Pessoa pessoa) throws SQLException {
+		List<Pessoa> pessoas = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							"SELECT  nome_pessoa,"
+									+ "rg,"
+									+ "matricula,"
+									+ "data_nasc,"
+									+ "sexo,"
+									+ "senha,"
+									+ "email,"
+									+ "cpf "
+						    + " WHERE pessoa.matricula LIKE",
+							pessoa.getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			pessoas = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return pessoas;
+	}
+	
+	public List<Pessoa> getAll() throws SQLException {
+		List<Pessoa> pessoas = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						 "  SELECT     nome_pessoa,"
+									+ "rg,"
+									+ "matricula,"
+									+ "data_nasc,"
+									+ "sexo,"
+									+ "senha,"
+									+ "email,"
+									+ "cpf "); 
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			pessoas = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return pessoas;
 	}
 
 }

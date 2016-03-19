@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ifpb.auxilio.dominio.Pessoa;
 import br.edu.ifpb.auxilio.dominio.Processo;
 
 public class ProcessoDAO {
@@ -156,4 +157,68 @@ public class ProcessoDAO {
 		return processos;
 	}
 	
+	
+	public List<Processo> find(Processo processo) throws SQLException {
+		List<Processo> processos = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							"SELECT   processo.`data_requisicao` = ?, "
+									+ " processo.`obs`=?, "
+									+ " processo.`num_processo`=?,"
+									+ " processo.`assunto`=?, "
+									+ " processo.`parecer`=?"
+									+ "FROM processo "
+									+ "INNER JOIN pessoa interessado"
+									+ "ON interessado.id_pessoa = processo.interessado_id"
+						    + " WHERE interessado.matricula LIKE",
+							processo.getInteressado().getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			processos = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return processos;
+	}
+	
+	public List<Processo> getAll() throws SQLException {
+		List<Processo> processos = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s",
+						 "  SELECT   `data_requisicao` = ?, "
+									+ " `obs`=?, "
+									+ " `num_processo`=?,"
+									+ " `assunto`=?, "
+									+ " `parecer`=?"
+									+ "FROM processo ");
+			
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			processos = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return processos;
+	}
 }

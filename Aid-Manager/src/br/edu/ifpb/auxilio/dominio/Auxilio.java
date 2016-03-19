@@ -1,6 +1,9 @@
 package br.edu.ifpb.auxilio.dominio;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 public class Auxilio {
 	
@@ -101,6 +104,30 @@ public class Auxilio {
 				}
 		return false;
 		
+	}
+	
+	public void insert(Auxilio aux) throws SQLException{
+		
+	}
+
+	public boolean update(Auxilio aux) throws SQLException{
+		return false;
+	}
+
+	public List<Auxilio> getAll() throws SQLException{
+		return null;
+	}
+
+	public 	Auxilio getById(int idAucilio) throws SQLException{
+		return null;	
+	}
+
+	public List<Auxilio> find(Auxilio Auxilio) throws SQLException{
+		return null;
+	}
+
+	public List<Auxilio> convertToList(ResultSet rs) throws SQLException{
+		return null;
 	}
 	
 	
