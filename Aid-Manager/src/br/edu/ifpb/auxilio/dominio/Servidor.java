@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 import java.util.Date;
@@ -6,28 +12,63 @@ public class Servidor extends Pessoa{
 	
 	private int idServidor;
 	private String cargoServidor;
-	private String tipoServidor;
+	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
+	
 	
 	public Servidor(){
 		super();
 		setIdServidor(0);
 		setCargoServidor("");
-		setTipoServidor("");
 		
 	}
-	
-	public Servidor(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor,String tipoServidor){
+	/**
+	 * 
+	 *  Construtor da classe, que contém todos os seus atributos e os da sua super classe
+	 *  
+	 *  @param idPessoa
+	 *  @param nomePessoa
+	 *  @param matricula
+     *  @param dataNasc
+	 *  @param senha
+	 *  @param email
+	 *  @param cpf
+	 *  @param rg
+	 *  @param sexo
+	 *  @param idServidor
+	 *  @param cargoServidor
+	 *  
+	 * 
+	 */
+	public Servidor(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idServidor,String cargoServidor){
 		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setIdServidor(idServidor);
 		setCargoServidor(cargoServidor);
-		setTipoServidor(tipoServidor);
 	
 	}
-	
-	public Servidor(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor,String tipoServidor){
+	/**
+	 * 
+	 *  Construtor da classe, que não contém o id
+	 *  
+	 *  @param nomePessoa
+	 *  @param matricula
+     *  @param dataNasc
+	 *  @param senha
+	 *  @param email
+	 *  @param cpf
+	 *  @param rg
+	 *  @param sexo
+	 *  @param cargoServidor
+	 *  
+	 * 
+	 */
+	public Servidor(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String cargoServidor){
 		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setCargoServidor(cargoServidor);
-		setTipoServidor(tipoServidor);
 	}
 	
 	/*----------------- GETTERS E SETTERS ----------------*/
@@ -43,13 +84,7 @@ public class Servidor extends Pessoa{
 	public void setCargoServidor(String cargoServidor) {
 		this.cargoServidor = cargoServidor;
 	}
-	public String getTipoServidor() {
-		return tipoServidor;
-	}
 
-	public void setTipoServidor(String tipoServidor) {
-		this.tipoServidor = tipoServidor;
-	}
 	
 	public boolean equals(Servidor s){
 		if(s instanceof Servidor){

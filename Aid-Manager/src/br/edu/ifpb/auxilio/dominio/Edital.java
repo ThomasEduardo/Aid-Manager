@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 import java.util.Date;
@@ -19,7 +25,11 @@ public class Edital extends Processo {
 	
 	
 	
-	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
 	
 	public Edital() {
 		super();
@@ -35,6 +45,32 @@ public class Edital extends Processo {
 		setVagasBolsistas(0);
 		setNumEdital("");
 	}
+	/**
+	 * 
+	 *  Construtor da classe, que contém todos os seus atributos e os da sua super classe
+	 *  
+	 *  @param idProcesso
+	 *  @param data
+	 *  @param obs
+	 *  @param numProcesso
+	 *  @param assunto
+	 *  @param interessado
+	 *  @param idEdital
+	 *  @param iniInscricoes
+	 *  @param fimInscricoes
+	 *  @param iniEntregaForm
+	 *  @param fimForm
+	 *  @param ano
+	 *  @param descricao
+	 *  @param titulo
+	 *  @param valorBolsaDiscente
+	 *  @param vagasBolsistas
+	 *  @param numEdital
+	 *  @param parecer
+	 *  @param servidor
+	 *  
+	 * 
+	 */
 	public Edital(int idProcesso,Date data, String obs, String numProcesso, String assunto, Pessoa interessado,int idEdital,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
 		super(idProcesso,data, obs, numProcesso, assunto, interessado,parecer,servidor);
 		setIdEdital(idEdital);
@@ -50,6 +86,33 @@ public class Edital extends Processo {
 		setNumEdital(numEdital);
 		
 	}
+	
+	/**
+	 * 
+	 *  Construtor da classe, que não contém o seu id
+	 *  
+	 *  @param data
+	 *  @param obs
+	 *  @param numProcesso
+	 *  @param assunto
+	 *  @param interessado
+	 *  @param idEdital
+	 *  @param iniInscricoes
+	 *  @param fimInscricoes
+	 *  @param iniEntregaForm
+	 *  @param fimForm
+	 *  @param ano
+	 *  @param descricao
+	 *  @param titulo
+	 *  @param valorBolsaDiscente
+	 *  @param vagasBolsistas
+	 *  @param numEdital
+	 *  @param parecer
+	 *  @param servidor
+	 *  
+	 * 
+	 */
+	
 	public Edital(Date data, String obs, String numProcesso, String assunto, Pessoa interessado,Date iniInscricoes,Date fimInscricoes,Date iniEntregaForm,Date fimForm,int ano,String descricao,String titulo,double valorBolsaDiscente,int vagasBolsistas,String numEdital,String parecer,Servidor servidor) {
 		super(data, obs, numProcesso, assunto, interessado,parecer,servidor);
 		setIniInscricoes(iniInscricoes);

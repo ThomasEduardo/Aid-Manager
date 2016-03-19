@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 public class DadosBancarios {
@@ -9,6 +15,13 @@ public class DadosBancarios {
 	private double saldo;
 	private String obs;
 	private Discente Discente;
+	
+	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
 	
 	public DadosBancarios(){
 		
@@ -23,6 +36,14 @@ public class DadosBancarios {
 		
 	}
 	
+	/** Construtor da classe, contendo todos os seus atributos
+	 * 
+	 * @param idDadosBancarios
+	 * @param banco
+	 * @param numAgencia 
+	 * @param saldo
+	 * @param d
+	 */
 	public DadosBancarios(int idDB,String banco,String agencia,String numAgencia,double saldo,Discente d){
 		
 		setIdDadosBancarios(idDB);
@@ -33,6 +54,15 @@ public class DadosBancarios {
 		setDiscente(d);
 	}
 	
+	/** Construtor da classe, que não contém o id dos dados bancários
+	 * 
+	 * @param idDadosBancarios
+	 * @param banco
+	 * @param numAgencia 
+	 * @param saldo
+	 * @param d
+	 */
+
 	public DadosBancarios(String banco,String agencia,String numAgencia,double saldo,Discente d){
 		
 		setBanco(banco);

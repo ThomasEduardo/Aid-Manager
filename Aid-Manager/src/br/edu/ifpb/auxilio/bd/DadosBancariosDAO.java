@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.bd;
 
 import java.sql.Connection;
@@ -11,7 +17,7 @@ import java.util.List;
 
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
 import br.edu.ifpb.auxilio.dominio.Discente;
-;
+
 
 
 public class DadosBancariosDAO {

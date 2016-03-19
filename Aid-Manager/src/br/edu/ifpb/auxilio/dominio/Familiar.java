@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 public class Familiar {
@@ -9,8 +15,14 @@ public class Familiar {
 	private String profissao;
 	private double renda;
 	private String doenca;
-
 	private PerfilSocioEconomico ps;
+	
+	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
 	
 	public Familiar(){
 		
@@ -24,6 +36,21 @@ public class Familiar {
 		setPs(null);
 		
 	}
+	
+	
+	/**
+	 * 
+	 *  Construtor da classe, que contém todos os seus atributos
+	 *  
+	 *  @param idCrf
+	 *  @param nome
+	 *  @param idade
+	 *  @param grauInstrucao
+	 *  @param profissao
+	 *  @param renda
+	 *  @param doenca
+	 *  @param Ps
+	 */
 	
 	public Familiar(int idCrf,String nome,int idade,int grauInstrucao,String profissao,double renda,String doenca,PerfilSocioEconomico Ps){
 		
@@ -39,6 +66,19 @@ public class Familiar {
 		
 	}
 	
+	/**
+	 * 
+	 *  Construtor da classe, que não contém o seu id
+	 *  
+	 *  @param idCrf
+	 *  @param nome
+	 *  @param idade
+	 *  @param grauInstrucao
+	 *  @param profissao
+	 *  @param renda
+	 *  @param doenca
+	 *  @param Ps
+	 */
 	public Familiar(String nome,int idade,int grauInstrucao,String profissao,double renda,String doenca,PerfilSocioEconomico ps){
 		
 		setNome(nome);

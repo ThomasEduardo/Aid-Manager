@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 
@@ -8,7 +14,12 @@ public class Documento {
 	private String obs;
 	private Discente discente;
 	
-	// CONSTRUTOR
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
+	
 	public Documento(){
 		setIdDocumento(0);
 		setNomeDocumento("");
@@ -16,6 +27,20 @@ public class Documento {
 		setObs("");
 		setDiscente(null);
 	}
+	
+	
+	/**
+	 * 
+	 *  Construtor da classe, que contém todos os seus atributos
+	 *  
+	 *  @param idDocumento
+	 *  @param nomeDocumento
+	 *  @param status
+	 *  @param obs
+	 *  @param discente
+	 * 
+	 */
+	
 	
 	public Documento(int idDocumento, String nomeDocumento,
 			String status, String obs, Discente discente) {
@@ -26,6 +51,16 @@ public class Documento {
 		this.discente = discente;
 	}
 	
+	/**
+	 * 
+	 *  Construtor da classe, que não contém o id do documento
+	 *  
+	 *  @param nomeDocumento
+	 *  @param status
+	 *  @param obs
+	 *  @param discente
+	 * 
+	 */
 	public Documento(String nomeDocumento,
 			String status,String obs, Discente discente) {
 		this.nomeDocumento = nomeDocumento;

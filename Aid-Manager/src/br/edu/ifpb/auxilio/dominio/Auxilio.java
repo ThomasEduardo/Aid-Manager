@@ -1,9 +1,19 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+
+
+
+
 
 public class Auxilio {
 	
@@ -15,6 +25,12 @@ public class Auxilio {
 	private InstituicaoFinanciadora IF;
 	private Processo p;
 	
+	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
 	public Auxilio(){
 		setIdAuxilio(0);
 		setTipoAuxilio("");
@@ -23,6 +39,18 @@ public class Auxilio {
 		setP(null);
 		
 	} 
+	
+	/** Construtor da classe, contendo todos os seus atributos
+	 * 
+	 * @param idAuxilio define o id inicial da instância do auxílio
+	 * @param tipoAuxilio define o tipo de auxílio inicial da instância do auxílio
+	 * @param valorAuxilio define o valor inicial do auxílio
+	 * @param vI define a validade inicial do auxílio
+	 * @param vF define a validade final do auxílio
+	 * @param IF define a instituição financiadora do auxílio
+	 * @param p define o processo em trâmite do auxílio
+	 */
+	
 	public Auxilio(int idAuxilio,String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,Processo p){
 		setIdAuxilio(idAuxilio);
 		setTipoAuxilio(tipoAuxilio);
@@ -33,6 +61,16 @@ public class Auxilio {
 		setP(p);
 	}
 	
+	
+	/** Construtor da classe,  que não contém o id do auxilio
+	 * 
+	 * @param tipoAuxilio define o tipo de auxílio inicial da instância do auxílio
+	 * @param valorAuxilio define o valor inicial do auxílio
+	 * @param vI define a validade inicial do auxílio
+	 * @param vF define a validade final do auxílio
+	 * @param IF define a instituição financiadora do auxílio
+	 * @param p define o processo em trâmite do auxílio
+	 */
 	public Auxilio(String tipoAuxilio,double valorAuxilio,Date vI,Date vF,InstituicaoFinanciadora IF,Processo p){
 		setTipoAuxilio(tipoAuxilio);
 		setValorAuxilio(valorAuxilio);

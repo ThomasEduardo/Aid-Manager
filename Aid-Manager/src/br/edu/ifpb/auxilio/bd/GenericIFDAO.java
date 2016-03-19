@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
 package br.edu.ifpb.auxilio.bd;
 
 import java.sql.SQLException;

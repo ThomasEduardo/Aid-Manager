@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 import java.util.ArrayList;
@@ -18,6 +24,11 @@ import java.util.Date;
 		private String cpf;
 		private ArrayList<String> telefones;
 		
+		/**
+		 * 
+		 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+		 * 
+		 */
 		
 		public Pessoa(){
 
@@ -33,6 +44,22 @@ import java.util.Date;
 				
 			}
 	
+		/**
+		 * 
+		 *  Construtor da classe, que contém todos os seus atributos 
+		 *  
+		 *  @param idPessoa
+		 *  @param nomePessoa
+		 *  @param matricula
+		 *  @param dataNasc
+		 *  @param senha
+		 *  @param email
+		 *  @param cpf
+		 *  @param rg
+		 *  @param sexo
+		 *  
+		 * 
+		 */
 		public Pessoa(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo){
 			
 				setIdPessoa(idPessoa);
@@ -47,6 +74,22 @@ import java.util.Date;
 				
 			
 			}
+		
+		/**
+		 * 
+		 *  Construtor da classe, que não contém o id
+		 *  
+		 *  @param matricula
+		 *  @param nomePessoa
+		 *  @param dataNasc
+		 *  @param senha
+		 *  @param email
+		 *  @param cpf
+		 *  @param rg
+		 *  @param sexo
+		 *  
+		 * 
+		 */
 			public Pessoa(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo){
 				
 				setNomePessoa(nomePessoa);

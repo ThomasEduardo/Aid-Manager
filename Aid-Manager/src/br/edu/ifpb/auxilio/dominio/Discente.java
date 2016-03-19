@@ -1,3 +1,10 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
+
 package br.edu.ifpb.auxilio.dominio;
 
 import java.util.Date;
@@ -22,6 +29,11 @@ public class Discente extends Pessoa {
 	private String motivoSolicitacao;
 	
 	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
 	
 	public Discente(){
 		
@@ -44,7 +56,36 @@ public class Discente extends Pessoa {
 
 		
 	}
-	public Discente(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idDiscente,String numCartaoSus,String estadoCivil,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Auxilio aux){
+	
+	/** Construtor da classe, contendo todos os seus atributos e os atributos da sua superclasse
+	 * 
+	 * @param idPessoa
+	 * @param nomePessoa
+	 * @param matricula
+	 * @param dataNasc
+	 * @param senha
+	 * @param email
+	 * @param idDiscente
+	 * @param numCartaoSus
+	 * @param estadoCivil
+	 * @param curso
+	 * @param PeriodoLetivo
+	 * @param turno
+	 * @param escolaOrigem
+	 * @param orgExpeditor
+	 * @param idade
+	 * @param endereco
+	 * @param cep
+	 * @param bairro
+	 * @param estado
+	 * @param cidade
+	 * @param numCasa
+	 * @param pontoRef
+	 * @param aux
+	 * 
+	 */
+
+	public Discente(int idPessoa,String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,int idDiscente,String numCartaoSus,String estadoCivil,String curso,int periodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef,Auxilio aux){
 		super(idPessoa,nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setIdDiscente(idDiscente);
 		setEscolaOrigem(escolaOrigem);
@@ -63,6 +104,34 @@ public class Discente extends Pessoa {
 		setEstado(estado);
 		
 	}
+	
+	/** Construtor da classe, que não contém o seu id 
+	 * 
+	 * @param idPessoa
+	 * @param nomePessoa
+	 * @param matricula
+	 * @param dataNasc
+	 * @param senha
+	 * @param email
+	 * @param idDiscente
+	 * @param numCartaoSus
+	 * @param estadoCivil
+	 * @param curso
+	 * @param PeriodoLetivo
+	 * @param turno
+	 * @param escolaOrigem
+	 * @param orgExpeditor
+	 * @param idade
+	 * @param endereco
+	 * @param cep
+	 * @param bairro
+	 * @param estado
+	 * @param cidade
+	 * @param numCasa
+	 * @param pontoRef
+	 * @param aux
+	 * 
+	 */
 	public Discente(String nomePessoa,String matricula,Date dataNasc,String senha,String email,String cpf,String rg,String sexo,String numCartaoSus,String estadoCivil,String curso,int PeriodoLetivo,String turno,String escolaOrigem,String orgExpeditor,int idade,int periodoLetivo,String endereco,String cep,String bairro,String estado,String cidade,int numCasa,String pontoRef){
 		super(nomePessoa,matricula,dataNasc,senha,email,cpf,rg,sexo);
 		setEscolaOrigem(escolaOrigem);

@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 public class InstituicaoFinanciadora {
@@ -7,6 +13,13 @@ public class InstituicaoFinanciadora {
 	private String cnpj;
 	private double orcamentoAuxilio;
 	private Servidor servidor; 
+	
+	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
 	
 	public InstituicaoFinanciadora(){
 		
@@ -18,6 +31,19 @@ public class InstituicaoFinanciadora {
 		
 	}
 	
+	/**
+	 * 
+	 *  Construtor da classe, que contém todos os seus atributos 
+	 *  
+	 *  @param idIF
+	 *  @param nomeIF
+	 *  @param cnpj
+	 *  @param orcamento
+	 *  @param servidor
+	 *  
+	 * 
+	 */
+	
 	public InstituicaoFinanciadora(int idIF,String nomeIF,String cnpj,double orcamento,Servidor servidor){		
 		setIdIF(idIF);
 		setNomeIF(nomeIF);
@@ -26,7 +52,17 @@ public class InstituicaoFinanciadora {
 		setServidor(servidor);
 		
 	}	
-	
+	/**
+	 * 
+	 *  Construtor da classe, que não contém o seu id
+	 *  
+	 *  @param nomeIF
+	 *  @param cnpj
+	 *  @param orcamento
+	 *  @param servidor
+	 *  
+	 * 
+	 */
 	public InstituicaoFinanciadora(String nomeIF,String cnpj,double orcamento,Servidor servidor){
 		
 		setNomeIF(nomeIF);

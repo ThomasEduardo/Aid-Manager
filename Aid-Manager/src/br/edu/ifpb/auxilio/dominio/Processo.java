@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
 package br.edu.ifpb.auxilio.dominio;
 
 import java.util.*;
@@ -13,6 +18,18 @@ public class Processo {
 	private Pessoa interessado;
 	private Servidor servidor;
 	
+	/**
+	 * 
+	 *  Construtor da classe, que não contém todos o id 
+	 *  
+	 *  @param dataRequisicao
+	 *  @param obs
+	 *  @param numProcesso
+	 *  @param assunto
+	 *  @param interessado
+	 *  @param parecer
+	 *  @param servidor
+	 */
 	
 	public Processo(Date dataRequisicao, String obs, String numProcesso, String assunto,
 			Pessoa interessado,String parecer,Servidor servidor) {
@@ -25,6 +42,12 @@ public class Processo {
 		this.servidor = servidor;
 	}
 	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
+	
 	public Processo(){
 		setIdProcesso(0);
 		setDataRequisicao(null);
@@ -35,6 +58,20 @@ public class Processo {
 		setServidor(null);
 		
 	}
+	
+	/**
+	 * 
+	 *  Construtor da classe, que contém todos os seus atributos 
+	 *  
+	 *  @param idProcesso
+	 *  @param dataRequisicao
+	 *  @param obs
+	 *  @param numProcesso
+	 *  @param assunto
+	 *  @param interessado
+	 *  @param parecer
+	 *  @param servidor
+	 */
 	
 	public Processo(int idProcesso,Date dataRequisicao, String obs, String numProcesso, String assunto,
 			Pessoa interessado,String parecer,Servidor servidor) {

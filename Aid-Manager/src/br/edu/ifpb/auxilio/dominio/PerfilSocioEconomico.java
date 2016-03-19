@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author FannyVieira, RaylaMedeiros, MateusOliveira
+ *
+ */
+
 package br.edu.ifpb.auxilio.dominio;
 
 public class PerfilSocioEconomico {
@@ -18,6 +24,14 @@ public class PerfilSocioEconomico {
 	private Servidor servidor;
 	private Discente discente;
 	
+	
+	
+	/**
+	 * 
+	 *  Construtor da classe, que não recebe nenhum parâmetro,pois define os valores padrão.
+	 * 
+	 */
+	
 	public PerfilSocioEconomico(){
 		
 		setIdPerfilSocio(0);
@@ -37,7 +51,27 @@ public class PerfilSocioEconomico {
 		setObs("");
 		
 	}
-	
+	/**
+	 * 
+	 *  Construtor da classe, que contém todos os seus atributos 
+	 *  
+	 *  @param idPs
+	 *  @param srf
+	 *  @param moradia
+	 *  @param situacaoMoradia
+	 *  @param residenciaFamiliar
+	 *  @param situacaoTrabalho
+	 *  @param aluguel
+	 *  @param condominio
+	 *  @param luz
+	 *  @param agua
+	 *  @param telefone
+	 *  @param financiamentoCasaPropria
+	 *  @param servidor
+	 *  @param d
+	 *  
+	 * 
+	 */
 	public PerfilSocioEconomico(int idPs,String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,Servidor servidor,Discente d){
 		
 		
@@ -57,7 +91,26 @@ public class PerfilSocioEconomico {
 		setDiscente(d);
 		
 	}
-	
+	/**
+	 * 
+	 *  Construtor da classe, que não contém o id
+	 *  
+	 *  @param srf
+	 *  @param moradia
+	 *  @param situacaoMoradia
+	 *  @param residenciaFamiliar
+	 *  @param situacaoTrabalho
+	 *  @param aluguel
+	 *  @param condominio
+	 *  @param luz
+	 *  @param agua
+	 *  @param telefone
+	 *  @param financiamentoCasaPropria
+	 *  @param servidor
+	 *  @param d
+	 *  
+	 * 
+	 */
 	public PerfilSocioEconomico(String srf,String moradia,String situacaoMoradia,String residenciaFamiliar,String situacaoTrabalho,double aluguel,double condominio,double luz,double agua,double telefone,double financiamentoCasaPropria,Servidor servidor,Discente d){
 	
 		
