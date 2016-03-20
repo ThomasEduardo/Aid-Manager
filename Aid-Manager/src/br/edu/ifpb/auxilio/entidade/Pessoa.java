@@ -4,7 +4,7 @@
  *
  */
 
-package br.edu.ifpb.auxilio.dominio;
+package br.edu.ifpb.auxilio.entidade;
 
 import java.util.ArrayList;
 import java.util.Date;

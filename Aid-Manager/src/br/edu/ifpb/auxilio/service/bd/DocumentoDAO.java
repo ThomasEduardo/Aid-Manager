@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.dominio.DadosBancarios;
-import br.edu.ifpb.auxilio.dominio.Documento;
+import br.edu.ifpb.auxilio.entidade.DadosBancarios;
+import br.edu.ifpb.auxilio.entidade.Documento;
 
 
 

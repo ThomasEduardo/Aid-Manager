@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.dominio.Pessoa;
-import br.edu.ifpb.auxilio.dominio.Processo;
+import br.edu.ifpb.auxilio.entidade.Pessoa;
+import br.edu.ifpb.auxilio.entidade.Processo;
 
 public class ProcessoDAO {
 	private Connection conn;

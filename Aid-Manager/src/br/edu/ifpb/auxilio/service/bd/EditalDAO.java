@@ -15,10 +15,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.dominio.DadosBancarios;
-import br.edu.ifpb.auxilio.dominio.Documento;
-import br.edu.ifpb.auxilio.dominio.Edital;
-import br.edu.ifpb.auxilio.dominio.Processo;
+import br.edu.ifpb.auxilio.entidade.DadosBancarios;
+import br.edu.ifpb.auxilio.entidade.Documento;
+import br.edu.ifpb.auxilio.entidade.Edital;
+import br.edu.ifpb.auxilio.entidade.Processo;
 
 
 public class EditalDAO {

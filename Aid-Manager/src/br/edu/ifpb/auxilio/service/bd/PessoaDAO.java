@@ -19,8 +19,9 @@ import java.util.List;
 
 
 
-import br.edu.ifpb.auxilio.dominio.PerfilSocioEconomico;
-import br.edu.ifpb.auxilio.dominio.Pessoa;
+
+import br.edu.ifpb.auxilio.entidade.PerfilSocioEconomico;
+import br.edu.ifpb.auxilio.entidade.Pessoa;
 
 public class PessoaDAO {
 

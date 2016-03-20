@@ -11,10 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.dominio.Familiar;
-import br.edu.ifpb.auxilio.dominio.Pessoa;
-import br.edu.ifpb.auxilio.dominio.Processo;
-import br.edu.ifpb.auxilio.dominio.Servidor;
+import br.edu.ifpb.auxilio.entidade.Familiar;
+import br.edu.ifpb.auxilio.entidade.Pessoa;
+import br.edu.ifpb.auxilio.entidade.Processo;
+import br.edu.ifpb.auxilio.entidade.Servidor;
 // Atualizar atributos
 public class ServidorDAO{
 	//Precisa testar

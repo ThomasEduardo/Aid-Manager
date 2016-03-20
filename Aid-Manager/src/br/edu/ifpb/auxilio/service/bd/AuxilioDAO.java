@@ -12,10 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.dominio.Auxilio;
-import br.edu.ifpb.auxilio.dominio.Discente;
-import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
-import br.edu.ifpb.auxilio.dominio.Pessoa;
+import br.edu.ifpb.auxilio.entidade.Auxilio;
+import br.edu.ifpb.auxilio.entidade.Discente;
+import br.edu.ifpb.auxilio.entidade.InstituicaoFinanciadora;
+import br.edu.ifpb.auxilio.entidade.Pessoa;
 import br.edu.ifpb.auxilio.service.bd.Conexao;
 
 

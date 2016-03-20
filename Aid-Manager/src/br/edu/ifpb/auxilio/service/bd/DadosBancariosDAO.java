@@ -15,8 +15,9 @@ import java.util.List;
 
 
 
-import br.edu.ifpb.auxilio.dominio.DadosBancarios;
-import br.edu.ifpb.auxilio.dominio.Discente;
+
+import br.edu.ifpb.auxilio.entidade.DadosBancarios;
+import br.edu.ifpb.auxilio.entidade.Discente;
 
 
 
