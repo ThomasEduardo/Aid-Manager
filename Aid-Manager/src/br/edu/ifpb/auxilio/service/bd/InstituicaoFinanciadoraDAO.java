@@ -170,7 +170,8 @@ public class InstituicaoFinanciadoraDAO {
 			String sql = String.format("%s '%%%s%%'",
 							" SELECT   `nome_if`, " 
 									  + " `cnpj`, " 
-									  + " `orcamento_auxilio`" 
+									  + " `orcamento_auxilio`"
+									  + " FROM instituicaoFinanciadora" 
 						    + " WHERE cnpj LIKE",
 							instf.getCnpj());
  
@@ -200,7 +201,8 @@ public class InstituicaoFinanciadoraDAO {
 						 "  SELECT       `nome_if`, " 
 									  + " `cnpj`, " 
 									  + " `orcamento_auxilio`"
-									  + " `servidor_id`"); 
+									  + " `servidor_id`"
+									  + " FROM instituicaoFinanciadora"); 
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -214,4 +216,39 @@ public class InstituicaoFinanciadoraDAO {
 
 		return instfs;
 	}
+	
+	public List<InstituicaoFinanciadora> getAllByServidor(InstituicaoFinanciadora instf) throws SQLException {
+		List<InstituicaoFinanciadora> instfs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%'",
+							" SELECT   `nome_if`, " 
+									  + " `cnpj`, " 
+									  + " `orcamento_auxilio` "
+									  + " FROM instituicaoFinanciadora instf"
+									  + " INNER JOIN servidor "
+									  + " ON servidor.id_servidor = instf.servidor_id "
+									  + " INNER JOIN pessoa"
+									  + " ON pessoa.id_pessoa = servidor.pessoa_id " 
+						    + " AND pessoa.matricula LIKE",
+							instf.getServidor().getMatricula());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			instfs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return instfs;
+	}
+	
 }

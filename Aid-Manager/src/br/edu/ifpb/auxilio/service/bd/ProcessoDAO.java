@@ -231,7 +231,7 @@ public class ProcessoDAO {
 		return processos;
 	}
 	
-	
+	//Ver tanto os processos do servidor quanto de discente
 	public List<Processo> consultarProcesso(Pessoa pessoa) throws SQLException {
 		
 		List<Processo> processos = null;
@@ -278,4 +278,8 @@ public class ProcessoDAO {
 		return processos;
 		
 	}
+	
+	
+	
+
 }

@@ -213,43 +213,7 @@ private Connection conn;
 		
 	}
 	
-	/*public List<Auxilio> getAllByPessoa(Pessoa pessoa) throws SQLException {
-		
-		List<Auxilio> auxilios = null;
 
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		
-		try {
-
-			String sql = String
-					.format("%s",
-							"SELECT `id_auxilio`, "
-									+ "`tipo_auxilio`, "
-									+ "`valor_auxilio`, "
-									+ "`validade_Inicial`, "
-									+ "`validade_final`, "
-									+ "`instituicaoFinanciadora_id`, "
-									+ "`processo_id` "
-									+ " FROM `auxilio`"
-									+ " WHERE %?%");
-
-			stmt = (PreparedStatement) conn.prepareStatement(sql);
-			
-			stmt.setInt(1, pessoa);
-
-			rs = stmt.executeQuery(sql);
-			
-			auxilios = convertToList(rs);
-
-		} catch (SQLException sqle) {
-			
-			sqle.printStackTrace();
-			
-		}
-		return auxilios;
-		
-	}*/
 	
 	public List<Auxilio> find(Auxilio auxilio) throws SQLException {
 		List<Auxilio> auxilios = null;
@@ -336,7 +300,7 @@ private Connection conn;
 		
 	}
 		
-	public List<Auxilio> getAllByPessoa(Auxilio auxilio) throws SQLException {
+	public List<Auxilio> getAllByInstFinanc(Auxilio auxilio) throws SQLException {
 		List<Auxilio> auxilios = null;
 
 		PreparedStatement stmt = null;
@@ -375,7 +339,93 @@ private Connection conn;
 		return auxilios;
 	}
 	
-		
+	public List<Auxilio> getAllByServidor(Auxilio auxilio) throws SQLException {
+		List<Auxilio> auxilios = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String
+					.format("%s '%%%s%%'",
+							"SELECT auxilio.`id_auxilio`, "
+							+ " auxilio.`tipo_auxilio`, "
+							+ " auxilio.`valor_auxilio`, "
+							+ " auxilio.`validade_Inicial`, "
+							+ " auxilio.`validade_final`, "
+							+ " auxilio.instituicaoFinanciadora_id,"
+							+ " auxilio.processo_id"
+							+ " FROM auxilio"
+							+ " INNER JOIN processo"
+							+ " on processo.id_processo = auxilio.processo_id"
+							+ " INNER JOIN instituicaoFinanciadora instf"
+							+ " on instf.id_if = auxilio.instituicaoFinanciadora_id "
+							+ " INNER JOIN servidor"
+							+ " ON servidor.id_servidor = processo.servidor_id"
+							+ " INNER JOIN pessoa"
+							+ " ON pessoa.id_pessoa = servidor.pessoa_id" 
+						        + " WHERE pessoa.matricula LIKE",
+							auxilio.getP().getServidor().getMatricula());
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			auxilios = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return auxilios;
+	}
+	
+	public List<Auxilio> discentesComtemplados(Auxilio auxilio) throws SQLException {
+		List<Auxilio> auxilios = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String
+					.format("%s '%%%s%%'",
+							"select processo.num_processo,"
+							+ "pessoa.nome_pessoa, "
+							+ "pessoa.matricula, "
+							+ " db.agencia, "
+							+ " db.banco, "
+							+ " db.num_agencia, "
+							+ " aux.tipo_auxilio, "
+							+ "aux.valor_auxilio "
+							+ "from processo"
+							+ "inner join pessoa "
+							+ "on pessoa.id_pessoa = processo.interessado_id "
+							+ "inner join discente"
+							+ "	on discente.pessoa_id = pessoa.id_pessoa "
+							+ "inner join dadosBancarios db "
+							+ "on db.discente_id = discente.id_discente "
+							+ "inner join auxilio aux"
+							+ "on aux.processo_id = processo.id_processo "
+							+ "where processo.parecer = 'Aprovado' and aux.tipo_auxilio = 'Transporte' ",
+							auxilio.getIF().getCnpj());
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			auxilios = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return auxilios;
+	}
+	
 }
 	
 	
