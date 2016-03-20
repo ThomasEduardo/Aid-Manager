@@ -305,13 +305,13 @@ private Connection conn;
 			String sql = String
 					.format("%s '%%%s%%'",
 							"SELECT   count(aux.id_auxilio) "
-							        + "FROM auxilio aux"
-							        + "INNER JOIN processo"
-							        + "ON (aux.processo_id = processo.id_processo)"
-							        + "and(processo.parecer = 'Aprovado')"
-							        + "INNER JOIN pessoa"
+							        + "FROM auxilio aux "
+							        + "INNER JOIN processo "
+							        + "ON (aux.processo_id = processo.id_processo) "
+							        + "AND(processo.parecer = 'Aprovado') "
+							        + "INNER JOIN pessoa "
 							        + "ON pessoa.id_pessoa = processo.interessado_id "
-						        + " WHERE pesssoa.matricula LIKE",
+						        + " AND pessoa.matricula LIKE",
 							discente.getMatricula());
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);

@@ -11,9 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.entidade.Familiar;
 import br.edu.ifpb.auxilio.entidade.Pessoa;
-import br.edu.ifpb.auxilio.entidade.Processo;
 import br.edu.ifpb.auxilio.entidade.Servidor;
 // Atualizar atributos
 public class ServidorDAO{
@@ -186,6 +184,43 @@ public class ServidorDAO{
 			return servidores;
 		}
 		
+		
+		public int qtdeDiscentesCadastrados() throws SQLException {
+
+			int qtdeDiscentes = 0;
+			
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+
+			try {
+
+				String sql = String
+						.format("%s",
+								"SELECT count(id_discente) quantidade_discentes_cadastrados from discente ");
+
+				stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+				rs = stmt.executeQuery(sql);
+				
+
+					while (rs.next()) {
+						
+						qtdeDiscentes = rs.getInt("quantidade_discentes_cadastrados");
+					}
+
+				stmt.close();
+				rs.close();
+
+			} catch (SQLException sqle) {
+				throw new SQLException(sqle);
+						
+			} 
+
+			return qtdeDiscentes;
+			
+		}
+			
+			
 		
 		
 }

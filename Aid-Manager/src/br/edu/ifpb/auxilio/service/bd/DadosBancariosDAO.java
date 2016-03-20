@@ -229,21 +229,22 @@ private Connection conn;
 	public double gastoMensal(DadosBancarios db) throws SQLException {
 		
 		double gastoMensal = 0;
+		
+		int qtdeAuxilios = 0;
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
 		try {
 
-			String sql = String.format("%s '%%%s%%'",
-							"SELECT EXTRACT(MONTH FROM CURDATE()) *( ? *80) as gasto_mensal");
+			String sql = 
+							"SELECT EXTRACT(MONTH FROM CURDATE()) gasto_mensal";
 
  
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 			
 			AuxilioDAO aux = new AuxilioDAO();
-			
-			stmt.setInt(1, aux.qtdeAuxilios(db.getDiscente()));
+			qtdeAuxilios = aux.qtdeAuxilios(db.getDiscente());
 			
 			rs = stmt.executeQuery(sql);
 			
@@ -262,6 +263,6 @@ private Connection conn;
 					
 		} 
 
-		return gastoMensal;
+		return (gastoMensal*80.00*qtdeAuxilios);
 	}
 }

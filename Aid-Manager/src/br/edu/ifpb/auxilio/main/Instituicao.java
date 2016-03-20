@@ -34,12 +34,15 @@ public static void main(String[] args) throws SQLException {
 	
 	List<Discente> auxs = null;
 
-	DiscenteDAO e = new DiscenteDAO();
-     Discente db = new Discente();
-	db.setMatricula("123");
-	auxs = e.find(db);
+	DadosBancariosDAO e = new DadosBancariosDAO();
 	
-	System.out.println(auxs.size());	
+    DadosBancarios db = e.getById(1);
+	
+    
+	//auxs = e.calculoRendaFamiliar();
+
+	
+	System.out.println(e.gastoMensal(db));	
 	
 	}
 }
