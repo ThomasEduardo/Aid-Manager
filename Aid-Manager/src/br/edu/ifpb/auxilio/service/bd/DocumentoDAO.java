@@ -3,7 +3,7 @@
  * @author FannyVieira, RaylaMedeiros, MateusOliveira
  *
  */
-package br.edu.ifpb.auxilio.bd;
+package br.edu.ifpb.auxilio.service.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

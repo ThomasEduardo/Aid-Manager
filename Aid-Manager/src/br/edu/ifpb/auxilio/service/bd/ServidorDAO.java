@@ -3,7 +3,7 @@
  * @author FannyVieira, RaylaMedeiros, MateusOliveira
  *
  */
-package br.edu.ifpb.auxilio.bd;
+package br.edu.ifpb.auxilio.service.bd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,15 +31,13 @@ public class ServidorDAO{
 
 		String sql = "insert into servidor ("
 				+ "cargo_servidor,"
-				+ "tipo_pessoa,"
 				+ "pessoa_id)"
 				+ "values (?,?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, servidor.getCargoServidor());
-			stmt.setString(2, servidor.getTipoServidor());
-			stmt.setInt(3, servidor.getIdPessoa());
+			stmt.setInt   (2, servidor.getIdPessoa());
 			
 			
 			stmt.execute();
@@ -99,7 +97,6 @@ public class ServidorDAO{
 				
 				servidor.setIdServidor(rs.getInt("id_servidor"));
 				servidor.setCargoServidor(rs.getString("cargo_servidor"));
-				servidor.setTipoServidor(rs.getString("tipo_servidor"));
 				
 				//Pessoa
 				
@@ -123,7 +120,7 @@ public class ServidorDAO{
 			}
 
 		} catch (SQLException sqle) {
-			
+			sqle.printStackTrace();
 	}
 
 		return servidores;
@@ -143,8 +140,7 @@ public class ServidorDAO{
 			try {
 
 				String sql = String.format("%s '%%%s%%'",
-								"SELECT  cargo_servidor,"
-										+ "tipo_pessoa"
+								"SELECT  cargo_servidor"
 										+ "FROM servidor"
 										+ "INNER JOIN pessoa"
 										+ "ON pessoa.id_pessoa = servidor.pessoa_id"
@@ -175,7 +171,6 @@ public class ServidorDAO{
 
 				String sql = String.format("%s",
 							 "  SELECT    cargo_servidor,"
-										+ "tipo_pessoa "
 								+ "FROM servidor"); 
 
 				stmt = (PreparedStatement) conn.prepareStatement(sql);

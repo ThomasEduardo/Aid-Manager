@@ -3,7 +3,7 @@
  * @author FannyVieira, RaylaMedeiros, MateusOliveira
  *
  */
-package br.edu.ifpb.auxilio.bd;
+package br.edu.ifpb.auxilio.service.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,11 +12,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.bd.Conexao;
 import br.edu.ifpb.auxilio.dominio.Auxilio;
 import br.edu.ifpb.auxilio.dominio.Discente;
 import br.edu.ifpb.auxilio.dominio.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.dominio.Pessoa;
+import br.edu.ifpb.auxilio.service.bd.Conexao;
 
 
 public class AuxilioDAO{

@@ -4,17 +4,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.bd.AuxilioDAO;
-import br.edu.ifpb.auxilio.bd.DadosBancariosDAO;
-import br.edu.ifpb.auxilio.bd.DiscenteDAO;
-import br.edu.ifpb.auxilio.bd.DocumentoDAO;
-import br.edu.ifpb.auxilio.bd.EditalDAO;
-import br.edu.ifpb.auxilio.bd.FamiliarDAO;
-import br.edu.ifpb.auxilio.bd.InstituicaoFinanciadoraDAO;
-import br.edu.ifpb.auxilio.bd.PerfilSocioEconomicoDAO;
-import br.edu.ifpb.auxilio.bd.PessoaDAO;
-import br.edu.ifpb.auxilio.bd.ProcessoDAO;
-import br.edu.ifpb.auxilio.bd.ServidorDAO;
 import br.edu.ifpb.auxilio.dominio.Auxilio;
 import br.edu.ifpb.auxilio.dominio.DadosBancarios;
 import br.edu.ifpb.auxilio.dominio.Discente;
@@ -25,6 +14,17 @@ import br.edu.ifpb.auxilio.dominio.PerfilSocioEconomico;
 import br.edu.ifpb.auxilio.dominio.Pessoa;
 import br.edu.ifpb.auxilio.dominio.Processo;
 import br.edu.ifpb.auxilio.dominio.Servidor;
+import br.edu.ifpb.auxilio.service.bd.AuxilioDAO;
+import br.edu.ifpb.auxilio.service.bd.DadosBancariosDAO;
+import br.edu.ifpb.auxilio.service.bd.DiscenteDAO;
+import br.edu.ifpb.auxilio.service.bd.DocumentoDAO;
+import br.edu.ifpb.auxilio.service.bd.EditalDAO;
+import br.edu.ifpb.auxilio.service.bd.FamiliarDAO;
+import br.edu.ifpb.auxilio.service.bd.InstituicaoFinanciadoraDAO;
+import br.edu.ifpb.auxilio.service.bd.PerfilSocioEconomicoDAO;
+import br.edu.ifpb.auxilio.service.bd.PessoaDAO;
+import br.edu.ifpb.auxilio.service.bd.ProcessoDAO;
+import br.edu.ifpb.auxilio.service.bd.ServidorDAO;
 
 
 
