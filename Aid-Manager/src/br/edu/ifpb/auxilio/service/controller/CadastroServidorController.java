@@ -23,9 +23,6 @@ public class CadastroServidorController {
 	@FXML
 	private TextField Campo_CargoServidor;
 	
-	
-	
-	
 	@FXML
 	private Button Bt_CadastrarServidor;
 	

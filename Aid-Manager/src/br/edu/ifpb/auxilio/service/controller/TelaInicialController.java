@@ -19,6 +19,12 @@ public class TelaInicialController implements Initializable {
 	private static String perfil;
 	
 	@FXML
+	private ImageView logoSupervisor;
+	
+	@FXML
+	private ImageView logoManager;
+	
+	@FXML
 	private Button Bt_servidor;
 	
 	@FXML
@@ -26,15 +32,16 @@ public class TelaInicialController implements Initializable {
 	
 	@FXML
 	private void btServidor() throws IOException{
+		
 		perfil = "Servidor";
 
 		
 		
-	   Parent root2 = FXMLLoader.load(getClass().getResource("/findMe/UI/FXML/LoginScreen.fxml"));
+	   Parent root2 = FXMLLoader.load(getClass().getResource("ui/forms/LoginPessoa.fxml"));
 		
-		Scene loginMonitorScreen = new Scene(root2);
+		Scene telaLoginServidor = new Scene(root2);
 		Main.primaryStage.setTitle("Servidor");
-		Main.primaryStage.setScene(loginMonitorScreen);
+		Main.primaryStage.setScene(telaLoginServidor);
 		Main.primaryStage.show(); 
 	}
 	
@@ -42,15 +49,28 @@ public class TelaInicialController implements Initializable {
 	@FXML
 	private void btDiscente() throws IOException{
 		perfil = "Discente";
-		Parent root2 = FXMLLoader.load(getClass().getResource("/findMe/UI/FXML/LoginScreen.fxml"));
+		Parent root2 = FXMLLoader.load(getClass().getResource("ui/forms/LoginPessoa.fxml"));
 		
-		Scene loginSupervisorScreen = new Scene(root2);
+		Scene telaLoginDiscente = new Scene(root2);
 		
 		Main.primaryStage.setTitle("Discente");
-		Main.primaryStage.setScene(loginSupervisorScreen);
+		Main.primaryStage.setScene(telaLoginDiscente);
 		Main.primaryStage.show();
 	}
 	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	private void choice(){
+		if(perfil == "Servidor"){
+			logoSupervisor.setVisible(true);
+		}
+		else if(perfil == "Discente"){
+			logoManager.setVisible(true);
+		}
+	}
 
 }
