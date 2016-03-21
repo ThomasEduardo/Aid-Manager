@@ -23,7 +23,7 @@ public class Main extends Application {
 
 			this.primaryStage = primaryStage;
 			
-			Parent root = FXMLLoader.load(getClass().getResource("ui/forms/TelaInicial.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/TelaInicial.fxml"));
 			
 			this.scene = new Scene(root);
 			

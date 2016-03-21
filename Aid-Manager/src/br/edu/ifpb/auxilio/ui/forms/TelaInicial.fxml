@@ -10,7 +10,7 @@
    <children>
       <AnchorPane layoutX="393.0" prefHeight="402.0" prefWidth="370.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Button fx:id="Bt_Servidor" layoutX="128.0" layoutY="98.0" mnemonicParsing="false" onAction="#bt" prefHeight="60.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Servidor" textFill="WHITE">
+            <Button fx:id="Bt_Servidor" layoutX="128.0" layoutY="98.0" mnemonicParsing="false" onAction="#btServidor" prefHeight="60.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Servidor" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font></Button>

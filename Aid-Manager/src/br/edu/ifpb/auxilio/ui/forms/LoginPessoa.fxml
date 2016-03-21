@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="telaId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="telaId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.LoginController">
    <children>
       <AnchorPane layoutX="283.0" prefHeight="401.0" prefWidth="479.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -22,24 +22,19 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="Campo_EmailMatricula" layoutX="187.0" layoutY="83.0" prefHeight="25.0" prefWidth="240.0" promptText="Ex.: 20141004027 ou joaozinho@email.com" style="-fx-border-color: #238E68;" />
+            <TextField fx:id="Campo_EmailMatricula" layoutX="187.0" layoutY="83.0"  prefHeight="25.0" prefWidth="240.0" promptText="Ex.: 20141004027 ou joaozinho@email.com" style="-fx-border-color: #238E68;" />
             <PasswordField fx:id="Campo_Senha" layoutX="187.0" layoutY="117.0" prefHeight="27.0" prefWidth="240.0" promptText="*******" style="-fx-border-color: #238E68;" />
-            <Button fx:id="Bt_Entrar" layoutX="359.0" layoutY="208.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="90.0" style="-fx-background-color: #E6346C;" text="Entrar" textFill="WHITE">
+            <Button fx:id="Bt_Entrar" layoutX="359.0" layoutY="208.0" mnemonicParsing="false" onAction="#btEntrar" prefHeight="41.0" prefWidth="90.0" style="-fx-background-color: #E6346C;" text="Entrar" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="Bt_VoltarLogin" layoutX="237.0" layoutY="208.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="90.0" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+            <Button fx:id="Bt_VoltarLogin" layoutX="237.0" layoutY="208.0" mnemonicParsing="false" onAction="#btVoltarLogin" prefHeight="41.0" prefWidth="90.0" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="16.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <ImageView fx:id="Img_Login" fitHeight="150.0" fitWidth="200.0" layoutX="81.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="imagem" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

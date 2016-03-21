@@ -20,11 +20,11 @@ public class TelaInicialController implements Initializable {
 	
 	private static String perfil;
 	
-	@FXML
+	/*@FXML
 	private ImageView logoSupervisor;
 	
 	@FXML
-	private ImageView logoManager;
+	private ImageView logoManager;*/
 	
 	@FXML
 	private Button Bt_servidor;
@@ -35,13 +35,11 @@ public class TelaInicialController implements Initializable {
 	@FXML
 	private void btServidor() throws IOException{
 		
-		perfil = "Servidor";
-
+		perfil = "Servidor";		
 		
+	    Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
 		
-	   Parent root2 = FXMLLoader.load(getClass().getResource("ui/forms/LoginPessoa.fxml"));
-		
-		Scene telaLoginServidor = new Scene(root2);
+	    Scene telaLoginServidor = new Scene(root2);
 		
 		Main.primaryStage.setTitle("Servidor");
 		Main.primaryStage.setScene(telaLoginServidor);
@@ -68,13 +66,13 @@ public class TelaInicialController implements Initializable {
 		
 	}
 	
-	private void choice(){
+	/*private void choice(){
 		if(perfil == "Servidor"){
 			logoSupervisor.setVisible(true);
 		}
 		else if(perfil == "Discente"){
 			logoManager.setVisible(true);
 		}
-	}
+	}*/
 
 }
