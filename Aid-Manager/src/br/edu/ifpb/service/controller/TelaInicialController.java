@@ -1,17 +1,19 @@
-package br.edu.ifpb.auxilio.service.controller;
+package br.edu.ifpb.service.controller;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.*;
 
+import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class TelaInicialController implements Initializable {
@@ -40,8 +42,10 @@ public class TelaInicialController implements Initializable {
 	   Parent root2 = FXMLLoader.load(getClass().getResource("ui/forms/LoginPessoa.fxml"));
 		
 		Scene telaLoginServidor = new Scene(root2);
+		
 		Main.primaryStage.setTitle("Servidor");
 		Main.primaryStage.setScene(telaLoginServidor);
+		
 		Main.primaryStage.show(); 
 	}
 	

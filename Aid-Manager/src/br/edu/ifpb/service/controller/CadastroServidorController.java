@@ -1,4 +1,5 @@
-package br.edu.ifpb.auxilio.service.controller;
+package br.edu.ifpb.service.controller;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CadastroServidorController implements Initializable{
