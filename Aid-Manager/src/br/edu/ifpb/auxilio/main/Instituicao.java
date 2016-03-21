@@ -10,6 +10,7 @@ import br.edu.ifpb.auxilio.entidade.Discente;
 import br.edu.ifpb.auxilio.entidade.Documento;
 import br.edu.ifpb.auxilio.entidade.Edital;
 import br.edu.ifpb.auxilio.entidade.Familiar;
+import br.edu.ifpb.auxilio.entidade.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.entidade.PerfilSocioEconomico;
 import br.edu.ifpb.auxilio.entidade.Pessoa;
 import br.edu.ifpb.auxilio.entidade.Processo;
@@ -32,17 +33,25 @@ public class Instituicao {
 	
 public static void main(String[] args) throws SQLException {
 	
-	List<Discente> auxs = null;
+	List<Servidor> pses = null;
 
-	DadosBancariosDAO e = new DadosBancariosDAO();
+	ServidorDAO e = new ServidorDAO();
 	
-    DadosBancarios db = e.getById(1);
+	Servidor db = e.getById(2);
 	
     
-	//auxs = e.calculoRendaFamiliar();
+     pses = e.find(db);
 
 	
-	System.out.println(e.gastoMensal(db));	
+	System.out.println(pses.size());
+	
+	
+	
+	
+	
+	
+
+	
 	
 	}
 }

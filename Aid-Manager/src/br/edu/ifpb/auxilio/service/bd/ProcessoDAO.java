@@ -173,15 +173,18 @@ public class ProcessoDAO {
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							"SELECT   processo.`data_requisicao` = ?, "
-									+ " processo.`obs`=?, "
-									+ " processo.`num_processo`=?,"
-									+ " processo.`assunto`=?, "
-									+ " processo.`parecer`=?"
+							"SELECT     processo.id_processo, "
+							        + " processo.`data_requisicao`, "
+									+ " processo.`obs`, "
+									+ " processo.`num_processo`,"
+									+ " processo.`assunto`, "
+									+ " processo.`parecer`,"
+									+ " processo.servidor_id,"
+									+ " processo.interessado_id "
 									+ "FROM processo "
-									+ "INNER JOIN pessoa interessado"
-									+ "ON interessado.id_pessoa = processo.interessado_id"
-						    + " WHERE interessado.matricula LIKE",
+									+ "INNER JOIN pessoa interessado "
+									+ "ON interessado.id_pessoa = processo.interessado_id "
+						    + " WHERE interessado.matricula LIKE ",
 							processo.getInteressado().getMatricula());
  
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -207,11 +210,14 @@ public class ProcessoDAO {
 		try {
 
 			String sql = String.format("%s",
-						 "  SELECT   `data_requisicao` = ?, "
-									+ " `obs`=?, "
-									+ " `num_processo`=?,"
-									+ " `assunto`=?, "
-									+ " `parecer`=?"
+						 "  SELECT    id_processo, "
+						            + "`data_requisicao`, "
+									+ " `obs`, "
+									+ " `num_processo`,"
+									+ " `assunto`, "
+									+ " `parecer`,"
+									+ " servidor_id,"
+									+ " interessado_id "
 									+ "FROM processo ");
 			
 
@@ -242,7 +248,7 @@ public class ProcessoDAO {
 		try {
 
 			String sql = String
-					.format("%s",
+					.format("%s %s",
 							"SELECT  processo.id_processo,"
 							+ "processo.data_requisicao,"
 							+ "processo.obs,"
@@ -250,17 +256,18 @@ public class ProcessoDAO {
 							+ "processo.assunto,"
 							+ "processo.parecer,"
 							+ "pessoa.nome_pessoa,"
-							+ "pessoa.matricula "
-							+ "FROM processo"
+							+ "pessoa.matricula,"
+							+ "processo.interessado_id, "
+							+ "processo.servidor_id "
+							+ "FROM processo "
 							+ "INNER JOIN pessoa "
-							+ "ON processo.interessado_id = pessoa.id_pessoa"
-							+ "INNER JOIN servidor"
-							+ "ON processo.servidor_id = servidor.id_servidor"
-							+ "WHERE pessoa.matricula = ?" );
+							+ "ON processo.interessado_id = pessoa.id_pessoa "
+							+ "INNER JOIN servidor "
+							+ "ON processo.servidor_id = servidor.id_servidor "
+							+ "WHERE pessoa.matricula = ", pessoa.getMatricula());
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 			
-			stmt.setString(1, pessoa.getMatricula());
 
 			rs = stmt.executeQuery(sql);
 			

@@ -382,6 +382,7 @@ private Connection conn;
 		return auxilios;
 	}
 	
+	//Ajustar
 	public List<Auxilio> discentesComtemplados(Auxilio auxilio) throws SQLException {
 		List<Auxilio> auxilios = null;
 
@@ -409,8 +410,7 @@ private Connection conn;
 							+ "on db.discente_id = discente.id_discente "
 							+ "inner join auxilio aux"
 							+ "on aux.processo_id = processo.id_processo "
-							+ "where processo.parecer = 'Aprovado' and aux.tipo_auxilio = 'Transporte' ",
-							auxilio.getIF().getCnpj());
+							+ "where processo.parecer = 'Aprovado' and aux.tipo_auxilio = 'Transporte'");
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 

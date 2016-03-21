@@ -138,11 +138,13 @@ public class ServidorDAO{
 			try {
 
 				String sql = String.format("%s '%%%s%%'",
-								"SELECT  cargo_servidor"
-										+ "FROM servidor"
-										+ "INNER JOIN pessoa"
-										+ "ON pessoa.id_pessoa = servidor.pessoa_id"
-							    + " WHERE pessoa.matricula LIKE",
+								"SELECT  id_servidor, "
+								        + "cargo_servidor, "
+								        + "pessoa_id "
+										+ "FROM servidor "
+										+ "INNER JOIN pessoa "
+										+ "ON pessoa.id_pessoa = servidor.pessoa_id "
+							    + " WHERE pessoa.matricula LIKE ",
 								servidor.getMatricula());
 	 
 				stmt = (PreparedStatement) conn.prepareStatement(sql);

@@ -213,7 +213,8 @@ public class PerfilSocioEconomicoDAO {
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							"SELECT  `situacao_renda_familiar`, " 
+							"SELECT     ps.id_perfil_socio, "
+									+ " ps.`situacao_renda_familiar`, " 
 									+ " ps.`moradia`, " 
 									+ " ps.`tipo_moradia`," 
 									+ " ps.`tipo_residencia_familiar`, " 
@@ -224,7 +225,9 @@ public class PerfilSocioEconomicoDAO {
 									+ " ps.`gastos_agua`, " 
 									+ " ps.`gastos_telefone`, " 
 									+ " ps.`obs`, " 
-									+ " ps.`gastos_financiamento_casa_propria`"
+									+ " ps.`gastos_financiamento_casa_propria`,"
+									+ " ps.servidor_id,"
+									+ " ps.discente_id"
 									+ " FROM perfilSocioEconomico ps"
 									+ " INNER JOIN discente"
 									+ " ON discente.id_discente =  ps.discente_id"
@@ -256,10 +259,22 @@ public class PerfilSocioEconomicoDAO {
 		try {
 
 			String sql = String.format("%s",
-						 "  SELECT       `nome_if`, " 
-									  + " `cnpj`, " 
-									  + " `orcamento_auxilio`"
-									  + " `servidor_id`"); 
+						 "  SELECT `id_perfil_socio`,"
+						 + " `situacao_renda_Familiar`, "
+						 + " `moradia`, "
+						 + " `tipo_moradia`,"
+						 + " `tipo_residencia_familiar`, "
+						 + " `tipo_trabalho`, "
+						 + " `gastos_aluguel`,"
+						 + " `gastos_condominio`, "
+						 + " `gastos_luz`, "
+						 + " `gastos_agua`, "
+						 + " `gastos_telefone`,"
+						 + " `obs`, "
+						 + " `gastos_financiamento_casa_propria`, "
+						 + " `servidor_id`, "
+						 + " `discente_id` "
+						 + "FROM `perfilsocioeconomico`"); 
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 

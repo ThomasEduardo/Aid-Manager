@@ -168,9 +168,11 @@ public class InstituicaoFinanciadoraDAO {
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							" SELECT   `nome_if`, " 
+							" SELECT       id_if ,"
+							          + "`nome_if`, " 
 									  + " `cnpj`, " 
-									  + " `orcamento_auxilio`"
+									  + " `orcamento_auxilio`,"
+									  + "  servidor_id"
 									  + " FROM instituicaoFinanciadora" 
 						    + " WHERE cnpj LIKE",
 							instf.getCnpj());
@@ -198,9 +200,10 @@ public class InstituicaoFinanciadoraDAO {
 		try {
 
 			String sql = String.format("%s",
-						 "  SELECT       `nome_if`, " 
+						 "  SELECT      id_if,   "
+								 	  + "`nome_if`, " 
 									  + " `cnpj`, " 
-									  + " `orcamento_auxilio`"
+									  + " `orcamento_auxilio`,"
 									  + " `servidor_id`"
 									  + " FROM instituicaoFinanciadora"); 
 
@@ -226,9 +229,11 @@ public class InstituicaoFinanciadoraDAO {
 		try {
 
 			String sql = String.format("%s '%%%s%%'",
-							" SELECT   `nome_if`, " 
+							" SELECT   id_if, "
+							          + "`nome_if`, " 
 									  + " `cnpj`, " 
-									  + " `orcamento_auxilio` "
+									  + " `orcamento_auxilio`,"
+									  + "  servidor_id"
 									  + " FROM instituicaoFinanciadora instf"
 									  + " INNER JOIN servidor "
 									  + " ON servidor.id_servidor = instf.servidor_id "
