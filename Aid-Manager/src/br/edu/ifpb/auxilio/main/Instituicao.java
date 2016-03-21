@@ -33,17 +33,20 @@ public class Instituicao {
 	
 public static void main(String[] args) throws SQLException {
 	
-	List<Servidor> pses = null;
 
-	ServidorDAO e = new ServidorDAO();
+	AuxilioDAO e = new AuxilioDAO();
+	InstituicaoFinanciadoraDAO i = new InstituicaoFinanciadoraDAO();
+	ProcessoDAO p = new ProcessoDAO();
 	
-	Servidor db = e.getById(2);
+
+	
+	Auxilio db = new Auxilio("Transporte",80.00,new java.util.Date(),new java.util.Date(),i.getById(1),p.getById(1));
 	
     
-     pses = e.find(db);
+     e.insert(db);
 
 	
-	System.out.println(pses.size());
+
 	
 	
 	
