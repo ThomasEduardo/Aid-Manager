@@ -1,4 +1,4 @@
-package br.edu.ifpb.service.controller;
+package br.edu.ifpb.auxilio.service.controller;
 
 
 
