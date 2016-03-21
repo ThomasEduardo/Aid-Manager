@@ -10,28 +10,28 @@
    <children>
       <AnchorPane layoutX="393.0" prefHeight="402.0" prefWidth="370.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Button layoutX="128.0" layoutY="98.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Servidor" textFill="WHITE">
+            <Button fx:id="Bt_Servidor" layoutX="128.0" layoutY="98.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Servidor" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font></Button>
-            <Button layoutX="128.0" layoutY="245.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Discente" textFill="WHITE">
+            <Button fx:id="Bt_Discente" layoutX="128.0" layoutY="245.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Discente" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="139.0" fitWidth="150.0" layoutX="143.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="LogoAidManager" fitHeight="139.0" fitWidth="150.0" layoutX="143.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../Desktop/img-icone-pagina-3.png" />
          </image>
       </ImageView>
-      <Label layoutX="60.0" layoutY="243.0" text="Aid" textFill="WHITE">
+      <Label fx:id="Label_Aid" layoutX="60.0" layoutY="243.0" text="Aid" textFill="WHITE">
          <font>
             <Font name="Colonna MT" size="60.0" />
          </font>
       </Label>
-      <Label layoutX="105.0" layoutY="280.0" text="Manager" textFill="WHITE">
+      <Label fx:id="Label_Manager" layoutX="105.0" layoutY="280.0" text="Manager" textFill="WHITE">
          <font>
             <Font name="Colonna MT" size="60.0" />
          </font>
