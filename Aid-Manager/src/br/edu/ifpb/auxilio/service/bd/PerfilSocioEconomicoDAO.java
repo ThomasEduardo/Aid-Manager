@@ -15,7 +15,6 @@ import java.util.List;
 
 
 
-import br.edu.ifpb.auxilio.entidade.InstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.entidade.PerfilSocioEconomico;
 
 public class PerfilSocioEconomicoDAO {

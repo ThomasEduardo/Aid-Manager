@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.auxilio.entidade.DadosBancarios;
+
 import br.edu.ifpb.auxilio.entidade.Documento;
 
 

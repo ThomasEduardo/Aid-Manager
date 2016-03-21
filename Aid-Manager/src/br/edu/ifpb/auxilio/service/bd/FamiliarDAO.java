@@ -18,7 +18,6 @@ import java.util.List;
 
 
 import br.edu.ifpb.auxilio.entidade.Discente;
-import br.edu.ifpb.auxilio.entidade.Edital;
 import br.edu.ifpb.auxilio.entidade.Familiar;
 
 

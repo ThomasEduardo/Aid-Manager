@@ -17,12 +17,11 @@ import java.util.List;
 
 
 import br.edu.ifpb.auxilio.entidade.DadosBancarios;
-import br.edu.ifpb.auxilio.entidade.Discente;
 
 
 
 public class DadosBancariosDAO {
-private Connection conn;
+	private Connection conn;
 	
 	public DadosBancariosDAO(){
 		conn = Conexao.getConnection();
