@@ -18,14 +18,8 @@ import javafx.stage.Stage;
 
 public class TelaInicialController implements Initializable {
 	
-	private static String perfil;
-	
-	/*@FXML
-	private ImageView logoSupervisor;
-	
-	@FXML
-	private ImageView logoManager;*/
-	
+	public static String perfil;
+
 	@FXML
 	private Button Bt_servidor;
 	
@@ -66,13 +60,6 @@ public class TelaInicialController implements Initializable {
 		
 	}
 	
-	/*private void choice(){
-		if(perfil == "Servidor"){
-			logoSupervisor.setVisible(true);
-		}
-		else if(perfil == "Discente"){
-			logoManager.setVisible(true);
-		}
-	}*/
+
 
 }

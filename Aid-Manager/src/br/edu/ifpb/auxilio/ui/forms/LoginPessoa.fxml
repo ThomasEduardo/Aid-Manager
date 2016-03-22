@@ -22,7 +22,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="Campo_EmailMatricula" layoutX="187.0" layoutY="83.0"  prefHeight="25.0" prefWidth="240.0" promptText="Ex.: 20141004027 ou joaozinho@email.com" style="-fx-border-color: #238E68;" />
+            <TextField fx:id="Campo_EmailMatricula" layoutX="187.0" layoutY="83.0" prefHeight="25.0" prefWidth="240.0" promptText="Ex.: 20141004027 ou joaozinho@email.com" style="-fx-border-color: #238E68;" />
             <PasswordField fx:id="Campo_Senha" layoutX="187.0" layoutY="117.0" prefHeight="27.0" prefWidth="240.0" promptText="*******" style="-fx-border-color: #238E68;" />
             <Button fx:id="Bt_Entrar" layoutX="359.0" layoutY="208.0" mnemonicParsing="false" onAction="#btEntrar" prefHeight="41.0" prefWidth="90.0" style="-fx-background-color: #E6346C;" text="Entrar" textFill="WHITE">
                <font>
@@ -36,5 +36,6 @@
             </Button>
          </children>
       </AnchorPane>
+      <ImageView fx:id="logoPessoa" fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

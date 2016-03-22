@@ -14,8 +14,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class LoginController implements Initializable {
+	
+	@FXML
+	private ImageView logoPessoa;
 	
 	@FXML
 	private TextField Campo_EmailMatricula;
@@ -28,11 +33,13 @@ public class LoginController implements Initializable {
 	
 	@FXML
 	private Button Bt_VoltarLogin;
+	
+	private String perfil = TelaInicialController.perfil;
 
 	@FXML
 	private void btEntrar() throws IOException{
 		
-		//perfil = "Servidor";		
+	
 		
 	    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
 		
@@ -58,13 +65,30 @@ public class LoginController implements Initializable {
 		
 		Main.primaryStage.show(); 
 	}
+	
+	private void perfil(){
+		if(perfil.equals("Servidor")){
+			
+			
+			Image img = new Image("br/edu/ifpb/auxilio/recursos/imagens/Servidor.png");
+			logoPessoa.setImage(img);
+			
+		}
+		else {
+			//Pesquisar um logo pra discente
+			logoPessoa.setVisible(true);
+		}
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+		perfil();
+		
 	}
 	
-	
+
 	
 	
 
