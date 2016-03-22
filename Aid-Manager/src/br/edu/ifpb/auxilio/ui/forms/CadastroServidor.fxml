@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="762.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="762.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.CadastroServidorController">
    <children>
       <Label layoutX="20.0" layoutY="249.0" text="Cadastre-se no Aid-Manager" textFill="WHITE">
          <font>
@@ -81,14 +81,12 @@
             <TextField fx:id="Campo_CpfServidor" layoutX="40.0" layoutY="358.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: 111.111.111-11" />
             <TextField fx:id="Campo_CargoServidor" layoutX="40.0" layoutY="459.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: Assistente Social" />
             <DatePicker fx:id="Campo_NascimentoServidor" layoutX="43.0" layoutY="204.0" prefHeight="25.0" prefWidth="274.0" promptText="Ex.: 01/05/1992" />
-            <TextField fx:id="Campo_SenhaServidor" layoutX="46.0" layoutY="99.0" prefHeight="25.0" prefWidth="274.0" promptText="******" />
             <Label fx:id="Label_ConfirmarSenhaServidor" layoutX="35.0" layoutY="131.0" text="Confirme Sua Senha" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="Campo_ConfirmarSenhaServidor" layoutX="45.0" layoutY="151.0" prefHeight="25.0" prefWidth="274.0" promptText="******" />
-            <Button fx:id="Bt_CadastrarServidor" layoutX="232.0" layoutY="540.0" mnemonicParsing="false" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+            <Button fx:id="Bt_CadastrarServidor" layoutX="232.0" layoutY="540.0" mnemonicParsing="false" onAction="#btCadastrarServidor" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="14.0" />
                </font>
@@ -104,6 +102,8 @@
                   <Font name="Book Antiqua" size="14.0" />
                </font>
             </Button>
+            <PasswordField fx:id="Campo_SenhaServidor" layoutX="47.0" layoutY="96.0" prefHeight="25.0" prefWidth="274.0" promptText="******" />
+            <PasswordField fx:id="Campo_ConfSenhaServidor" layoutX="47.0" layoutY="148.0" prefHeight="25.0" prefWidth="274.0" promptText="******" />
          </children>
       </AnchorPane>
    </children>

@@ -6,8 +6,12 @@
 
 package br.edu.ifpb.auxilio.entidade;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+
+import br.edu.ifpb.auxilio.service.bd.PessoaDAO;
+import br.edu.ifpb.auxilio.service.bd.ServidorDAO;
 
 
 
@@ -195,7 +199,11 @@ import java.util.Date;
 				}
 
 				
-
+	 public int insert(Pessoa pessoa) throws SQLException {
+					PessoaDAO p = new PessoaDAO();
+					return p.insert(pessoa);
+					
+	}
 
 		
 }

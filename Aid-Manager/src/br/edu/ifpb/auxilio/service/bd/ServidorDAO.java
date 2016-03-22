@@ -25,12 +25,12 @@ public class ServidorDAO{
 		else System.out.println("Erro na conexão com o BD");	
 	}
 	
-	public void insert(Servidor servidor) {
+	public void insert(Servidor servidor) throws SQLException {
 
 		String sql = "insert into servidor ("
 				+ "cargo_servidor,"
 				+ "pessoa_id)"
-				+ "values (?,?,?)";
+				+ "values (?,?)";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -48,7 +48,7 @@ public class ServidorDAO{
 	
 
 	
-	public Servidor getById(int idServidor) {
+	public Servidor getById(int idServidor) throws SQLException  {
 		try {
 			
 			Servidor servidor = new Servidor();

@@ -6,7 +6,10 @@
 
 package br.edu.ifpb.auxilio.entidade;
 
+import java.sql.SQLException;
 import java.util.Date;
+
+import br.edu.ifpb.auxilio.service.bd.ServidorDAO;
 
 public class Servidor extends Pessoa{
 	
@@ -99,7 +102,11 @@ public class Servidor extends Pessoa{
 	}
 
 	
-	
+	public void insert(Servidor servidor) throws SQLException {
+		ServidorDAO s = new ServidorDAO();
+		s.insert(servidor);
+		
+	}
 	
 	
 

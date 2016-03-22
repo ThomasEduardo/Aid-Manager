@@ -14,8 +14,10 @@ import java.sql.SQLException;
 
 
 
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 
@@ -36,44 +38,50 @@ public class PessoaDAO {
 	
 	
 	
-	public void insert(Pessoa pessoa) {
+	public int insert(Pessoa pessoa) throws SQLException {
+		
+		int idPessoa;
 
-		String sql = "insert into pessoa ("
-				+ "nome_pessoa,"
-				+ "matricula,"
-				+ "data_nasc,"
-				+ "senha,"
-				+ "email,"
-				+ "cpf,"
-				+ "rg,"
-				+ "sexo)"
-				+ "values (?,?,?,?,?,?,?,?)";
+		String sql = String
+				.format("%s %s ('%s', '%s','%s', '%s','%s','%s','%s','%s')",
+				"INSERT INTO pessoa("
+				+ " nome_pessoa,"
+				+ " matricula,"
+				+ " data_nasc,"
+				+ " senha,"
+				+ " email,"
+				+ " cpf,"
+				+ " rg,"
+				+ " sexo)",
+				"VALUES",
+				pessoa.getNomePessoa(),
+				pessoa.getMatricula(),
+				new java.sql.Date(pessoa.getDataNasc().getTime()),
+				pessoa.getSenha(),
+				pessoa.getEmail(),
+				pessoa.getCpf(),
+				pessoa.getRg(),
+				pessoa.getSexo());
 		try {
 			// prepared statement para inserÃ§Ã£o
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			// seta os valores
-			stmt.setString(1, pessoa.getNomePessoa());
-			stmt.setString(2, pessoa.getMatricula());
-			stmt.setDate  (3, new java.sql.Date(pessoa.getDataNasc().getTime()));
-			stmt.setString(4, pessoa.getSenha());
-			stmt.setString(5, pessoa.getEmail());
-			stmt.setString(6, pessoa.getCpf());
-			stmt.setString(7, pessoa.getRg());
-			stmt.setString(8, pessoa.getSexo());
+			
+			
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			idPessoa = BancoUtil.getGenerateKey(stmt);
 
-			// executa
-			stmt.execute();
-			stmt.close();
-			System.out.println("Cadastrado com sucesso!");
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-
+          return idPessoa;
 	}
 
 	
-	public Pessoa getById (int idPessoa){
+	public Pessoa getById (int idPessoa) throws SQLException{
 		
 		Pessoa pessoa = new Pessoa();
 		
@@ -106,7 +114,7 @@ public class PessoaDAO {
 		return null;
 				
 	}
-	public void delete (String matricula){
+	public void delete (String matricula) throws SQLException{
 		
 		String sql =  "delete from pessoa where matricula = ?";
 		
@@ -120,7 +128,7 @@ public class PessoaDAO {
 		}
 	}
 	
-	public boolean update(Pessoa p) {
+	public boolean update(Pessoa p) throws SQLException{
 		String sql = "update pessoa set "
 				+ "nome_pessoa = ? ,"
 				+ "rg = ?,"

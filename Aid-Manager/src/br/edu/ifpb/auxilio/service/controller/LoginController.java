@@ -19,6 +19,10 @@ import javafx.scene.image.ImageView;
 
 public class LoginController implements Initializable {
 	
+	
+	@FXML
+	private Button bt_Cadastrar;
+	
 	@FXML
 	private ImageView logoPessoa;
 	
@@ -51,6 +55,22 @@ public class LoginController implements Initializable {
 		Main.primaryStage.show(); 
 	}
 	
+	@FXML
+	private void btCadastrar() throws IOException{
+		
+		  Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/CadastroServidor.fxml"));
+		  
+		  Scene telaCadastroServidor = new Scene(root);
+		  
+		  Main.primaryStage.setTitle("Cadastro de Servidor");
+		  Main.primaryStage.setScene(telaCadastroServidor);
+			
+		  Main.primaryStage.show(); 
+		
+	}
+	
+	
+
 	@FXML
 	private void btVoltarLogin() throws IOException{
 		
