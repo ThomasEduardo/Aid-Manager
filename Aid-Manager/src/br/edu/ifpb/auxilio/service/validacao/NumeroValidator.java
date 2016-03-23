@@ -3,46 +3,51 @@ package br.edu.ifpb.auxilio.service.validacao;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NumeroValidator {
 	
-	public static final String FORMATO_DATA = "dd/MM/yyyy";
-	
-	public static final int ANO_ZERO = 0;
+	private Pattern pattern;
+	private Matcher matcher;
 
+	private static final String STRING_PATTERN = "[0-9]*";
 
-	
-	public boolean validate(final String value) {
-
-		if (value == null || value.trim().equals(""))
-			return false;
-
-		boolean valido = true;
-
-		try {
-			
-			SimpleDateFormat format = new SimpleDateFormat(FORMATO_DATA);
-			format.setLenient(false);
-			format.parse(value.trim());
-			
-		} catch (ParseException e) {
-			
-			valido = false;
-		}
-
-		return valido;
+	public NumeroValidator() {
+		pattern = Pattern.compile(STRING_PATTERN);
 	}
 
-	
-	
-	public boolean datesInOrder(final Date dataMenor, final Date dataMaior) {
 
-		if (dataMenor == null || dataMaior == null)
+	public boolean validate(final String value) {
+		if (value == null || value.trim().equals(""))
 			return false;
+		matcher = pattern.matcher(value.trim());
+		return matcher.matches();
+	}
 
-		int valido = dataMenor.compareTo(dataMaior);
+	public boolean validate(final String value, int tamanho) {
+		return (validate(value) 
+				&& value.length() <= tamanho);
+	}
 
-		return valido <= 0 ? true : false;
+	public boolean validate(final String value, int tamanhoMenor, 
+			int tamanhoMaior) {
+		
+		return (validate(value) 
+				&& (value.length() >= tamanhoMenor 
+					&& value.length() <= tamanhoMaior));
+	}
+
+	public boolean isInteiroPositivo(int valor) {
+		return (valor >= 0);
+	}
+
+	public boolean isDoublePositivo(double valor) {
+		return (valor >= 0);
+	}
+	
+	public boolean isMaiorZero(int valor) {
+		return (valor > 0);
 	}
 	
 	
