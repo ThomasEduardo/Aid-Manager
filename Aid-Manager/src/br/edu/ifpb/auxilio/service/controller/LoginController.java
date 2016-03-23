@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.edu.ifpb.auxilio.service.validacao.Validar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,7 +44,10 @@ public class LoginController implements Initializable {
 	@FXML
 	private void btEntrar() throws IOException{
 		
-	
+		int validacao = Validar.login(Campo_EmailMatricula.getText(),Campo_Senha.getText());
+
+		if (validacao == Validar.VALIDACAO_OK) {
+			//Adicionar verificação se o user tá cadastrado
 		
 	    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
 		
@@ -53,6 +57,11 @@ public class LoginController implements Initializable {
 		Main.primaryStage.setScene(telaLoginServidor);
 		
 		Main.primaryStage.show(); 
+		}
+		else{
+			System.out.println("Tá muito errado tu num tá ligado");
+		}
+		//Lançar exceção
 	}
 	
 	@FXML

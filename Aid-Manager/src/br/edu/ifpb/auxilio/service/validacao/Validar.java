@@ -9,7 +9,21 @@ public class Validar {
 
 	public static int VALIDACAO_OK = 0;
 	
-	public static int login(Login login) {
+	public static int login(String matricula,String senha) {
+		boolean valido = false;
+		
+		// Matrícula(somente números),devem ser maiores que 1 e menors que 11.
+				if (numeroValidator.validate(matricula,1,11))
+					valido = true;
+				if (!valido)
+					return ErrorFactory.MATRICULA_USUARIO_INVALIDA;
+
+				if (!stringValidator.validatePassword(senha))
+					return ErrorFactory.SENHA_USUARIO_INVALIDA;
+
+				
+				
+		return VALIDACAO_OK;
 		
 	}
 	
