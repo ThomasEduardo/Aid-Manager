@@ -97,7 +97,7 @@
                 <MenuItem mnemonicParsing="false" text="Masculino" />
               </items>
             </MenuButton>
-            <Button fx:id="Bt_VoltarCadastroServidor" layoutX="160.0" layoutY="540.0" mnemonicParsing="false" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+            <Button fx:id="Bt_VoltarCadastroServidor" layoutX="160.0" layoutY="540.0" mnemonicParsing="false" onAction="#btVoltarCadastroServidor" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua" size="14.0" />
                </font>

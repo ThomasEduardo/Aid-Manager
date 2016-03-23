@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="576.0" prefWidth="762.0">
+         <content>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="699.0" prefWidth="762.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="6.0" layoutY="253.0" text="Cadastre-se no Aid-Manager" textFill="WHITE">
+                     <font>
+                        <Font name="Colonna MT" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="26.0" layoutY="68.0" text="Situação de moradia:" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="24.0" layoutY="28.0" text="Moradia do(a) aluno(a):" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <RadioButton layoutX="24.0" layoutY="327.0" mnemonicParsing="false" text="Financiamento de Casa Própria. Valor:" />
+                  <RadioButton layoutX="24.0" layoutY="310.0" mnemonicParsing="false" text="Telefone. Valor:" />
+                  <RadioButton layoutX="24.0" layoutY="293.0" mnemonicParsing="false" text="Luz. Valor:" />
+                  <RadioButton layoutX="24.0" layoutY="276.0" mnemonicParsing="false" text="Água. Valor:" />
+                  <RadioButton layoutX="24.0" layoutY="259.0" mnemonicParsing="false" text="Condomínio. Valor:" />
+                  <RadioButton layoutX="497.0" layoutY="302.0" mnemonicParsing="false" text="Aluguel. Valor:" />
+                  <Label layoutX="520.0" layoutY="242.0" text="Gastos com a moradia:" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="382.0" layoutY="225.0" text="A residência da sua família é:" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="131.0" text="Situação de saúde na família:" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="29.0" layoutY="103.0" text="Sua situação de trabalho:" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="450.0" layoutY="183.0" text="Com quem você reside?" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="Bt_VoltarCadastroDiscente1" layoutX="140.0" layoutY="664.0" mnemonicParsing="false" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+                     <font>
+                        <Font name="Book Antiqua" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Bt_ProxEtapaCadastroDiscente1" layoutX="211.0" layoutY="664.0" mnemonicParsing="false" style="-fx-background-color: #E6346C;" text="Próxima Etapa" textFill="WHITE">
+                     <font>
+                        <Font name="Book Antiqua Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="266.0" layoutY="174.0" text="Sua situação em relação a renda familiar:" textFill="#bd0741">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

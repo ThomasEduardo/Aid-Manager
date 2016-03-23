@@ -82,25 +82,31 @@ public class CadastroServidorController implements Initializable{
 			s.setSexo(Campo_SexoServidor.getText());
 			s.setCargoServidor(Campo_CargoServidor.getText());
 			s.setSenha(Campo_SenhaServidor.getText());
-			
-			System.out.println("oi");
-			
 			s.setIdPessoa(p.insert(s));
+			
+			
 			servidor.insert(s);
 			
-			
-			    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
-				
-			    Scene telaLoginServidor = new Scene(root);
-				
-				Main.primaryStage.setTitle("Servidor");
-				Main.primaryStage.setScene(telaLoginServidor);
-				
-				Main.primaryStage.show(); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+	}
+	
+	@FXML
+	private void btVoltarCadastroServidor() throws IOException{
+		
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
+		
+	    Scene telaLoginServidor = new Scene(root);
+		
+		Main.primaryStage.setTitle("Servidor");
+		Main.primaryStage.setScene(telaLoginServidor);
+		
+		Main.primaryStage.show(); 
+		
 		
 		
 	}
