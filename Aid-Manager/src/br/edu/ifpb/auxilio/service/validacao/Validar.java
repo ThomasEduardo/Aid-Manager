@@ -1,4 +1,6 @@
 package br.edu.ifpb.auxilio.service.validacao;
+import br.edu.ifpb.auxilio.entidade.Pessoa;
+
 
 public class Validar {
 	
@@ -27,7 +29,43 @@ public class Validar {
 		
 	}
 	
-	
+	public static int pessoa(Pessoa pessoa) {
+
+		int validacao = VALIDACAO_OK;
+		String nomePessoa = pessoa.getNomePessoa();
+		String cpf = pessoa.getCpf();
+		// Date nascimento = pessoa.getNascimento();
+		String matricula = pessoa.getMatricula();
+		String email = pessoa.getEmail();
+		String Rg = pessoa.getRg();
+		String sexo = pessoa.getSexo();
+		String senha = pessoa.getSenha();
+		
+		
+
+		if (!stringValidator.validateSomenteLetras(nomePessoa))
+			return ErrorFactory.NOME_USUARIO_INVALIDO;
+
+		if (!CPFValidator.validaCnpj(cpf))
+			return ErrorFactory.CPF_USUARIO_INVALID0;
+		
+		if(!stringValidator.validatePassword(senha))
+			return ErrorFactory.SENHA_USUARIO_INVALIDA;
+
+		if (!numeroValidator.validate(matricula,1,11))
+			return ErrorFactory.MATRICULA_USUARIO_INVALIDA;
+
+		if (!emailValidator.validate(email))
+			return ErrorFactory.EMAIL_USUARIO_INVALIDO;
+
+		/*if (!stringValidator.validate(urlLattes, 255))
+			return CodeErroQManager.URL_LATTES_INVALIDO; Validar Rg*/ 
+		
+		if (!stringValidator.validate(sexo,9))
+			return ErrorFactory.SEXO_INVALID0;
+
+		return VALIDACAO_OK;
+	}
 	
 	
 	

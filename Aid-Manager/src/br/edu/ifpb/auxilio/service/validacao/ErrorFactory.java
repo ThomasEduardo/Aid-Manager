@@ -19,6 +19,9 @@ public class ErrorFactory {
 	public static final int MATRICULA_USUARIO_INVALIDA = 4;
 	public static final int EMAIL_USUARIO_INVALIDO = 5;
 	public static final int SENHA_USUARIO_INVALIDA = 6;
+	public static final int CPF_USUARIO_INVALID0 = 7;
+	public static final int SEXO_INVALID0 = 8;
+	
 	
 	/*
 	 * Error status: Curso.
@@ -73,7 +76,7 @@ public class ErrorFactory {
 		hashMap.put(NOME_CURSO_INVALIDO, "Nome do curso inválido.");
 		hashMap.put(NOME_USUARIO_INVALIDO, "Nome do usuário inválido.");
 		hashMap.put(EMAIL_USUARIO_INVALIDO, "E-mail do usuário inválido.");
-		hashMap.put(SENHA_USUARIO_INVALIDA, "Senha do usuário inválida.");
+		hashMap.put(SENHA_USUARIO_INVALIDA, "Senha do usuário inválida.A senha deve conter no mínimo 6 caracteres e no máximo 20\n E deve conter apenas caracteres e números");
 		hashMap.put(ID_ALUNO_INVALIDO, "Aluno inválido.");
 		hashMap.put(ID_DIA_INVALIDO, "Dia inválido.");
 		hashMap.put(ID_REFEICAO_INVALIDA, "Refeição inválida.");
