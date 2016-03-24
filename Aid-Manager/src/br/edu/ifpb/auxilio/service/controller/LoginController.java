@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import br.edu.ifpb.auxilio.entidade.Pessoa;
+import br.edu.ifpb.auxilio.service.validacao.ErrorFactory;
 import br.edu.ifpb.auxilio.service.validacao.Validar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +18,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
 
 public class LoginController implements Initializable {
 	
@@ -65,11 +68,16 @@ public class LoginController implements Initializable {
 					Main.primaryStage.show(); 
 				}
 				else{
-				
+				  //System.out.println(ErrorFactory.getErrorFromIndex(validacao).getMensagem());
+				   
 			  }	
 		}
 		else{
-			System.out.println("Error");
+			final Tooltip tooltip = new Tooltip();
+			tooltip.setText(ErrorFactory.getErrorFromIndex(validacao).getMensagem());
+			/*final Border border = new Border();
+			border*/
+			Campo_Senha.setTooltip(tooltip);
 		}
 		//Lançar exceção
 	}
