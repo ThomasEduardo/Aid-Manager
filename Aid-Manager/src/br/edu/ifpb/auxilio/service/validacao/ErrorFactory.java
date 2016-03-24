@@ -1,20 +1,22 @@
 package br.edu.ifpb.auxilio.service.validacao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ErrorFactory {
 	
 
 	private ErrorFactory() {}
 
 	/*
-	 * Error status: Aluno.
+	 * Error status: Pessoa.
 	 */
 	public static final int REGISTRO_DUPLICADO = 1;
-	public static final int ALUNO_NAO_ENCONTRADO = 2;
-	public static final int NOME_ALUNO_INVALIDO = 3;
-	public static final int MATRICULA_ALUNO_INVALIDA = 4;
-	public static final int CHAVE_CONFIRMACAO_INVALIDA = 5;
-	public static final int NOME_MATRICULA_ALUNO_INVALIDOS = 6;
-	public static final int ACESSO_ALUNO_NAO_PERMITIDO = 7;
+	public static final int USUARIO_NAO_ENCONTRADO = 2;
+	public static final int NOME_USUARIO_INVALIDO = 3;
+	public static final int MATRICULA_USUARIO_INVALIDA = 4;
+	public static final int EMAIL_USUARIO_INVALIDO = 5;
+	public static final int SENHA_USUARIO_INVALIDA = 6;
 	
 	/*
 	 * Error status: Curso.
@@ -25,9 +27,6 @@ public class ErrorFactory {
 	/*
 	 * Error status: Usuário.
 	 */
-	public static final int NOME_USUARIO_INVALIDO = 10;
-	public static final int EMAIL_USUARIO_INVALIDO = 11;
-	public static final int SENHA_USUARIO_INVALIDA = 12;
 	public static final int KEY_CONFIRMATION_INVALIDA = 13;
 	
 	/*
@@ -68,7 +67,7 @@ public class ErrorFactory {
 		hashMap.put(ALUNO_NAO_ENCONTRADO, "Aluno não encontrado.");		
 		hashMap.put(NOME_ALUNO_INVALIDO, "Nome do aluno inválido.");
 		hashMap.put(CHAVE_CONFIRMACAO_INVALIDA, "Chave confirmação inválida.");
-		hashMap.put(MATRICULA_ALUNO_INVALIDA, "Matrícula do aluno inválida.");		
+		hashMap.put(MATRICULA_USUARIO_INVALIDA, "Matrícula inserida inválida.");		
 		hashMap.put(ID_CURSO_INVALIDO, "Curso inválido.");
 		hashMap.put(NOME_CURSO_INVALIDO, "Nome do curso inválido.");
 		hashMap.put(NOME_USUARIO_INVALIDO, "Nome do usuário inválido.");
