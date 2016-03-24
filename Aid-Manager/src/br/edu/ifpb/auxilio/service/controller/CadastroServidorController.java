@@ -9,8 +9,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
+import br.edu.ifpb.auxilio.actions.ActionPessoa;
+import br.edu.ifpb.auxilio.actions.ActionServidor;
 import br.edu.ifpb.auxilio.entidade.Pessoa;
 import br.edu.ifpb.auxilio.entidade.Servidor;
+import br.edu.ifpb.auxilio.service.validacao.Validar;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,9 +70,10 @@ public class CadastroServidorController implements Initializable{
 	
 		
 		try {
-			Servidor servidor = new Servidor();
-			Pessoa p = new Pessoa();
-			
+		    ActionServidor actionServer = new ActionServidor();
+		    ActionPessoa actionPerson = new ActionPessoa();
+		    
+
 			Servidor s = new Servidor();
 			
 			s.setNomePessoa(Campo_NomeServidor.getText());
@@ -82,10 +86,15 @@ public class CadastroServidorController implements Initializable{
 			s.setSexo(Campo_SexoServidor.getText());
 			s.setCargoServidor(Campo_CargoServidor.getText());
 			s.setSenha(Campo_SenhaServidor.getText());
-			s.setIdPessoa(p.insert(s));
 			
-			
-			servidor.insert(s);
+			int validacao = Validar.servidor(s);
+
+			if (validacao == Validar.VALIDACAO_OK) {
+			s.setIdPessoa(actionPerson.insert(s));
+			actionServer.insert(s);
+			} else{
+				System.out.println("EAE MLK DOIDO!");
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
