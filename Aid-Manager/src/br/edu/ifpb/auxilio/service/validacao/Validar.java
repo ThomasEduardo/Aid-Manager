@@ -113,27 +113,36 @@ public class Validar {
 			return validacao;
 
 		if (!stringValidator.validateSomenteLetras(escolaOrigem))
-			//return ErrorFactory.NOME_USUARIO_INVALIDO;
+		     return ErrorFactory.ESCOLA_ORIGEM_INVALIDA;
 		//if (!stringValidator.validateLetraDigito(orgExpeditor))
 		if (!numeroValidator.validate(numCartaoSus,1,15))
+			return ErrorFactory.NUM_CARTAO_SUS_INVALIDO;
 		if (!stringValidator.validateSomenteLetras(curso))
+			return ErrorFactory.CURSO_INVALIDO;
 		if (!numeroValidator.isInteiroPositivo(numCasa))
+			return ErrorFactory.NUM_CASA_INVALIDA;
 		if (!stringValidator.validate(pontoRef))
+			return ErrorFactory.PONTO_REF_INVALIDO;
 	    if (!stringValidator.validateSomenteLetras(estado))
+	    	return ErrorFactory.ESTADO_INVALIDO;
 	    if (!stringValidator.validate(motivoSolicitacao))
+	    	return ErrorFactory.MOTIVO_SOLICITACAO_INVALIDO;
 		if (!stringValidator.validate(estadoCivil,1,12))
+			return ErrorFactory.ESTADO_CIVIL_INVALIDO;
 		if (!numeroValidator.isInteiroPositivo(periodoLetivo))
+			return ErrorFactory.PERIODO_LETIVO_INVALIDO;
 		if (!stringValidator.validateSomenteLetras(turno))
 			if (endereco != null && cep != null && cidade != null && bairro != null) {
 				if (!stringValidator.validate(endereco, 255))
-					//return CodeErroQManager.ENDERECO_INVALIDO;
+					return ErrorFactory.ENDERECO_INVALIDO;
 
 				if (!numeroValidator.validate(cep,1,8))
-					//return CodeErroQManager.CEP_INVALIDO;
+					return ErrorFactory.CEP_INVALIDO;
 
 				if (!stringValidator.validateSomenteLetras(cidade))
-					//return CodeErroQManager.TELEFONE_INVALIDO;
+					return ErrorFactory.CIDADE_INVALIDA;
 				if (!stringValidator.validate(bairro));
+				return ErrorFactory.BAIRRO_INVALIDO;
 			}
 		
 		
@@ -159,12 +168,13 @@ public class Validar {
 				return validacao;
 
 			if (!stringValidator.validateSomenteLetras(banco))
-				//return CodeErroQManager.OPERACAO_CONTA_INVALIDA;
-
-			if (!numeroValidator.validate(numAgencia, 6));
-				//return CodeErroQManager.NUMERO_CONTA_INVALIDO;
-			if (!stringValidator.validateSomenteLetras(agencia));
-				//return CodeErroQManager.NUMERO_CONTA_INVALIDO;
+				return ErrorFactory.BANCO_INVALIDO;
+			
+			if (!numeroValidator.validate(numAgencia, 6))
+				return ErrorFactory.NUM_AGENCIA_INVALIDA;
+			
+			if (!stringValidator.validateSomenteLetras(agencia))
+				return ErrorFactory.AGENCIA_INVALIDA;
 		}
 
 		return VALIDACAO_OK;
@@ -186,11 +196,13 @@ public class Validar {
 				return validacao;
 
 			if (!stringValidator.validateSomenteLetras(nomeDocumento))
-				//return CodeErroQManager.OPERACAO_CONTA_INVALIDA;
-			if (!stringValidator.validate(status));
-				//return CodeErroQManager.NUMERO_CONTA_INVALIDO;
-			if (!stringValidator.validateSomenteLetras(obs));
-				//return CodeErroQManager.NUMERO_CONTA_INVALIDO;
+				return ErrorFactory.NOME_DOCUMENTO_INVALIDO;
+			
+			if (!stringValidator.validate(status))
+				return ErrorFactory.STATUS_DOCUMENTO_INVALIDO;
+			
+			if (!stringValidator.validateSomenteLetras(obs))
+				return ErrorFactory.OBS_DOCUMENTO_INVALIDO;
 		}
 
 		return VALIDACAO_OK;
@@ -218,16 +230,28 @@ public class Validar {
 				return validacao;
 
 			if (!dataValidator.datesInOrder(iniInscricoes, fimInscricoes))
-				//return CodeErroQManager.OPERACAO_CONTA_INVALIDA;
-			if (!dataValidator.datesInOrder(iniEntregaForm, fimForm));
-				//return CodeErroQManager.NUMERO_CONTA_INVALIDO;
-			if (!numeroValidator.isInteiroPositivo(ano));
-				//return CodeErroQManager.NUMERO_CONTA_INVALIDO;
-			if(!numeroValidator.isInteiroPositivo(vagasBolsistas));
-			if(!numeroValidator.isDoublePositivo(valorBolsaDiscente));
-			if(!stringValidator.validateSomenteLetras(titulo));
-			if(!stringValidator.validate(descricao));
-			if(!numeroValidator.validate(numEdital));
+				return ErrorFactory.FAIXA_DATA_INSCRICOES_INVALIDA;
+			
+			if (!dataValidator.datesInOrder(iniEntregaForm, fimForm))
+				return ErrorFactory.FAIXA_DATA_INSCRICOES_INVALIDA;
+			
+			if (!numeroValidator.isInteiroPositivo(ano))
+				return ErrorFactory.ANO_INVALIDO;
+			
+			if(!numeroValidator.isInteiroPositivo(vagasBolsistas))
+				return ErrorFactory.VAGAS_BOLSISTAS_INVALIDA;
+			
+			if(!numeroValidator.isDoublePositivo(valorBolsaDiscente))
+				return ErrorFactory.VALOR_BOLSA_DISCENTE_INVALIDA;
+			
+			if(!stringValidator.validateSomenteLetras(titulo))
+				return ErrorFactory.TITULO_INVALIDO;
+			
+			if(!stringValidator.validate(descricao))
+				return ErrorFactory.DESCRICAO_INVALIDA;
+			
+			if(!numeroValidator.validate(numEdital))
+				return ErrorFactory.NUM_EDITAL_INVALIDO;
 		}
 
 		return VALIDACAO_OK;
@@ -252,11 +276,22 @@ public class Validar {
 				return validacao;
 
 			if (!stringValidator.validateSomenteLetras(nome))
+				return ErrorFactory.NOME_FAMILIAR_INVALIDO;
+			
 			if (!numeroValidator.isInteiroPositivo(idade))
-			if (!numeroValidator.isInteiroPositivo(grauDeInstrucao));
-			if (!stringValidator.validateSomenteLetras(profissao));
-			if (!stringValidator.validateSomenteLetras(doenca));
-			if (!numeroValidator.isDoublePositivo(renda));
+				return ErrorFactory.IDADE_FAMILIAR_INVALIDA;
+			
+			if (!numeroValidator.isInteiroPositivo(grauDeInstrucao))
+				return ErrorFactory.GRAU_DE_INSTRUCAO_FAMILIAR_INVALIDA;
+			
+			if (!stringValidator.validateSomenteLetras(profissao))
+				return ErrorFactory.PROFISSAO_FAMILIAR_INVALIDA;
+			
+			if (!stringValidator.validateSomenteLetras(doenca))
+				return ErrorFactory.DOENCA_FAMILIAR_INVALIDA;
+			
+			if (!numeroValidator.isDoublePositivo(renda))
+				return ErrorFactory.RENDA_FAMILIAR_INVALIDA;
 		}
 
 		return VALIDACAO_OK;
@@ -279,8 +314,13 @@ public class Validar {
 				return validacao;
 
 			if (!stringValidator.validateSomenteLetras(nomeIF))
+				return ErrorFactory.NOME_IF_INVALIDO;
+			
 			if (!CNPJValidator.isCNPJ(cnpj))
-			if (!numeroValidator.isDoublePositivo(orcamentoAuxilio));
+				return ErrorFactory.CNPJ_INVALIDO;
+			
+			if (!numeroValidator.isDoublePositivo(orcamentoAuxilio))
+				return ErrorFactory.ORCAMENTO_AUXILIO_INVALIDO;
 		}
 
 		return VALIDACAO_OK;
@@ -358,9 +398,16 @@ public class Validar {
 				return validacao;
 
 			if (!stringValidator.validate(obs))
+				return ErrorFactory.OBS_PROCESSO_INVALIDO;
+			
 			if (!numeroValidator.validate(numProcesso))
-			if (!stringValidator.validate(assunto));
-			if (!stringValidator.validateSomenteLetras(parecer));
+				return ErrorFactory.NUM_PROCESSO_INVALIDO;
+			
+			if (!stringValidator.validate(assunto))
+				return ErrorFactory.ASSUNTO_INVALIDO;
+			
+			if (!stringValidator.validateSomenteLetras(parecer))
+				return ErrorFactory.PARECER_INVALIDO;
 			
 		}
 

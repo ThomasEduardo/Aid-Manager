@@ -56,7 +56,7 @@ public class ErrorFactory {
 	 * Error status: Dados Bancarios.
 	 */
 	public static final int BANCO_INVALIDO = 28;
-	public static final int NUM_AGENCIA_INVALIDO = 29;
+	public static final int NUM_AGENCIA_INVALIDA = 29;
 	public static final int AGENCIA_INVALIDA = 30;
 	
 	/*
@@ -65,7 +65,7 @@ public class ErrorFactory {
 	
 	public static final int NOME_DOCUMENTO_INVALIDO = 31;
 	public static final int STATUS_DOCUMENTO_INVALIDO = 32;
-	public static final int OBS_DOCUMENTO_INVALIDA = 33;
+	public static final int OBS_DOCUMENTO_INVALIDO = 33;
 	
 	/*
 	 * Error Status: edital.
@@ -95,7 +95,7 @@ public class ErrorFactory {
 	 * Error status: Instituicao Financiadora
 	 */
 	
-	public static final int NOME_IF_INVALIDA = 48;	
+	public static final int NOME_IF_INVALIDO = 48;	
 	public static final int CNPJ_INVALIDO = 49;
 	public static final int ORCAMENTO_AUXILIO_INVALIDO = 50;  
 	
@@ -114,12 +114,12 @@ public class ErrorFactory {
 	public static final int AGUA_INVALIDA = 68;
 	public static final int TELEFONE_INVALIDO = 69;
 	public static final int FINANCIAMENTO_CASA_PROPRIA_INVALIDO = 70;
-	public static final int OBS_PS_INVALIDA = 71;
+	public static final int OBS_PS_INVALIDO = 71;
 	
 	/*
 	 * Error status: PerfilSocioEconomico
 	 */
-	public static final int OBS_PROCESSO_INVALIDA= 72;
+	public static final int OBS_PROCESSO_INVALIDO= 72;
     public static final int NUM_PROCESSO_INVALIDO = 73;
 	public static final int ASSUNTO_INVALIDO= 74; 
 	public static final int PARECER_INVALIDO = 75;
