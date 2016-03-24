@@ -7,6 +7,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import br.edu.ifpb.auxilio.actions.ActionPessoa;
 import br.edu.ifpb.auxilio.entidade.Pessoa;
 import br.edu.ifpb.auxilio.service.validacao.ErrorFactory;
 import br.edu.ifpb.auxilio.service.validacao.Validar;
@@ -53,7 +54,7 @@ public class LoginController implements Initializable {
 
 		if (validacao == Validar.VALIDACAO_OK) {
 			
-			Pessoa p = new Pessoa();
+			ActionPessoa p = new ActionPessoa();
 		
 				if(p.getIsAuthorized(Campo_EmailMatricula.getText(),Campo_Senha.getText()) != 0){
 			  
@@ -68,7 +69,7 @@ public class LoginController implements Initializable {
 					Main.primaryStage.show(); 
 				}
 				else{
-				  //System.out.println(ErrorFactory.getErrorFromIndex(validacao).getMensagem());
+				 // ErrorFactory.USUARIO_NAO_ENCONTRADO;
 				   
 			  }	
 		}

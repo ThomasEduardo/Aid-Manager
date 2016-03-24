@@ -1,9 +1,12 @@
 package br.edu.ifpb.auxilio.service.validacao;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import br.edu.ifpb.auxilio.entidade.Erro;
+import br.edu.ifpb.auxilio.entidade.Pessoa;
+import br.edu.ifpb.auxilio.entidade.Servidor;
 
 public class ErrorFactory {
 	
@@ -19,42 +22,111 @@ public class ErrorFactory {
 	public static final int MATRICULA_USUARIO_INVALIDA = 4;
 	public static final int EMAIL_USUARIO_INVALIDO = 5;
 	public static final int SENHA_USUARIO_INVALIDA = 6;
+	public static final int CPF_USUARIO_INVALID0 = 7;
+	public static final int SEXO_INVALID0 = 8;
+	public static final int RG_INVALID0 = 9;
+	
 	
 	/*
-	 * Error status: Curso.
+	 * Error status: Servidor.
 	 */
-	public static final int ID_CURSO_INVALIDO = 8;
-	public static final int NOME_CURSO_INVALIDO = 9;
+	public static final int CARGO_SERVIDOR_INVALIDO = 10;
 	
 	/*
-	 * Error status: Usuário.
+	 * Error status: Discente.
 	 */
-	public static final int KEY_CONFIRMATION_INVALIDA = 13;
+	public static final int ESCOLA_ORIGEM_INVALIDA = 13;
+	public static final int ORG_EXPEDITOR_INVALIDO = 14; 
+	public static final int NUM_CARTAO_SUS_INVALIDO = 15; 
+	public static final int ESTADO_CIVIL_INVALIDO = 16; 
+	public static final int CURSO_INVALIDO = 17;
+	public static final int PERIODO_LETIVO_INVALIDO = 18;
+	public static final int TURNO_INVALIDO = 19; 
+	public static final int ENDERECO_INVALIDO = 20;
+	public static final int CEP_INVALIDO = 21; 
+	public static final int BAIRRO_INVALIDO = 22; 
+	public static final int CIDADE_INVALIDA = 23;
+	public static final int NUM_CASA_INVALIDA = 24;
+	public static final int PONTO_REF_INVALIDO = 25; 
+	public static final int ESTADO_INVALIDO = 26;
+	public static final int MOTIVO_SOLICITACAO_INVALIDO = 27; 
+	
 	
 	/*
-	 * Error status: Dia da Refeição.
+	 * Error status: Dados Bancarios.
 	 */
-	public static final int ID_DIA_REFEICAO_INVALIDO = 14;
-	public static final int ID_ALUNO_INVALIDO = 15;
-	public static final int ID_DIA_INVALIDO = 16;
-	public static final int ID_REFEICAO_INVALIDA = 17;
+	public static final int BANCO_INVALIDO = 28;
+	public static final int NUM_AGENCIA_INVALIDO = 29;
+	public static final int AGENCIA_INVALIDA = 30;
 	
 	/*
-	 * Confirmação da Refeição.
+	 * Error status: Documento.
 	 */
-	public static final int CONFIRMACAO_REFEICAO_INVALIDA = 18;
+	
+	public static final int NOME_DOCUMENTO_INVALIDO = 31;
+	public static final int STATUS_DOCUMENTO_INVALIDO = 32;
+	public static final int OBS_DOCUMENTO_INVALIDA = 33;
 	
 	/*
-	 * Pretensão da Refeição
+	 * Error Status: edital.
+	 * 
 	 */
-	public static final int PRETENSAO_REFEICAO_NAO_ENCONTRADA = 19;
+	
+	public static final int ANO_INVALIDO = 34;
+	public static final int DESCRICAO_INVALIDA = 35;
+	public static final int TITULO_INVALIDO = 36;
+	public static final int VALOR_BOLSA_DISCENTE_INVALIDA = 37;
+	public static final int VAGAS_BOLSISTAS_INVALIDA = 38;
+	public static final int NUM_EDITAL_INVALIDO = 39;
+	public static final int FAIXA_DATA_INSCRICOES_INVALIDA = 40;
+	public static final int FAIXA_DATA_FORM_INVALIDA = 41;
 	
 	/*
-	 * Realização da Refeição
+	 * Error status: familiar
 	 */
-	public static final int REFEICAO_REALIZADA_NAO_ENCONTRADA = 20;
+	public static final int NOME_FAMILIAR_INVALIDO = 42; 
+	public static final int IDADE_FAMILIAR_INVALIDA = 43; 
+	public static final int GRAU_DE_INSTRUCAO_FAMILIAR_INVALIDA = 44; 
+	public static final int PROFISSAO_FAMILIAR_INVALIDA= 45;
+	public static final int RENDA_FAMILIAR_INVALIDA = 46;
+	public static final int DOENCA_FAMILIAR_INVALIDA = 47;
 	
-	public static final int IMPOSSIVEL_CRIPTOGRAFAR_VALOR = 21;
+	/*
+	 * Error status: Instituicao Financiadora
+	 */
+	
+	public static final int NOME_IF_INVALIDA = 48;	
+	public static final int CNPJ_INVALIDO = 49;
+	public static final int ORCAMENTO_AUXILIO_INVALIDO = 50;  
+	
+	/*
+	 * Error status: PerfilSocioEconomico
+	 */
+	
+	public static final int RENDA_FAMILIAR_TOTAL_INVALIDA= 60;
+	public static final int MORADIA_INVALIDA = 61;
+	public static final int SITUACAO_MORADIA_INVALIDA= 62;
+	public static final int RESIDENCIA_FAMILIAR_INVALIDA = 63;
+	public static final int SITUACAO_TRABALHO_INVALIDA= 64;
+	public static final int ALUGUEL_INVALIDO = 65;
+	public static final int CONDOMINIO_INVALIDO = 66;
+	public static final int LUZ_INVALIDA = 67;
+	public static final int AGUA_INVALIDA = 68;
+	public static final int TELEFONE_INVALIDO = 69;
+	public static final int FINANCIAMENTO_CASA_PROPRIA_INVALIDO = 70;
+	public static final int OBS_PS_INVALIDA = 71;
+	
+	/*
+	 * Error status: PerfilSocioEconomico
+	 */
+	public static final int OBS_PROCESSO_INVALIDA= 72;
+    public static final int NUM_PROCESSO_INVALIDO = 73;
+	public static final int ASSUNTO_INVALIDO= 74; 
+	public static final int PARECER_INVALIDO = 75;
+
+	
+	
+	public static final int IMPOSSIVEL_CRIPTOGRAFAR_VALOR = 78;
 	
 	
 	/*
@@ -73,7 +145,7 @@ public class ErrorFactory {
 		hashMap.put(NOME_CURSO_INVALIDO, "Nome do curso inválido.");
 		hashMap.put(NOME_USUARIO_INVALIDO, "Nome do usuário inválido.");
 		hashMap.put(EMAIL_USUARIO_INVALIDO, "E-mail do usuário inválido.");
-		hashMap.put(SENHA_USUARIO_INVALIDA, "Senha do usuário inválida.");
+		hashMap.put(SENHA_USUARIO_INVALIDA, "Senha do usuário inválida.A senha deve conter no mínimo 6 caracteres e no máximo 20\n E deve conter apenas caracteres e números");
 		hashMap.put(ID_ALUNO_INVALIDO, "Aluno inválido.");
 		hashMap.put(ID_DIA_INVALIDO, "Dia inválido.");
 		hashMap.put(ID_REFEICAO_INVALIDA, "Refeição inválida.");

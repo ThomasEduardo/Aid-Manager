@@ -9,9 +9,11 @@ public class StringValidator {
 	private Pattern patternLetras;
 	private Pattern patternPassword;
 	private Matcher matcher;
+	private Pattern patternRg;
 
 	private static final String STRING_PATTERN = "[0-9a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{6,20}";
 	private static final String STRING_PATTERN_SOMENTE_LETRAS = "[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]*";
+	private static final String STRING_PATTERN_RG = "[0-9]{1}*."+"[0-9]{3}*." + "[0-9]{3}";
 
 	// Verifica se há, ao menos:
 	// - um número;
@@ -24,6 +26,7 @@ public class StringValidator {
 		pattern = Pattern.compile(STRING_PATTERN);
 		patternLetras = Pattern.compile(STRING_PATTERN_SOMENTE_LETRAS);
 		patternPassword = Pattern.compile(PASSWORD_PATTERN);
+		patternRg = Pattern.compile(STRING_PATTERN_RG);
 	}
 
 	
@@ -63,6 +66,12 @@ public class StringValidator {
 		if (password == null || password.trim().equals(""))
 			return false;
 		matcher = patternPassword.matcher(password);
+		return matcher.matches();
+	}
+	public boolean validateRg(final String value) {
+		if (value == null || value.trim().equals(""))
+			return false;
+		matcher = patternRg.matcher(value.trim());
 		return matcher.matches();
 	}
 

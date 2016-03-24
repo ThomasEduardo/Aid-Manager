@@ -102,12 +102,6 @@ public class Servidor extends Pessoa{
 	}
 
 	
-	public void insert(Servidor servidor) throws SQLException {
-		ServidorDAO s = new ServidorDAO();
-		s.insert(servidor);
-		
-	}
-	
 	
 
 }
