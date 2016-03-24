@@ -18,7 +18,7 @@ public class Validar {
 				if (!valido)
 					return ErrorFactory.MATRICULA_USUARIO_INVALIDA;
 
-				if (!stringValidator.validatePassword(senha))
+				if (!stringValidator.validate(senha))
 					return ErrorFactory.SENHA_USUARIO_INVALIDA;
 
 				

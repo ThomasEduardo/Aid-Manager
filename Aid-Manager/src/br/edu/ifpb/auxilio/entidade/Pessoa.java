@@ -204,6 +204,12 @@ import br.edu.ifpb.auxilio.service.bd.ServidorDAO;
 					return p.insert(pessoa);
 					
 	}
+	 
+	public int getIsAuthorized(String Matricula,String senha) throws SQLException{
+			PessoaDAO p = new PessoaDAO();
+			return p.getIsAuthorized(Matricula, senha);
+		
+	}
 
 		
 }

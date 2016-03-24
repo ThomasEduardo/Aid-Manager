@@ -10,15 +10,15 @@ public class StringValidator {
 	private Pattern patternPassword;
 	private Matcher matcher;
 
-	private static final String STRING_PATTERN = "[0-9a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ ,/-ºª]*";
+	private static final String STRING_PATTERN = "[0-9a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{6,20}";
 	private static final String STRING_PATTERN_SOMENTE_LETRAS = "[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]*";
 
 	// Verifica se há, ao menos:
-	// - um número ou caractere especial;
+	// - um número;
 	// - uma letra minúscula;
 	// - uma letra maiúscula.
-	// O tamanho deve está entre 8 e 25 caracteres.
-	private static final String PASSWORD_PATTERN = "(?=.*[0-9@#$%^&+=])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,25}";
+	// O tamanho deve está entre 6 e 25 caracteres.
+	private static final String PASSWORD_PATTERN = "([0-9])([a-z])([A-Z]).{6,25}";
 
 	public StringValidator() {
 		pattern = Pattern.compile(STRING_PATTERN);

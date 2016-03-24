@@ -3,6 +3,8 @@ package br.edu.ifpb.auxilio.service.validacao;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.edu.ifpb.auxilio.entidade.Erro;
+
 public class ErrorFactory {
 	
 
@@ -64,9 +66,8 @@ public class ErrorFactory {
 		HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
 
 		hashMap.put(REGISTRO_DUPLICADO, "Registro duplicado.");
-		hashMap.put(ALUNO_NAO_ENCONTRADO, "Aluno não encontrado.");		
-		hashMap.put(NOME_ALUNO_INVALIDO, "Nome do aluno inválido.");
-		hashMap.put(CHAVE_CONFIRMACAO_INVALIDA, "Chave confirmação inválida.");
+		hashMap.put(USUARIO_NAO_ENCONTRADO, "Aluno não encontrado.");		
+		hashMap.put(NOME_USUARIO_INVALIDO, "Nome do aluno inválido.");
 		hashMap.put(MATRICULA_USUARIO_INVALIDA, "Matrícula inserida inválida.");		
 		hashMap.put(ID_CURSO_INVALIDO, "Curso inválido.");
 		hashMap.put(NOME_CURSO_INVALIDO, "Nome do curso inválido.");
@@ -80,9 +81,9 @@ public class ErrorFactory {
 		hashMap.put(KEY_CONFIRMATION_INVALIDA, "Chave de confirmação inválida.");
 		hashMap.put(ID_DIA_REFEICAO_INVALIDO, "Dia da Refeição inválido.");
 		hashMap.put(CONFIRMACAO_REFEICAO_INVALIDA, "Confirmação da refeição inválida.");
-		hashMap.put(NOME_MATRICULA_ALUNO_INVALIDOS, "Nome e matrícula do aluno inválidos.");
+		//hashMap.put(NOME_MATRICULA_ALUNO_INVALIDOS, "Nome e matrícula do aluno inválidos.");
 		hashMap.put(PRETENSAO_REFEICAO_NAO_ENCONTRADA, "Pretensão da refeição não encontrada.");
-		hashMap.put(ACESSO_ALUNO_NAO_PERMITIDO, "Acesso não permitido. Dados de login não conferem.");
+		//hashMap.put(ACESSO_ALUNO_NAO_PERMITIDO, "Acesso não permitido. Dados de login não conferem.");
 		hashMap.put(REFEICAO_REALIZADA_NAO_ENCONTRADA, "Refeição realizada não encotrada.");
 		
 				

@@ -328,4 +328,45 @@ public class PessoaDAO {
 		return pessoas;
 	}
 
+	public int getIsAuthorized(String Matricula,String senha) throws SQLException {
+		
+		int idPessoa  = 0;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = String
+					.format("%s '%s'",
+							"SELECT pessoa.id_pessoa,"
+									+ " pessoa.senha"
+									+ " FROM pessoa pessoa"
+									+ " WHERE pessoa.matricula =",
+							Matricula);
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				//TODO: a senha deve vir criptografada do Cliente
+				String senhaBanco = rs.getString("pessoa.senha");
+				//String senhaLogin = StringUtil.criptografarSha256(login.getSenha());
+
+				if (senha.equals(senhaBanco)) {
+		          			
+			          idPessoa = rs.getInt("pessoa.id_pessoa");
+				} 
+			}
+
+		} catch (SQLException sqle) {
+
+			sqle.printStackTrace();
+
+		} 
+		
+		return idPessoa;
+	}
+	
 }

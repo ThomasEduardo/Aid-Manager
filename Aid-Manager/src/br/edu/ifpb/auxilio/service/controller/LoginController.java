@@ -4,8 +4,10 @@ package br.edu.ifpb.auxilio.service.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import br.edu.ifpb.auxilio.entidade.Pessoa;
 import br.edu.ifpb.auxilio.service.validacao.Validar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,24 +44,32 @@ public class LoginController implements Initializable {
 	private String perfil = TelaInicialController.perfil;
 
 	@FXML
-	private void btEntrar() throws IOException{
+	private void btEntrar() throws IOException, SQLException{
 		
 		int validacao = Validar.login(Campo_EmailMatricula.getText(),Campo_Senha.getText());
 
 		if (validacao == Validar.VALIDACAO_OK) {
-			//Adicionar verificação se o user tá cadastrado
+			
+			Pessoa p = new Pessoa();
 		
-	    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
+				if(p.getIsAuthorized(Campo_EmailMatricula.getText(),Campo_Senha.getText()) != 0){
+			  
 		
-	    Scene telaLoginServidor = new Scene(root);
+					Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
 		
-		Main.primaryStage.setTitle("Servidor");
-		Main.primaryStage.setScene(telaLoginServidor);
+					Scene telaLoginServidor = new Scene(root);
 		
-		Main.primaryStage.show(); 
+					Main.primaryStage.setTitle("Servidor");
+					Main.primaryStage.setScene(telaLoginServidor);
+		
+					Main.primaryStage.show(); 
+				}
+				else{
+				
+			  }	
 		}
 		else{
-			System.out.println("Tá muito errado tu num tá ligado");
+			System.out.println("Error");
 		}
 		//Lançar exceção
 	}

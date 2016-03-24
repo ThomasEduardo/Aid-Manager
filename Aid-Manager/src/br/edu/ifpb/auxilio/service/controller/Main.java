@@ -29,7 +29,6 @@ public class Main extends Application {
 			
 			primaryStage.setTitle("Aid Manager");
 			primaryStage.setScene(scene);
-			primaryStage.setMaximized(true);
 			primaryStage.show();
 
 		} catch (Exception e) {
