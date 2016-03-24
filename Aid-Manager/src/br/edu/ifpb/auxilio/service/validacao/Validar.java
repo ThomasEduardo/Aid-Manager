@@ -63,7 +63,7 @@ public class Validar {
 			return ErrorFactory.EMAIL_USUARIO_INVALIDO;*/
 
 		if (!stringValidator.validateRg(Rg))
-			//return CodeErroQManager.URL_LATTES_INVALIDO; 
+			return ErrorFactory.RG_INVALID0; 
 		
 		if (!stringValidator.validate(sexo,9))
 			return ErrorFactory.SEXO_INVALID0;
