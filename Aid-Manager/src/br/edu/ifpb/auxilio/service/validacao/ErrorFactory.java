@@ -189,6 +189,22 @@ public class ErrorFactory {
 		hashMap.put(CNPJ_INVALIDO, "Refeição realizada não encotrada.");
 		hashMap.put(ORCAMENTO_AUXILIO_INVALIDO, "Refeição realizada não encotrada.");
 		hashMap.put(RENDA_FAMILIAR_TOTAL_INVALIDA, "Refeição realizada não encotrada.");
+		hashMap.put(MORADIA_INVALIDA, "Refeição realizada não encotrada.");
+		hashMap.put(SITUACAO_MORADIA_INVALIDA, "Refeição realizada não encotrada.");
+		hashMap.put(RESIDENCIA_FAMILIAR_INVALIDA, "Refeição realizada não encotrada.");
+		hashMap.put(SITUACAO_TRABALHO_INVALIDA, "Refeição realizada não encotrada.");
+		hashMap.put(ALUGUEL_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(CONDOMINIO_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(LUZ_INVALIDA, "Refeição realizada não encotrada.");
+		hashMap.put(AGUA_INVALIDA, "Refeição realizada não encotrada.");
+		hashMap.put(TELEFONE_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(FINANCIAMENTO_CASA_PROPRIA_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(OBS_PS_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(OBS_PROCESSO_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(NUM_PROCESSO_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(ASSUNTO_INVALIDO, "Refeição realizada não encotrada.");
+		hashMap.put(PARECER_INVALIDO, "Refeição realizada não encotrada.");
+		
 				
 		return hashMap;
 	}
