@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
+      <Label fx:id="Label_DadosPessoais" layoutX="108.0" layoutY="14.0" text="Auxílio" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="177.0" layoutY="24.0" prefHeight="7.0" prefWidth="525.0" />
+      <Button fx:id="Bt_Voltar" layoutX="543.0" layoutY="420.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Bt_CadastrarAuxilio" layoutX="619.0" layoutY="420.0" mnemonicParsing="false" onAction="#btCadastrarAuxilio" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="14.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="Campo_ValidadeInicial" layoutX="57.0" layoutY="91.0" promptText="Ex.:18/03/1999" />
+      <DatePicker fx:id="Campo_ValidadeFinal" layoutX="353.0" layoutY="91.0" promptText="Ex.:18/03/1999" />
+      <Label fx:id="Label_Nascimento" layoutX="40.0" layoutY="68.0" text="Validade Inicial:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="Label_Nascimento1" layoutX="337.0" layoutY="68.0" text="Validade Final:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="Label_Vagas1" layoutX="32.0" layoutY="152.0" text="Valor do Auxílio:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Campo_ValorBolsa" layoutX="57.0" layoutY="169.0" prefHeight="25.0" prefWidth="141.0" promptText="Ex. (R$): 11,11" />
+      <Label fx:id="Label_Vagas11" layoutX="35.0" layoutY="245.0" text="Tipo do Auxílio:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="Bt_Alimentacao" layoutX="52.0" layoutY="269.0" mnemonicParsing="false" text="Alimentação" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="Bt_Transporte" layoutX="177.0" layoutY="269.0" mnemonicParsing="false" text="Transporte" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="Bt_Moradia" layoutX="319.0" layoutY="269.0" mnemonicParsing="false" text="Moradia" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+   </children>
+</AnchorPane>
