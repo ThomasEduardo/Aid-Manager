@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
+      <Label fx:id="Label_DadosPessoais" layoutX="108.0" layoutY="14.0" text="InstituiÃ§ao Financiadora" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="317.0" layoutY="24.0" prefHeight="7.0" prefWidth="385.0" />
+      <Label fx:id="Label_Nome" layoutX="63.0" layoutY="63.0" text="Nome da InstituiÃ§Ã£o:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Campo_NomeInstituicao" layoutX="72.0" layoutY="87.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Banco do Brasil" />
+      <Label fx:id="Label_SUAP" layoutX="57.0" layoutY="122.0" text="CNPJ:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Campo_CNPJ" layoutX="72.0" layoutY="147.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 11.111.111/1111-11" />
+      <Label fx:id="Label_Senha" layoutX="56.0" layoutY="180.0" text="OrÃ§amento do AuxÃ­lio:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Campo_Orcamento" layoutX="72.0" layoutY="210.0" prefHeight="25.0" prefWidth="405.0" promptText="EX. (R$): 11.111" />
+      <Button fx:id="Bt_Voltar" layoutX="510.0" layoutY="383.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Bt_CadastrarInstituicao" layoutX="593.0" layoutY="383.0" mnemonicParsing="false" onAction="#btCadastrarInstituicao" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="135.0" fitWidth="118.0" layoutX="181.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../LOGO%20AID/Icon1.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
