@@ -47,13 +47,13 @@ public class Validar {
 		if (!stringValidator.validateSomenteLetras(nomePessoa))
 			return ErrorFactory.NOME_USUARIO_INVALIDO;
 
-		if (!CPFValidator.validaCnpj(cpf))
-			return ErrorFactory.CPF_USUARIO_INVALID0;
+		/*if (!CPFValidator.validaCnpj(cpf))
+			return ErrorFactory.CPF_USUARIO_INVALID0;*/
 		
 		if(!stringValidator.validatePassword(senha))
 			return ErrorFactory.SENHA_USUARIO_INVALIDA;
 
-		if (!numeroValidator.validate(matricula,1,11))
+		if (!stringValidator.validate(matricula,11))
 			return ErrorFactory.MATRICULA_USUARIO_INVALIDA;
 
 		if (!emailValidator.validate(email))
@@ -65,8 +65,8 @@ public class Validar {
 		if (!stringValidator.validateRg(Rg))
 			return ErrorFactory.RG_INVALID0; 
 		
-		if (!stringValidator.validate(sexo,9))
-			return ErrorFactory.SEXO_INVALID0;
+		/*if (!stringValidator.validate(sexo,11))
+			return ErrorFactory.SEXO_INVALID0;*/
 
 		return VALIDACAO_OK;
 	}

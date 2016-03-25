@@ -26,7 +26,6 @@ Create table telefone(
 Create table servidor(
 	id_servidor int unsigned auto_increment primary key,
 	cargo_servidor varchar(30),
-	tipo_servidor varchar(200),
 	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	pessoa_id int unsigned not null,
 	constraint fk_servidor_pessoa foreign key(pessoa_id) references pessoa(id_pessoa)
@@ -319,16 +318,400 @@ begin
 end $$
 DELIMITER ;
 
-
 delimiter $$
-Create trigger tr_updateEdital before update
-on edital
+Create trigger tr_encriptaSenha before insert
+on pessoa
 for each row
 begin
-	if(new.ano < 0 or new.valorBolsaDiscente <0 or datediff(new.fimInscricoes,new.iniInscricoes) < 0 or datediff(new.fimForm,new.iniEntregaForm) < 0 or new.vagasBolsistas < 0 )then
-    set new.idEdital = null;
-    end if;
-
+   set new.senha = MD5(new.senha);
 end $$
 delimiter ;
+
+/*-----------------------------------------Function-------------------------------*/
+DELIMITER $$  
+ DROP FUNCTION IF EXISTS `fun_valida_usuario`$$  
+ CREATE FUNCTION `fun_valida_usuario`(p_matricula VARCHAR(20)  
+                , p_senha VARCHAR(50) ) RETURNS INT(1)  
+ BEGIN  
+ DECLARE l_ret            INT(1) DEFAULT 0;  
+     SET l_ret = IFNULL((SELECT DISTINCT 1  
+                       FROM pessoa  
+                      WHERE matricula = p_matricula 
+                       AND senha = MD5(p_senha)),0);                           
+ RETURN l_ret;  
+ END$$  
+ DELIMITER ; 
+/*------------------------SELECTS----------------------------------*/
+ 
+ /*-Verifica se a renda é menor que 1,5 por pessoa-*/
+Select count(familiar.id_familiar),sum(familiar.renda) into @qtd_moradores,@renda_total
+From familiar 
+Inner join perfilSocioEconomico ps
+On ps.id_perfil_socio = familiar.perfil_socio_id
+Where ps.id_perfil_socio = 2;
+
+Select Pessoa.nome_pessoa, Pessoa.matricula
+From Pessoa
+Inner Join Discente D
+On D.pessoa_id = Pessoa.id_pessoa
+where (@renda_total/@qtd_moradores) <= 1320
+And D.id_discente = 3;
+
+
+/*-------------------Discente----------------------*/
+/*Consultar Processo ,serve tanto para pessoa quanto para os servidores*/
+Select processo.num_processo,
+	   processo.assunto,
+	   processo.parecer,
+	   pessoa.nome_pessoa,
+	   pessoa.matricula 
+from processo 
+inner join pessoa 
+	   on processo.interessado_id = pessoa.id_pessoa
+where pessoa.matricula = '029';
+	   
+/*-Visualizar observações-*/
+Select db.obs,
+       ps.obs,
+       documento.obs,
+       processo.obs
+from dadosBancarios db
+inner join discente 
+	on db.discente_id = discente.id_discente
+inner join perfilSocioEconomico ps
+	on ps.discente_id = discente.id_discente
+inner join documento 
+	on documento.discente_id = discente.id_discente
+inner join processo
+    on processo.interessado_id = discente.pessoa_id 
+    where discente.id_discente = 2; //Provavelmente pela matricula,só para demonstrar que só vai ser filtrada uma pessoa,GROUP BY
+	
+/*------Visualizar dadosPessoais-----*/
+ Select pessoa.`nome_pessoa`, 
+        pessoa.`rg`, 
+        pessoa.`matricula`, 
+        pessoa.`data_nasc`, 
+        pessoa.`sexo`,  
+        pessoa.`email`, 
+        pessoa.`cpf` ,
+        discente.`escola_origem`, 
+	    discente.`org_expeditor`, 
+        discente.`num_cartao_sus`, 
+        discente.`estado_civil`, 
+        discente.`curso`, 
+        discente.`periodo_letivo`, 
+        discente.`turno`, 
+        discente.`endereco`, 
+        discente.`cep`, 
+        discente.`bairro`, 
+        discente.`cidade`, 
+        discente.`num_casa`, 
+        discente.`ponto_ref`, 
+        discente.`estado`, 
+        discente.`motivo_solicitacao`
+       from discente
+inner join pessoa
+	  on discente.pessoa_id = pessoa.id_pessoa; //filtrar apenas uma pessoa,também.
+
+/*------Visualizar dadosBancarios-----*/
+
+Select db.`banco`, 
+	   db.`agencia`, 
+       db.`num_agencia`, 
+       db.`saldo`  
+from dadosBancarios db
+      where db.discente_id = 2;
+
+
+/*------Visualizar PerfilSocioEconomico-----*/
+
+
+SELECT ps.`situacao_renda_familiar`, 
+       ps.`moradia`, 
+       ps.`tipo_Moradia`, 
+       ps.`tipo_residencia_familiar`, 
+       ps.`tipo_trabalho`, 
+       ps.`gastos_aluguel`, 
+       ps.`gastos_condominio`, 
+       ps.`gastos_luz`, 
+       ps.`gastos_agua`, 
+       ps.`gastos_telefone`,  
+       ps.`gastos_financiamento_casa_propria`, 
+       familiar.`nome_familiar`, 
+       familiar.`idade_familiar`, 
+       familiar.`grau_de_instrucao`,
+       familiar.`profissao`, 
+       familiar.`renda`,
+       familiar.doenca,
+       pessoa.nome_pessoa 
+FROM `perfilsocioeconomico` ps
+inner join familiar
+	on familiar.perfil_socio_id = ps.id_perfil_socio
+inner join servidor
+	on ps.servidor_id = servidor.id_servidor
+inner join pessoa
+	on pessoa.id_pessoa = servidor.pessoa_id
+ where ps.discente_id = 2;
+Seleciona duas linhas se você tiver mais de um valor em um atributo N
+
+
+/*------ Visualizar Documentacao -----*/
+
+Select  `nome_documento`, 
+        `status_documento`
+from documento
+where documento.discente_id = 2;
+
+/*Visualizar o que foi recebido até o mês obs:Verificar se o discente recebeu todos os mêses e quantos auxílios ele recebe*/
+select count(aux.id_auxilio) into @quantidade from auxilio aux
+inner join processo
+	on (aux.processo_id = processo.id_processo) 
+	and (processo.interessado_id = 2) 
+	and(processo.parecer = 'Aprovado') ;
+Select db.agencia, 
+	   db.num_agencia, 
+	   pessoa.nome_pessoa, 
+	   EXTRACT(MONTH FROM CURDATE()) *(@quantidade*80) as total_Gasto 
+	   from dadosBancarios db 
+	   inner join discente 
+			on discente.id_discente = db.discente_id 
+	   inner join pessoa 
+			on discente.pessoa_id = pessoa.id_pessoa 
+		    and pessoa.id_pessoa = 2;
+
+/*-    Visualizar auxílios -*/
+
+Select  auxilio.tipo_auxilio,
+		auxilio.valor_auxilio,
+        auxilio.validade_inicial,
+        auxilio.validade_final
+from auxilio
+inner join processo
+	  on auxilio.processo_id = processo.id_processo
+inner join pessoa
+	 on processo.interessado_id = pessoa.id_pessoa
+where pessoa.matricula='029';
+
+/*----------------------------------------------------- SERVIDOR ---------------------------------------------*/
+
+/*-------Visualizar todas as instituições financiadoras que ele gerencia*/
+Select  instf.`nome_if`, 
+		instf.`cnpj`, 
+		instf.`orcamento_auxilio`
+from instituicaoFinanciadora InstF
+inner join servidor
+ 	on instf.servidor_id = servidor.id_servidor and servidor.id_servidor = 2; 
+	
+/*-Visualizar inst. financiadora por cnpj -*/
+
+Select  instf.`nome_if`, 
+		instf.`cnpj`, 
+		instf.`orcamento_auxilio`
+from instituicaoFinanciadora InstF
+inner join servidor
+ 	on instf.servidor_id = servidor.id_servidor and servidor.id_servidor = 2
+where cnpj =  156985465782;
+
+/*-Visualizar pelo nome -*/
+Select  instf.`nome_if`, 
+		instf.`cnpj`, 
+		instf.`orcamento_auxilio`
+from instituicaoFinanciadora InstF
+inner join servidor
+ 	on instf.servidor_id = servidor.id_servidor and servidor.id_servidor = 2
+where instf.nome_if = 'Instituto Federal de Educação e Tecnolog';
+
+/*------------------------- Visualizar todos os auxilios gerenciados --------------*/
+
+
+Select  auxilio.`tipo_auxilio`, 
+	    auxilio.`valor_auxilio`, 
+        auxilio.`validade_inicial`, 
+        auxilio.`validade_final`, 
+        instF.nome_if,
+        processo.num_processo,
+        pessoa.nome_pessoa
+from auxilio
+inner join instituicaoFinanciadora instF
+	on auxilio.instituicaoFinanciadora_id = instF.id_if
+inner join processo
+	on auxilio.processo_id = processo.id_processo
+inner join 	pessoa
+	on processo.interessado_id = pessoa.id_pessoa
+where processo.servidor_id = 2; 
+
+
+/*Quantidade de discentes Cadastrados */
+
+Select count(id_discente) quantidade_discentes_cadastrados from discente 
+
+/*----- Visualizar processos que ele gerencia  ---------*/
+Select processo.num_processo,
+	   processo.assunto,
+	   processo.parecer,
+       pessoa.nome_pessoa,
+       pessoa.matricula
+from processo 
+inner join servidor
+	   on processo.servidor_id = servidor.id_servidor
+inner join pessoa 
+	   on processo.interessado_id = pessoa.id_pessoa
+where processo.servidor_id = 2;
+
+/*-Visualizar processo pelo número-*/
+Select processo.num_processo,
+	   processo.assunto,
+	   processo.parecer,
+	   pessoa.nome_pessoa,
+	   pessoa.matricula 
+from processo 
+inner join pessoa 
+	   on processo.interessado_id = pessoa.id_pessoa
+where processo.num_processo = '029';
+
+/*-Visualizar pelo nome do discente-*/
+
+Select processo.num_processo,
+	   processo.assunto,
+	   processo.parecer,
+	   pessoa.nome_pessoa,
+	   pessoa.matricula 
+from processo 
+inner join pessoa 
+	   on processo.interessado_id = pessoa.id_pessoa
+where pessoa.nome_pessoa like '%Rayla%';
+
+/*-Visualizar todos os discentes que recebem auxílio-*/
+select processo.num_processo,
+	   pessoa.nome_pessoa,
+       pessoa.matricula,
+       db.agencia,
+       db.banco,
+       db.num_agencia,
+       aux.tipo_auxilio,
+       aux.valor_auxilio
+from processo
+inner join pessoa
+	on pessoa.id_pessoa = processo.interessado_id
+inner join discente 
+	on discente.pessoa_id = pessoa.id_pessoa
+inner join dadosBancarios db
+	on db.discente_id = discente.id_discente
+inner join auxilio aux
+	on aux.processo_id = processo.id_processo
+where processo.parecer = 'Aprovado';
+/*-Visualizar todos os discentes que recebem auxílio pelo tipo-*/
+select processo.num_processo, 
+	   pessoa.nome_pessoa, 
+	   pessoa.matricula, 
+	   db.agencia, 
+	   db.banco, 
+	   db.num_agencia, 
+	   aux.tipo_auxilio, 
+	   aux.valor_auxilio 
+from processo
+inner join pessoa 
+	on pessoa.id_pessoa = processo.interessado_id 
+inner join discente 
+	on discente.pessoa_id = pessoa.id_pessoa 
+inner join dadosBancarios db 
+	on db.discente_id = discente.id_discente 
+inner join auxilio aux 
+	on aux.processo_id = processo.id_processo 
+where processo.parecer = 'Aprovado' and aux.tipo_auxilio = 'Transporte' 
+
+
+
+
+/*-Filtrar editais da instituicao financiadora que ele gerencia-*/
+SELECT aux.`tipo_auxilio`,
+	   edital.`ini_inscricoes`, 
+       edital.`fim_inscricoes`, 
+       edital.`ini_entrega_form`, 
+       edital.`ano`, 
+       edital.`fim_form`, 
+       edital.`descricao`, 
+       edital.`titulo`, 
+       edital.`valor_bolsa_discente`, 
+       edital.`vagas_bolsistas`, 
+       edital.`num_edital`, 
+       instF.nome_if 
+FROM `auxilio` aux
+inner join edital 
+	on  edital.processo_id = aux.processo_id
+inner join instituicaofinanciadora instf
+ 	on instf.id_if = aux.instituicaoFinanciadora_id;
+
+
+/*-Editais por ano-*/
+SELECT edital.`ini_inscricoes`, 
+       edital.`fim_inscricoes`, 
+       edital.`ini_entrega_form`, 
+       edital.`ano`, 
+       edital.`fim_form`, 
+       edital.`descricao`, 
+       edital.`titulo`, 
+       edital.`valor_bolsa_discente`, 
+       edital.`vagas_bolsistas`, 
+       edital.`num_edital`, 
+       processo.`num_processo` 
+FROM `edital` 
+inner join processo/*-Todos editais-*/
+SELECT edital.`ini_inscricoes`, 
+       edital.`fim_inscricoes`, 
+       edital.`ini_entrega_form`, 
+       edital.`ano`, 
+       edital.`fim_form`, 
+       edital.`descricao`, 
+       edital.`titulo`, 
+       edital.`valor_bolsa_discente`, 
+       edital.`vagas_bolsistas`, 
+       edital.`num_edital`, 
+       processo.`num_processo` 
+FROM `edital` 
+inner join processo
+on edital.processo_id = processo.id_processo;
+
+/*-Quantidade de auxílios de discente -*/
+select count(aux.id_auxilio) quantidade_auxilios from auxilio aux
+inner join processo
+	on (aux.processo_id = processo.id_processo) and (processo.interessado_id = 2) and(processo.parecer = 'Aprovado');
+
+/*-Quanto têm no caixa da instituição financiadora dos auxílios-*/
+
+SELECT `orcamento_auxilio` FROM `instituicaofinanciadora` 
+	where servidor_id=2; 
+	
+/*-Seleciona as conversas das pessoas -*/	
+SELECT  remetente.nome_pessoa ,
+	    destinatario.nome_pessoa,
+        chat.mensagem, 
+        chat.dt_registro enviado_as 
+FROM chat 
+inner join pessoa remetente
+	on chat.remetente_id = remetente.id_pessoa
+inner join pessoa destinatario
+	on chat.destinatario_id = destinatario.id_pessoa;
+	
+	
+/*-------------------Quantidade de auxílios disponíveis-----------------------------*/	
+
+   Select count(parecer) into @qtde from processo
+   	where parecer = 'Aprovado' and assunto = 'Requisição de auxílios';
+    Select (vagas_bolsistas - @qtde) from edital ;
+   
+    
+/*---------------------------Selecionar pessoas modificadas nos últimos 15 dias,importante para o assistente social------------------------------------------------*/
+     
+Select processo.num_processo,
+       processo.assunto,
+       processo.parecer,
+       pessoa.matricula,
+       pessoa.nome_pessoa
+from processo
+inner join pessoa
+	on pessoa.id_pessoa = processo.interessado_id
+where datediff(now(),pessoa.dt_registro)<= 15;
+
+
 

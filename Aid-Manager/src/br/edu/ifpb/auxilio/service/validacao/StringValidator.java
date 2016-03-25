@@ -12,15 +12,15 @@ public class StringValidator {
 	private Pattern patternRg;
 
 	private static final String STRING_PATTERN = "[0-9a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{6,20}";
-	private static final String STRING_PATTERN_SOMENTE_LETRAS = "[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]*";
-	private static final String STRING_PATTERN_RG = "[0-9]{1}*."+"[0-9]{3}*." + "[0-9]{3}";
+	private static final String STRING_PATTERN_SOMENTE_LETRAS = "[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ ]*";
+	private static final String STRING_PATTERN_RG = "[0-9]{1}."+"[0-9]{3}." + "[0-9]{3}";
 
 	// Verifica se há, ao menos:
 	// - um número;
 	// - uma letra minúscula;
 	// - uma letra maiúscula.
 	// O tamanho deve está entre 6 e 25 caracteres.
-	private static final String PASSWORD_PATTERN = "([0-9])([a-z])([A-Z]).{6,25}";
+	private static final String PASSWORD_PATTERN = "(([0-9a-zA-Z]).{6,25})";
 
 	public StringValidator() {
 		pattern = Pattern.compile(STRING_PATTERN);
@@ -46,7 +46,7 @@ public class StringValidator {
 
 	public boolean validate(final String value, int tamanho) {
 		boolean isValidate = validate(value);
-		return (isValidate && value.length() <= tamanho);
+		return (isValidate && value.length() == tamanho);
 	}
 
 	public boolean validate(final String value, int tamanhoMenor,
@@ -61,6 +61,7 @@ public class StringValidator {
 		return (validate(value) && (value.length() >= tamanhoMenor && value
 				.length() <= tamanhoMaior));
 	}
+	
 
 	public boolean validatePassword(final String password) {
 		if (password == null || password.trim().equals(""))

@@ -45,9 +45,9 @@ public class TelaInicialController implements Initializable {
 	@FXML
 	private void btDiscente() throws IOException{
 		perfil = "Discente";
-		Parent root2 = FXMLLoader.load(getClass().getResource("ui/forms/LoginPessoa.fxml"));
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
 		
-		Scene telaLoginDiscente = new Scene(root2);
+		Scene telaLoginDiscente = new Scene(root);
 		
 		Main.primaryStage.setTitle("Discente");
 		Main.primaryStage.setScene(telaLoginDiscente);

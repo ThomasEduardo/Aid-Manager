@@ -19,6 +19,11 @@ public class ActionPessoa {
 		PessoaDAO p = new PessoaDAO();
 		return p.getIsAuthorized(Matricula, senha);
 
-}
+	}
+	public int IsAuthorized(String Matricula, String senha)
+			throws SQLException {
+		PessoaDAO p = new PessoaDAO();
+		return p.IsAuthorized(Matricula, senha);
 
+	}
 }
