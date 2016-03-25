@@ -55,9 +55,10 @@ public class LoginController implements Initializable {
 		if (validacao == Validar.VALIDACAO_OK) {
 			
 			ActionPessoa p = new ActionPessoa();
-		
-				if(p.getIsAuthorized(Campo_EmailMatricula.getText(),Campo_Senha.getText()) != 0){
-			  
+			
+				if(p.IsAuthorized(Campo_EmailMatricula.getText(),Campo_Senha.getText())!= 0){
+			        
+					System.out.println("FOIIII");
 		          
 					if(perfil.equals("Servidor")){
 						//Mudar isso

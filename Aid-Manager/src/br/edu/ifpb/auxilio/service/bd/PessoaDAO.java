@@ -369,4 +369,42 @@ public class PessoaDAO {
 		return idPessoa;
 	}
 	
+	
+   /**
+    * Chama função que valida o login,verificando se a matricula e a senha correspondem a do bd
+    * @author Fanny
+    * 
+    * */	
+   public int IsAuthorized(String Matricula,String senha) throws SQLException {
+		
+		int authorized  = 0;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = String 
+					.format("%s '%s','%s' %s",
+					"SELECT fun_valida_usuario(",
+					 Matricula,
+					 senha,
+					") as Validou");
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+                authorized = rs.getInt("Validou");
+			}
+
+		} catch (SQLException sqle) {
+
+			sqle.printStackTrace();
+
+		} 
+		
+		return authorized;
+	}
+	
 }

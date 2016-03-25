@@ -319,16 +319,27 @@ begin
 end $$
 DELIMITER ;
 
-
 delimiter $$
-Create trigger tr_updateEdital before update
-on edital
+Create trigger tr_encriptaSenha before insert
+on pessoa
 for each row
 begin
-	if(new.ano < 0 or new.valorBolsaDiscente <0 or datediff(new.fimInscricoes,new.iniInscricoes) < 0 or datediff(new.fimForm,new.iniEntregaForm) < 0 or new.vagasBolsistas < 0 )then
-    set new.idEdital = null;
-    end if;
-
+   set new.senha = MD5(new.senha);
 end $$
 delimiter ;
+
+/*-----------------------------------------Function-------------------------------*/
+DELIMITER $$  
+ DROP FUNCTION IF EXISTS `fun_valida_usuario`$$  
+ CREATE FUNCTION `fun_valida_usuario`(p_matricula VARCHAR(20)  
+                , p_senha VARCHAR(50) ) RETURNS INT(1)  
+ BEGIN  
+ DECLARE l_ret            INT(1) DEFAULT 0;  
+     SET l_ret = IFNULL((SELECT DISTINCT 1  
+                       FROM pessoa  
+                      WHERE matricula = p_matricula 
+                       AND senha = MD5(p_senha)),0);                           
+ RETURN l_ret;  
+ END$$  
+ DELIMITER ; 
 
