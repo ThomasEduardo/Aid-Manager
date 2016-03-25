@@ -132,6 +132,7 @@ public class Validar {
 		if (!numeroValidator.isInteiroPositivo(periodoLetivo))
 			return ErrorFactory.PERIODO_LETIVO_INVALIDO;
 		if (!stringValidator.validateSomenteLetras(turno))
+			return ErrorFactory.TURNO_INVALIDO;
 			if (endereco != null && cep != null && cidade != null && bairro != null) {
 				if (!stringValidator.validate(endereco, 255))
 					return ErrorFactory.ENDERECO_INVALIDO;
