@@ -8,85 +8,85 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
-      <Label layoutX="108.0" layoutY="14.0" text="Dados Pessoais" textFill="#bd0741">
+      <Label fx:id="Label_DadosPessoais" layoutX="108.0" layoutY="14.0" text="Dados Pessoais" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Separator layoutX="244.0" layoutY="24.0" prefHeight="7.0" prefWidth="458.0" />
-      <Label layoutX="56.0" layoutY="55.0" text="Nome Completo:" textFill="#bd0741">
+      <Label fx:id="Label_Nome" layoutX="56.0" layoutY="55.0" text="Nome Completo:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="72.0" layoutY="72.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Maria Alice Cândido Ferreira" />
-      <Label layoutX="56.0" layoutY="108.0" text="SUAP:" textFill="#bd0741">
+      <TextField fx:id="Campo_Nome" layoutX="72.0" layoutY="72.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Maria Alice Cândido Ferreira" />
+      <Label fx:id="Label_SUAP" layoutX="56.0" layoutY="108.0" text="SUAP:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="72.0" layoutY="125.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 20121999" />
-      <Label layoutX="56.0" layoutY="163.0" text="Criar Senha:" textFill="#bd0741">
+      <TextField fx:id="Campo_SUAP" layoutX="72.0" layoutY="125.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 20121999" />
+      <Label fx:id="Label_Senha" layoutX="56.0" layoutY="163.0" text="Criar Senha:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="72.0" layoutY="180.0" prefHeight="25.0" prefWidth="405.0" promptText="***********" />
-      <Label layoutX="56.0" layoutY="218.0" text="Confirmar Senha:" textFill="#bd0741">
+      <TextField fx:id="Campo_Senha" layoutX="72.0" layoutY="180.0" prefHeight="25.0" prefWidth="405.0" promptText="***********" />
+      <Label fx:id="Label_ConfirmarSenha" layoutX="56.0" layoutY="218.0" text="Confirmar Senha:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="72.0" layoutY="235.0" prefHeight="25.0" prefWidth="405.0" promptText="***********" />
-      <Label layoutX="59.0" layoutY="330.0" text="Sexo:" textFill="#bd0741">
+      <TextField fx:id="Campo_ConfirmarSenha" layoutX="72.0" layoutY="235.0" prefHeight="25.0" prefWidth="405.0" promptText="***********" />
+      <Label fx:id="Label_Cargo" layoutX="56.0" layoutY="277.0" text="Cargo:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <MenuButton alignment="CENTER" layoutX="73.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Selecionar" textFill="#bd0741">
+      <TextField fx:id="Campo_Cargo" layoutX="72.0" layoutY="294.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Assistente Social" />
+      <Label fx:id="Label_Sexo" layoutX="56.0" layoutY="330.0" text="Sexo:" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="MenuBt_Sexo" alignment="CENTER" layoutX="72.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Selecionar" textFill="#bd0741">
          <items>
-            <MenuItem mnemonicParsing="false" text="Feminino" />
-            <MenuItem mnemonicParsing="false" text="Masculino" />
+            <MenuItem fx:id="MenuBt_Sexo_Feminino" mnemonicParsing="false" text="Feminino" />
+            <MenuItem fx:id="MenuBt_Sexo_Masculino" mnemonicParsing="false" text="Masculino" />
          </items>
       </MenuButton>
-      <Label layoutX="57.0" layoutY="386.0" text="Data de Nascimento:" textFill="#bd0741">
+      <Label fx:id="Label_Nascimento" layoutX="56.0" layoutY="386.0" text="Data de Nascimento:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <DatePicker layoutX="75.0" layoutY="403.0" prefHeight="25.0" prefWidth="147.0" promptText="Ex.:18/03/1999" />
-      <Label layoutX="58.0" layoutY="444.0" text="Rg:" textFill="#bd0741">
+      <DatePicker fx:id="Campo_Nascimento" layoutX="72.0" layoutY="403.0" prefHeight="25.0" prefWidth="147.0" promptText="Ex.:18/03/1999" />
+      <Label fx:id="Label_Rg" layoutX="56.0" layoutY="444.0" text="Rg:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="74.0" layoutY="461.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 11.108.230-9" />
-      <Label layoutX="56.0" layoutY="502.0" text="Cpf:" textFill="#bd0741">
+      <TextField fx:id="Campo_Rg" layoutX="72.0" layoutY="461.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 11.108.230-9" />
+      <Label fx:id="Label_Cpf" layoutX="56.0" layoutY="502.0" text="Cpf:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="74.0" layoutY="519.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 101.111.111-98" />
-      <Label layoutX="57.0" layoutY="559.0" text="Email:" textFill="#bd0741">
+      <TextField fx:id="Campo_Cpf" layoutX="72.0" layoutY="519.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 101.111.111-98" />
+      <Label fx:id="Label_Email" layoutX="56.0" layoutY="559.0" text="Email:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="74.0" layoutY="576.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Mariazinha@hotmail.com" />
-      <TextField layoutX="74.0" layoutY="294.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Assistente Social" />
-      <Label layoutX="58.0" layoutY="277.0" text="Cargo:" textFill="#bd0741">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Button layoutX="581.0" layoutY="624.0" mnemonicParsing="false" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
-         <font>
-            <Font name="Book Antiqua Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="503.0" layoutY="624.0" mnemonicParsing="false" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+      <TextField fx:id="Campo_Email" layoutX="72.0" layoutY="576.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Mariazinha@hotmail.com" />
+      <Button fx:id="Bt_Voltar" layoutX="503.0" layoutY="624.0" mnemonicParsing="false" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Bt_CadastrarServidor" layoutX="581.0" layoutY="624.0" mnemonicParsing="false" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="14.0" />
          </font>
       </Button>
    </children>
