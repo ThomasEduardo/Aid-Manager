@@ -58,16 +58,23 @@ public class LoginController implements Initializable {
 		
 				if(p.getIsAuthorized(Campo_EmailMatricula.getText(),Campo_Senha.getText()) != 0){
 			  
+		          
+					if(perfil.equals("Servidor")){
+						//Mudar isso
+						Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
 		
-					Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/LoginPessoa.fxml"));
+						Scene telaLoginServidor = new Scene(root);
 		
-					Scene telaLoginServidor = new Scene(root);
+						Main.primaryStage.setTitle("Servidor");
+						Main.primaryStage.setScene(telaLoginServidor);
 		
-					Main.primaryStage.setTitle("Servidor");
-					Main.primaryStage.setScene(telaLoginServidor);
-		
-					Main.primaryStage.show(); 
-				}
+						Main.primaryStage.show(); 
+					}
+					else{
+						//Discente
+						
+					}
+				}		
 				else{
 				 // ErrorFactory.USUARIO_NAO_ENCONTRADO;
 				   
@@ -85,15 +92,27 @@ public class LoginController implements Initializable {
 	
 	@FXML
 	private void btCadastrar() throws IOException{
+		  if(perfil.equals("Servidor")){
 		
-		  Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/CadastroServidor.fxml"));
+			  Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/CadastroServidor.fxml"));
 		  
-		  Scene telaCadastroServidor = new Scene(root);
+			  Scene telaCadastroServidor = new Scene(root);
 		  
-		  Main.primaryStage.setTitle("Cadastro de Servidor");
-		  Main.primaryStage.setScene(telaCadastroServidor);
+			  Main.primaryStage.setTitle("Cadastro de Servidor");
+			  Main.primaryStage.setScene(telaCadastroServidor);
 			
-		  Main.primaryStage.show(); 
+			  Main.primaryStage.show(); 
+		  }
+		  else{
+			  Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/CadastroDiscente.fxml"));
+			  
+			  Scene telaCadastroDiscente = new Scene(root);
+		  
+			  Main.primaryStage.setTitle("Cadastro de Discente");
+			  Main.primaryStage.setScene(telaCadastroDiscente);
+			
+			  Main.primaryStage.show(); 
+		  }
 		
 	}
 	
@@ -124,7 +143,7 @@ public class LoginController implements Initializable {
 		}
 		else {
 			//Pesquisar um logo pra discente
-			logoPessoa.setVisible(true);
+			
 		}
 	}
 	
