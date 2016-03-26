@@ -20,6 +20,7 @@ import java.util.List;
 
 
 
+
 import br.edu.ifpb.auxilio.entidade.Discente;
 import br.edu.ifpb.auxilio.entidade.Pessoa;
 
@@ -319,6 +320,48 @@ public class DiscenteDAO{
 	}
  
     	
+	
+	 /**
+	    * Função que retorna o id do discente,atráves da matrícula fornecida
+	    * @author Fanny
+	    * 
+	    * */	
+	
+	 public int getId(String matricula) throws SQLException {
+			
+			int idDiscente  = 0;
+			
+			PessoaDAO p = new PessoaDAO();
+		
+
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+
+			try {
+				
+				String sql = String 
+						.format("%s '%s'",
+						"SELECT id_discente from discente where "
+						+ "pessoa_id = ",
+						 p.getId(matricula));
+
+				stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+				rs = stmt.executeQuery(sql);
+
+				while (rs.next()) {
+	               idDiscente = rs.getInt("id_discente");
+				}
+
+			} catch (SQLException sqle) {
+
+				sqle.printStackTrace();
+
+			} 
+			
+			return idDiscente;
+		}
+		
     
     
     

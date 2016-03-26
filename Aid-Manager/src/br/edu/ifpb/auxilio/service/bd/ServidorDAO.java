@@ -187,6 +187,8 @@ public class ServidorDAO{
 		}
 		
 		
+		
+		
 		public int qtdeDiscentesCadastrados() throws SQLException {
 
 			int qtdeDiscentes = 0;
@@ -221,6 +223,47 @@ public class ServidorDAO{
 			return qtdeDiscentes;
 			
 		}
+		
+		  /**
+		    * Função que retorna o id do servidor,atráves da matrícula fornecida
+		    * @author Fanny
+		    * 
+		    * */	
+		
+		 public int getId(String matricula) throws SQLException {
+				
+				int idServidor  = 0;
+				
+				PessoaDAO p = new PessoaDAO();
+			
+
+				PreparedStatement stmt = null;
+				ResultSet rs = null;
+
+				try {
+					
+					String sql = String 
+							.format("%s '%s'",
+							"SELECT id_servidor from servidor where "
+							+ "pessoa_id = ",
+							 p.getId(matricula));
+
+					stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+					rs = stmt.executeQuery(sql);
+
+					while (rs.next()) {
+		               idServidor = rs.getInt("id_servidor");
+					}
+
+				} catch (SQLException sqle) {
+
+					sqle.printStackTrace();
+
+				} 
+				
+				return idServidor;
+			}
 			
 			
 		

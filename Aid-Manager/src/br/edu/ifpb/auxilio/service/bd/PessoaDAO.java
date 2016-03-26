@@ -407,4 +407,42 @@ public class PessoaDAO {
 		return authorized;
 	}
 	
+   /**
+    * Função que retorna o id da pessoa,atráves da matrícula fornecida
+    * @author Fanny
+    * 
+    * */	
+   
+   public int getId(String matricula) throws SQLException {
+		
+		int idPessoa  = 0;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = String 
+					.format("%s '%s'",
+					"SELECT id_pessoa from pessoa where "
+					+ "matricula = ",
+					 matricula);
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+               idPessoa = rs.getInt("id_pessoa");
+			}
+
+		} catch (SQLException sqle) {
+
+			sqle.printStackTrace();
+
+		} 
+		
+		return idPessoa;
+	}
+   
+   
 }

@@ -327,6 +327,111 @@ begin
 end $$
 delimiter ;
 
+delimiter $$
+Create trigger tr_DeleteDiscente before delete
+on discente
+for each row
+begin
+    delete from dadosBancarios where discente_id = old.id_discente;
+    delete from documentacao where discente_id = old.id_discente;
+    delete from perfilSocioEconomico where discente_id = old.id_discente;
+    
+END $$
+delimiter ;
+
+
+
+
+delimiter $$
+Create trigger tr_DeletePerfilSocioEconomico before delete
+on perfilSocioEconomico
+for each row
+begin
+
+	delete from familiar where perfil_socio_id = old.id_perfil_socio;
+ 
+    
+    
+
+END $$
+
+delimiter ;
+
+
+delimiter $$
+Create trigger tr_DeletePessoa before delete
+on pessoa
+for each row
+begin
+
+	delete from telefone where pessoa_id = old.id_pessoa;
+    delete from servidor where pessoa_id = old.id_pessoa;
+    delete from discente where pessoa_id = old.id_pessoa;
+    delete from Processo where interessado_id = old.id_pessoa;
+	delete from chat where remetente_id = old.id_pessoa;
+    
+    
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_DeleteIF before delete
+on instituicaofinanciadora
+for each row
+begin
+
+	delete from auxilio where instituicaoFinanciadora_id = old.id_if;
+    
+  
+END $$
+delimiter ;
+
+
+delimiter $$
+Create trigger tr_DeleteServidor before delete
+on servidor
+for each row
+begin
+  
+    delete from processo where servidor_id = old.id_servidor;
+	delete from instituicaoFinanciadora where servidor_id = old.id_servidor;
+	delete from perfilSocioEconomico where servidor_id = old.id_servidor;
+  
+    
+END $$
+delimiter ;
+
+
+delimiter $$
+Create trigger tr_DeleteProcesso before delete
+on processo
+for each row
+begin
+
+	delete from auxilio where processo_id = old.id_Processo;
+    delete from edital where  processo_id = old.id_Processo;
+  
+    
+    
+end $$
+delimiter ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*-----------------------------------------Function-------------------------------*/
 DELIMITER $$  
  DROP FUNCTION IF EXISTS `fun_valida_usuario`$$  
