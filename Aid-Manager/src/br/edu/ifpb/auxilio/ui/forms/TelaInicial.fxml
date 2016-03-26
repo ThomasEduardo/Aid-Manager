@@ -14,7 +14,7 @@
                <font>
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="Bt_Discente" layoutX="128.0" layoutY="245.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Discente" textFill="WHITE">
+            <Button fx:id="Bt_Discente" layoutX="128.0" layoutY="245.0" mnemonicParsing="false" onAction="#btDiscente" prefHeight="68.0" prefWidth="113.0" style="-fx-background-color: #E6346C;" text="Discente" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font>
