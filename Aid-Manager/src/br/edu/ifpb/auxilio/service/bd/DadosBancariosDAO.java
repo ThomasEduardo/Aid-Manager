@@ -10,8 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 
@@ -31,7 +33,9 @@ public class DadosBancariosDAO {
 	}
 	
 	
-	public void insert(DadosBancarios dadosBancarios) {
+	public int insert(DadosBancarios dadosBancarios)throws SQLException {
+		
+		int idDb;
 
 		String sql = "INSERT INTO dadosBancarios( "
 				+ " `banco`, "
@@ -51,13 +55,18 @@ public class DadosBancariosDAO {
 			stmt.setDouble(4, dadosBancarios.getSaldo());
 			stmt.setString(5, dadosBancarios.getObs());
 			stmt.setInt(6, dadosBancarios.getDiscente().getIdDiscente());
-			stmt.execute();
+			
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			idDb = BancoUtil.getGenerateKey(stmt);
+			
 			stmt.close();
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		return idDb;
 	}
 	
 	

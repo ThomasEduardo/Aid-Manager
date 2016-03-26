@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,9 @@ public class ProcessoDAO {
 	}
 	
 	
-	public void insert(Processo processo) {
+	public int insert(Processo processo) {
+		
+		int idProcesso;
 
 		String sql = "INSERT INTO processo("
 				+ " `data_requisicao`, "
@@ -49,14 +52,18 @@ public class ProcessoDAO {
 			stmt.setInt(6, processo.getInteressado().getIdPessoa());
 			stmt.setInt(7, processo.getServidor().getIdServidor());
 			
-			stmt.execute();
+         	stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			idProcesso = BancoUtil.getGenerateKey(stmt);
+			
+			
 			stmt.close();
 			
-			//Ajeitar data
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		return idProcesso;
 	}
 	
 	public boolean update(Processo processo) {
@@ -163,7 +170,7 @@ public class ProcessoDAO {
 		return processos;
 	}
 	
-	
+	//Consultar processo ,serve tando pra discente quanto pra servidor
 	public List<Processo> find(Processo processo) throws SQLException {
 		List<Processo> processos = null;
 
@@ -237,8 +244,12 @@ public class ProcessoDAO {
 		return processos;
 	}
 	
-	//Ver tanto os processos do servidor quanto de discente
-	public List<Processo> consultarProcesso(Pessoa pessoa) throws SQLException {
+	  /**
+	    * Função que retorna todos os processos gerenciados pelo servidor,através do seu id.
+	    * @author Fanny
+	    * 
+	    * */	
+	public List<Processo> getAllByNumProcesso(int idServidor,String numProcesso) throws SQLException {
 		
 		List<Processo> processos = null;
 		
@@ -248,7 +259,7 @@ public class ProcessoDAO {
 		try {
 
 			String sql = String
-					.format("%s %s",
+					.format("%s %d %s '%s'",
 							"SELECT  processo.id_processo,"
 							+ "processo.data_requisicao,"
 							+ "processo.obs,"
@@ -264,7 +275,10 @@ public class ProcessoDAO {
 							+ "ON processo.interessado_id = pessoa.id_pessoa "
 							+ "INNER JOIN servidor "
 							+ "ON processo.servidor_id = servidor.id_servidor "
-							+ "WHERE pessoa.matricula = ", pessoa.getMatricula());
+							+ "WHERE servidor.id_servidor = ", 
+							idServidor,
+							"and processo.num_processo = ",
+							numProcesso);
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 			
@@ -286,6 +300,55 @@ public class ProcessoDAO {
 		
 	}
 	
+	public void delete(String numProcesso)throws SQLException{
+			String sql = "DELETE FROM processo where num_processo = "+numProcesso;
+		 try{
+			 PreparedStatement stmt = conn.prepareStatement(sql);
+			 stmt.execute();
+			 stmt.close();
+		 }
+		 catch(SQLException e){
+			 e.printStackTrace();
+		 }
+
+	 }
+	
+	/**
+	    * Função que retorna o id do processo,atráves do número do processo fornecido
+	    * @author Fanny
+	    * 
+	    * */	
+	   
+	   public int getId(String numProcesso) throws SQLException {
+			
+			int idProcesso  = 0;
+
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+
+			try {
+				String sql = String 
+						.format("%s '%s'",
+						"SELECT id_processo from processo where "
+						+ "numProcesso = ",
+						 numProcesso);
+
+				stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+				rs = stmt.executeQuery(sql);
+
+				while (rs.next()) {
+	               idProcesso = rs.getInt("id_processo");
+				}
+
+			} catch (SQLException sqle) {
+
+				sqle.printStackTrace();
+
+			} 
+			
+			return idProcesso;
+		}
 	
 	
 

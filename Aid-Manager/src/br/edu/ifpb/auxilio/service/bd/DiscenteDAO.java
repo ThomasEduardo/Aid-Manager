@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +22,10 @@ import java.util.List;
 
 
 
+
+
 import br.edu.ifpb.auxilio.entidade.Discente;
 import br.edu.ifpb.auxilio.entidade.Pessoa;
-
-
-
 
 
 public class DiscenteDAO{
@@ -40,7 +40,9 @@ public class DiscenteDAO{
 	}
 	
 	
-	public void insert(Discente discente) {
+	public int insert(Discente discente) throws SQLException{
+		
+		int idDiscente;
 
 		String sql = "INSERT INTO discente("
 				+ "escola_origem,"
@@ -80,12 +82,17 @@ public class DiscenteDAO{
 			stmt.setString(15, discente.getMotivoSolicitacao());
 			stmt.setInt   (16, discente.getIdPessoa());
 			
-			stmt.execute();
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			idDiscente = BancoUtil.getGenerateKey(stmt);
+			
+		
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		return idDiscente;
 	}
 	
 	public boolean update(Discente discente){
@@ -362,6 +369,18 @@ public class DiscenteDAO{
 			return idDiscente;
 		}
 		
+	 public void delete(int idDiscente)throws SQLException{
+			String sql = "DELETE FROM discente where id_discente = "+idDiscente;
+		 try{
+			 PreparedStatement stmt = conn.prepareStatement(sql);
+			 stmt.execute();
+			 stmt.close();
+		 }
+		 catch(SQLException e){
+			 e.printStackTrace();
+		 }
+
+	 }
     
     
     

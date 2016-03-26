@@ -9,11 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpb.auxilio.entidade.Auxilio;
 import br.edu.ifpb.auxilio.entidade.Discente;
+import br.edu.ifpb.auxilio.entidade.Edital;
 import br.edu.ifpb.auxilio.service.bd.Conexao;
 
 
@@ -29,7 +31,9 @@ private Connection conn;
 	}
 	
 	
-	public void insert(Auxilio auxilio) {
+	public int insert(Auxilio auxilio) throws SQLException {
+		
+		int idAuxilio = 0;
 
 		String sql = "INSERT INTO auxilio( "
 				+ " `tipo_Auxilio`, "
@@ -47,10 +51,14 @@ private Connection conn;
 			stmt.setDate  (3, new java.sql.Date(auxilio.getValidadeInicial().getTime()));
 			stmt.setDate  (4, new java.sql.Date(auxilio.getValidadeFinal().getTime()));
 			stmt.setInt   (5, auxilio.getIF().getIdIF());
-         		stmt.setInt   (6, auxilio.getP().getIdProcesso());
+         	stmt.setInt   (6, auxilio.getP().getIdProcesso());
+         	
+         	stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			idAuxilio = BancoUtil.getGenerateKey(stmt);
          	
          	
-			stmt.execute();
+			
 			stmt.close();
 			
 		
@@ -60,6 +68,7 @@ private Connection conn;
 			
 		}
 
+		 return idAuxilio;
 	}
 	
 	public boolean update(Auxilio auxilio) { 
@@ -388,28 +397,19 @@ private Connection conn;
 		ResultSet rs = null;
 
 		try {
-
-			String sql = String
-					.format("%s '%%%s%%'",
-							"select processo.num_processo,"
-							+ "pessoa.nome_pessoa, "
-							+ "pessoa.matricula, "
-							+ " db.agencia, "
-							+ " db.banco, "
-							+ " db.num_agencia, "
-							+ " aux.tipo_auxilio, "
-							+ "aux.valor_auxilio "
-							+ "from processo"
-							+ "inner join pessoa "
-							+ "on pessoa.id_pessoa = processo.interessado_id "
-							+ "inner join discente"
-							+ "	on discente.pessoa_id = pessoa.id_pessoa "
-							+ "inner join dadosBancarios db "
-							+ "on db.discente_id = discente.id_discente "
-							+ "inner join auxilio aux"
-							+ "on aux.processo_id = processo.id_processo "
-							+ "where processo.parecer = 'Aprovado' and aux.tipo_auxilio = 'Transporte'");
-
+			String sql = String.format("%s ",
+					"select processo.interessado_id"
+					+ "processo.num_processo,"
+					+ " pessoa.nome_pessoa, "
+					+ " pessoa.matricula,"
+					+ "aux.processo_id"
+					+ "from processo"
+					+ "inner join pessoa "
+					+ "on pessoa.id_pessoa = processo.interessado_id "
+				    + "inner join auxilio aux "
+				    	+ "on aux.processo_id = processo.id_processo "
+				    + "where processo.parecer = 'Aprovado'");
+			
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 
 			rs = stmt.executeQuery(sql);
@@ -424,6 +424,86 @@ private Connection conn;
 		return auxilios;
 	}
 	
+	public List<Auxilio> convertToListQueryDiscentesContemp(ResultSet rs)
+			throws SQLException {
+
+		List<Auxilio> auxilios = new ArrayList<Auxilio>();
+
+		try {
+
+			while (rs.next()) {
+
+				Auxilio auxilio = new Auxilio();
+				auxilio.setIdAuxilio(rs.getInt("aux.id_auxilio"));
+				auxilio.setTipoAuxilio(rs.getString("aux.tipo_auxilio"));
+				auxilio.setValorAuxilio(rs.getDouble("aux.valor_auxilio"));
+				
+				
+				//Processo e Pessoa
+				
+				ProcessoDAO p = new ProcessoDAO();
+				PessoaDAO pessoa = new PessoaDAO();
+				auxilio.setP(p.getById(rs.getInt("aux.processo_id")));
+				auxilio.getP().setInteressado(pessoa.getById(rs.getInt("processo.interessado_id")));
+
+				auxilios.add(auxilio);
+			}
+
+		} catch (SQLException sqle) {
+			System.out.println("Exception is :" + sqle);
+		}
+
+		return auxilios;
+	}
+	
+	//Fazer outro convertTo list
+	public List<Auxilio> getDiscentesContempladosByTipoAux(String tipoAuxilio) throws SQLException {
+		List<Auxilio> auxilios = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%s'",
+						"select processo.interessado_id"
+						+ "processo.num_processo,"
+						+ " pessoa.nome_pessoa, "
+						+ " pessoa.matricula,"
+						+ "aux.processo_id"
+						+ "from processo"
+						+ "inner join pessoa "
+						+ "on pessoa.id_pessoa = processo.interessado_id "
+					    + "inner join auxilio aux "
+					    	+ "on aux.processo_id = processo.id_processo "
+					    + "where processo.parecer = 'Aprovado' and aux.tipo_auxilio = ",tipoAuxilio); 
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			auxilios = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return auxilios;
+	}
+	
+	public void delete (String numProcesso) throws SQLException{
+		ProcessoDAO p = new ProcessoDAO();	
+		String sql =  "delete from auxilio where processo_id = "+p.getId(numProcesso);
+		
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.execute();
+			stmt.close();
+					
+		}catch(Exception e){
+			System.out.println("Exception is :"+e);
+		}
+	}
 }
 	
 	

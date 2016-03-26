@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,9 @@ public class InstituicaoFinanciadoraDAO {
 		
 	}
 
-	public void insert(InstituicaoFinanciadora IF) {
+	public int insert(InstituicaoFinanciadora IF) {
+		
+		int idIf;
 
 		String sql = "INSERT INTO instituicaoFinanciadora " +
 					 " `nome_if`, " +
@@ -46,8 +49,12 @@ public class InstituicaoFinanciadoraDAO {
 			stmt.setDouble(3, IF.getOrcamentoAuxilio());
 			stmt.setInt(4, IF.getServidor().getIdServidor());
 			
+				
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			
-			stmt.execute();
+			idIf = BancoUtil.getGenerateKey(stmt);
+			
+			
 			stmt.close();
 
 		}catch (SQLException e) {
@@ -55,6 +62,8 @@ public class InstituicaoFinanciadoraDAO {
 			throw new RuntimeException(e);
 			
 		}
+		
+		return idIf;
 	}
 	public boolean update(InstituicaoFinanciadora IF) {
 		
@@ -255,4 +264,59 @@ public class InstituicaoFinanciadoraDAO {
 		return instfs;
 	}
 	
+	/**
+	 * Retorna todas as instituições financiadoras que o servidor gerencia,filtrando atráves do nome da mesma.
+	 * 
+	 * @author Fanny
+	 * */
+	public List<InstituicaoFinanciadora> getAllByNome(InstituicaoFinanciadora instf) throws SQLException {
+		List<InstituicaoFinanciadora> instfs = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s '%%%s%%' %s '%%%s%%'",
+							" SELECT   id_if, "
+							          + "`nome_if`, " 
+									  + " `cnpj`, " 
+									  + " `orcamento_auxilio`,"
+									  + "  servidor_id"
+									  + " FROM instituicaoFinanciadora instf"
+									  + " INNER JOIN servidor "
+									  + " ON servidor.id_servidor = instf.servidor_id "
+									  + " INNER JOIN pessoa"
+									  + " ON pessoa.id_pessoa = servidor.pessoa_id " 
+						    + " AND pessoa.matricula LIKE",
+							instf.getServidor().getMatricula(),
+							" AND instf.nome_if  LIKE",
+							instf.getNomeIF());
+ 
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			instfs = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+					
+		} 
+
+		return instfs;
+	}
+	
+	public void delete(String cnpj)throws SQLException{
+			String sql = "DELETE FROM instituicaoFinanciadora where cnpj = "+cnpj;
+		 try{
+			 PreparedStatement stmt = conn.prepareStatement(sql);
+			 stmt.execute();
+			 stmt.close();
+		 }
+		 catch(SQLException e){
+			 e.printStackTrace();
+		 }
+
+	 }
 }

@@ -9,8 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 import br.edu.ifpb.auxilio.entidade.Documento;
@@ -28,7 +30,9 @@ private Connection conn;
 	}
 	
 	
-	public void insert(Documento documento) {
+	public int insert(Documento documento) throws SQLException{
+		
+		int idDocumento;
 
 		String sql = "INSERT INTO documento("
 				+ " `nome_documento`, "
@@ -44,14 +48,17 @@ private Connection conn;
 			stmt.setString(3, documento.getObs());
 			stmt.setInt(4, documento.getDiscente().getIdDiscente());
 			
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			
-			stmt.execute();
+			idDocumento = BancoUtil.getGenerateKey(stmt);
+			
 			stmt.close();
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		return idDocumento;
 	}
 	
 	public boolean update(Documento d) {

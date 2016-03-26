@@ -9,8 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 
@@ -33,7 +35,9 @@ public class FamiliarDAO {
 	}
 	
 	
-	public void insert(Familiar familiar) {
+	public int insert(Familiar familiar) throws SQLException{
+		
+		int idFamiliar;
 
 		String sql = "INSERT INTO familiar("
 				+ " `nome_familiar`, "
@@ -56,14 +60,16 @@ public class FamiliarDAO {
 			stmt.setString(6, familiar.getDoenca());
 			stmt.setInt(7, familiar.getPs().getIdPerfilSocio());
 			
-			
-			stmt.execute();
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			idFamiliar = BancoUtil.getGenerateKey(stmt);
+		
 			stmt.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		return idFamiliar;
 	}
 	
 	

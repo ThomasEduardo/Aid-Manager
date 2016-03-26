@@ -9,8 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 
@@ -28,7 +30,9 @@ public class PerfilSocioEconomicoDAO {
 			System.out.println("Erro na conexão com o BD");
 	}
 
-	public void insert(PerfilSocioEconomico PSE) {
+	public int insert(PerfilSocioEconomico PSE) {
+		
+		int idPse;
 
 		String sql = "INSERT INTO perfilSocioEconomico(" +
 					 " `situacao_renda_familiar`, " +
@@ -65,13 +69,16 @@ public class PerfilSocioEconomicoDAO {
 			stmt.setInt(13, PSE.getServidor().getIdServidor());
 			stmt.setInt(14, PSE.getDiscente().getIdDiscente());
 			
-			stmt.execute();
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			idPse = BancoUtil.getGenerateKey(stmt);
+			
 			stmt.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-
+        return idPse;
 	}
 	public boolean update(PerfilSocioEconomico PSE) {
 		String sql = "update perfilSocioEconomico set" 

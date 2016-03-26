@@ -12,8 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 
 import br.edu.ifpb.auxilio.entidade.Edital;
@@ -32,7 +35,9 @@ private Connection conn;
 	}
 	
 	
-	public void insert(Edital edital) {
+	public int insert(Edital edital) throws SQLException{
+		
+		int idEdital;
 
 		String sql = "INSERT INTO `edital`("
 				+ "`ini_inscricoes`, "
@@ -61,14 +66,19 @@ private Connection conn;
 			stmt.setInt(9, edital.getVagasBolsistas());
 			stmt.setString(10, edital.getNumEdital());
 			stmt.setInt(11, edital.getIdProcesso());
-			stmt.execute();
+			
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			idEdital = BancoUtil.getGenerateKey(stmt);
+			
 			stmt.close();
 			
-			//Ajeitar datas
+		
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		return idEdital;
 	}
 	
 	public boolean update(Edital edital) {
@@ -213,7 +223,8 @@ private Connection conn;
 									+ "edital.`titulo`, "
 									+ "edital.`valor_bolsa_discente`, "
 									+ "edital.`vagas_bolsistas`, "
-									+ "edital.`num_edital` "
+									+ "edital.`num_edital`,"
+									+ "edital.processo_id "
 									+ " FROM edital"
 									+ "INNER JOIN processo"
 									+ "ON processo.processo_id = processo.id_processo"
@@ -252,8 +263,9 @@ private Connection conn;
 									+ "`titulo`, "
 									+ "`valor_bolsa_discente`, "
 									+ "`vagas_bolsistas`, "
-									+ "`num_edital`"
-						+ "FROM edital"); //Setar os atributos de processo
+									+ "`num_edital`,"
+									+ "processo_id"
+						+ " FROM edital"); 
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 
@@ -267,6 +279,94 @@ private Connection conn;
 
 		return editais;
 	}
+	
+	public List<Edital> getByAno(int ano) throws SQLException {
+		List<Edital> editais = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s %d",
+						"SELECT       `ini_inscricoes`, "
+									+ "`fim_inscricoes`,"
+									+ "`ini_entrega_form`,"
+									+ "`ano`, "
+									+ "`fim_form`, "
+									+ "`descricao`, "
+									+ "`titulo`, "
+									+ "`valor_bolsa_discente`, "
+									+ "`vagas_bolsistas`, "
+									+ "`num_edital`,"
+									+ "processo_id"
+						+ "FROM edital"
+						+ "where ano = ",ano); 
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			editais = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return editais;
+	}
+	
+	public List<Edital> getByServidor(int idServidor) throws SQLException {
+		List<Edital> editais = null;
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			String sql = String.format("%s %d",
+						"SELECT       `ini_inscricoes`, "
+									+ "`fim_inscricoes`,"
+									+ "`ini_entrega_form`,"
+									+ "`ano`, "
+									+ "`fim_form`, "
+									+ "`descricao`, "
+									+ "`titulo`, "
+									+ "`valor_bolsa_discente`, "
+									+ "`vagas_bolsistas`, "
+									+ "`num_edital`,"
+									+ "processo_id"
+					                + "FROM edital"
+					                + "INNER JOIN servidor "
+					                + "ON servidor.id_servidor = processo.servidor_id"
+						+ "where servidor.id_servidor = ",idServidor); 
+
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			editais = convertToList(rs);
+
+		} catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} 
+
+		return editais;
+	}
+	
+	public void delete(String numEdital)throws SQLException{
+			String sql = "DELETE FROM edital where numEdital = "+numEdital;
+		 try{
+			 PreparedStatement stmt = conn.prepareStatement(sql);
+			 stmt.execute();
+			 stmt.close();
+		 }
+		 catch(SQLException e){
+			 e.printStackTrace();
+		 }
+
+	 }
+	
 	
 	
 

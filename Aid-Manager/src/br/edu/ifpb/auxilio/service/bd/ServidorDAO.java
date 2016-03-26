@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,11 @@ public class ServidorDAO{
 		else System.out.println("Erro na conexão com o BD");	
 	}
 	
-	public void insert(Servidor servidor) throws SQLException {
+	public int insert(Servidor servidor) throws SQLException {
+		
+		int idServidor;
+		
+		
 
 		String sql = "insert into servidor ("
 				+ "cargo_servidor,"
@@ -37,13 +42,16 @@ public class ServidorDAO{
 			stmt.setString(1, servidor.getCargoServidor());
 			stmt.setInt   (2, servidor.getIdPessoa());
 			
+			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			
-			stmt.execute();
+			idServidor = BancoUtil.getGenerateKey(stmt);
+			
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		return idServidor;
 	}
 	
 
@@ -125,7 +133,16 @@ public class ServidorDAO{
 	}
     
     
-	 public void delete(String matricula){
+	 public void delete(int idServidor)throws SQLException{
+			String sql = "DELETE FROM servidor where id_servidor = "+idServidor;
+		 try{
+			 PreparedStatement stmt = conn.prepareStatement(sql);
+			 stmt.execute();
+			 stmt.close();
+		 }
+		 catch(SQLException e){
+			 e.printStackTrace();
+		 }
 
 	 }
 	 

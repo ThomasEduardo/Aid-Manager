@@ -227,37 +227,7 @@ public class PessoaDAO {
 		return isMatriculaCadastrada;
 	}
 	
-  public boolean isEmailCadastrado(String email) throws SQLException {
-		
-		boolean isEmailCadastrado = false;
 
-		PreparedStatement stmt = null;
-		
-		ResultSet rs = null;
-
-		try {
-
-			String sql = String
-					.format("%s '%s'",
-							"SELECT count(pessoa.id_pessoa) AS quant_pessoas "
-								+ " FROM pessoa pessoa"
-								+ " WHERE pessoa.email =",
-							email);
-
-			stmt = (PreparedStatement) conn.prepareStatement(sql);
-
-			rs = stmt.executeQuery(sql);
-			
-			int rowCount = rs.last() ? rs.getInt("quant_pessoas") : 0; 
-			
-			isEmailCadastrado = (rowCount != 0);
-
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		} 
-		
-		return isEmailCadastrado;
-	}
 	
 	public List<Pessoa> find(Pessoa pessoa) throws SQLException {
 		List<Pessoa> pessoas = null;
