@@ -5,495 +5,491 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2836.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.CadastroDiscenteController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.CadastroDiscenteController">
    <content>
-      <AnchorPane prefHeight="2836.0" prefWidth="719.0">
+      <AnchorPane prefHeight="2836.0" prefWidth="729.0">
          <children>
-            <AnchorPane layoutX="8.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2836.0" prefWidth="719.0">
-               <children>
-                  <Separator layoutX="12.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
-                  <Label fx:id="Label_ServicoSolicitado" layoutX="105.0" layoutY="14.0" text="Serviço Solicitado" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutX="260.0" layoutY="24.0" prefHeight="7.0" prefWidth="440.0" />
-                  <RadioButton fx:id="Bt_Alimentacao" layoutX="36.0" layoutY="52.0" mnemonicParsing="false" text="Alimentação" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton fx:id="Bt_Transporte" layoutX="222.0" layoutY="52.0" mnemonicParsing="false" text="Transporte" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton fx:id="Bt_Moradia" layoutX="411.0" layoutY="52.0" mnemonicParsing="false" text="Moradia" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </RadioButton>
-                  <Separator layoutX="12.0" layoutY="110.0" prefHeight="7.0" prefWidth="84.0" />
-                  <Label fx:id="Label_DadosPessoais" layoutX="105.0" layoutY="100.0" text="Dados Pessoais" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutX="238.0" layoutY="110.0" prefHeight="7.0" prefWidth="462.0" />
-                  <Label fx:id="Label_NomeCompleto" layoutX="20.0" layoutY="130.0" text="Nome Completo:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="Campo_NomeCompleto" layoutX="35.0" layoutY="147.0" prefHeight="25.0" prefWidth="520.0" promptText="Ex.: Maria Alice Cândido Ferreira" />
-                  <Label fx:id="Label_Matricula" layoutX="20.0" layoutY="183.0" text="Matrícula:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="Campo_Matricula" layoutX="35.0" layoutY="200.0" prefHeight="25.0" prefWidth="151.0" promptText="Ex.: 20121001047" />
-                  <Label fx:id="Label_Nascimento" layoutX="235.0" layoutY="183.0" text="Data de Nascimento:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="Campo_Data" layoutX="250.0" layoutY="200.0" promptText="Ex.:18/03/1999" />
-                  <Label fx:id="Label_Senha" layoutX="20.0" layoutY="238.0" text="Criar Senha:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="Campo_Senha" layoutX="35.0" layoutY="255.0" prefHeight="25.0" prefWidth="210.0" promptText="***********" />
-                  <Label fx:id="Label_ConfirmarSenha" layoutX="297.0" layoutY="238.0" text="Confirmar Senha:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="Campo_ConfirmarSenha" layoutX="312.0" layoutY="255.0" prefHeight="25.0" prefWidth="210.0" promptText="***********" />
-                  <Text fx:id="Label_Curso" fill="#bd0741" layoutX="20.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Curso" layoutX="35.0" layoutY="306.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex.: Técnico Integrado em Informática" />
-                  <Text fx:id="Label_Turno" fill="#bd0741" layoutX="360.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turno:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Turno" layoutX="375.0" layoutY="306.0" promptText="Ex.: Manhã" />
-                  <Label fx:id="Label_Sexo" layoutX="20.0" layoutY="343.0" text="Sexo:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <MenuButton fx:id="MenuBt_Sexo" layoutX="35.0" layoutY="360.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Feminino" />
-                        <MenuItem mnemonicParsing="false" text="Masculino" />
-                     </items>
-                  </MenuButton>
-                  <Text fx:id="Label_EstadoCivil" fill="#bd0741" layoutX="179.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado Civil:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_EstadoCivil" layoutX="195.0" layoutY="360.0" promptText="Ex.: Solteira" />
-                  <Label fx:id="Label_Cpf" layoutX="20.0" layoutY="398.0" text="Cpf:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="Campo_Cpf" layoutX="35.0" layoutY="415.0" promptText="Ex.: 101.111.111-98" />
-                  <Label fx:id="Label_Rg" layoutX="220.0" layoutY="398.0" text="Rg:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="Campo_Rg" layoutX="235.0" layoutY="415.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 3.999.259" />
-                  <Text fx:id="Label_CartaoSUS" fill="#bd0741" layoutX="418.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº do Cartão do SUS:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_CartaoSUS" layoutX="433.0" layoutY="415.0" promptText="Ex.:111 1111 1111 1" />
-                  <Text fx:id="Label_SerieIntegrado" fill="#bd0741" layoutX="20.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Série ou periodo:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_SerieIntegrado" layoutX="35.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 2" />
-                  <Text fx:id="Label_EscolaOrigem" fill="#bd0741" layoutX="215.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escola de Origem:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <MenuButton fx:id="MenuBt_EscolaOrigem" layoutX="254.0" layoutY="483.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Pública" />
-                        <MenuItem mnemonicParsing="false" text="Privada" />
-                     </items>
-                  </MenuButton>
-                  <Text fx:id="Label_EnderecoAluno" fill="#bd0741" layoutX="20.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço Residencial do Aluno(Rua/Avenida, etc.):">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_EnderecoAluno" layoutX="35.0" layoutY="584.0" prefHeight="25.0" prefWidth="520.0" promptText="Ex.: Avenida Brasil" />
-                  <Text fx:id="Label_Num" fill="#bd0741" layoutX="20.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Num" layoutX="35.0" layoutY="639.0" prefHeight="25.0" prefWidth="62.0" promptText="Ex.: 199" />
-                  <Text fx:id="Label_Apt" fill="#bd0741" layoutX="122.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apartamento:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Apt" layoutX="137.0" layoutY="639.0" prefHeight="25.0" prefWidth="118.0" promptText="Ex.: Bloco D" />
-                  <Text fx:id="Label_Bairro" fill="#bd0741" layoutX="287.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bairro:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Bairro" layoutX="302.0" layoutY="639.0" prefHeight="25.0" prefWidth="170.0" promptText="Ex.: Cinza" />
-                  <Text fx:id="Label_CEP" fill="#bd0741" layoutX="504.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CEP:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_CEP" layoutX="519.0" layoutY="639.0" prefHeight="25.0" prefWidth="124.0" promptText="Ex.: 58119000" />
-                  <Text fx:id="Label_Cidade" fill="#bd0741" layoutX="20.0" layoutY="694.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Cidade" layoutX="35.0" layoutY="697.0" promptText="Ex.: Campina Grande" />
-                  <Text fx:id="Label_Estado" fill="#bd0741" layoutX="255.0" layoutY="693.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Estado" layoutX="270.0" layoutY="697.0" promptText="Ex.: Paraíba" />
-                  <Text fx:id="Label_PontoDeReferencia" fill="#bd0741" layoutX="20.0" layoutY="747.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ponto de Referência:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_PontoDeReferência" layoutX="35.0" layoutY="750.0" prefHeight="25.0" prefWidth="314.0" promptText="Ex.: Por Trás do Mercadinho" />
-                  <Text fx:id="Label_TelefoneResidencial" fill="#bd0741" layoutX="20.0" layoutY="801.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone Para Contato(Residencial):">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_TelefoneResidencial" layoutX="110.0" layoutY="804.0" promptText="Ex.: 33317151" />
-                  <Text fx:id="Label_Celular" fill="#bd0741" layoutX="325.0" layoutY="800.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celular:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Celular" layoutX="340.0" layoutY="804.0" promptText="Ex.: 988430975" />
-                  <Label fx:id="Label_Email" layoutX="20.0" layoutY="843.0" text="Email:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="Campo_Email" layoutX="35.0" layoutY="860.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex.: Mariazinha@hotmail.com" />
-                  <Separator layoutX="12.0" layoutY="910.0" prefHeight="7.0" prefWidth="84.0" />
-                  <Label fx:id="Label_PerfilSocioEconomico" layoutX="105.0" layoutY="900.0" text="Perfil SocioEconômico" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutX="303.0" layoutY="910.0" prefHeight="7.0" prefWidth="400.0" />
-                  <Label fx:id="Label_MoradiaAluno" layoutX="20.0" layoutY="941.0" text="Moradia do(a) Aluno(a):" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <MenuButton fx:id="MenuBt_MoradiaAluno" layoutX="35.0" layoutY="958.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Sozinho" />
-                        <MenuItem mnemonicParsing="false" text="Família" />
-                        <MenuItem mnemonicParsing="false" text="Parentes" />
-                        <MenuItem mnemonicParsing="false" text="Pensão" />
-                        <MenuItem mnemonicParsing="false" text="República" />
-                     </items>
-                  </MenuButton>
-                  <Label fx:id="Label_SituacaoMoradia" layoutX="20.0" layoutY="997.0" text="Situação de Moradia:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <MenuButton fx:id="MenuBt_SituacaoMoradia" layoutX="35.0" layoutY="1014.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Casa Própria" />
-                        <MenuItem mnemonicParsing="false" text="Casa Financiada" />
-                        <MenuItem mnemonicParsing="false" text="Casa Alugada" />
-                        <MenuItem mnemonicParsing="false" text="Casa Cedida" />
-                        <MenuItem mnemonicParsing="false" text="Outros" />
-                     </items>
-                  </MenuButton>
-                  <Label fx:id="Label_SituacaoTrabalho" layoutX="20.0" layoutY="1052.0" text="Sua Situação de Trabalho:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <RadioButton fx:id="Bt_TrabalhoVinculoEmpregaticio" layoutX="35.0" layoutY="1069.0" mnemonicParsing="false" text="Trabalho com Vínculo Empregatício" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_TrabalhoTemporario" layoutX="35.0" layoutY="1086.0" mnemonicParsing="false" text="Trabalho Temporário" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_TrabalhoAutonomo" layoutX="35.0" layoutY="1104.0" mnemonicParsing="false" text="Trabalho Autônomo" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_TrabalhoInformal" layoutX="35.0" layoutY="1120.0" mnemonicParsing="false" text="Trabalho Informal" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_TrabalhoEmpresaPropria" layoutX="35.0" layoutY="1137.0" mnemonicParsing="false" text="Trabalho em Empresa Própria" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_RecebeSeguroDesemprego" layoutX="287.0" layoutY="1069.0" mnemonicParsing="false" text="Recebe Seguro Desemprego" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_NuncaTrabalhou" layoutX="287.0" layoutY="1086.0" mnemonicParsing="false" text="Nunca Trabalhou" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_NuncaTrabalhoComVinculoEmpregativo" layoutX="287.0" layoutY="1104.0" mnemonicParsing="false" text="Nunca Trabalhou com Vínculo Empregativo" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_Pensionista" layoutX="287.0" layoutY="1120.0" mnemonicParsing="false" text="Pensionista" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_Afastado" layoutX="287.0" layoutY="1137.0" mnemonicParsing="false" text="Afastado" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_OutrosTrabalho" layoutX="287.0" layoutY="1154.0" mnemonicParsing="false" text="Outros:" textFill="#bd0741" />
-                  <TextField fx:id="Campo_OutrosTrabalho" layoutX="352.0" layoutY="1150.0" prefHeight="0.0" prefWidth="186.0" />
-                  <Label fx:id="Label_SituacaoEmRelacaoARendaFamiliar" layoutX="20.0" layoutY="1185.0" text="Qual a Sua Situção em Relação à Renda Familiar:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <MenuButton fx:id="Campo_SituacaoEmRelacaoARendaFamiliar" layoutX="35.0" layoutY="1202.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Principal Responsável" />
-                        <MenuItem mnemonicParsing="false" text="Dependente" />
-                        <MenuItem mnemonicParsing="false" text="Contribui com a renda familiar" />
-                        <MenuItem mnemonicParsing="false" text="Não contribui e se mantém sozinho" />
-                     </items>
-                  </MenuButton>
-                  <Label fx:id="Label_SituacaoSaudeFamilia" layoutX="20.0" layoutY="1239.0" text="Qual a Situação de Saúde na Família:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="Label_ProblemasPermanentesSaude" layoutX="35.0" layoutY="1256.0" text="Existe alguém na família com problemas permanentes de saúde?" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ProblemasPermanentesSaude_Sim" layoutX="394.0" layoutY="1256.0" mnemonicParsing="false" text="Sim" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ProblemasPermanentesSaude_Nao" layoutX="452.0" layoutY="1256.0" mnemonicParsing="false" text="Não" textFill="#bd0741" />
-                  <Label fx:id="Label_MembroFamilia" layoutX="35.0" layoutY="1282.0" text="Em caso afirmativo, qual é o membro da família?" textFill="#bd0741" />
-                  <TextField fx:id="Campo_MembroFamilia" layoutX="307.0" layoutY="1278.0" />
-                  <Label fx:id="Label_TipoDoenca" layoutX="35.0" layoutY="1314.0" text="Qual é o tipo de doença?" textFill="#bd0741" />
-                  <TextField fx:id="Campo_TipoDoenca" layoutX="182.0" layoutY="1310.0" />
-                  <Label fx:id="Label_ResidenciaFamilia" layoutX="27.0" layoutY="1350.0" text="A Residência de Sua Família é:" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <MenuButton fx:id="MenuBt_ResidenciaFamilia" layoutX="35.0" layoutY="1367.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Própria e Quitada" />
-                        <MenuItem mnemonicParsing="false" text="Própria e em Financiamento" />
-                        <MenuItem mnemonicParsing="false" text="Alugada" />
-                        <MenuItem mnemonicParsing="false" text="De Herdeiros" />
-                        <MenuItem mnemonicParsing="false" text="Cedida" />
-                     </items>
-                  </MenuButton>
-                  <Label fx:id="Label_ComQuemReside" layoutX="20.0" layoutY="1404.0" text="Com Quem Você Reside em Sua Cidade de Origem?" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <RadioButton fx:id="Bt_ComQuemReside_Pais" layoutX="35.0" layoutY="1421.0" mnemonicParsing="false" text="Pais" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ComQuemReside_PaisIrmaos" layoutX="35.0" layoutY="1438.0" mnemonicParsing="false" text="Pais e Irmãos" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ComQuemReside_Avos" layoutX="35.0" layoutY="1455.0" mnemonicParsing="false" text="Avós" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ComQuemReside_Irmaos" layoutX="35.0" layoutY="1472.0" mnemonicParsing="false" text="Irmãos" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ComQuemReside_Tios" layoutX="244.0" layoutY="1421.0" mnemonicParsing="false" text="Tios" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ComQuemReside_Amigos" layoutX="244.0" layoutY="1438.0" mnemonicParsing="false" text="Amigos" textFill="#bd0741" />
-                  <RadioButton fx:id="Bt_ComQuemReside_Republica" layoutX="244.0" layoutY="1455.0" mnemonicParsing="false" text="República, especifique o nº de moradores" textFill="#bd0741" />
-                  <TextField fx:id="Campo_ComQuemReside_Republica_Num" layoutX="496.0" layoutY="1451.0" prefHeight="25.0" prefWidth="42.0" />
-                  <RadioButton fx:id="Bt_ComQuemReside_Outros" layoutX="245.0" layoutY="1485.0" mnemonicParsing="false" text="Outros, especifique" textFill="#bd0741" />
-                  <TextField fx:id="Campo_ComQuemReside_Outros" layoutX="378.0" layoutY="1481.0" prefHeight="25.0" prefWidth="160.0" />
-                  <Label fx:id="Label_GastosMoradia" layoutX="20.0" layoutY="1523.0" text="Possui Gastos Com Moradia?" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Text fx:id="Label_XeroxDespesas" layoutX="196.0" layoutY="1536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Apresentar XEROX dos Comprovantes de DESPESAS" />
-                  <RadioButton fx:id="Bt_Aluguel" layoutX="35.0" layoutY="1549.0" mnemonicParsing="false" text="Aluguel. Valor:" textFill="#bd0741" />
-                  <TextField fx:id="Campo_AluguelValor" layoutX="144.0" layoutY="1545.0" />
-                  <RadioButton fx:id="Bt_Condominio" layoutX="35.0" layoutY="1582.0" mnemonicParsing="false" text="Condomínio. Valor:" textFill="#bd0741" />
-                  <TextField fx:id="Campo_CondominioValor" layoutX="171.0" layoutY="1577.0" />
-                  <RadioButton fx:id="Bt_Agua" layoutX="35.0" layoutY="1613.0" mnemonicParsing="false" text="Água. Valor:" textFill="#bd0741" />
-                  <TextField fx:id="Campo_AguaValor" layoutX="136.0" layoutY="1609.0" />
-                  <RadioButton fx:id="Bt_Luz" layoutX="35.0" layoutY="1647.0" mnemonicParsing="false" text="Luz. Valor:" textFill="#bd0741" />
-                  <TextField fx:id="Campo_LuzValor" layoutX="123.0" layoutY="1643.0" />
-                  <RadioButton fx:id="Bt_Telefone" layoutX="35.0" layoutY="1680.0" mnemonicParsing="false" text="Telefone. Valor:" textFill="#bd0741" />
-                  <TextField fx:id="Campo_TelefoneValor" layoutX="153.0" layoutY="1676.0" />
-                  <RadioButton fx:id="Bt_FinanciamentoCasaPropria" layoutX="35.0" layoutY="1713.0" mnemonicParsing="false" text="Financiamento de Casa Própria. Valor:" textFill="#bd0741" />
-                  <TextField fx:id="Campo_FinanciamentoCasaPropriaValor" layoutX="273.0" layoutY="1709.0" />
-                  <Label fx:id="Label_ComposicaoRendaFamiliar" layoutX="20.0" layoutY="1748.0" text="Composição da Renda Familiar" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Text fx:id="Label_Familia1" fill="#bd0741" layoutX="201.0" layoutY="1761.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- o(a) aluno(a), os pais, os irmãos(as), o esposo(a), filhos(as), sogro(a), tio(a)," />
-                  <Text fx:id="Label_Familia2" fill="#bd0741" layoutX="20.0" layoutY="1777.0" strokeType="OUTSIDE" strokeWidth="0.0" text="agregados -" />
-                  <Text fx:id="Label_ResidentesFamilia" fill="#bd0741" layoutX="96.0" layoutY="1776.0" strokeType="OUTSIDE" strokeWidth="0.0" text="todas as pessoas que residem com a família.">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Column_Nome" alignment="TOP_CENTER" layoutX="27.0" layoutY="1779.0" prefHeight="35.0" prefWidth="190.0" text="Nome">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Text fx:id="Label_AlunoParentesAgregados" layoutX="51.0" layoutY="1809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aluno/Parentes/Agregados" />
-                  <TextField fx:id="Column_Idade" alignment="CENTER" layoutX="217.0" layoutY="1779.0" prefHeight="35.0" prefWidth="47.0" text="Idade">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="Column_Parentesco" alignment="TOP_CENTER" layoutX="264.0" layoutY="1779.0" prefHeight="35.0" prefWidth="129.0" text="Parentesco">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Text fx:id="Label_ComOAluno" layoutX="290.0" layoutY="1808.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Com o Aluno)" />
-                  <TextField fx:id="Column_GrauDeInstrucao" alignment="TOP_CENTER" layoutX="393.0" layoutY="1779.0" prefHeight="35.0" prefWidth="114.0" text="Grau de">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Text fx:id="Label_Instrucao" layoutX="424.0" layoutY="1809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instrução">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Column_Profissao" alignment="CENTER" layoutX="507.0" layoutY="1779.0" prefHeight="35.0" prefWidth="129.0" text="Profissão">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="Column_Renda" alignment="TOP_CENTER" layoutX="636.0" layoutY="1779.0" prefHeight="35.0" prefWidth="57.0" text="Renda">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Text fx:id="Label_R$" layoutX="657.0" layoutY="1809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Table_Nome1" layoutX="27.0" layoutY="1814.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade1" layoutX="217.0" layoutY="1814.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco1" layoutX="264.0" layoutY="1814.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao1" layoutX="393.0" layoutY="1814.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao1" layoutX="507.0" layoutY="1814.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda1" layoutX="636.0" layoutY="1814.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome2" layoutX="27.0" layoutY="1849.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade2" layoutX="217.0" layoutY="1849.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco2" layoutX="264.0" layoutY="1849.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao2" layoutX="393.0" layoutY="1849.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao2" layoutX="507.0" layoutY="1849.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda2" layoutX="636.0" layoutY="1849.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome3" layoutX="27.0" layoutY="1884.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade3" layoutX="217.0" layoutY="1884.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco3" layoutX="264.0" layoutY="1884.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao3" layoutX="393.0" layoutY="1884.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao3" layoutX="507.0" layoutY="1884.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda3" layoutX="636.0" layoutY="1884.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome4" layoutX="27.0" layoutY="1919.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade4" layoutX="217.0" layoutY="1919.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco4" layoutX="264.0" layoutY="1919.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao4" layoutX="393.0" layoutY="1919.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao4" layoutX="507.0" layoutY="1919.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda4" layoutX="636.0" layoutY="1919.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome5" layoutX="27.0" layoutY="1954.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade5" layoutX="217.0" layoutY="1954.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco5" layoutX="264.0" layoutY="1954.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao5" layoutX="393.0" layoutY="1954.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao5" layoutX="507.0" layoutY="1954.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda5" layoutX="636.0" layoutY="1954.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome6" layoutX="27.0" layoutY="1989.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade6" layoutX="217.0" layoutY="1989.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco6" layoutX="264.0" layoutY="1989.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao6" layoutX="393.0" layoutY="1989.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao6" layoutX="507.0" layoutY="1989.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda6" layoutX="636.0" layoutY="1989.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome7" layoutX="27.0" layoutY="2024.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade7" layoutX="217.0" layoutY="2024.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco7" layoutX="264.0" layoutY="2024.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao7" layoutX="393.0" layoutY="2024.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao7" layoutX="507.0" layoutY="2024.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda7" layoutX="636.0" layoutY="2024.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome8" layoutX="27.0" layoutY="2059.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade8" layoutX="217.0" layoutY="2059.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco8" layoutX="264.0" layoutY="2059.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao8" layoutX="393.0" layoutY="2059.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao8" layoutX="507.0" layoutY="2059.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda8" layoutX="636.0" layoutY="2059.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome9" layoutX="27.0" layoutY="2094.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade9" layoutX="217.0" layoutY="2094.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco9" layoutX="264.0" layoutY="2094.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao9" layoutX="393.0" layoutY="2094.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao9" layoutX="507.0" layoutY="2094.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda9" layoutX="636.0" layoutY="2094.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_Nome10" layoutX="27.0" layoutY="2129.0" prefHeight="35.0" prefWidth="190.0" />
-                  <TextField fx:id="Table_Idade10" layoutX="217.0" layoutY="2129.0" prefHeight="35.0" prefWidth="47.0" />
-                  <TextField fx:id="Table_Parentesco10" layoutX="264.0" layoutY="2129.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_GrauInstrucao10" layoutX="393.0" layoutY="2129.0" prefHeight="35.0" prefWidth="114.0" />
-                  <TextField fx:id="Table_Profissao10" layoutX="507.0" layoutY="2129.0" prefHeight="35.0" prefWidth="129.0" />
-                  <TextField fx:id="Table_Renda10" layoutX="636.0" layoutY="2129.0" prefHeight="35.0" prefWidth="57.0" />
-                  <TextField fx:id="Table_TotalRendaFamiliar" layoutX="27.0" layoutY="2164.0" prefHeight="35.0" prefWidth="666.0" text="Total da Renda Familiar   ">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="Table_TotalDependentesRenda" layoutX="27.0" layoutY="2199.0" prefHeight="35.0" prefWidth="666.0" text="Total de Dependentes da Renda   ">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <Text fx:id="Label_XeroxRGCertidaoNascimentoComprovanteRenda1" layoutX="20.0" layoutY="2256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Apresentar Xerox da Carteira de Identidade e/ou Certidão de Nascimento e Comprovante de Renda de" />
-                  <Text fx:id="Label_XeroxRGCertidaoNascimentoComprovanteRenda2" layoutX="20.0" layoutY="2272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cada Componente Familiar." />
-                  <Text fx:id="Label_MotivoSolicitacao" fill="#bd0741" layoutX="20.0" layoutY="2305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motivo da Solicitação">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="Label_PorqueSolicitarEstesBeneficios" fill="#bd0741" layoutX="145.0" layoutY="2305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Por que você está solicitando este(s) benefício(s)?)" />
-                  <TextArea fx:id="Campo_MotivoSolicitacao" layoutX="35.0" layoutY="2308.0" prefHeight="260.0" prefWidth="648.0" promptText="Escreva aqui." />
-                  <Separator layoutX="12.0" layoutY="2604.0" prefHeight="7.0" prefWidth="84.0" />
-                  <Label fx:id="Label_DadosBancarios" layoutX="105.0" layoutY="2594.0" text="Dados Bancários" textFill="#bd0741">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutX="254.0" layoutY="2604.0" prefHeight="7.0" prefWidth="450.0" />
-                  <Text fx:id="Label_Banco" fill="#bd0741" layoutX="20.0" layoutY="2634.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banco:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Banco" layoutX="35.0" layoutY="2637.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: Caixa Econômica Federal" />
-                  <Text fx:id="Label_Agencia" fill="#bd0741" layoutX="20.0" layoutY="2687.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agência:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_Agencia" layoutX="35.0" layoutY="2690.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: Epitácio Pessoa" />
-                  <Text fx:id="Label_NumAgencia" fill="#bd0741" layoutX="20.0" layoutY="2740.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº da Agência:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_NumAgencia" layoutX="35.0" layoutY="2743.0" prefHeight="25.0" prefWidth="228.0" />
-                  <Button fx:id="Bt_Voltar" layoutX="534.0" layoutY="2787.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
-                     <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="Bt_CadastrarDiscente" layoutX="607.0" layoutY="2787.0" mnemonicParsing="false" onAction="#btCadastrarDiscente" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
-                     <font>
-                        <Font name="Book Antiqua Bold" size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
+            <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
+            <Label fx:id="Label_ServicoSolicitado" layoutX="107.0" layoutY="14.0" text="Serviço Solicitado" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="262.0" layoutY="24.0" prefHeight="7.0" prefWidth="440.0" />
+            <RadioButton fx:id="Bt_Alimentacao" layoutX="38.0" layoutY="52.0" mnemonicParsing="false" text="Alimentação" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="Bt_Transporte" layoutX="224.0" layoutY="52.0" mnemonicParsing="false" text="Transporte" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="Bt_Moradia" layoutX="413.0" layoutY="52.0" mnemonicParsing="false" text="Moradia" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </RadioButton>
+            <Separator layoutX="14.0" layoutY="110.0" prefHeight="7.0" prefWidth="84.0" />
+            <Label fx:id="Label_DadosPessoais" layoutX="107.0" layoutY="100.0" text="Dados Pessoais" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="240.0" layoutY="110.0" prefHeight="7.0" prefWidth="462.0" />
+            <Label fx:id="Label_NomeCompleto" layoutX="22.0" layoutY="130.0" text="Nome Completo:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Campo_NomeCompleto" layoutX="37.0" layoutY="147.0" prefHeight="25.0" prefWidth="520.0" promptText="Ex.: Maria Alice Cândido Ferreira" />
+            <Label fx:id="Label_Matricula" layoutX="22.0" layoutY="183.0" text="Matrícula:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Campo_Matricula" layoutX="37.0" layoutY="200.0" prefHeight="25.0" prefWidth="151.0" promptText="Ex.: 20121001047" />
+            <Label fx:id="Label_Nascimento" layoutX="237.0" layoutY="183.0" text="Data de Nascimento:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="Campo_Data" layoutX="252.0" layoutY="200.0" promptText="Ex.:18/03/1999" />
+            <Label fx:id="Label_Senha" layoutX="22.0" layoutY="238.0" text="Criar Senha:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Campo_Senha" layoutX="37.0" layoutY="255.0" prefHeight="25.0" prefWidth="210.0" promptText="***********" />
+            <Label fx:id="Label_ConfirmarSenha" layoutX="299.0" layoutY="238.0" text="Confirmar Senha:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Campo_ConfirmarSenha" layoutX="314.0" layoutY="255.0" prefHeight="25.0" prefWidth="210.0" promptText="***********" />
+            <Text fx:id="Label_Curso" fill="#bd0741" layoutX="22.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Curso" layoutX="37.0" layoutY="306.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex.: Técnico Integrado em Informática" />
+            <Text fx:id="Label_Turno" fill="#bd0741" layoutX="362.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turno:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Turno" layoutX="377.0" layoutY="306.0" promptText="Ex.: Manhã" />
+            <Label fx:id="Label_Sexo" layoutX="22.0" layoutY="343.0" text="Sexo:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="MenuBt_Sexo" layoutX="37.0" layoutY="360.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Feminino" />
+                  <MenuItem mnemonicParsing="false" text="Masculino" />
+               </items>
+            </MenuButton>
+            <Text fx:id="Label_EstadoCivil" fill="#bd0741" layoutX="181.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado Civil:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_EstadoCivil" layoutX="197.0" layoutY="360.0" promptText="Ex.: Solteira" />
+            <Label fx:id="Label_Cpf" layoutX="22.0" layoutY="398.0" text="Cpf:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Campo_Cpf" layoutX="37.0" layoutY="415.0" promptText="Ex.: 101.111.111-98" />
+            <Label fx:id="Label_Rg" layoutX="222.0" layoutY="398.0" text="Rg:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Campo_Rg" layoutX="237.0" layoutY="415.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 3.999.259" />
+            <Text fx:id="Label_CartaoSUS" fill="#bd0741" layoutX="420.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº do Cartão do SUS:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_CartaoSUS" layoutX="435.0" layoutY="415.0" promptText="Ex.:111 1111 1111 1" />
+            <Text fx:id="Label_SerieIntegrado" fill="#bd0741" layoutX="22.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Série ou periodo:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_SerieIntegrado" layoutX="37.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 2" />
+            <Text fx:id="Label_EscolaOrigem" fill="#bd0741" layoutX="217.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escola de Origem:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <MenuButton fx:id="MenuBt_EscolaOrigem" layoutX="256.0" layoutY="483.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Pública" />
+                  <MenuItem mnemonicParsing="false" text="Privada" />
+               </items>
+            </MenuButton>
+            <Text fx:id="Label_EnderecoAluno" fill="#bd0741" layoutX="22.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço Residencial do Aluno(Rua/Avenida, etc.):">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_EnderecoAluno" layoutX="37.0" layoutY="584.0" prefHeight="25.0" prefWidth="520.0" promptText="Ex.: Avenida Brasil" />
+            <Text fx:id="Label_Num" fill="#bd0741" layoutX="22.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Num" layoutX="37.0" layoutY="639.0" prefHeight="25.0" prefWidth="62.0" promptText="Ex.: 199" />
+            <Text fx:id="Label_Apt" fill="#bd0741" layoutX="124.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apartamento:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Apt" layoutX="139.0" layoutY="639.0" prefHeight="25.0" prefWidth="118.0" promptText="Ex.: Bloco D" />
+            <Text fx:id="Label_Bairro" fill="#bd0741" layoutX="289.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bairro:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Bairro" layoutX="304.0" layoutY="639.0" prefHeight="25.0" prefWidth="170.0" promptText="Ex.: Cinza" />
+            <Text fx:id="Label_CEP" fill="#bd0741" layoutX="506.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CEP:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_CEP" layoutX="521.0" layoutY="639.0" prefHeight="25.0" prefWidth="124.0" promptText="Ex.: 58119000" />
+            <Text fx:id="Label_Cidade" fill="#bd0741" layoutX="22.0" layoutY="694.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Cidade" layoutX="37.0" layoutY="697.0" promptText="Ex.: Campina Grande" />
+            <Text fx:id="Label_Estado" fill="#bd0741" layoutX="257.0" layoutY="693.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Estado" layoutX="272.0" layoutY="697.0" promptText="Ex.: Paraíba" />
+            <Text fx:id="Label_PontoDeReferencia" fill="#bd0741" layoutX="22.0" layoutY="747.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ponto de Referência:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_PontoDeReferência" layoutX="37.0" layoutY="750.0" prefHeight="25.0" prefWidth="314.0" promptText="Ex.: Por Trás do Mercadinho" />
+            <Text fx:id="Label_TelefoneResidencial" fill="#bd0741" layoutX="22.0" layoutY="801.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone Para Contato(Residencial):">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_TelefoneResidencial" layoutX="112.0" layoutY="804.0" promptText="Ex.: 33317151" />
+            <Text fx:id="Label_Celular" fill="#bd0741" layoutX="327.0" layoutY="800.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celular:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Celular" layoutX="342.0" layoutY="804.0" promptText="Ex.: 988430975" />
+            <Label fx:id="Label_Email" layoutX="22.0" layoutY="843.0" text="Email:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Campo_Email" layoutX="37.0" layoutY="860.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex.: Mariazinha@hotmail.com" />
+            <Separator layoutX="14.0" layoutY="910.0" prefHeight="7.0" prefWidth="84.0" />
+            <Label fx:id="Label_PerfilSocioEconomico" layoutX="107.0" layoutY="900.0" text="Perfil SocioEconômico" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="305.0" layoutY="910.0" prefHeight="7.0" prefWidth="400.0" />
+            <Label fx:id="Label_MoradiaAluno" layoutX="22.0" layoutY="941.0" text="Moradia do(a) Aluno(a):" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="MenuBt_MoradiaAluno" layoutX="37.0" layoutY="958.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Sozinho" />
+                  <MenuItem mnemonicParsing="false" text="Família" />
+                  <MenuItem mnemonicParsing="false" text="Parentes" />
+                  <MenuItem mnemonicParsing="false" text="Pensão" />
+                  <MenuItem mnemonicParsing="false" text="República" />
+               </items>
+            </MenuButton>
+            <Label fx:id="Label_SituacaoMoradia" layoutX="22.0" layoutY="997.0" text="Situação de Moradia:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="MenuBt_SituacaoMoradia" layoutX="37.0" layoutY="1014.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Casa Própria" />
+                  <MenuItem mnemonicParsing="false" text="Casa Financiada" />
+                  <MenuItem mnemonicParsing="false" text="Casa Alugada" />
+                  <MenuItem mnemonicParsing="false" text="Casa Cedida" />
+                  <MenuItem mnemonicParsing="false" text="Outros" />
+               </items>
+            </MenuButton>
+            <Label fx:id="Label_SituacaoTrabalho" layoutX="22.0" layoutY="1052.0" text="Sua Situação de Trabalho:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="Bt_TrabalhoVinculoEmpregaticio" layoutX="37.0" layoutY="1069.0" mnemonicParsing="false" text="Trabalho com Vínculo Empregatício" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_TrabalhoTemporario" layoutX="37.0" layoutY="1086.0" mnemonicParsing="false" text="Trabalho Temporário" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_TrabalhoAutonomo" layoutX="37.0" layoutY="1104.0" mnemonicParsing="false" text="Trabalho Autônomo" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_TrabalhoInformal" layoutX="37.0" layoutY="1120.0" mnemonicParsing="false" text="Trabalho Informal" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_TrabalhoEmpresaPropria" layoutX="37.0" layoutY="1137.0" mnemonicParsing="false" text="Trabalho em Empresa Própria" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_RecebeSeguroDesemprego" layoutX="289.0" layoutY="1069.0" mnemonicParsing="false" text="Recebe Seguro Desemprego" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_NuncaTrabalhou" layoutX="289.0" layoutY="1086.0" mnemonicParsing="false" text="Nunca Trabalhou" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_NuncaTrabalhoComVinculoEmpregativo" layoutX="289.0" layoutY="1104.0" mnemonicParsing="false" text="Nunca Trabalhou com Vínculo Empregativo" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_Pensionista" layoutX="289.0" layoutY="1120.0" mnemonicParsing="false" text="Pensionista" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_Afastado" layoutX="289.0" layoutY="1137.0" mnemonicParsing="false" text="Afastado" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_OutrosTrabalho" layoutX="289.0" layoutY="1154.0" mnemonicParsing="false" text="Outros:" textFill="#bd0741" />
+            <TextField fx:id="Campo_OutrosTrabalho" layoutX="354.0" layoutY="1150.0" prefHeight="0.0" prefWidth="186.0" />
+            <Label fx:id="Label_SituacaoEmRelacaoARendaFamiliar" layoutX="22.0" layoutY="1185.0" text="Qual a Sua Situção em Relação à Renda Familiar:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="Campo_SituacaoEmRelacaoARendaFamiliar" layoutX="37.0" layoutY="1202.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Principal Responsável" />
+                  <MenuItem mnemonicParsing="false" text="Dependente" />
+                  <MenuItem mnemonicParsing="false" text="Contribui com a renda familiar" />
+                  <MenuItem mnemonicParsing="false" text="Não contribui e se mantém sozinho" />
+               </items>
+            </MenuButton>
+            <Label fx:id="Label_SituacaoSaudeFamilia" layoutX="22.0" layoutY="1239.0" text="Qual a Situação de Saúde na Família:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="Label_ProblemasPermanentesSaude" layoutX="37.0" layoutY="1256.0" text="Existe alguém na família com problemas permanentes de saúde?" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ProblemasPermanentesSaude_Sim" layoutX="396.0" layoutY="1256.0" mnemonicParsing="false" text="Sim" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ProblemasPermanentesSaude_Nao" layoutX="454.0" layoutY="1256.0" mnemonicParsing="false" text="Não" textFill="#bd0741" />
+            <Label fx:id="Label_MembroFamilia" layoutX="37.0" layoutY="1282.0" text="Em caso afirmativo, qual é o membro da família?" textFill="#bd0741" />
+            <TextField fx:id="Campo_MembroFamilia" layoutX="309.0" layoutY="1278.0" />
+            <Label fx:id="Label_TipoDoenca" layoutX="37.0" layoutY="1314.0" text="Qual é o tipo de doença?" textFill="#bd0741" />
+            <TextField fx:id="Campo_TipoDoenca" layoutX="184.0" layoutY="1310.0" />
+            <Label fx:id="Label_ResidenciaFamilia" layoutX="29.0" layoutY="1350.0" text="A Residência de Sua Família é:" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="MenuBt_ResidenciaFamilia" layoutX="37.0" layoutY="1367.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Própria e Quitada" />
+                  <MenuItem mnemonicParsing="false" text="Própria e em Financiamento" />
+                  <MenuItem mnemonicParsing="false" text="Alugada" />
+                  <MenuItem mnemonicParsing="false" text="De Herdeiros" />
+                  <MenuItem mnemonicParsing="false" text="Cedida" />
+               </items>
+            </MenuButton>
+            <Label fx:id="Label_ComQuemReside" layoutX="22.0" layoutY="1404.0" text="Com Quem Você Reside em Sua Cidade de Origem?" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="Bt_ComQuemReside_Pais" layoutX="37.0" layoutY="1421.0" mnemonicParsing="false" text="Pais" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ComQuemReside_PaisIrmaos" layoutX="37.0" layoutY="1438.0" mnemonicParsing="false" text="Pais e Irmãos" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ComQuemReside_Avos" layoutX="37.0" layoutY="1455.0" mnemonicParsing="false" text="Avós" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ComQuemReside_Irmaos" layoutX="37.0" layoutY="1472.0" mnemonicParsing="false" text="Irmãos" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ComQuemReside_Tios" layoutX="246.0" layoutY="1421.0" mnemonicParsing="false" text="Tios" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ComQuemReside_Amigos" layoutX="246.0" layoutY="1438.0" mnemonicParsing="false" text="Amigos" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_ComQuemReside_Republica" layoutX="246.0" layoutY="1455.0" mnemonicParsing="false" text="República, especifique o nº de moradores" textFill="#bd0741" />
+            <TextField fx:id="Campo_ComQuemReside_Republica_Num" layoutX="498.0" layoutY="1451.0" prefHeight="25.0" prefWidth="42.0" />
+            <RadioButton fx:id="Bt_ComQuemReside_Outros" layoutX="247.0" layoutY="1485.0" mnemonicParsing="false" text="Outros, especifique" textFill="#bd0741" />
+            <TextField fx:id="Campo_ComQuemReside_Outros" layoutX="380.0" layoutY="1481.0" prefHeight="25.0" prefWidth="160.0" />
+            <Label fx:id="Label_GastosMoradia" layoutX="22.0" layoutY="1523.0" text="Possui Gastos Com Moradia?" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Text fx:id="Label_XeroxDespesas" layoutX="198.0" layoutY="1536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Apresentar XEROX dos Comprovantes de DESPESAS" />
+            <RadioButton fx:id="Bt_Aluguel" layoutX="37.0" layoutY="1549.0" mnemonicParsing="false" text="Aluguel. Valor:" textFill="#bd0741" />
+            <TextField fx:id="Campo_AluguelValor" layoutX="146.0" layoutY="1545.0" />
+            <RadioButton fx:id="Bt_Condominio" layoutX="37.0" layoutY="1582.0" mnemonicParsing="false" text="Condomínio. Valor:" textFill="#bd0741" />
+            <TextField fx:id="Campo_CondominioValor" layoutX="173.0" layoutY="1577.0" />
+            <RadioButton fx:id="Bt_Agua" layoutX="37.0" layoutY="1613.0" mnemonicParsing="false" text="Água. Valor:" textFill="#bd0741" />
+            <TextField fx:id="Campo_AguaValor" layoutX="138.0" layoutY="1609.0" />
+            <RadioButton fx:id="Bt_Luz" layoutX="37.0" layoutY="1647.0" mnemonicParsing="false" text="Luz. Valor:" textFill="#bd0741" />
+            <TextField fx:id="Campo_LuzValor" layoutX="125.0" layoutY="1643.0" />
+            <RadioButton fx:id="Bt_Telefone" layoutX="37.0" layoutY="1680.0" mnemonicParsing="false" text="Telefone. Valor:" textFill="#bd0741" />
+            <TextField fx:id="Campo_TelefoneValor" layoutX="155.0" layoutY="1676.0" />
+            <RadioButton fx:id="Bt_FinanciamentoCasaPropria" layoutX="37.0" layoutY="1713.0" mnemonicParsing="false" text="Financiamento de Casa Própria. Valor:" textFill="#bd0741" />
+            <TextField fx:id="Campo_FinanciamentoCasaPropriaValor" layoutX="275.0" layoutY="1709.0" />
+            <Label fx:id="Label_ComposicaoRendaFamiliar" layoutX="22.0" layoutY="1748.0" text="Composição da Renda Familiar" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Text fx:id="Label_Familia1" fill="#bd0741" layoutX="203.0" layoutY="1761.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- o(a) aluno(a), os pais, os irmãos(as), o esposo(a), filhos(as), sogro(a), tio(a)," />
+            <Text fx:id="Label_Familia2" fill="#bd0741" layoutX="22.0" layoutY="1777.0" strokeType="OUTSIDE" strokeWidth="0.0" text="agregados -" />
+            <Text fx:id="Label_ResidentesFamilia" fill="#bd0741" layoutX="98.0" layoutY="1776.0" strokeType="OUTSIDE" strokeWidth="0.0" text="todas as pessoas que residem com a família.">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Column_Nome" alignment="TOP_CENTER" layoutX="29.0" layoutY="1779.0" prefHeight="35.0" prefWidth="190.0" text="Nome">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Text fx:id="Label_AlunoParentesAgregados" layoutX="53.0" layoutY="1809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aluno/Parentes/Agregados" />
+            <TextField fx:id="Column_Idade" alignment="CENTER" layoutX="219.0" layoutY="1779.0" prefHeight="35.0" prefWidth="47.0" text="Idade">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="Column_Parentesco" alignment="TOP_CENTER" layoutX="266.0" layoutY="1779.0" prefHeight="35.0" prefWidth="129.0" text="Parentesco">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Text fx:id="Label_ComOAluno" layoutX="292.0" layoutY="1808.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Com o Aluno)" />
+            <TextField fx:id="Column_GrauDeInstrucao" alignment="TOP_CENTER" layoutX="395.0" layoutY="1779.0" prefHeight="35.0" prefWidth="114.0" text="Grau de">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Text fx:id="Label_Instrucao" layoutX="426.0" layoutY="1809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instrução">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Column_Profissao" alignment="CENTER" layoutX="509.0" layoutY="1779.0" prefHeight="35.0" prefWidth="129.0" text="Profissão">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="Column_Renda" alignment="TOP_CENTER" layoutX="638.0" layoutY="1779.0" prefHeight="35.0" prefWidth="57.0" text="Renda">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Text fx:id="Label_R$" layoutX="659.0" layoutY="1809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Table_Nome1" layoutX="29.0" layoutY="1814.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade1" layoutX="219.0" layoutY="1814.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco1" layoutX="266.0" layoutY="1814.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao1" layoutX="395.0" layoutY="1814.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao1" layoutX="509.0" layoutY="1814.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda1" layoutX="638.0" layoutY="1814.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome2" layoutX="29.0" layoutY="1849.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade2" layoutX="219.0" layoutY="1849.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco2" layoutX="266.0" layoutY="1849.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao2" layoutX="395.0" layoutY="1849.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao2" layoutX="509.0" layoutY="1849.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda2" layoutX="638.0" layoutY="1849.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome3" layoutX="29.0" layoutY="1884.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade3" layoutX="219.0" layoutY="1884.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco3" layoutX="266.0" layoutY="1884.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao3" layoutX="395.0" layoutY="1884.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao3" layoutX="509.0" layoutY="1884.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda3" layoutX="638.0" layoutY="1884.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome4" layoutX="29.0" layoutY="1919.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade4" layoutX="219.0" layoutY="1919.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco4" layoutX="266.0" layoutY="1919.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao4" layoutX="395.0" layoutY="1919.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao4" layoutX="509.0" layoutY="1919.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda4" layoutX="638.0" layoutY="1919.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome5" layoutX="29.0" layoutY="1954.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade5" layoutX="219.0" layoutY="1954.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco5" layoutX="266.0" layoutY="1954.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao5" layoutX="395.0" layoutY="1954.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao5" layoutX="509.0" layoutY="1954.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda5" layoutX="638.0" layoutY="1954.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome6" layoutX="29.0" layoutY="1989.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade6" layoutX="219.0" layoutY="1989.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco6" layoutX="266.0" layoutY="1989.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao6" layoutX="395.0" layoutY="1989.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao6" layoutX="509.0" layoutY="1989.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda6" layoutX="638.0" layoutY="1989.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome7" layoutX="29.0" layoutY="2024.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade7" layoutX="219.0" layoutY="2024.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco7" layoutX="266.0" layoutY="2024.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao7" layoutX="395.0" layoutY="2024.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao7" layoutX="509.0" layoutY="2024.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda7" layoutX="638.0" layoutY="2024.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome8" layoutX="29.0" layoutY="2059.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade8" layoutX="219.0" layoutY="2059.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco8" layoutX="266.0" layoutY="2059.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao8" layoutX="395.0" layoutY="2059.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao8" layoutX="509.0" layoutY="2059.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda8" layoutX="638.0" layoutY="2059.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome9" layoutX="29.0" layoutY="2094.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade9" layoutX="219.0" layoutY="2094.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco9" layoutX="266.0" layoutY="2094.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao9" layoutX="395.0" layoutY="2094.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao9" layoutX="509.0" layoutY="2094.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda9" layoutX="638.0" layoutY="2094.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_Nome10" layoutX="29.0" layoutY="2129.0" prefHeight="35.0" prefWidth="190.0" />
+            <TextField fx:id="Table_Idade10" layoutX="219.0" layoutY="2129.0" prefHeight="35.0" prefWidth="47.0" />
+            <TextField fx:id="Table_Parentesco10" layoutX="266.0" layoutY="2129.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_GrauInstrucao10" layoutX="395.0" layoutY="2129.0" prefHeight="35.0" prefWidth="114.0" />
+            <TextField fx:id="Table_Profissao10" layoutX="509.0" layoutY="2129.0" prefHeight="35.0" prefWidth="129.0" />
+            <TextField fx:id="Table_Renda10" layoutX="638.0" layoutY="2129.0" prefHeight="35.0" prefWidth="57.0" />
+            <TextField fx:id="Table_TotalRendaFamiliar" layoutX="29.0" layoutY="2164.0" prefHeight="35.0" prefWidth="666.0" text="Total da Renda Familiar   ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="Table_TotalDependentesRenda" layoutX="29.0" layoutY="2199.0" prefHeight="35.0" prefWidth="666.0" text="Total de Dependentes da Renda   ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Text fx:id="Label_XeroxRGCertidaoNascimentoComprovanteRenda1" layoutX="22.0" layoutY="2256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Apresentar Xerox da Carteira de Identidade e/ou Certidão de Nascimento e Comprovante de Renda de" />
+            <Text fx:id="Label_XeroxRGCertidaoNascimentoComprovanteRenda2" layoutX="22.0" layoutY="2272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cada Componente Familiar." />
+            <Text fx:id="Label_MotivoSolicitacao" fill="#bd0741" layoutX="22.0" layoutY="2305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motivo da Solicitação">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="Label_PorqueSolicitarEstesBeneficios" fill="#bd0741" layoutX="147.0" layoutY="2305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Por que você está solicitando este(s) benefício(s)?)" />
+            <TextArea fx:id="Campo_MotivoSolicitacao" layoutX="37.0" layoutY="2308.0" prefHeight="260.0" prefWidth="648.0" promptText="Escreva aqui." />
+            <Separator layoutX="14.0" layoutY="2604.0" prefHeight="7.0" prefWidth="84.0" />
+            <Label fx:id="Label_DadosBancarios" layoutX="107.0" layoutY="2594.0" text="Dados Bancários" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="256.0" layoutY="2604.0" prefHeight="7.0" prefWidth="450.0" />
+            <Text fx:id="Label_Banco" fill="#bd0741" layoutX="22.0" layoutY="2634.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banco:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Banco" layoutX="37.0" layoutY="2637.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: Caixa Econômica Federal" />
+            <Text fx:id="Label_Agencia" fill="#bd0741" layoutX="22.0" layoutY="2687.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agência:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_Agencia" layoutX="37.0" layoutY="2690.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: Epitácio Pessoa" />
+            <Text fx:id="Label_NumAgencia" fill="#bd0741" layoutX="22.0" layoutY="2740.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº da Agência:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Campo_NumAgencia" layoutX="37.0" layoutY="2743.0" prefHeight="25.0" prefWidth="228.0" />
+            <Button fx:id="Bt_Voltar" layoutX="536.0" layoutY="2787.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Bt_CadastrarDiscente" layoutX="609.0" layoutY="2787.0" mnemonicParsing="false" onAction="#btCadastrarDiscente" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </content>
