@@ -9,30 +9,30 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
-      <Label fx:id="Label_DadosPessoais" layoutX="108.0" layoutY="14.0" text="Edital" textFill="#bd0741">
+      <Label fx:id="Label_Edital" layoutX="108.0" layoutY="14.0" text="Edital" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Separator layoutX="163.0" layoutY="24.0" prefHeight="7.0" prefWidth="539.0" />
-      <Label fx:id="Label_Nome" layoutX="39.0" layoutY="54.0" text="Título do Edital:" textFill="#bd0741">
+      <Label fx:id="Label_TituloEdital" layoutX="39.0" layoutY="54.0" text="TÃ­tulo do Edital:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_Título" layoutX="56.0" layoutY="71.0" prefHeight="25.0" prefWidth="405.0" promptText="Título do Edital" />
-      <Label fx:id="Label_SUAP" layoutX="40.0" layoutY="103.0" text="Número do Edital:" textFill="#bd0741">
+      <TextField fx:id="Campo_TÃ­tulo" layoutX="56.0" layoutY="71.0" prefHeight="25.0" prefWidth="405.0" promptText="TÃ­tulo do Edital" />
+      <Label fx:id="Label_NumeroEdital" layoutX="40.0" layoutY="103.0" text="NÃºmero do Edital:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_NumeroDoEdital" layoutX="56.0" layoutY="120.0" prefHeight="25.0" prefWidth="141.0" promptText="Número do Edital" />
-      <Label fx:id="Label_Vagas" layoutX="40.0" layoutY="153.0" text="Número de Vagas:" textFill="#bd0741">
+      <TextField fx:id="Campo_NumeroDoEdital" layoutX="56.0" layoutY="120.0" prefHeight="25.0" prefWidth="141.0" promptText="NÃºmero do Edital" />
+      <Label fx:id="Label_Vagas" layoutX="40.0" layoutY="153.0" text="NÃºmero de Vagas:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_Vagas" layoutX="56.0" layoutY="170.0" prefHeight="25.0" prefWidth="141.0" promptText="Auxílios disponíveis" />
+      <TextField fx:id="Campo_Vagas" layoutX="56.0" layoutY="170.0" prefHeight="25.0" prefWidth="141.0" promptText="AuxÃ­lios disponÃ­veis" />
       <Button fx:id="Bt_Voltar" layoutX="543.0" layoutY="420.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="14.0" />
@@ -45,40 +45,40 @@
       </Button>
       <DatePicker fx:id="Campo_iniInscricoes" layoutX="259.0" layoutY="120.0" promptText="Ex.:18/03/1999" />
       <DatePicker fx:id="Campo_fimInscricoes" layoutX="501.0" layoutY="120.0" promptText="Ex.:18/03/1999" />
-      <Label fx:id="Label_Nascimento" layoutX="240.0" layoutY="103.0" text="Data do Início das Inscrições:" textFill="#bd0741">
+      <Label fx:id="Label_IniInscricoes" layoutX="240.0" layoutY="103.0" text="Data do InÃ­cio das InscriÃ§Ãµes:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="Label_Nascimento1" layoutX="477.0" layoutY="103.0" text="Data do Fim das Inscrições:" textFill="#bd0741">
+      <Label fx:id="Label_FimInscricoes" layoutX="477.0" layoutY="103.0" text="Data do Fim das InscriÃ§Ãµes:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="Label_Nascimento2" layoutX="240.0" layoutY="153.0" text="Início da Entrega dos Formulários:" textFill="#bd0741">
+      <Label fx:id="Label_iniForm" layoutX="240.0" layoutY="153.0" text="InÃ­cio da Entrega dos FormulÃ¡rios:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="Label_Nascimento3" layoutX="477.0" layoutY="153.0" text="Fimo da Entrega dos Formulários:" textFill="#bd0741">
+      <Label fx:id="Label_fimForm" layoutX="477.0" layoutY="153.0" text="Fimo da Entrega dos FormulÃ¡rios:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <DatePicker fx:id="Campo_iniEntregaForm" layoutX="259.0" layoutY="170.0" promptText="Ex.:18/03/1999" />
       <DatePicker fx:id="Campo_fimForm" layoutX="501.0" layoutY="170.0" promptText="Ex.:18/03/1999" />
-      <Label fx:id="Label_Vagas1" layoutX="37.0" layoutY="207.0" text="Valor do Auxílio:" textFill="#bd0741">
+      <Label fx:id="Label_Valor" layoutX="37.0" layoutY="207.0" text="Valor do AuxÃ­lio:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <TextField fx:id="Campo_ValorBolsa" layoutX="56.0" layoutY="224.0" prefHeight="25.0" prefWidth="141.0" promptText="Ex. (R$): 11,11" />
-      <Label fx:id="Label_Vagas11" layoutX="240.0" layoutY="207.0" text="Tipo do Auxílio:" textFill="#bd0741">
+      <Label fx:id="Label_Tipo" layoutX="240.0" layoutY="207.0" text="Tipo do AuxÃ­lio:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <RadioButton fx:id="Bt_Alimentacao" layoutX="259.0" layoutY="228.0" mnemonicParsing="false" text="Alimentação" textFill="#bd0741">
+      <RadioButton fx:id="Bt_Alimentacao" layoutX="259.0" layoutY="228.0" mnemonicParsing="false" text="AlimentaÃ§Ã£o" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -93,11 +93,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
-      <Label fx:id="Label_Vagas111" layoutX="37.0" layoutY="274.0" text="Descrição:" textFill="#bd0741">
+      <Label fx:id="Label_Descricao" layoutX="37.0" layoutY="274.0" text="DescriÃ§Ã£o:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_Título1" layoutX="56.0" layoutY="292.0" prefHeight="136.0" prefWidth="374.0" promptText="Descrição" />
+      <TextField fx:id="Campo_TÃ­tulo1" layoutX="56.0" layoutY="292.0" prefHeight="136.0" prefWidth="374.0" promptText="DescriÃ§Ã£o" />
    </children>
 </AnchorPane>
