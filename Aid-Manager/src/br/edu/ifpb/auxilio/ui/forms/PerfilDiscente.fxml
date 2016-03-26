@@ -6,37 +6,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="711.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutY="61.0" prefHeight="375.0" prefWidth="711.0" style="-fx-background-color: #ffffff;">
          <children>
-            <ImageView fitHeight="110.0" fitWidth="93.0" layoutX="73.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../LOGO%20AID/DOCUMENTOS.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="101.0" fitWidth="102.0" layoutX="294.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../LOGO%20AID/DADOS%20PESSOAIS.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="90.0" fitWidth="114.0" layoutX="507.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../LOGO%20AID/DINHEIRO.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="105.0" fitWidth="102.0" layoutX="166.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../LOGO%20AID/PERFILSOCIO.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="74.0" fitWidth="81.0" layoutX="414.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../LOGO%20AID/9330839025.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Label_Documentos" layoutX="79.0" layoutY="137.0" prefHeight="17.0" prefWidth="81.0" text=" Documentos" textAlignment="CENTER" textFill="#bd0741">
+            <Label fx:id="Label_Documentos" layoutX="86.0" layoutY="144.0" prefHeight="17.0" prefWidth="81.0" text=" Documentos" textAlignment="CENTER" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -46,29 +20,65 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="Label_DadosBancarios" layoutX="513.0" layoutY="144.0" prefHeight="17.0" prefWidth="102.0" text=" Dados Bancários" textAlignment="CENTER" textFill="#bd0741">
+            <Label fx:id="Label_DadosBancarios" layoutX="513.0" layoutY="144.0" prefHeight="17.0" prefWidth="102.0" text=" Dados BancÃ¡rios" textAlignment="CENTER" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="Label_PerfilSocioEconomico" layoutX="151.0" layoutY="290.0" prefHeight="17.0" prefWidth="140.0" text="  Perfil Socioeconômico " textAlignment="CENTER" textFill="#bd0741">
+            <Label fx:id="Label_PerfilSocioEconomico" layoutX="51.0" layoutY="299.0" prefHeight="17.0" prefWidth="140.0" text="  Perfil SocioeconÃ´mico " textAlignment="CENTER" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="Label_Chat" layoutX="443.0" layoutY="290.0" prefHeight="17.0" prefWidth="40.0" text="Chat" textAlignment="CENTER" textFill="#bd0741">
+            <Label fx:id="Label_Chat" layoutX="336.0" layoutY="299.0" prefHeight="17.0" prefWidth="40.0" text="  Chat" textAlignment="CENTER" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="Bt_Documentos" layoutX="73.0" layoutY="54.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="93.0" textFill="WHITE" />
+            <Button fx:id="Bt_Documentos" layoutX="80.0" layoutY="54.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="93.0" textFill="WHITE" />
             <Button fx:id="Bt_DadosPessoais" layoutX="299.0" layoutY="54.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="93.0" textFill="WHITE" />
             <Button fx:id="Bt_DadosBancarios" layoutX="507.0" layoutY="54.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="114.0" textFill="WHITE" />
-            <Button fx:id="Bt_PerfilSocioEco" layoutX="151.0" layoutY="215.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="140.0" textFill="WHITE" />
-            <Button fx:id="Bt_Chat" layoutX="410.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="93.0" textFill="WHITE" />
+            <Button fx:id="Bt_PerfilSocioEco" layoutX="57.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="140.0" textFill="WHITE" />
+            <Button fx:id="Bt_Chat" layoutX="309.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="93.0" textFill="WHITE" />
+            <ImageView fitHeight="73.0" fitWidth="81.0" layoutX="90.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../LOGO%20AID/document-with-paperclip.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="84.0" fitWidth="81.0" layoutX="309.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../LOGO%20AID/identity-card.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="109.0" fitWidth="81.0" layoutX="524.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../LOGO%20AID/coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="109.0" fitWidth="93.0" layoutX="74.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../LOGO%20AID/bar-graph-with-dollar-sign.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="81.0" layoutX="315.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../LOGO%20AID/cellphone-with-speech-boxes.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="109.0" fitWidth="81.0" layoutX="524.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../LOGO%20AID/thumbs-up.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Label_Parecer" layoutX="543.0" layoutY="299.0" prefHeight="17.0" prefWidth="44.0" text="Parecer" textAlignment="CENTER" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="Bt_Parecer" layoutX="518.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="109.0" prefWidth="93.0" />
          </children>
       </Pane>
-      <Button fx:id="Bt_Voltar" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+      <Button fx:id="Bt_Sair" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#btSair" style="-fx-background-color: #F596B4;" text="Sair" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="14.0" />
          </font>

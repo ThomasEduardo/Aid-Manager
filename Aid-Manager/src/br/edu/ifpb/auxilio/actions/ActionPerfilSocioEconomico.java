@@ -14,23 +14,102 @@ public class ActionPerfilSocioEconomico {
 	private PerfilSocioEconomicoDAO p;
 	
 	public int insert(PerfilSocioEconomico ps) throws SQLException {
-		return p.insert(ps);
+		try{
+			
+			return p.insert(ps);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return 0;
 
 	}
-	public boolean update(PerfilSocioEconomico PSE) {
+	public boolean update(PerfilSocioEconomico PSE) throws SQLException {
+		
+		try{
+			
+			return p.update(PSE);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return false;
 		
 	}
 	public List<PerfilSocioEconomico> getAll() throws SQLException {
 		
+		try{
+			
+			return p.getAll();
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return null;
+		
 	}
 	public List<PerfilSocioEconomico> find(PerfilSocioEconomico pse) throws SQLException {
 		
+		try{
+		
+			return  p.find(pse);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return null;
+		
+		
 	}
-	public PerfilSocioEconomico getById(int idPs){
+	public PerfilSocioEconomico getById(int idPs) throws SQLException {
+		
+		try{
+			
+			return p.getById(idPs);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return null;
 		
 	}
 	public List<PerfilSocioEconomico> convertToList(ResultSet rs)
 			throws SQLException {
+		
+		
+		try{
+			
+			return p.convertToList(rs);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return null;
+		
 		
 	}
 
