@@ -8,28 +8,30 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="711.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutY="53.0" prefHeight="375.0" prefWidth="711.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutY="61.0" prefHeight="375.0" prefWidth="711.0" style="-fx-background-color: #ffffff;">
          <children>
-            <ImageView fitHeight="92.0" fitWidth="87.0" layoutX="92.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="123.0" fitWidth="90.0" layoutX="135.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../../../../LOGO%20AID/document-with-paperclip.png" />
                </image>
             </ImageView>
-            <Label fx:id="Label_addDocumentos" layoutX="64.0" layoutY="170.0" prefHeight="17.0" prefWidth="143.0" text="  Adicionar Documentos" textAlignment="CENTER" textFill="#bd0741">
+            <Label fx:id="Label_Documentos" layoutX="116.0" layoutY="226.0" text="Adicionar Documentos" textAlignment="CENTER" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <ImageView fitHeight="87.0" fitWidth="87.0" layoutX="312.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="439.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../../../../LOGO%20AID/task-complete.png" />
                </image>
             </ImageView>
-            <Label fx:id="Label_verDocumentos" layoutX="284.0" layoutY="170.0" prefHeight="17.0" prefWidth="143.0" text="  Visualizar Documentos" textFill="#bd0741">
+            <Label fx:id="Label_Documentos1" layoutX="412.0" layoutY="226.0" text="Visualizar Documentos" textAlignment="CENTER" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Button fx:id="Bt_addDocumentos" layoutX="109.0" layoutY="119.0" mnemonicParsing="false" opacity="0.0" prefHeight="123.0" prefWidth="146.0" />
+            <Button fx:id="Bt_verDocumentos" layoutX="403.0" layoutY="126.0" mnemonicParsing="false" opacity="0.0" prefHeight="123.0" prefWidth="146.0" />
          </children>
       </Pane>
       <Button fx:id="Bt_Voltar" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
@@ -37,7 +39,7 @@
             <Font name="Book Antiqua" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="Label_Documentos" layoutX="23.0" layoutY="14.0" prefHeight="37.0" prefWidth="266.0" text="Documentos" textFill="WHITE">
+      <Label fx:id="Label_Documentacao" layoutX="23.0" layoutY="14.0" prefHeight="37.0" prefWidth="266.0" text="DocumentaÃ§Ã£o" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
