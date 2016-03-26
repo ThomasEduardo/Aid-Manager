@@ -9,25 +9,25 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
-      <Label fx:id="Label_DadosPessoais" layoutX="108.0" layoutY="14.0" text="Instituição Financiadora" textFill="#bd0741">
+      <Label fx:id="Label_InstituicaoFicanciadora" layoutX="108.0" layoutY="14.0" text="InstituiÃ§Ã£o Financiadora" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Separator layoutX="317.0" layoutY="24.0" prefHeight="7.0" prefWidth="385.0" />
-      <Label fx:id="Label_Nome" layoutX="63.0" layoutY="63.0" text="Nome da Instituição:" textFill="#bd0741">
+      <Label fx:id="Label_NomeDaInstituicao" layoutX="63.0" layoutY="63.0" text="Nome da InstituiÃ§Ã£o:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <TextField fx:id="Campo_NomeInstituicao" layoutX="72.0" layoutY="87.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Banco do Brasil" />
-      <Label fx:id="Label_SUAP" layoutX="57.0" layoutY="122.0" text="CNPJ:" textFill="#bd0741">
+      <Label fx:id="Label_CNPJ" layoutX="57.0" layoutY="122.0" text="CNPJ:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <TextField fx:id="Campo_CNPJ" layoutX="72.0" layoutY="147.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: 11.111.111/1111-11" />
-      <Label fx:id="Label_Senha" layoutX="56.0" layoutY="180.0" text="Orçamento do Auxílio:" textFill="#bd0741">
+      <Label fx:id="Label_Orcamento" layoutX="56.0" layoutY="180.0" text="OrÃ§amento do AuxÃ­lio:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
