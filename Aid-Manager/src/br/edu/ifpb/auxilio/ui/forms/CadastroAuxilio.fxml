@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
-      <Label fx:id="Label_DadosPessoais" layoutX="108.0" layoutY="14.0" text="AuxÃ­lio" textFill="#bd0741">
+      <Label fx:id="Label_Auxilio" layoutX="108.0" layoutY="14.0" text="AuxÃ­lio" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -36,18 +36,18 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="Label_ValorAux" layoutX="32.0" layoutY="152.0" text="Valor do AuxÃ­lio:" textFill="#bd0741">
+      <Label fx:id="Label_ValorAux" layoutX="32.0" layoutY="152.0" text="Valor do AuxÃƒÂ­lio:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <TextField fx:id="Campo_ValorBolsa" layoutX="57.0" layoutY="169.0" prefHeight="25.0" prefWidth="141.0" promptText="Ex. (R$): 11,11" />
-      <Label fx:id="Label_Tipo" layoutX="35.0" layoutY="245.0" text="Tipo do AuxÃ­lio:" textFill="#bd0741">
+      <Label fx:id="Label_Tipo" layoutX="35.0" layoutY="245.0" text="Tipo do AuxÃƒÂ­lio:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <RadioButton fx:id="Bt_Alimentacao" layoutX="52.0" layoutY="269.0" mnemonicParsing="false" text="AlimentaÃ§Ã£o" textFill="#bd0741">
+      <RadioButton fx:id="Bt_Alimentacao" layoutX="52.0" layoutY="269.0" mnemonicParsing="false" text="AlimentaÃƒÂ§ÃƒÂ£o" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -67,12 +67,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_NumProcesso" layoutX="55.0" layoutY="334.0" prefHeight="25.0" prefWidth="141.0" promptText="NÃºmero do Processo" />
-      <Label fx:id="Label_Instituicao" layoutX="35.0" layoutY="379.0" text="InstituiÃ§Ã£o Financiadora:" textFill="#bd0741">
+      <TextField fx:id="Campo_NumProcesso" layoutX="55.0" layoutY="334.0" prefHeight="25.0" prefWidth="141.0" promptText="NÃƒÂºmero do Processo" />
+      <Label fx:id="Label_Instituicao" layoutX="35.0" layoutY="379.0" text="InstituiÃƒÂ§ÃƒÂ£o Financiadora:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_Instituicao" layoutX="55.0" layoutY="396.0" prefHeight="25.0" prefWidth="141.0" promptText="InstituiÃ§Ã£o Financiadora" />
+      <TextField fx:id="Campo_Instituicao" layoutX="55.0" layoutY="396.0" prefHeight="25.0" prefWidth="141.0" promptText="InstituiÃƒÂ§ÃƒÂ£o Financiadora" />
    </children>
 </AnchorPane>
