@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="711.0" style="-fx-background-color: #bd0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutY="53.0" prefHeight="375.0" prefWidth="711.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fx:id="Img_ProcessosGerenciados" fitHeight="150.0" fitWidth="200.0" layoutX="135.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/imagens/Processos.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Img_ProcessosRequisitados" fitHeight="150.0" fitWidth="200.0" layoutX="418.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/imagens/Processos.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Label_ProcessosGerenciados" layoutX="159.0" layoutY="237.0" text="Processos&#10;Gerenciados" textAlignment="CENTER" textFill="#bd0741" underline="true">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="439.0" layoutY="237.0" text="Processos&#10;Requisitados" textAlignment="CENTER" textFill="#bd0741" underline="true">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="Bt_VoltarProcessos" layoutX="636.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Voltar" textFill="#bd0741">
+         <font>
+            <Font name="Book Antiqua Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="Label_Processos" layoutX="14.0" layoutY="6.0" text="Processos" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
