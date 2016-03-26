@@ -11,7 +11,7 @@ Create table  pessoa(
 	senha varchar(30),
 	email varchar(40),
 	cpf varchar(40),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 Create table telefone( 
@@ -19,14 +19,14 @@ Create table telefone(
 	telefone_residencial varchar(50), 
 	telefone_celular varchar(50), 
 	pessoa_id int unsigned not null,
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	constraint fk_telefone_pessoa foreign key(pessoa_id) references pessoa(id_pessoa) 
 );
 
 Create table servidor(
 	id_servidor int unsigned auto_increment primary key,
 	cargo_servidor varchar(30),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	pessoa_id int unsigned not null,
 	constraint fk_servidor_pessoa foreign key(pessoa_id) references pessoa(id_pessoa)
 );
@@ -37,7 +37,7 @@ Create table instituicaoFinanciadora(
 	nome_if varchar(40), 
 	cnpj varchar(40), 
 	orcamento_auxilio double,
-    dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,	
+    dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,	
 	servidor_id int unsigned not null, 
 	constraint fk_instituicaFinanciadora_servidor foreign key(servidor_id) references servidor(id_servidor)
 );
@@ -49,7 +49,7 @@ Create table processo(
 	num_processo varchar(50),
 	assunto varchar(255),
 	parecer varchar(255),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	interessado_id int unsigned not null,
 	servidor_id int unsigned not null,
 	constraint fk_processo_interessado foreign key(interessado_id) references pessoa(id_pessoa),
@@ -74,7 +74,7 @@ Create table Discente (
 	ponto_ref varchar(50),
 	estado varchar(60),
 	motivo_solicitacao varchar(255),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	pessoa_id int unsigned not null,
 	constraint fk_discente_pessoa foreign key (pessoa_id) references pessoa(id_pessoa)
 );
@@ -86,7 +86,7 @@ Create table auxilio(
 	valor_auxilio double,
 	validade_Inicial date,
 	validade_final date,
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	instituicaoFinanciadora_id int unsigned,
 	processo_id int unsigned not null,
 	constraint fk_auxilio_IF foreign key(instituicaoFinanciadora_id) references instituicaoFinanciadora(id_if),
@@ -106,7 +106,7 @@ Create table edital(
 	valor_bolsa_discente double,
 	vagas_bolsistas int,
 	num_edital varchar(50),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	processo_id int unsigned not null,
 	constraint fk_edital_processo foreign key(processo_id) references processo(id_processo) 
 );
@@ -118,7 +118,7 @@ Create table dadosBancarios(
 	num_agencia varchar(255),
     saldo double,
     obs varchar(255),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     discente_id int unsigned not null,
     constraint fk_dadosBancarios_Discente foreign key(discente_id) references discente(id_discente)
 );
@@ -137,7 +137,7 @@ Create table PerfilSocioEconomico(
 	gastos_telefone double,
 	obs varchar(255),
 	gastos_financiamento_casa_propria double,
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     servidor_id int unsigned not null,
     discente_id int unsigned not null,
     constraint fk_perfilsocioeconomico_servidor foreign key(servidor_id) references servidor(id_servidor),
@@ -153,7 +153,7 @@ Create table Familiar(
 	profissao varchar(70), 
 	renda double,
 	doenca varchar(255),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	perfil_socio_id int unsigned not null, 
 	constraint fk_familiar_perfilSocio foreign key(perfil_socio_id) references perfilSocioEconomico(id_perfil_socio) 
 );
@@ -163,7 +163,7 @@ Create table documento (
 	nome_documento varchar(100),
 	status_documento varchar(255),
 	obs varchar(255),
-	dt_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_modificacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	discente_id int unsigned not null,
 	constraint fk_documento_discente foreign key(discente_id) references discente(id_discente)
 );
@@ -173,10 +173,13 @@ Create table chat(
     remetente_id int unsigned,
     destinatario_id int unsigned,
     mensagem text,
-    dt_registro timestamp DEFAULT CURRENT_TIMESTAMP,
+    dt_modificacao timestamp DEFAULT CURRENT_TIMESTAMP,
     constraint fk_chat_remetente foreign key (remetente_id) references pessoa(id_pessoa),
     constraint fk_chat_destinatario foreign key (destinatario_id) references pessoa(id_pessoa)
 );
+
+
+
 
 /*-------------------------------------------- INSERTS ------------------------------------------------------------------*/
 INSERT INTO pessoa (nome_pessoa,rg,matricula,data_nasc,sexo,senha,email,cpf)
@@ -198,14 +201,14 @@ VALUES (2,'9854684','32364859');
 INSERT INTO telefone (pessoa_id,telefone_celular,telefone_residencial)
 VALUES (3,'9754684','31364859');
 
-INSERT INTO servidor (pessoa_id,cargo_servidor,tipo_servidor)
-VALUES (1,'Coordenador','Assistente Social');
+INSERT INTO servidor (pessoa_id,cargo_servidor)
+VALUES (1,'Coordenador');
 
-INSERT INTO servidor (pessoa_id,cargo_servidor,tipo_servidor)
-VALUES (2,'Estagiario','Tecnico admin');
+INSERT INTO servidor (pessoa_id,cargo_servidor)
+VALUES (2,'Estagiario');
 
-INSERT INTO servidor (pessoa_id,cargo_servidor,tipo_servidor)
-VALUES (3,'SubCoordenador','Tecnico admin');
+INSERT INTO servidor (pessoa_id,cargo_servidor)
+VALUES (3,'SubCoordenador');
 
 
 INSERT INTO instituicaoFinanciadora (nome_if,cnpj,orcamento_auxilio,servidor_id)
@@ -317,6 +320,131 @@ begin
 
 end $$
 DELIMITER ;
+
+
+
+
+delimiter $$
+Create trigger tr_UpdateServidor before update
+on servidor
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdateAuxilio before update
+on auxilio
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdateDiscente before update
+on discente
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdateDocumento before update
+on documento
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdateEdital before update
+on edital
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdateFamiliar before update
+on familiar
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdateIF before update
+on instituicaoFinanciadora
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdatePs before update
+on perfilSocioEconomico
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+
+delimiter $$
+Create trigger tr_UpdateProcesso before update
+on processo
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdateTelefone before update
+on telefone
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
+
+delimiter $$
+Create trigger tr_UpdatePessoa before update
+on pessoa
+for each row
+begin
+    
+    set new.dt_modificacao = now();
+
+END $$
+delimiter ;
 
 delimiter $$
 Create trigger tr_encriptaSenha before insert
