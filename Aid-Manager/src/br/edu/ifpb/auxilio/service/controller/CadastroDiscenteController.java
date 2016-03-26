@@ -28,31 +28,73 @@ public class CadastroDiscenteController implements Initializable{
 
 	
 	@FXML
-	private TextField Campo_NomeDiscente;
+	private TextField Campo_NomeCompleto;
 	
 	@FXML
-	private TextField Campo_RgDiscente;
+	private TextField Campo_Rg;
 	
 	@FXML
 	private TextField Campo_Matricula;
 	
 	@FXML
-	private TextField Campo_EmailDiscente;
+	private TextField Campo_Email;
 	
 	@FXML
-	private TextField Campo_CPFDiscente;
+	private TextField Campo_Cpf;
 	
 	@FXML
-	private MenuButton Campo_SexoDiscente;
+	private MenuButton MenuBt_Sexo;
 	
 	@FXML
-	private DatePicker Campo_NascDiscente;
+	private DatePicker Campo_Data;
 	
 	@FXML
-	private TextField Campo_SenhaDiscente;
+	private TextField Campo_Senha;
 	
 	@FXML
-	private TextField Campo_ConfSenhaDiscente;
+	private TextField Campo_ConfirmarSenha;
+	
+	@FXML
+	private TextField Campo_Curso;
+	
+	@FXML
+	private TextField Campo_Turno;
+	
+	@FXML
+	private TextField Campo_EstadoCivil;
+	
+	@FXML
+	private TextField Campo_CartaoSUS;
+	
+	@FXML
+	private TextField Campo_SerieIntegrado;
+	
+	@FXML
+	private MenuButton MenuBt_EscolaOrigem;
+	
+	@FXML
+	private TextField Campo_EnderecoAluno;
+	
+	@FXML
+	private TextField Campo_Num;
+	
+	@FXML
+	private TextField Campo_Apt;
+	
+	@FXML
+	private TextField Campo_Bairro;
+	
+	@FXML
+	private TextField Campo_CEP;
+	
+	@FXML
+	private TextField Campo_Cidade;
+	
+	@FXML
+	private TextField Campo_Estado;
+	
+	@FXML
+	private TextField Campo_PontoDeReferência;
 	
 	@FXML
 	private Button Bt_CadastrarDiscente;
@@ -71,15 +113,28 @@ public class CadastroDiscenteController implements Initializable{
 
 			Discente d = new Discente();
 			
-			d.setNomePessoa(Campo_NomeDiscente.getText());
-			d.setRg(Campo_RgDiscente.getText());
+			d.setNomePessoa(Campo_NomeCompleto.getText());
+			d.setRg(Campo_Rg.getText());
 			d.setMatricula(Campo_Matricula.getText());
-			d.setEmail(Campo_EmailDiscente.getText());
-			d.setCpf(Campo_CPFDiscente.getText());
+			d.setEmail(Campo_Email.getText());
+			d.setCpf(Campo_Cpf.getText());
 			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			d.setDataNasc((java.util.Date)formatter.parse(Campo_NascDiscente.getValue().toString()));
-			d.setSexo(Campo_SexoDiscente.getText());
-			d.setSenha(Campo_SenhaDiscente.getText());
+			d.setDataNasc((java.util.Date)formatter.parse(Campo_Data.getValue().toString()));
+			d.setSexo(MenuBt_Sexo.getText());
+			d.setSenha(Campo_Senha.getText());
+			d.setCurso(Campo_Curso.getText());
+			d.setTurno(Campo_Turno.getText());
+			d.setEstadoCivil(Campo_EstadoCivil.getText());
+			d.setNumCartaoSus(Campo_CartaoSUS.getText());
+			d.setPeriodoLetivo(Integer.parseInt(Campo_SerieIntegrado.getText()));
+			d.setEscolaOrigem(MenuBt_EscolaOrigem.getTypeSelector());
+			d.setEndereco(Campo_EnderecoAluno.getText());
+			d.setNumCasa(Integer.parseInt(Campo_Num.getText()));
+			d.setBairro(Campo_Bairro.getText());
+			d.setCep(Campo_CEP.getText());
+			d.setCidade(Campo_Cidade.getText());
+			d.setEstado(Campo_Estado.getText());
+			d.setPontoRef(Campo_PontoDeReferência.getText());
 			
 			int validacao = Validar.Discente(d);
 

@@ -9,12 +9,15 @@ import java.util.regex.Pattern;
 public class NumeroValidator {
 	
 	private Pattern pattern;
+	private Pattern patternEspacos;
 	private Matcher matcher;
 
 	private static final String STRING_PATTERN = "[0-9]*";
+	private static final String STRING_PATTERN_ESPAÇO = "[0-9 ]*";
 
 	public NumeroValidator() {
 		pattern = Pattern.compile(STRING_PATTERN);
+		patternEspacos = Pattern.compile(STRING_PATTERN_ESPAÇO);
 	}
 
 
@@ -24,10 +27,17 @@ public class NumeroValidator {
 		matcher = pattern.matcher(value.trim());
 		return matcher.matches();
 	}
+	
+	public boolean validateEspacos(final String value) {
+		if (value == null || value.trim().equals(""))
+			return false;
+		matcher = patternEspacos.matcher(value.trim());
+		return matcher.matches();
+	}
 
 	public boolean validate(final String value, int tamanho) {
 		return (validate(value) 
-				&& value.length() <= tamanho);
+				&& value.length() == tamanho);
 	}
 
 	public boolean validate(final String value, int tamanhoMenor, 

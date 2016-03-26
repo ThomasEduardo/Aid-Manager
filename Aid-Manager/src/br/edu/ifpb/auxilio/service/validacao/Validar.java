@@ -53,7 +53,7 @@ public class Validar {
 		if(!stringValidator.validatePassword(senha))
 			return ErrorFactory.SENHA_USUARIO_INVALIDA;
 
-		if (!stringValidator.validate(matricula,11))
+		if (!numeroValidator.validate(matricula))
 			return ErrorFactory.MATRICULA_USUARIO_INVALIDA;
 
 		if (!emailValidator.validate(email))
@@ -115,13 +115,13 @@ public class Validar {
 		if (!stringValidator.validateSomenteLetras(escolaOrigem))
 		     return ErrorFactory.ESCOLA_ORIGEM_INVALIDA;
 		//if (!stringValidator.validateLetraDigito(orgExpeditor))
-		if (!numeroValidator.validate(numCartaoSus,1,15))
+		if (!numeroValidator.validateEspacos(numCartaoSus))
 			return ErrorFactory.NUM_CARTAO_SUS_INVALIDO;
 		if (!stringValidator.validateSomenteLetras(curso))
 			return ErrorFactory.CURSO_INVALIDO;
 		if (!numeroValidator.isInteiroPositivo(numCasa))
 			return ErrorFactory.NUM_CASA_INVALIDA;
-		if (!stringValidator.validate(pontoRef))
+		if (!stringValidator.validateSomenteLetras(pontoRef))
 			return ErrorFactory.PONTO_REF_INVALIDO;
 	    if (!stringValidator.validateSomenteLetras(estado))
 	    	return ErrorFactory.ESTADO_INVALIDO;

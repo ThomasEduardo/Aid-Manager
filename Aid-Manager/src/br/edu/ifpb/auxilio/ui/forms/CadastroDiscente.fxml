@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2836.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2836.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.CadastroDiscenteController">
    <content>
       <AnchorPane prefHeight="2836.0" prefWidth="719.0">
          <children>
@@ -117,30 +117,18 @@
                      </font>
                   </Text>
                   <TextField fx:id="Campo_CartaoSUS" layoutX="433.0" layoutY="415.0" promptText="Ex.:111 1111 1111 1" />
-                  <Text fx:id="Label_SerieIntegrado" fill="#bd0741" layoutX="20.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Série(Integrado):">
+                  <Text fx:id="Label_SerieIntegrado" fill="#bd0741" layoutX="20.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Série ou periodo:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
                   <TextField fx:id="Campo_SerieIntegrado" layoutX="35.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 2º Ano" />
-                  <Text fx:id="Label_ModuloSubsequente" fill="#bd0741" layoutX="222.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Módulo(Subsequente):">
+                  <Text fx:id="Label_EscolaOrigem" fill="#bd0741" layoutX="215.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escola de Origem:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="Campo_ModuloSubsequente" layoutX="237.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: Módulo 1" />
-                  <Text fx:id="Label_PeriodoSuperior" fill="#bd0741" layoutX="443.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Período(Superior):">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="Campo_PeriodoSuperior" layoutX="458.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 1º Período" />
-                  <Text fx:id="Label_EscolaOrigem" fill="#bd0741" layoutX="20.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escola de Origem:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
-                  <MenuButton fx:id="MenuBt_EscolaOrigem" layoutX="141.0" layoutY="527.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
+                  <MenuButton fx:id="MenuBt_EscolaOrigem" layoutX="254.0" layoutY="483.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Pública" />
                         <MenuItem mnemonicParsing="false" text="Privada" />
@@ -499,7 +487,7 @@
                         <Font name="Book Antiqua" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="Bt_CadastrarDiscente" layoutX="607.0" layoutY="2787.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+                  <Button fx:id="Bt_CadastrarDiscente" layoutX="607.0" layoutY="2787.0" mnemonicParsing="false" onAction="#btCadastrarDiscente" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="Book Antiqua Bold" size="14.0" />
                      </font>
