@@ -30,7 +30,7 @@ public class PerfilSocioEconomicoDAO {
 			System.out.println("Erro na conexão com o BD");
 	}
 
-	public int insert(PerfilSocioEconomico PSE) {
+	public int insert(PerfilSocioEconomico PSE)throws SQLException {
 		
 		int idPse;
 
@@ -80,7 +80,7 @@ public class PerfilSocioEconomicoDAO {
 		}
         return idPse;
 	}
-	public boolean update(PerfilSocioEconomico PSE) {
+	public boolean update(PerfilSocioEconomico PSE) throws SQLException{
 		String sql = "update perfilSocioEconomico set" 
 				     + "`situacao_renda_familiar`=?, " 
 					 + " `moradia`=?, " 
@@ -126,7 +126,7 @@ public class PerfilSocioEconomicoDAO {
 	}
 
 	
-	public PerfilSocioEconomico getById(int idPs){
+	public PerfilSocioEconomico getById(int idPs)throws SQLException{
 		try{
 		
 		PerfilSocioEconomico ps = new PerfilSocioEconomico();

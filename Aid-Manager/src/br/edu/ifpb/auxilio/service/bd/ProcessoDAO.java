@@ -28,7 +28,7 @@ public class ProcessoDAO {
 	}
 	
 	
-	public int insert(Processo processo) {
+	public int insert(Processo processo)  throws SQLException {
 		
 		int idProcesso;
 
@@ -66,7 +66,7 @@ public class ProcessoDAO {
 		return idProcesso;
 	}
 	
-	public boolean update(Processo processo) {
+	public boolean update(Processo processo)  throws SQLException {
 		String sql = "update processo set"
 				+ " `data_requisicao` = ?, "
 				+ " `obs`=?, "
@@ -96,7 +96,7 @@ public class ProcessoDAO {
 		return false;
 	}
 	
-	public Processo getById(int idProcesso) {
+	public Processo getById(int idProcesso)  throws SQLException {
 		try {
 			
 			Processo processo = new Processo();

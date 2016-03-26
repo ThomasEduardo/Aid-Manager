@@ -31,7 +31,7 @@ public class InstituicaoFinanciadoraDAO {
 		
 	}
 
-	public int insert(InstituicaoFinanciadora IF) {
+	public int insert(InstituicaoFinanciadora IF) throws SQLException{
 		
 		int idIf;
 
@@ -65,7 +65,7 @@ public class InstituicaoFinanciadoraDAO {
 		
 		return idIf;
 	}
-	public boolean update(InstituicaoFinanciadora IF) {
+	public boolean update(InstituicaoFinanciadora IF) throws SQLException{
 		
 		
 		String sql = "update instituicaoFinanciadora set"
@@ -105,7 +105,7 @@ public class InstituicaoFinanciadoraDAO {
 	
 
 	
-	public InstituicaoFinanciadora getById (int idIf){
+	public InstituicaoFinanciadora getById (int idIf)throws SQLException{
 		
 		InstituicaoFinanciadora IF = new InstituicaoFinanciadora();
 		String sql = "select * from instituicaoFinanciadora where id_if = ?";

@@ -128,22 +128,82 @@ public class ActionAuxilio {
 	
 	public List<Auxilio> getAllByServidor(Auxilio auxilio) throws SQLException {
 		
+		try{
+			
+			return a.getAllByServidor(auxilio);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return null;
+		
 	}
 	
 	public List<Auxilio> discentesComtemplados(Auxilio auxilio) throws SQLException {
+		try{
+			
+			return a.discentesComtemplados(auxilio);
 		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return null;
 	}
 	
 	public List<Auxilio> convertToListQueryDiscentesContemp(ResultSet rs)
 			throws SQLException {
 		
+		try{
+			
+			return a.convertToList(rs);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		return null;
+		
 	}
 	
 	public List<Auxilio> getDiscentesContempladosByTipoAux(String tipoAuxilio) throws SQLException {
+		try{
+			
+			return a.getDiscentesContempladosByTipoAux(tipoAuxilio);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		return null;
 		
 	}
+	
+	
 	public void delete (String numProcesso) throws SQLException{
+		try{
+			
+			a.delete(numProcesso);
 		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+
 	}
 
 }
