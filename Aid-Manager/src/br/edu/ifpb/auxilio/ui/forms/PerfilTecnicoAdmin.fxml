@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="711.0" style="-fx-background-color: #bd0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutY="53.0" prefHeight="375.0" prefWidth="711.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fx:id="Img_Discentes" fitHeight="97.0" fitWidth="104.0" layoutX="295.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/imagens/discente-1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Img_Auxilios" fitHeight="104.0" fitWidth="122.0" layoutX="95.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/imagens/Auxilio.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Img_Processos" fitHeight="104.0" fitWidth="122.0" layoutX="497.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/imagens/processo.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Img_Chat" fitHeight="104.0" fitWidth="122.0" layoutX="199.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/imagens/Chat-1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Img_InstituicaoFinanciadora" fitHeight="104.0" fitWidth="122.0" layoutX="392.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../recursos/imagens/instituicaofinanciadora.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="Label_Auxilios" fill="#bd0741" layoutX="112.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auxílios">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="Label_Discentes" fill="#bd0741" layoutX="304.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discentes">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="Label_Processos" fill="#bd0741" layoutX="497.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Processos">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="Label_Chat" fill="#bd0741" layoutX="232.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="Label_InstituicaoFinanciadora" fill="#bd0741" layoutX="391.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Instituição&#10;Financiadora">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Button fx:id="Bt_SairPerfilTecnicoAdmin" layoutX="645.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Sair" textFill="#bd0741">
+         <font>
+            <Font name="Book Antiqua Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
