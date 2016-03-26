@@ -24,8 +24,8 @@ import br.edu.ifpb.auxilio.entidade.Processo;
 
 
 public class EditalDAO {
-	//Metodos estão com problema devido a relação
-private Connection conn;
+	
+	private Connection conn;
 	
 	public EditalDAO(){
 		conn = Conexao.getConnection();
@@ -81,7 +81,7 @@ private Connection conn;
 		return idEdital;
 	}
 	
-	public boolean update(Edital edital) {
+	public boolean update(Edital edital)throws SQLException {
 		
 		String sql = "update edital set "
 				+ "`ini_inscricoes` =?, "
@@ -121,7 +121,7 @@ private Connection conn;
 	}
 	
 	
-	public Edital getById(int idEdital){
+	public Edital getById(int idEdital)throws SQLException{
 		try{
 		Edital edital = new Edital();
 		

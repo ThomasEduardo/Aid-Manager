@@ -9,7 +9,7 @@ import br.edu.ifpb.auxilio.service.bd.PessoaDAO;
 
 public class ActionPessoa {
 	
-	PessoaDAO p = new PessoaDAO();
+	private PessoaDAO p;
 	
 	public int insert(Pessoa pessoa) throws SQLException {
 		try{

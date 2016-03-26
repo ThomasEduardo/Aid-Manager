@@ -95,7 +95,7 @@ public class DiscenteDAO{
 		return idDiscente;
 	}
 	
-	public boolean update(Discente discente){
+	public boolean update(Discente discente)throws SQLException{
 		String sql = "update pessoa set "
 			           + "escola_origem = ? ,"
 				       + "org_expeditor = ?,"
@@ -146,7 +146,7 @@ public class DiscenteDAO{
 		
 	}
 	
-	public Discente getById(int idDiscente){
+	public Discente getById(int idDiscente)throws SQLException{
 		
 		try {
 			Discente discente = new Discente();

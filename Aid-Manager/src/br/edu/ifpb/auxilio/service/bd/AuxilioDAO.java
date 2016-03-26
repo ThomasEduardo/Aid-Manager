@@ -71,7 +71,7 @@ private Connection conn;
 		 return idAuxilio;
 	}
 	
-	public boolean update(Auxilio auxilio) { 
+	public boolean update(Auxilio auxilio) throws SQLException{ 
 		
 		String sql = "update auxilio set "
 				+ " tipo_auxilio=?, "
@@ -112,7 +112,7 @@ private Connection conn;
 	
 	
 	
-	public Auxilio getById(int idAuxilio) {
+	public Auxilio getById(int idAuxilio) throws SQLException{
 		PreparedStatement stmt = null;
 		String sql = "select * from auxilio where id_auxilio = ?";
 		

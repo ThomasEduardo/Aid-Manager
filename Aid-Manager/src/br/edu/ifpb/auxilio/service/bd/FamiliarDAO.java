@@ -73,7 +73,7 @@ public class FamiliarDAO {
 	}
 	
 	
-	public boolean update(Familiar familiar) {
+	public boolean update(Familiar familiar) throws SQLException{
 		
 		
 		String sql = "update familiar set "
@@ -113,7 +113,7 @@ public class FamiliarDAO {
 	
 
 
-	public Familiar getById(int idFamiliar) {
+	public Familiar getById(int idFamiliar) throws SQLException{
 		try {
 			
 			Familiar familiar = new Familiar();
