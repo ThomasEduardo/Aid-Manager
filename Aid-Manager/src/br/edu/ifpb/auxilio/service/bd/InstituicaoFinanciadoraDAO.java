@@ -103,10 +103,7 @@ public class InstituicaoFinanciadoraDAO {
 		
 	}
 	
-	
-	public void Delete(){
-		//Falta fazer
-	}
+
 	
 	public InstituicaoFinanciadora getById (int idIf){
 		

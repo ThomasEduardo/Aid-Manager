@@ -70,7 +70,7 @@ public class DadosBancariosDAO {
 	}
 	
 	
-	public boolean update(DadosBancarios db) {
+	public boolean update(DadosBancarios db) throws SQLException {
 		String sql = "update dadosBancarios set "
 				+ "banco = ? ,"
 				+ "agencia = ?,"
@@ -102,7 +102,7 @@ public class DadosBancariosDAO {
 	
 	
 	
-	public DadosBancarios getById(int idDb) {
+	public DadosBancarios getById(int idDb) throws SQLException{
          
 		
 
@@ -158,7 +158,7 @@ public class DadosBancariosDAO {
 			}
 
 		} catch (SQLException sqle) {
-			
+			sqle.printStackTrace();
 		}
 
 		return DadosBancarios;

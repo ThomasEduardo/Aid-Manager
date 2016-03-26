@@ -61,7 +61,7 @@ private Connection conn;
 		return idDocumento;
 	}
 	
-	public boolean update(Documento d) {
+	public boolean update(Documento d) throws SQLException{
 		
 		String sql = "update documento set "
 				+ "nome_documento = ?,"
@@ -93,7 +93,7 @@ private Connection conn;
 	
 	
 	
-	public Documento getById (int idDocumento){
+	public Documento getById (int idDocumento)throws SQLException{
 		
 
 	    Documento documento = new Documento();

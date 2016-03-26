@@ -281,6 +281,26 @@ public class ServidorDAO{
 				
 				return idServidor;
 			}
+		 
+		 public boolean update(Servidor s) throws SQLException{
+				String sql = "update servidor set "
+						+ "cargo_servidor = ? "
+						+ "WHERE id_servidor = ?";
+				try {
+					PreparedStatement stmt = conn.prepareStatement(sql);
+					
+					stmt.setString(1, s.getCargoServidor());
+					stmt.setInt(2, s.getIdServidor());
+					
+					stmt.execute();
+					return true;
+
+				} catch (Exception e) {
+					System.out.println("Exception is :" + e);
+				}
+				return false;
+			}
+			
 			
 			
 		
