@@ -11,8 +11,8 @@ public class StringValidator {
 	private Matcher matcher;
 	private Pattern patternRg;
 
-	private static final String STRING_PATTERN = "[0-9a-zA-ZαΰβγιθκνοστυφϊόηρΑΐΒΓΙΘΝΟΣΤΥΦΪάΗΡ ]";
-	private static final String STRING_PATTERN_SOMENTE_LETRAS = "[a-zA-ZαΰβγιθκνοστυφϊόηρΑΐΒΓΙΘΝΟΣΤΥΦΪάΗΡ ]*";
+	private static final String STRING_PATTERN = "[0-9a-zA-ZαΰβγιθκνοστυφϊόηρΑΐΒΓΙΘΝΟΣΤΥΦΪάΗΡ., ]";
+	private static final String STRING_PATTERN_SOMENTE_LETRAS = "[a-zA-ZαΰβγιθκνοστυφϊόηρΑΐΒΓΙΘΝΟΣΤΥΦΪάΗΡ. ]*";
 	private static final String STRING_PATTERN_RG = "[0-9]{1}."+"[0-9]{3}." + "[0-9]{3}";
 
 	// Verifica se hα, ao menos:

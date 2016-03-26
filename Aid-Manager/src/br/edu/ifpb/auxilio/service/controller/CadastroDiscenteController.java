@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class CadastroDiscenteController implements Initializable{
@@ -103,6 +104,9 @@ public class CadastroDiscenteController implements Initializable{
 	private Button Bt_VoltarCadastroDiscente;
 	
 	@FXML
+	private TextArea Campo_MotivoSolicitacao;
+	
+	@FXML
 	private void btCadastrarDiscente() throws IOException, ParseException,SQLException{
 	
 		
@@ -135,6 +139,7 @@ public class CadastroDiscenteController implements Initializable{
 			d.setCidade(Campo_Cidade.getText());
 			d.setEstado(Campo_Estado.getText());
 			d.setPontoRef(Campo_PontoDeReferência.getText());
+			d.setMotivoSolicitacao(Campo_MotivoSolicitacao.getText());
 			
 			int validacao = Validar.Discente(d);
 

@@ -125,7 +125,7 @@ public class Validar {
 			return ErrorFactory.PONTO_REF_INVALIDO;
 	    if (!stringValidator.validateSomenteLetras(estado))
 	    	return ErrorFactory.ESTADO_INVALIDO;
-	    if (!stringValidator.validate(motivoSolicitacao))
+	    if (!stringValidator.validateSomenteLetras(motivoSolicitacao))
 	    	return ErrorFactory.MOTIVO_SOLICITACAO_INVALIDO;
 		if (!stringValidator.validate(estadoCivil,1,12))
 			return ErrorFactory.ESTADO_CIVIL_INVALIDO;
@@ -134,10 +134,10 @@ public class Validar {
 		if (!stringValidator.validateSomenteLetras(turno))
 			return ErrorFactory.TURNO_INVALIDO;
 			if (endereco != null && cep != null && cidade != null && bairro != null) {
-				if (!stringValidator.validate(endereco, 255))
-					return ErrorFactory.ENDERECO_INVALIDO;
+				/*if (!stringValidator.validate(endereco))
+					return ErrorFactory.ENDERECO_INVALIDO;*/
 
-				if (!numeroValidator.validate(cep,1,8))
+				if (!numeroValidator.validate(cep,8))
 					return ErrorFactory.CEP_INVALIDO;
 
 				if (!stringValidator.validateSomenteLetras(cidade))

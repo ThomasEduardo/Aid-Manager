@@ -9,7 +9,7 @@
    <content>
       <AnchorPane prefHeight="2836.0" prefWidth="719.0">
          <children>
-            <AnchorPane layoutX="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2836.0" prefWidth="719.0">
+            <AnchorPane layoutX="8.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2836.0" prefWidth="719.0">
                <children>
                   <Separator layoutX="12.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
                   <Label fx:id="Label_ServicoSolicitado" layoutX="105.0" layoutY="14.0" text="Serviço Solicitado" textFill="#bd0741">
@@ -110,7 +110,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Campo_Rg" layoutX="235.0" layoutY="415.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 11.108.230-9" />
+                  <TextField fx:id="Campo_Rg" layoutX="235.0" layoutY="415.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 3.999.259" />
                   <Text fx:id="Label_CartaoSUS" fill="#bd0741" layoutX="418.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº do Cartão do SUS:">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -122,7 +122,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="Campo_SerieIntegrado" layoutX="35.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 2º Ano" />
+                  <TextField fx:id="Campo_SerieIntegrado" layoutX="35.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Ex.: 2" />
                   <Text fx:id="Label_EscolaOrigem" fill="#bd0741" layoutX="215.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escola de Origem:">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -163,7 +163,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="Campo_CEP" layoutX="519.0" layoutY="639.0" prefHeight="25.0" prefWidth="124.0" promptText="Ex.: 51.111-111" />
+                  <TextField fx:id="Campo_CEP" layoutX="519.0" layoutY="639.0" prefHeight="25.0" prefWidth="124.0" promptText="Ex.: 58119000" />
                   <Text fx:id="Label_Cidade" fill="#bd0741" layoutX="20.0" layoutY="694.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade:">
                      <font>
                         <Font name="System Bold" size="12.0" />
