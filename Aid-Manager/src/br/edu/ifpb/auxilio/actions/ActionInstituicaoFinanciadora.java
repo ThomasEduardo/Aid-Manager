@@ -9,12 +9,12 @@ import br.edu.ifpb.auxilio.service.bd.InstituicaoFinanciadoraDAO;
 
 public class ActionInstituicaoFinanciadora {
 	
-	private InstituicaoFinanciadoraDAO i;
+	InstituicaoFinanciadoraDAO i;
 	
 	public int insert(InstituicaoFinanciadora IF) throws SQLException{
 		
 		try{
-			
+			InstituicaoFinanciadoraDAO i = new InstituicaoFinanciadoraDAO();
 			return i.insert(IF);
 		
 		}
@@ -148,6 +148,19 @@ public class ActionInstituicaoFinanciadora {
 		}
 		
 		
+	}
+	public int getId(String cnpj) throws SQLException {
+		try{
+			
+			return i.getId(cnpj);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		return 0;
 	}
 
 }

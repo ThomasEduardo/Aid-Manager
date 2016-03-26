@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.CadastroInstituicaoFinanciadoraController">
    <children>
       <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
       <Label fx:id="Label_InstituicaoFicanciadora" layoutX="108.0" layoutY="14.0" text="InstituiÃ§Ã£o Financiadora" textFill="#bd0741">
@@ -20,7 +20,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_NomeInstituicao" layoutX="72.0" layoutY="87.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Banco do Brasil" />
+      <TextField fx:id="Campo_NomeInstituicao" layoutX="72.0" layoutY="87.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: IFPB" />
       <Label fx:id="Label_CNPJ" layoutX="57.0" layoutY="122.0" text="CNPJ:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -43,10 +43,11 @@
             <Font name="Book Antiqua Bold" size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="135.0" fitWidth="118.0" layoutX="181.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../LOGO%20AID/Icon1.jpg" />
-         </image>
-      </ImageView>
+      <Label layoutX="58.0" layoutY="258.0" text="Matrícula do servidor" textFill="#bd0741">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Campo_Servidor" layoutX="74.0" layoutY="275.0" prefHeight="25.0" prefWidth="405.0" />
    </children>
 </AnchorPane>

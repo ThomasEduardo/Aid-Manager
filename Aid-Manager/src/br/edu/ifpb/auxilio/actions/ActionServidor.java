@@ -32,7 +32,7 @@ public class ActionServidor {
 	public int getId(String matricula) throws SQLException {
 		
 		try{
-			
+			ServidorDAO  s = new ServidorDAO();
 			return s.getId(matricula);
 		
 		}
@@ -146,6 +146,21 @@ public class ActionServidor {
 		
        return false;
 		
+	}
+	
+	public Servidor getById(int idServidor) throws SQLException  {
+		try{
+			ServidorDAO s = new ServidorDAO();
+			return  s.getById(idServidor);
+		
+		}
+		catch(SQLException e){
+			
+			e.printStackTrace();
+			
+		}
+		
+       return null;
 	}
 	 
 

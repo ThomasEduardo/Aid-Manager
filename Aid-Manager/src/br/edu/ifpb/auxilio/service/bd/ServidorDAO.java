@@ -61,10 +61,9 @@ public class ServidorDAO{
 			
 			Servidor servidor = new Servidor();
 			
-			String sql = "select * from servidor where id_servidor = ?";
+			String sql = "select * from servidor where id_servidor = "+idServidor;
 			
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idServidor);
 			
 			ResultSet rs = stmt.executeQuery();
 			
@@ -262,7 +261,7 @@ public class ServidorDAO{
 					String sql = String 
 							.format("%s '%s'",
 							"SELECT id_servidor from servidor where "
-							+ "pessoa_id = ",
+							+ " pessoa_id = ",
 							 p.getId(matricula));
 
 					stmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -272,6 +271,8 @@ public class ServidorDAO{
 					while (rs.next()) {
 		               idServidor = rs.getInt("id_servidor");
 					}
+					stmt.close();
+					rs.close();
 
 				} catch (SQLException sqle) {
 

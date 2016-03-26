@@ -394,7 +394,7 @@ public class PessoaDAO {
 			String sql = String 
 					.format("%s '%s'",
 					"SELECT id_pessoa from pessoa where "
-					+ "matricula = ",
+					+ " matricula = ",
 					 matricula);
 
 			stmt = (PreparedStatement) conn.prepareStatement(sql);

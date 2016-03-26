@@ -35,27 +35,27 @@ public class InstituicaoFinanciadoraDAO {
 		
 		int idIf;
 
-		String sql = "INSERT INTO instituicaoFinanciadora " +
-					 " `nome_if`, " +
-					 " `cnpj`, " +
-					 " `orcamento_auxilio`," +
-					 " `servidor_id`" + 
-					 "VALUES(?,?,?,?)";
+		String sql = String
+				.format("%s %s('%s','%s',%s,%d) ",
+					 "INSERT INTO instituicaofinanciadora(" 
+					 +" nome_if, " +
+					 " cnpj, " +
+					 " orcamento_auxilio," +
+					 " servidor_id)",
+					 "VALUES",
+					 IF.getNomeIF(),
+					 IF.getCnpj(),
+					 IF.getOrcamentoAuxilio(),
+					 IF.getServidor().getIdServidor());
 		try{
+			
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setString(1, IF.getNomeIF());
-			stmt.setString(2, IF.getCnpj());
-			stmt.setDouble(3, IF.getOrcamentoAuxilio());
-			stmt.setInt(4, IF.getServidor().getIdServidor());
 			
-				
 			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			
 			idIf = BancoUtil.getGenerateKey(stmt);
-			
-			
-			stmt.close();
+		
 
 		}catch (SQLException e) {
 			
@@ -316,4 +316,42 @@ public class InstituicaoFinanciadoraDAO {
 		 }
 
 	 }
+	
+	/**
+	    * Função que retorna o id do processo,atráves do número do processo fornecido
+	    * @author Fanny
+	    * 
+	    * */	
+	   
+	   public int getId(String cnpj) throws SQLException {
+			
+			int idIf  = 0;
+
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+
+			try {
+				String sql = String 
+						.format("%s '%s'",
+						"SELECT id_if from instituicaoFinanciadora where "
+						+ "cnpj = ",
+						 cnpj);
+
+				stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+				rs = stmt.executeQuery(sql);
+
+				while (rs.next()) {
+	               idIf = rs.getInt("id_if");
+				}
+
+			} catch (SQLException sqle) {
+
+				sqle.printStackTrace();
+
+			} 
+			
+			return idIf;
+		}
+	
 }
