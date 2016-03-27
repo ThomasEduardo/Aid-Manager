@@ -32,25 +32,23 @@ public class ProcessoDAO {
 		
 		int idProcesso;
 
-		String sql = "INSERT INTO processo("
-				+ " `data_requisicao`, "
-				+ " `obs`, "
-				+ " `num_processo`,"
-				+ " `assunto`, "
-				+ " `parecer`, "
-				+ " `interessado_id`, "
-				+ " `servidor_id`)"
-				+ "VALUES(?,?,?,?,?,?,?)";
+		String sql =  String
+				.format("%s %s ('%s','%s','%s',%d,%d)",
+				"INSERT INTO processo("
+				+ " data_requisicao, "
+				+ " num_processo,"
+				+ " assunto, "
+				+ " interessado_id, "
+				+ " servidor_id)",
+				"VALUES",
+				new java.sql.Date(processo.getDataRequisicao().getTime()),
+				processo.getNumProcesso(),
+				processo.getAssunto(),
+				processo.getInteressado().getIdPessoa(),
+				processo.getServidor().getIdServidor());
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setDate(1, null);
-			stmt.setString(2, processo.getObs());
-			stmt.setString(3, processo.getNumProcesso());
-			stmt.setString(4, processo.getAssunto());
-			stmt.setString(5, processo.getParecer());
-			stmt.setInt(6, processo.getInteressado().getIdPessoa());
-			stmt.setInt(7, processo.getServidor().getIdServidor());
 			
          	stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			

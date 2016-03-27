@@ -9,7 +9,7 @@ import br.edu.ifpb.auxilio.service.bd.PessoaDAO;
 
 public class ActionPessoa {
 	
-	private PessoaDAO p;
+	PessoaDAO p;
 	
 	public int insert(Pessoa pessoa) throws SQLException {
 		try{
@@ -46,6 +46,7 @@ public class ActionPessoa {
 	
 	public Pessoa getById (int idPessoa) throws SQLException{
 		 try{
+			 PessoaDAO p = new PessoaDAO();
 			 return p.getById(idPessoa);
 		 }
 		 catch(SQLException e){
@@ -124,6 +125,7 @@ public class ActionPessoa {
 
 	public int getId(String matricula) throws SQLException {
 		try{
+			PessoaDAO p = new PessoaDAO();
 			return p.getId(matricula);
 		}
 		catch(SQLException e){

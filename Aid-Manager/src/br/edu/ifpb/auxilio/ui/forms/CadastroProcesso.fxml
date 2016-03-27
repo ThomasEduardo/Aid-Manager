@@ -5,8 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.CadastroProcessoController">
    <children>
       <Separator layoutX="12.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
       <Separator layoutX="189.0" layoutY="26.0" prefHeight="7.0" prefWidth="461.0" />
@@ -33,24 +32,24 @@
          </font>
       </Text>
       <DatePicker fx:id="Campo_DataRequisicao" layoutX="35.0" layoutY="182.0" prefHeight="25.0" prefWidth="180.0" promptText="Ex.: 01/01/2016" />
-      <Text fx:id="Label_Interessado" fill="#bd0741" layoutX="20.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interessado:">
+      <Text fx:id="Label_Interessado" fill="#bd0741" layoutX="20.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricula do Interessado:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
       <TextField fx:id="Campo_Interessado" layoutX="35.0" layoutY="239.0" prefHeight="25.0" prefWidth="386.0" promptText="Ex.: João Silveira Lima" />
-      <Text fx:id="Label_ServidorResponsavel" fill="#bd0741" layoutX="20.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servidor Responsável:">
+      <Text fx:id="Label_ServidorResponsavel" fill="#bd0741" layoutX="20.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricula do servidor Responsável:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
       <TextField fx:id="Campo_ServidorResponsavel" layoutX="35.0" layoutY="298.0" prefHeight="25.0" prefWidth="386.0" promptText="Ex.: Roberta Oliveira Barros" />
-      <Button fx:id="Bt_CadastrarProcesso" alignment="CENTER" layoutX="563.0" layoutY="390.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+      <Button fx:id="Bt_CadastrarProcesso" alignment="CENTER" layoutX="563.0" layoutY="390.0" mnemonicParsing="false" onAction="#btCadastrarProcesso" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="Book Antiqua Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="Bt_Voltar" alignment="CENTER" layoutX="480.0" layoutY="390.0" mnemonicParsing="false" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+      <Button fx:id="Bt_Voltar" alignment="CENTER" layoutX="480.0" layoutY="390.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="14.0" />
          </font>

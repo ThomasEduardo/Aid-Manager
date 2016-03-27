@@ -248,7 +248,7 @@ public class ServidorDAO{
 		
 		 public int getId(String matricula) throws SQLException {
 				
-				int idServidor  = 0;
+				int idServidor = 0;
 				
 				PessoaDAO p = new PessoaDAO();
 			
@@ -258,19 +258,20 @@ public class ServidorDAO{
 
 				try {
 					
-					String sql = String 
-							.format("%s '%s'",
-							"SELECT id_servidor from servidor where "
-							+ " pessoa_id = ",
-							 p.getId(matricula));
+					String sql = 
+							"SELECT id_servidor FROM servidor WHERE "
+							+ "pessoa_id = "+p.getId(matricula);
 
 					stmt = (PreparedStatement) conn.prepareStatement(sql);
 
 					rs = stmt.executeQuery(sql);
 
 					while (rs.next()) {
+						
 		               idServidor = rs.getInt("id_servidor");
+					
 					}
+					
 					stmt.close();
 					rs.close();
 
@@ -279,7 +280,6 @@ public class ServidorDAO{
 					sqle.printStackTrace();
 
 				} 
-				
 				return idServidor;
 			}
 		 

@@ -60,7 +60,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="Label_fimForm" layoutX="477.0" layoutY="153.0" text="Fimo da Entrega dos Formulários:" textFill="#bd0741">
+      <Label fx:id="Label_fimForm" layoutX="477.0" layoutY="153.0" text="Fim da Entrega dos Formulários:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -10,7 +10,7 @@ import br.edu.ifpb.auxilio.service.bd.ServidorDAO;
 public class ActionServidor {
 	
 	
-	private ServidorDAO s;
+	ServidorDAO s;
 	
 	public int insert(Servidor servidor) throws SQLException {
 		try{

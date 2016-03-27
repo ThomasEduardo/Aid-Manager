@@ -398,17 +398,17 @@ public class Validar {
 			if (validacao != VALIDACAO_OK)
 				return validacao;
 
-			if (!stringValidator.validate(obs))
-				return ErrorFactory.OBS_PROCESSO_INVALIDO;
+			/*if (!stringValidator.validate(obs))
+				return ErrorFactory.OBS_PROCESSO_INVALIDO;*/
 			
-			if (!numeroValidator.validate(numProcesso))
+			if (!numeroValidator.validate(numProcesso,20))
 				return ErrorFactory.NUM_PROCESSO_INVALIDO;
 			
-			if (!stringValidator.validate(assunto))
-				return ErrorFactory.ASSUNTO_INVALIDO;
+			/*if (!stringValidator.validateSomenteLetras(assunto))
+				return ErrorFactory.ASSUNTO_INVALIDO;*/
 			
-			if (!stringValidator.validateSomenteLetras(parecer))
-				return ErrorFactory.PARECER_INVALIDO;
+			/*if (!stringValidator.validateSomenteLetras(parecer))
+				return ErrorFactory.PARECER_INVALIDO;*/
 			
 		}
 

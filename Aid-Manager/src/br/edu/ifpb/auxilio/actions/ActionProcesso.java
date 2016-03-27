@@ -12,12 +12,12 @@ import br.edu.ifpb.auxilio.service.bd.ProcessoDAO;
 public class ActionProcesso {
 	
 	
-	private ProcessoDAO p;
+	ProcessoDAO p;
 	
 	public int insert(Processo processo) throws SQLException {
 		
 		try{
-			
+			ProcessoDAO p = new ProcessoDAO();
 			return p.insert(processo);
 		
 		}
