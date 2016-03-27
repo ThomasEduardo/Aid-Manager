@@ -49,7 +49,7 @@ public class ActionProcesso {
 		
 		
 		try{
-			
+			ProcessoDAO p = new ProcessoDAO();
 			return p.getById(idProcesso);
 		
 		}
@@ -144,7 +144,7 @@ public class ActionProcesso {
 		
 		
 		try{
-			
+			ProcessoDAO p = new ProcessoDAO();
 			return p.getId(numProcesso);
 		
 		}

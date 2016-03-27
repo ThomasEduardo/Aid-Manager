@@ -14,7 +14,7 @@ public class ActionEdital {
 	
 	public int insert(Edital edital) throws SQLException {
 		try{
-			
+			EditalDAO e = new EditalDAO();
 			return e.insert(edital);
 		
 		}

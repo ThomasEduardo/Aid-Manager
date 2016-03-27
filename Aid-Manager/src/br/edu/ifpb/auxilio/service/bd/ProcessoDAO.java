@@ -328,7 +328,7 @@ public class ProcessoDAO {
 				String sql = String 
 						.format("%s '%s'",
 						"SELECT id_processo from processo where "
-						+ "numProcesso = ",
+						+ "num_processo = ",
 						 numProcesso);
 
 				stmt = (PreparedStatement) conn.prepareStatement(sql);

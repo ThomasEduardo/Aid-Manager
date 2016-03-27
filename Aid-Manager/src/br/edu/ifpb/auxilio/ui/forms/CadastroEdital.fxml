@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifpb.auxilio.service.controller.CadastroEditalController">
    <children>
       <Separator layoutX="14.0" layoutY="24.0" prefHeight="7.0" prefWidth="84.0" />
       <Label fx:id="Label_Edital" layoutX="108.0" layoutY="14.0" text="Edital" textFill="#bd0741">
@@ -20,7 +20,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_TÃ­tulo" layoutX="56.0" layoutY="71.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Edital Para Auxílio Alimentação" />
+      <TextField fx:id="Campo_Titulo" layoutX="56.0" layoutY="71.0" prefHeight="25.0" prefWidth="405.0" promptText="Ex.: Edital Para Auxílio Alimentação" />
       <Label fx:id="Label_NumeroEdital" layoutX="40.0" layoutY="103.0" text="Número do Edital:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -32,7 +32,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_Vagas" layoutX="56.0" layoutY="170.0" prefHeight="25.0" prefWidth="141.0" promptText="Ex.: 80" />
+      <TextField fx:id="Campo_Vagas" layoutX="51.0" layoutY="170.0" prefHeight="25.0" prefWidth="163.0" promptText="Ex.: 80" />
       <Button fx:id="Bt_Voltar" layoutX="543.0" layoutY="420.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="14.0" />
@@ -73,23 +73,13 @@
          </font>
       </Label>
       <TextField fx:id="Campo_ValorBolsa" layoutX="56.0" layoutY="224.0" prefHeight="25.0" prefWidth="141.0" promptText="Ex. (R$): 11,11" />
-      <Label fx:id="Label_Tipo" layoutX="240.0" layoutY="207.0" text="Tipo do Auxílio:" textFill="#bd0741">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
       <Label fx:id="Label_Descricao" layoutX="37.0" layoutY="274.0" text="Descrição:" textFill="#bd0741">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="Campo_TÃ­tulo1" alignment="TOP_LEFT" layoutX="56.0" layoutY="292.0" prefHeight="136.0" prefWidth="374.0" promptText="Escreva Aqui." />
-      <MenuButton layoutX="259.0" layoutY="224.0" mnemonicParsing="false" text="Selecionar" textFill="#bd0741">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Alimentação" />
-          <MenuItem mnemonicParsing="false" text="Transporte" />
-            <MenuItem mnemonicParsing="false" text="Moradia" />
-        </items>
-      </MenuButton>
+      <TextField fx:id="Campo_Descricao" alignment="TOP_LEFT" layoutX="56.0" layoutY="292.0" prefHeight="136.0" prefWidth="374.0" promptText="Escreva Aqui." />
+      <Label layoutX="222.0" layoutY="207.0" text="Número do processo" />
+      <TextField fx:id="Campo_NumProcesso" layoutX="283.0" layoutY="237.0" />
    </children>
 </AnchorPane>

@@ -39,7 +39,9 @@ public class EditalDAO {
 		
 		int idEdital;
 
-		String sql = "INSERT INTO `edital`("
+		String sql = String
+				.format("%s %s ('%s','%s','%s',%d,'%s','%s','%s',%s,%d,'%s',%d)",
+				"INSERT INTO `edital`("
 				+ "`ini_inscricoes`, "
 				+ "`fim_inscricoes`,"
 				+ "`ini_entrega_form`,"
@@ -50,22 +52,22 @@ public class EditalDAO {
 				+ "`valor_bolsa_discente`, "
 				+ "`vagas_bolsistas`, "
 				+ "`num_edital`, "
-				+ "`processo_id`)"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+				+ "`processo_id`)",
+				"VALUES",
+				new java.sql.Date(edital.getIniInscricoes().getTime()),
+				new java.sql.Date(edital.getFimInscricoes().getTime()),
+				new java.sql.Date(edital.getIniEntregaForm().getTime()),
+				edital.getAno(),
+				new java.sql.Date(edital.getFimForm().getTime()),
+				edital.getDescricao(),
+				edital.getTitulo(),
+				edital.getValorBolsaDiscente(),
+				edital.getVagasBolsistas(),
+				edital.getNumEdital(),
+				edital.getIdProcesso());
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setDate(1, new java.sql.Date(edital.getIniInscricoes().getTime()));
-			stmt.setDate(2, new java.sql.Date(edital.getFimInscricoes().getTime()));
-			stmt.setDate(3, new java.sql.Date(edital.getIniEntregaForm().getTime()));
-			stmt.setInt (4, edital.getAno());
-			stmt.setDate(5, new java.sql.Date(edital.getFimForm().getTime()));
-			stmt.setString(6, edital.getDescricao());
-			stmt.setString(7, edital.getTitulo());
-			stmt.setDouble(8, edital.getValorBolsaDiscente());
-			stmt.setInt(9, edital.getVagasBolsistas());
-			stmt.setString(10, edital.getNumEdital());
-			stmt.setInt(11, edital.getIdProcesso());
 			
 			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			

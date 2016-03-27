@@ -226,9 +226,9 @@ public class Validar {
 			int vagasBolsistas = edital.getVagasBolsistas();
 			String numEdital = edital.getNumEdital();
 
-			validacao = processo(edital);
+			/*validacao = processo(edital);
 			if (validacao != VALIDACAO_OK)
-				return validacao;
+				return validacao;*/
 
 			if (!dataValidator.datesInOrder(iniInscricoes, fimInscricoes))
 				return ErrorFactory.FAIXA_DATA_INSCRICOES_INVALIDA;
@@ -248,7 +248,7 @@ public class Validar {
 			if(!stringValidator.validateSomenteLetras(titulo))
 				return ErrorFactory.TITULO_INVALIDO;
 			
-			if(!stringValidator.validate(descricao))
+			if(!stringValidator.validateSomenteLetras(descricao))
 				return ErrorFactory.DESCRICAO_INVALIDA;
 			
 			if(!numeroValidator.validate(numEdital))
@@ -382,7 +382,7 @@ public class Validar {
 
 		if (processo != null) {
 			
-           // Date dataRequisicao = processo.getDataRequisicao();
+            String dataRequisicao = processo.getDataRequisicao().toString();
 			String obs = processo.getObs();
 			String numProcesso = processo.getNumProcesso();
 			String assunto = processo.getParecer();
@@ -409,6 +409,7 @@ public class Validar {
 			
 			/*if (!stringValidator.validateSomenteLetras(parecer))
 				return ErrorFactory.PARECER_INVALIDO;*/
+			 // if (!dataValidator.validate(dataRequisicao))
 			
 		}
 

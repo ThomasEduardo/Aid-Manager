@@ -58,7 +58,6 @@ public class CadastroAuxilioController implements Initializable{
 	
 		
 		try {
-		    ActionDiscente actionAuxilio = new ActionDiscente();
 		    ActionProcesso actionProcesso = new ActionProcesso();
 		    ActionInstituicaoFinanciadora actionInstituicao = new ActionInstituicaoFinanciadora();
 		    
