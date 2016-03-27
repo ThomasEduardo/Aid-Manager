@@ -43,7 +43,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="Campo_NomeCompleto" layoutX="37.0" layoutY="147.0" prefHeight="25.0" prefWidth="520.0" promptText="Ex.: Maria Alice Cândido Ferreira" />
+            <TextField fx:id="Campo_NomeCompleto" layoutX="37.0" layoutY="147.0" prefHeight="25.0" prefWidth="520.0" promptText="Ex.: Maria Alice CÃ¢ndido Ferreira" />
             <Label fx:id="Label_Matricula" layoutX="22.0" layoutY="183.0" text="Matrícula:" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -73,13 +73,13 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="Campo_Curso" layoutX="37.0" layoutY="306.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex.: Técnico Integrado em Informática" />
+            <TextField fx:id="Campo_Curso" layoutX="37.0" layoutY="306.0" prefHeight="25.0" prefWidth="278.0" promptText="Ex.: TÃ©cnico Integrado em InformÃ¡tica" />
             <Text fx:id="Label_Turno" fill="#bd0741" layoutX="362.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turno:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="Campo_Turno" layoutX="377.0" layoutY="306.0" promptText="Ex.: Manhã" />
+            <TextField fx:id="Campo_Turno" layoutX="377.0" layoutY="306.0" promptText="Ex.: ManhÃ£" />
             <Label fx:id="Label_Sexo" layoutX="22.0" layoutY="343.0" text="Sexo:" textFill="#bd0741">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -115,7 +115,7 @@
                </font>
             </Text>
             <TextField fx:id="Campo_CartaoSUS" layoutX="435.0" layoutY="415.0" promptText="Ex.:111 1111 1111 1" />
-            <Text fx:id="Label_SerieIntegrado" fill="#bd0741" layoutX="22.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Série ou periodo:">
+            <Text fx:id="Label_SerieIntegrado" fill="#bd0741" layoutX="22.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SÃ©rie ou periodo:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -173,13 +173,13 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="Campo_Estado" layoutX="272.0" layoutY="697.0" promptText="Ex.: Paraíba" />
+            <TextField fx:id="Campo_Estado" layoutX="272.0" layoutY="697.0" promptText="Ex.: ParaÃ­ba" />
             <Text fx:id="Label_PontoDeReferencia" fill="#bd0741" layoutX="22.0" layoutY="747.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ponto de Referência:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="Campo_PontoDeReferência" layoutX="37.0" layoutY="750.0" prefHeight="25.0" prefWidth="314.0" promptText="Ex.: Por Trás do Mercadinho" />
+            <TextField fx:id="Campo_PontoDeReferÃªncia" layoutX="37.0" layoutY="750.0" prefHeight="25.0" prefWidth="314.0" promptText="Ex.: Por TrÃ¡s do Mercadinho" />
             <Text fx:id="Label_TelefoneResidencial" fill="#bd0741" layoutX="22.0" layoutY="801.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone Para Contato(Residencial):">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -238,7 +238,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <RadioButton fx:id="Bt_TrabalhoVinculoEmpregaticio" layoutX="37.0" layoutY="1069.0" mnemonicParsing="false" text="Trabalho com Vínculo Empregatício" textFill="#bd0741" />
+            <RadioButton fx:id="Bt_TrabalhoVinculoEmpregaticio" layoutX="37.0" layoutY="1069.0" mnemonicParsing="false" text="Trabalho com Vínculo EmpregatÃ­cio" textFill="#bd0741" />
             <RadioButton fx:id="Bt_TrabalhoTemporario" layoutX="37.0" layoutY="1086.0" mnemonicParsing="false" text="Trabalho Temporário" textFill="#bd0741" />
             <RadioButton fx:id="Bt_TrabalhoAutonomo" layoutX="37.0" layoutY="1104.0" mnemonicParsing="false" text="Trabalho Autônomo" textFill="#bd0741" />
             <RadioButton fx:id="Bt_TrabalhoInformal" layoutX="37.0" layoutY="1120.0" mnemonicParsing="false" text="Trabalho Informal" textFill="#bd0741" />
@@ -268,7 +268,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="Label_ProblemasPermanentesSaude" layoutX="37.0" layoutY="1256.0" text="Existe alguém na família com problemas permanentes de saúde?" textFill="#bd0741" />
+            <Label fx:id="Label_ProblemasPermanentesSaude" layoutX="37.0" layoutY="1256.0" text="Existe alguem na família com problemas permanentes de saúde?" textFill="#bd0741" />
             <RadioButton fx:id="Bt_ProblemasPermanentesSaude_Sim" layoutX="396.0" layoutY="1256.0" mnemonicParsing="false" text="Sim" textFill="#bd0741" />
             <RadioButton fx:id="Bt_ProblemasPermanentesSaude_Nao" layoutX="454.0" layoutY="1256.0" mnemonicParsing="false" text="Não" textFill="#bd0741" />
             <Label fx:id="Label_MembroFamilia" layoutX="37.0" layoutY="1282.0" text="Em caso afirmativo, qual é o membro da família?" textFill="#bd0741" />
@@ -467,13 +467,13 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="Campo_Banco" layoutX="37.0" layoutY="2637.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: Caixa Econômica Federal" />
+            <TextField fx:id="Campo_Banco" layoutX="37.0" layoutY="2637.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: Caixa EconÃ´mica Federal" />
             <Text fx:id="Label_Agencia" fill="#bd0741" layoutX="22.0" layoutY="2687.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agência:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="Campo_Agencia" layoutX="37.0" layoutY="2690.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: Epitácio Pessoa" />
+            <TextField fx:id="Campo_Agencia" layoutX="37.0" layoutY="2690.0" prefHeight="25.0" prefWidth="228.0" promptText="Ex.: EpitÃ¡cio Pessoa" />
             <Text fx:id="Label_NumAgencia" fill="#bd0741" layoutX="22.0" layoutY="2740.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº da Agência:">
                <font>
                   <Font name="System Bold" size="12.0" />
