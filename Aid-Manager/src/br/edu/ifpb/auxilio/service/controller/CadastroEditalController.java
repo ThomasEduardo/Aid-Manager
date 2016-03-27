@@ -36,6 +36,9 @@ public class CadastroEditalController implements Initializable{
 	private TextField Campo_Vagas;
 	
 	@FXML
+	private TextField Campo_anoEdital;
+	
+	@FXML
 	private TextField Campo_ValorBolsa;
 	
 	@FXML
@@ -78,6 +81,7 @@ public class CadastroEditalController implements Initializable{
 	    
 	    e.setTitulo(Campo_Titulo.getText());
 	    e.setNumEdital(Campo_NumeroDoEdital.getText());
+	    e.setValorBolsaDiscente(Double.parseDouble(Campo_ValorBolsa.getText()));
 	    e.setVagasBolsistas(Integer.parseInt(Campo_Vagas.getText()));
 	    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	    e.setIniEntregaForm(((java.util.Date)formatter.parse(Campo_iniEntregaForm.getValue().toString())));
@@ -85,6 +89,7 @@ public class CadastroEditalController implements Initializable{
 	    e.setFimForm(((java.util.Date)formatter.parse(Campo_fimForm.getValue().toString())));
 	    e.setFimInscricoes(((java.util.Date)formatter.parse(Campo_fimInscricoes.getValue().toString())));
 	    e.setDescricao(Campo_Descricao.getText());
+	    e.setAno(Integer.parseInt(Campo_anoEdital.getText()));
 	    p = (actionProcesso.getById((actionProcesso.getId(Campo_NumProcesso.getText()))));
 	    e.setServidor(p.getServidor());
 	    e.setAssunto(p.getAssunto());

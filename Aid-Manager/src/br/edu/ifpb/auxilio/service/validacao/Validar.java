@@ -229,9 +229,7 @@ public class Validar {
 			int vagasBolsistas = edital.getVagasBolsistas();
 			String numEdital = edital.getNumEdital();
 
-			validacao = processo(edital);
-			if (validacao != VALIDACAO_OK)
-				return validacao;
+			
 
 			if (!dataValidator.datesInOrder(iniInscricoes, fimInscricoes))
 				return ErrorFactory.FAIXA_DATA_INSCRICOES_INVALIDA;
@@ -251,11 +249,15 @@ public class Validar {
 			if(!stringValidator.validateSomenteLetras(titulo))
 				return ErrorFactory.TITULO_INVALIDO;
 			
-			if(!stringValidator.validateSomenteLetras(descricao))
+			if(!stringValidator.validate(descricao))
 				return ErrorFactory.DESCRICAO_INVALIDA;
 			
 			if(!numeroValidator.validate(numEdital))
 				return ErrorFactory.NUM_EDITAL_INVALIDO;
+			
+			validacao = processo(edital);
+			if (validacao != VALIDACAO_OK)
+				return validacao;
 		}
 
 		return VALIDACAO_OK;
@@ -386,8 +388,8 @@ public class Validar {
 		if (processo != null) {
 			
 
-            SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd");
-            String dataRequisicao = formataData.format(processo.getDataRequisicao());
+            //SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd");
+           // String dataRequisicao = formataData.format(processo.getDataRequisicao());
 			String obs = processo.getObs();
 			String numProcesso = processo.getNumProcesso();
 			String assunto = processo.getAssunto();
@@ -408,8 +410,8 @@ public class Validar {
 			if (!stringValidator.validateSomenteLetras(parecer))
 				return ErrorFactory.PARECER_INVALIDO;
 			
-			 if (!dataValidator.validate(dataRequisicao))
-				 return ErrorFactory.DATA_INVALIDA;
+			/* if (!dataValidator.validate(dataRequisicao))
+				 return ErrorFactory.DATA_INVALIDA;*/
 			 
 			 validacao = servidor(servidor);
 				if (validacao != VALIDACAO_OK)
@@ -433,19 +435,14 @@ public class Validar {
 		
 		String tipoAuxilio = auxilio.getTipoAuxilio();
 		double valorAuxilio = auxilio.getValorAuxilio();
-		String validadeInicial = auxilio.getValidadeInicial().toString();
-		String validadeFinal = auxilio.getValidadeFinal().toString();
+		Date validadeInicial = auxilio.getValidadeInicial();
+		Date validadeFinal = auxilio.getValidadeFinal();
 		InstituicaoFinanciadora IF = auxilio.getIF();
 		Processo p = auxilio.getP();
 		
 		
-			validacao = InstituicaoFinanciadora(IF);
-			if (validacao != VALIDACAO_OK)
-				return validacao;
 			
-			validacao = processo(p);
-			if (validacao != VALIDACAO_OK)
-				return validacao;
+			
 
 			if(!stringValidator.validateSomenteLetras(tipoAuxilio))
 				return ErrorFactory.TIPO_AUXILIO;
@@ -453,12 +450,16 @@ public class Validar {
 			if(!numeroValidator.isDoublePositivo(valorAuxilio))
 				return ErrorFactory.VALOR_AUXILIO;
 			
-			if(!dataValidator.validate(validadeInicial))
+			if(!dataValidator.datesInOrder(validadeInicial, validadeFinal))
 				return ErrorFactory.DATA_INVALIDA;
 			
-			if(!dataValidator.validate(validadeFinal))
-				return ErrorFactory.DATA_INVALIDA;
+			validacao = InstituicaoFinanciadora(IF);
+			if (validacao != VALIDACAO_OK)
+				return validacao;
 			
+			validacao = processo(p);
+			if (validacao != VALIDACAO_OK)
+				return validacao;
 		
 
 		return VALIDACAO_OK;

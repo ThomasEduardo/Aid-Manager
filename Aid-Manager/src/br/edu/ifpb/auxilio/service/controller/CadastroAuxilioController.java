@@ -73,20 +73,19 @@ public class CadastroAuxilioController implements Initializable{
 			a.setValidadeFinal((java.util.Date)formatter.parse(Campo_ValidadeFinal.getValue().toString()));
 			a.setValorAuxilio(Double.parseDouble(Campo_ValorBolsa.getText()));
 			
-			actionAuxilio.insert(a);
+
 			
-			/*int validacao = Validar
+			int validacao = Validar.auxilio(a);
 
 			if (validacao == Validar.VALIDACAO_OK) {
-				d.setIdPessoa(actionPerson.insert(d));
-				actionDiscente.insert(d);
+				actionAuxilio.insert(a);
 				System.out.println("oi");
 			
 			} else{
 				
 				Erro erro = ErrorFactory.getErrorFromIndex(validacao);
 				System.out.println(erro.getMensagem());
-			}*/
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

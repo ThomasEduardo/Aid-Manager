@@ -81,5 +81,7 @@
       <TextField fx:id="Campo_Descricao" alignment="TOP_LEFT" layoutX="56.0" layoutY="292.0" prefHeight="136.0" prefWidth="374.0" promptText="Escreva Aqui." />
       <Label layoutX="222.0" layoutY="207.0" text="Número do processo" />
       <TextField fx:id="Campo_NumProcesso" layoutX="283.0" layoutY="237.0" />
+      <Label layoutX="487.0" layoutY="216.0" text="Ano:" />
+      <TextField fx:id="Campo_anoEdital" layoutX="501.0" layoutY="237.0" />
    </children>
 </AnchorPane>

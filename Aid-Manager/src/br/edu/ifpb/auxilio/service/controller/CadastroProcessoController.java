@@ -61,7 +61,7 @@ public class CadastroProcessoController {
 			System.out.println(p.getDataRequisicao());
 			p.setServidor(actionServidor.getById(actionServidor.getId(Campo_ServidorResponsavel.getText())));
 			p.setParecer("Em trâmite");
-			p.setObs("Nenhuma até o momento. 123");
+			p.setObs("Nenhuma até o momento.");
 		    
 			int validacao = Validar.processo(p);
 			if(validacao == Validar.VALIDACAO_OK){

@@ -105,7 +105,7 @@ public class LoginController implements Initializable {
 			  Main.primaryStage.show(); 
 		  }
 		  else{
-			  Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/CadastroProcesso.fxml"));
+			  Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("br/edu/ifpb/auxilio/ui/forms/CadastroAuxilio.fxml"));
 			  
 			  Scene telaCadastroDiscente = new Scene(root);
 		  
