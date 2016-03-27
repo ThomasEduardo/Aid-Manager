@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="711.0" style="-fx-background-color: #BD0741;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="61.0" prefHeight="375.0" prefWidth="711.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <CheckBox fx:id="Bt_rg" layoutX="48.0" layoutY="78.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="105.0" text="RG " textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="Bt_cpf" layoutX="48.0" layoutY="128.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="105.0" text="CPF" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="Bt_comprovanteDeResidencia" layoutX="48.0" layoutY="174.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="207.0" text="Comprovante de Residência" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="Bt_comprovanteDeRenda" layoutX="48.0" layoutY="224.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="207.0" text="Comprovante de Renda Familiar" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="Bt_comprovanteMatricula" layoutX="48.0" layoutY="274.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="207.0" text="Comprovante de Matrícula" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </CheckBox>
+            <Label fx:id="Label_aviso" layoutX="34.0" layoutY="38.0" prefHeight="17.0" prefWidth="254.0" text="*Marque os documentos entregues" textFill="#bd0741">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="451.0" layoutY="99.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../LOGO%20AID/contract.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button fx:id="Bt_Voltar" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#btVoltar" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="Label_addDocumentos" layoutX="23.0" layoutY="14.0" prefHeight="37.0" prefWidth="266.0" text="Adicionar Documentos" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="Bt_CadastrarDocumentos" alignment="CENTER" layoutX="615.0" layoutY="444.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="82.0" style="-fx-background-color: #E6346C;" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
