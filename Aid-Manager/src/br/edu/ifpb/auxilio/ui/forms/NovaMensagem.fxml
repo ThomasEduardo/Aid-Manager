@@ -30,7 +30,7 @@
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="Campo_DestinatarioAssistenteSocial" layoutX="60.0" layoutY="37.0" prefHeight="25.0" prefWidth="592.0" promptText="Ex.: MariaCandido@gmail.com" />
+            <TextField fx:id="Campo_DestinatarioAssistenteSocial" layoutX="60.0" layoutY="37.0" prefHeight="25.0" prefWidth="592.0" promptText="Ex.: 20141004007" />
             <Button fx:id="Bt_VoltarChatAssistenteSocial" layoutX="543.0" layoutY="326.0" mnemonicParsing="false" style="-fx-background-color: #F596B4;" text="Voltar" textFill="WHITE">
                <font>
                   <Font name="Book Antiqua Bold" size="14.0" />
