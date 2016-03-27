@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
+import br.edu.ifpb.auxilio.actions.ActionAuxilio;
 import br.edu.ifpb.auxilio.actions.ActionDiscente;
 import br.edu.ifpb.auxilio.actions.ActionInstituicaoFinanciadora;
 import br.edu.ifpb.auxilio.actions.ActionPessoa;
@@ -60,6 +61,7 @@ public class CadastroAuxilioController implements Initializable{
 		try {
 		    ActionProcesso actionProcesso = new ActionProcesso();
 		    ActionInstituicaoFinanciadora actionInstituicao = new ActionInstituicaoFinanciadora();
+		    ActionAuxilio actionAuxilio = new ActionAuxilio();
 		    
 		    Auxilio a = new Auxilio();
 			
@@ -68,9 +70,10 @@ public class CadastroAuxilioController implements Initializable{
 		    a.setIF(actionInstituicao.getById(actionInstituicao.getId(Campo_Instituicao.getText())));
 			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			a.setValidadeInicial((java.util.Date)formatter.parse(Campo_ValidadeInicial.getValue().toString()));
-			a.setValidadeInicial((java.util.Date)formatter.parse(Campo_ValidadeFinal.getValue().toString()));
+			a.setValidadeFinal((java.util.Date)formatter.parse(Campo_ValidadeFinal.getValue().toString()));
 			a.setValorAuxilio(Double.parseDouble(Campo_ValorBolsa.getText()));
 			
+			actionAuxilio.insert(a);
 			
 			/*int validacao = Validar
 

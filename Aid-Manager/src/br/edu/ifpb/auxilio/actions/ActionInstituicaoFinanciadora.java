@@ -46,7 +46,7 @@ public class ActionInstituicaoFinanciadora {
 	public InstituicaoFinanciadora getById (int idIf)throws SQLException{
 		
 		try{
-			
+			InstituicaoFinanciadoraDAO i = new InstituicaoFinanciadoraDAO();
 			return i.getById(idIf);
 		
 		}
@@ -151,7 +151,7 @@ public class ActionInstituicaoFinanciadora {
 	}
 	public int getId(String cnpj) throws SQLException {
 		try{
-			
+			InstituicaoFinanciadoraDAO i = new InstituicaoFinanciadoraDAO();
 			return i.getId(cnpj);
 		
 		}

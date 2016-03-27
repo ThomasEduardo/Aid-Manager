@@ -16,7 +16,7 @@ public class ActionAuxilio {
 	
 	public int insert(Auxilio auxilio) throws SQLException {
 		try{
-			
+			AuxilioDAO a = new AuxilioDAO();
 			return a.insert(auxilio);
 		
 		}

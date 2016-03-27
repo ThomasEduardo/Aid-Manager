@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DataValidator {
 	
-	public static final String FORMATO_DATA = "dd/MM/yyyy";
+	public static final String FORMATO_DATA = "yyyy-MM-dd";
 	
 	public static final int ANO_ZERO = 0;
 

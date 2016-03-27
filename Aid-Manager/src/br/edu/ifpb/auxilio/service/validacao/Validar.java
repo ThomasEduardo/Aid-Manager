@@ -1,4 +1,5 @@
 package br.edu.ifpb.auxilio.service.validacao;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import br.edu.ifpb.auxilio.entidade.*;
@@ -35,7 +36,8 @@ public class Validar {
 
 		String nomePessoa = pessoa.getNomePessoa();
 		String cpf = pessoa.getCpf();
-		//Date nascimento = pessoa.getDataNasc();
+		SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd");
+        String nascimento = formataData.format(pessoa.getDataNasc());
 		String matricula = pessoa.getMatricula();
 		String email = pessoa.getEmail();
 		String Rg = pessoa.getRg();
@@ -47,8 +49,8 @@ public class Validar {
 		if (!stringValidator.validateSomenteLetras(nomePessoa))
 			return ErrorFactory.NOME_USUARIO_INVALIDO;
 
-		/*if (!CPFValidator.validaCnpj(cpf))
-			return ErrorFactory.CPF_USUARIO_INVALID0;*/
+		if (!CPFValidator.validate(cpf))
+			return ErrorFactory.CPF_USUARIO_INVALID0;
 		
 		if(!stringValidator.validatePassword(senha))
 			return ErrorFactory.SENHA_USUARIO_INVALIDA;
@@ -59,14 +61,15 @@ public class Validar {
 		if (!emailValidator.validate(email))
 			return ErrorFactory.EMAIL_USUARIO_INVALIDO;
 		
-		/*if (!dataValidator.validate(value))
-			return ErrorFactory.EMAIL_USUARIO_INVALIDO;*/
+		if (!dataValidator.validate(nascimento))
+			return ErrorFactory.DATA_INVALIDA;
 
 		if (!stringValidator.validateRg(Rg))
 			return ErrorFactory.RG_INVALID0; 
 		
 		/*if (!stringValidator.validate(sexo,11))
 			return ErrorFactory.SEXO_INVALID0;*/
+		
 
 		return VALIDACAO_OK;
 	}
@@ -226,9 +229,9 @@ public class Validar {
 			int vagasBolsistas = edital.getVagasBolsistas();
 			String numEdital = edital.getNumEdital();
 
-			/*validacao = processo(edital);
+			validacao = processo(edital);
 			if (validacao != VALIDACAO_OK)
-				return validacao;*/
+				return validacao;
 
 			if (!dataValidator.datesInOrder(iniInscricoes, fimInscricoes))
 				return ErrorFactory.FAIXA_DATA_INSCRICOES_INVALIDA;
@@ -382,39 +385,85 @@ public class Validar {
 
 		if (processo != null) {
 			
-            String dataRequisicao = processo.getDataRequisicao().toString();
+
+            SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd");
+            String dataRequisicao = formataData.format(processo.getDataRequisicao());
 			String obs = processo.getObs();
 			String numProcesso = processo.getNumProcesso();
-			String assunto = processo.getParecer();
+			String assunto = processo.getAssunto();
 			String parecer = processo.getParecer();
 			Pessoa interessado = processo.getInteressado();
 			Servidor servidor = processo.getServidor();
 		
-			validacao = servidor(servidor);
-			if (validacao != VALIDACAO_OK)
-				return validacao;
 			
-			validacao = pessoa(interessado);
-			if (validacao != VALIDACAO_OK)
-				return validacao;
-
-			/*if (!stringValidator.validate(obs))
-				return ErrorFactory.OBS_PROCESSO_INVALIDO;*/
+			if (!stringValidator.validate(obs))
+				return ErrorFactory.OBS_PROCESSO_INVALIDO;
 			
-			if (!numeroValidator.validate(numProcesso,20))
+			if (!stringValidator.validateProcesso(numProcesso))
 				return ErrorFactory.NUM_PROCESSO_INVALIDO;
 			
-			/*if (!stringValidator.validateSomenteLetras(assunto))
-				return ErrorFactory.ASSUNTO_INVALIDO;*/
+			if (!stringValidator.validateSomenteLetras(assunto))
+				return ErrorFactory.ASSUNTO_INVALIDO;
 			
-			/*if (!stringValidator.validateSomenteLetras(parecer))
-				return ErrorFactory.PARECER_INVALIDO;*/
-			 // if (!dataValidator.validate(dataRequisicao))
+			if (!stringValidator.validateSomenteLetras(parecer))
+				return ErrorFactory.PARECER_INVALIDO;
+			
+			 if (!dataValidator.validate(dataRequisicao))
+				 return ErrorFactory.DATA_INVALIDA;
+			 
+			 validacao = servidor(servidor);
+				if (validacao != VALIDACAO_OK)
+					return validacao;
+				
+				validacao = pessoa(interessado);
+				if (validacao != VALIDACAO_OK)
+					return validacao;
 			
 		}
 
 		return VALIDACAO_OK;
 	}
+	
+	public static int auxilio(Auxilio auxilio) {
+
+		int validacao = VALIDACAO_OK;
+
+		
+			
+		
+		String tipoAuxilio = auxilio.getTipoAuxilio();
+		double valorAuxilio = auxilio.getValorAuxilio();
+		String validadeInicial = auxilio.getValidadeInicial().toString();
+		String validadeFinal = auxilio.getValidadeFinal().toString();
+		InstituicaoFinanciadora IF = auxilio.getIF();
+		Processo p = auxilio.getP();
+		
+		
+			validacao = InstituicaoFinanciadora(IF);
+			if (validacao != VALIDACAO_OK)
+				return validacao;
+			
+			validacao = processo(p);
+			if (validacao != VALIDACAO_OK)
+				return validacao;
+
+			if(!stringValidator.validateSomenteLetras(tipoAuxilio))
+				return ErrorFactory.TIPO_AUXILIO;
+				
+			if(!numeroValidator.isDoublePositivo(valorAuxilio))
+				return ErrorFactory.VALOR_AUXILIO;
+			
+			if(!dataValidator.validate(validadeInicial))
+				return ErrorFactory.DATA_INVALIDA;
+			
+			if(!dataValidator.validate(validadeFinal))
+				return ErrorFactory.DATA_INVALIDA;
+			
+		
+
+		return VALIDACAO_OK;
+	}
+	
 	
 
 }

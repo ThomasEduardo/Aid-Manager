@@ -35,23 +35,25 @@ private Connection conn;
 		
 		int idAuxilio = 0;
 
-		String sql = "INSERT INTO auxilio( "
+		String sql = String.format("%s ('%s','%s','%s','%s',%d,%d)  ",  
+				"INSERT INTO auxilio( "
 				+ " `tipo_Auxilio`, "
 				+ " `valor_Auxilio`, "
 				+ " `validade_Inicial`, "
 				+ " `validade_Final`,"
 				+ " `instituicaoFinanciadora_id`, "
 				+ " `processo_id`)"
-				+ "VALUES(?,?,?,?,?,?)";
+				+ "VALUES",
+				 auxilio.getTipoAuxilio(),
+				 auxilio.getValorAuxilio(),
+				 new java.sql.Date(auxilio.getValidadeInicial().getTime()),
+				 new java.sql.Date(auxilio.getValidadeFinal().getTime()),
+				 auxilio.getIF().getIdIF(),
+				 auxilio.getP().getIdProcesso());
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setString(1, auxilio.getTipoAuxilio());
-			stmt.setDouble(2, auxilio.getValorAuxilio() );
-			stmt.setDate  (3, new java.sql.Date(auxilio.getValidadeInicial().getTime()));
-			stmt.setDate  (4, new java.sql.Date(auxilio.getValidadeFinal().getTime()));
-			stmt.setInt   (5, auxilio.getIF().getIdIF());
-         	stmt.setInt   (6, auxilio.getP().getIdProcesso());
+	
          	
          	stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			

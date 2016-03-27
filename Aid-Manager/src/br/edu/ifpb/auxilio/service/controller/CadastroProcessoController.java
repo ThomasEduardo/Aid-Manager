@@ -58,8 +58,10 @@ public class CadastroProcessoController {
 			p.setInteressado(actionPessoa.getById(actionPessoa.getId(Campo_Interessado.getText())));
 			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			p.setDataRequisicao((java.util.Date)formatter.parse(Campo_DataRequisicao.getValue().toString()));
+			System.out.println(p.getDataRequisicao());
 			p.setServidor(actionServidor.getById(actionServidor.getId(Campo_ServidorResponsavel.getText())));
-			
+			p.setParecer("Em trâmite");
+			p.setObs("Nenhuma até o momento. 123");
 		    
 			int validacao = Validar.processo(p);
 			if(validacao == Validar.VALIDACAO_OK){

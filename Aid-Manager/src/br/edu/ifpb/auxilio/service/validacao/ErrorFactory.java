@@ -123,11 +123,19 @@ public class ErrorFactory {
     public static final int NUM_PROCESSO_INVALIDO = 73;
 	public static final int ASSUNTO_INVALIDO= 74; 
 	public static final int PARECER_INVALIDO = 75;
-
+	
 	
 	
 	public static final int IMPOSSIVEL_CRIPTOGRAFAR_VALOR = 78;
 	
+	public static final int DATA_INVALIDA = 79;
+	
+	/*
+	 * Error status: Auxílio
+	 */
+	public static final int TIPO_AUXILIO = 80 ;
+    public static final int VALOR_AUXILIO = 81;
+    
 	
 	/*
 	 * Mapa de erros: código e mensagem.
@@ -204,6 +212,9 @@ public class ErrorFactory {
 		hashMap.put(NUM_PROCESSO_INVALIDO, "Número de processo inválido.");
 		hashMap.put(ASSUNTO_INVALIDO, "Assunto inválido.");
 		hashMap.put(PARECER_INVALIDO, "Parecer inválido.Insira apenas letras");
+		hashMap.put(DATA_INVALIDA, "Data inválida,ela deve estar no formato DD/MM/YYYY");
+		hashMap.put(TIPO_AUXILIO, "Tipo de auxílio inválido. Insira apenas letras");
+		hashMap.put(VALOR_AUXILIO, "Valor inválido.Insira um número positivo menor que o orçamento cedido pela instituição financiadora");
 		
 				
 		return hashMap;

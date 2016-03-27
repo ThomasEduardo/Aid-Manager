@@ -10,16 +10,19 @@ public class StringValidator {
 	private Pattern patternPassword;
 	private Matcher matcher;
 	private Pattern patternRg;
+	private Pattern patternProcesso;
+	
 
-	private static final String STRING_PATTERN = "[0-9a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ., ]";
+	private static final String STRING_PATTERN = "[0-9a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ. ]*";
 	private static final String STRING_PATTERN_SOMENTE_LETRAS = "[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ. ]*";
 	private static final String STRING_PATTERN_RG = "[0-9]{1}."+"[0-9]{3}." + "[0-9]{3}";
+	private static final String STRING_PATTERN_PROCESSO = "[0-9]{5}."+"[0-9]{6}." + "[0-9]{4}-"+ "[0-9]{2}";
 
 	// Verifica se há, ao menos:
 	// - um número;
 	// - uma letra minúscula;
 	// - uma letra maiúscula.
-	// O tamanho deve está entre 6 e 25 caracteres.
+	// O tamanho deve está entre 6 e 20 caracteres.
 	private static final String PASSWORD_PATTERN = "[0-9a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{6,20}";
 
 	public StringValidator() {
@@ -27,6 +30,8 @@ public class StringValidator {
 		patternLetras = Pattern.compile(STRING_PATTERN_SOMENTE_LETRAS);
 		patternPassword = Pattern.compile(PASSWORD_PATTERN);
 		patternRg = Pattern.compile(STRING_PATTERN_RG);
+		patternProcesso = Pattern.compile(STRING_PATTERN_PROCESSO);
+		
 	}
 
 	
@@ -34,6 +39,13 @@ public class StringValidator {
 		if (value == null || value.trim().equals(""))
 			return false;
 		matcher = pattern.matcher(value.trim());
+		return matcher.matches();
+	}
+	
+	public boolean validateProcesso(final String value) {
+		if (value == null || value.trim().equals(""))
+			return false;
+		matcher = patternProcesso.matcher(value.trim());
 		return matcher.matches();
 	}
 	
